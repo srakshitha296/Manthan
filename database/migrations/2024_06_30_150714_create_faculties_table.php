@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('faculties', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDeleteCascade();
+            $table->foreignId('college_id')->constrained('colleges')->onDeleteCascade();
+            $table->foreignId('department_id')->constrained('departments')->onDeleteCascade();
+            $table->string('designation');
+            $table->string('qualification');
+            $table->string('experience');
+            $table->string('specialization');
+            $table->string('joining_date');
+            $table->string('leaving_date')->nullable();
+            $table->string('status')->default('active');
+            $table->boolean('is_cordinator')->default(false);
             $table->timestamps();
         });
     }

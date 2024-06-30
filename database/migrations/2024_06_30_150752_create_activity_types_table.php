@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('activity_types', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('description');
+            $table->integer('credits')->default(1);
             $table->timestamps();
         });
     }

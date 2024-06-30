@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('student_id')->constrained('students')->onDeleteCascade();
+            $table->foreignId('activity_type_id')->constrained('activity_types')->onDeleteCascade();
+            $table->string('title');
+            $table->string('description');
+            $table->string('date');
+            $table->string('hours');
+            $table->string('file')->nullable();
+            $table->string('certificate')->nullable();
+            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->timestamps();
         });
     }
