@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class ActivityType extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['title', 'description', 'credits'];
+
+    public function activities(){
+        return $this->hasMany(Activity::class);
+    }
 }
