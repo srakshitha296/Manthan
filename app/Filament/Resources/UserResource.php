@@ -34,7 +34,7 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-users';
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
     public static function form(Form $form): Form
     {
@@ -42,7 +42,7 @@ class UserResource extends Resource
             ->schema([
                 Section::make('User Information')->schema([
                     TextInput::make('name')->required()->maxLength(255),
-                    TextInput::make('phone')->required()->maxLength(255),
+                    TextInput::make('phone')->required()->maxLength(255)->unique(ignoreRecord: true),
                     TextInput::make('email')->email()->required()->maxLength(255)->unique(ignoreRecord: true),
                     Select::make('role')->options([
                         'student' => 'Student',
