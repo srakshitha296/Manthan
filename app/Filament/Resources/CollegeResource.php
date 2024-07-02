@@ -13,6 +13,13 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -31,10 +38,10 @@ class CollegeResource extends Resource
                     TextInput::make('name')->label("College Name")->required()->maxLength(255),
                     TextInput::make('email')->label("College Mail ID")->email()->required()->maxLength(255)->unique(ignoreRecord: true),
                     TextInput::make('phone')->label("College Phone Number")->prefix("+ 91")->tel()->required()->maxLength(255),
-                    TextInput::make('college_code')->label("College Code")->required()->maxLength(5)->rules(['regex:/^[0-9][A-Z]{2}$/']),
+                    TextInput::make('college_code')->label("College Code")->required()->live()->reactive()->maxLength(5)->rules(['regex:/^[0-9][A-Z]{2}$/']),
                     Textarea::make('address')->required(),
-                    FileUpload::make('logo')->image()->directory('college'),
                     TextInput::make('website')->maxLength(255)->prefix("https://"),
+                    FileUpload::make('logo')->image()->directory('college'),
                 ])->columns(2),
             ]);
     }
@@ -43,33 +50,24 @@ class CollegeResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('email')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('phone')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('logo')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('website')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('college_code')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('name')->sortable()->searchable(),
+                TextColumn::make('email')->sortable()->searchable(),
+                TextColumn::make('phone')->searchable(),
+                ImageColumn::make('logo'),
+                TextColumn::make('website')->searchable(),
+                TextColumn::make('college_code')->searchable(),
+                TextColumn::make('created_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('updated_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                // SelectFilter::make('name')
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                ActionGroup::make([
+                    ViewAction::make(),
+                    EditAction::make(),
+                    DeleteAction::make(),
+                ])
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
