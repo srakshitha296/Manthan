@@ -18,7 +18,14 @@ use Filament\Pages\Page;
 use Filament\Resources\Pages\CreateRecord;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -46,8 +53,8 @@ class UserResource extends Resource
                     FileUpload::make('image')->image()->directory('users')->nullable(),
                     Textarea::make('address')->nullable(),
                     TextInput::make('password')->label('Password')
-                    ->required(fn(Page $livewire): bool => $livewire instanceof CreateRecord)
-                    ->password()->placeholder('********')->dehydrated(fn($state) => filled($state)),
+                        ->required(fn(Page $livewire): bool => $livewire instanceof CreateRecord)
+                        ->password()->placeholder('********')->dehydrated(fn($state) => filled($state)),
                     DateTimePicker::make('email_verified_at')->label('Email Verified At')->default(now()),
                 ])->columns(2),
             ]);
@@ -57,17 +64,36 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')->searchable(),
-                TextColumn::make('email')->searchable(),
+                TextColumn::make('name')->label('User Name')->searchable(),
+                TextColumn::make('email')->label('User Email Id')->searchable(),
+                TextColumn::make('phone')->label('User Phone')->searchable(),
+                ImageColumn::make('image')->searchable(),
+                SelectColumn::make('role')->options([
+                    'student' => 'Student',
+                    'faculty' => 'Faculty',
+                    'HoD' => 'HoD',
+                    'Principle' => 'Principle',
+                ])->searchable()->sortable(),
                 TextColumn::make('email_verified_at')->dateTime()->sortable(),
+                TextColumn::make('address')->sortable()->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('created_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('role')->options([
+                    'student' => 'Student',
+                    'faculty' => 'Faculty',
+                    'HoD' => 'HoD',
+                    'Principle' => 'Principle',
+                ])->label('Role'),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                // Tables\Actions\EditAction::make(),
+                ActionGroup::make([
+                    ViewAction::make(),
+                    EditAction::make(),
+                    DeleteAction::make(),
+                ])
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

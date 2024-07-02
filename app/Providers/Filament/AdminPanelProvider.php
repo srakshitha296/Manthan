@@ -53,6 +53,10 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->brandName('Mantan')
+            ->darkMode(false)
+            // ->brandLogo(asset('front/images/logo-dark.png')) ->brandLogoHeight('2.5rem')
+            ;
     }
 }
