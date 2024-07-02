@@ -88,7 +88,6 @@ class UserResource extends Resource
                 ])->label('Role'),
             ])
             ->actions([
-                // Tables\Actions\EditAction::make(),
                 ActionGroup::make([
                     ViewAction::make(),
                     EditAction::make(),
