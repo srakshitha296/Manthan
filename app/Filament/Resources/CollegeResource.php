@@ -6,6 +6,10 @@ use App\Filament\Resources\CollegeResource\Pages;
 use App\Filament\Resources\CollegeResource\RelationManagers;
 use App\Models\College;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -17,35 +21,21 @@ class CollegeResource extends Resource
 {
     protected static ?string $model = College::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('phone')
-                    ->tel()
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('address')
-                    ->required()
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('logo')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('website')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('college_code')
-                    ->required()
-                    ->maxLength(255),
+                Section::make('College Information')->schema([
+                    TextInput::make('name')->label("College Name")->required()->maxLength(255),
+                    TextInput::make('email')->label("College Mail ID")->email()->required()->maxLength(255)->unique(ignoreRecord: true),
+                    TextInput::make('phone')->label("College Phone Number")->prefix("+ 91")->tel()->required()->maxLength(255),
+                    TextInput::make('college_code')->label("College Code")->required()->maxLength(5)->rules(['regex:/^[0-9][A-Z]{2}$/']),
+                    Textarea::make('address')->required(),
+                    FileUpload::make('logo')->image()->directory('college'),
+                    TextInput::make('website')->maxLength(255)->prefix("https://"),
+                ])->columns(2),
             ]);
     }
 
