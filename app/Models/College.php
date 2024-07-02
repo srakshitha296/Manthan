@@ -26,4 +26,5 @@ class College extends Model
     public function principle(){
         return $this->hasOne(Principle::class);
     }
+    
 }
