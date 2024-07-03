@@ -6,6 +6,7 @@ use App\Filament\Resources\StudentResource\Pages;
 use App\Filament\Resources\StudentResource\RelationManagers;
 use App\Models\Student;
 use Filament\Forms;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -24,19 +25,19 @@ class StudentResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('user_id')
+                TextInput::make('user_id')
                     ->required()
                     ->numeric(),
-                Forms\Components\TextInput::make('college_id')
+                TextInput::make('college_id')
                     ->required()
                     ->numeric(),
-                Forms\Components\TextInput::make('department_id')
+                TextInput::make('department_id')
                     ->required()
                     ->numeric(),
-                Forms\Components\TextInput::make('usn')
+                TextInput::make('usn')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('semester')
+                TextInput::make('semester')
                     ->required()
                     ->maxLength(255),
             ]);
