@@ -52,7 +52,7 @@ class CollegeResource extends Resource
             ->columns([
                 TextColumn::make('name')->sortable()->searchable(),
                 TextColumn::make('email')->sortable()->searchable(),
-                TextColumn::make('phone')->searchable()->numeric()->tel(),
+                TextColumn::make('phone')->searchable(),
                 ImageColumn::make('logo'),
                 TextColumn::make('website')->searchable(),
                 TextColumn::make('college_code')->searchable(),
