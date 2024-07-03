@@ -28,7 +28,7 @@ class CollegeResource extends Resource
 {
     protected static ?string $model = College::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+    protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
 
     public static function form(Form $form): Form
     {
@@ -52,7 +52,7 @@ class CollegeResource extends Resource
             ->columns([
                 TextColumn::make('name')->sortable()->searchable(),
                 TextColumn::make('email')->sortable()->searchable(),
-                TextColumn::make('phone')->searchable(),
+                TextColumn::make('phone')->searchable()->numeric()->tel(),
                 ImageColumn::make('logo'),
                 TextColumn::make('website')->searchable(),
                 TextColumn::make('college_code')->searchable(),
