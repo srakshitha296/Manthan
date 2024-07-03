@@ -25,21 +25,11 @@ class StudentResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('user_id')
-                    ->required()
-                    ->numeric(),
-                TextInput::make('college_id')
-                    ->required()
-                    ->numeric(),
-                TextInput::make('department_id')
-                    ->required()
-                    ->numeric(),
-                TextInput::make('usn')
-                    ->required()
-                    ->maxLength(255),
-                TextInput::make('semester')
-                    ->required()
-                    ->maxLength(255),
+                TextInput::make('user_id')->required()->numeric(),
+                TextInput::make('college_id')->required()->numeric(),
+                TextInput::make('department_id')->required()->numeric(),
+                TextInput::make('usn')->required()->maxLength(255),
+                TextInput::make('semester')->required()->maxLength(255),
             ]);
     }
 
