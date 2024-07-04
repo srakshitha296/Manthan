@@ -14,7 +14,12 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -66,19 +71,28 @@ class StudentResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('user_id')->numeric()->sortable(),
-                TextColumn::make('college_id')->numeric()->sortable(),
-                TextColumn::make('department_id')->numeric()->sortable(),
+                TextColumn::make('user.name')->numeric()->sortable()->searchable(),
+                TextColumn::make('college.name')->numeric()->sortable(),
+                TextColumn::make('department.name')->numeric()->sortable(),
                 TextColumn::make('usn')->searchable(),
                 TextColumn::make('semester')->searchable(),
                 TextColumn::make('created_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('semester')->options([
+                    '1' => '1 st',
+                    '2' => '2 nd',
+                    '3' => '3 rd',
+                    '4' => '4 th',
+                ]),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                ActionGroup::make([
+                    ViewAction::make(),
+                    EditAction::make(),
+                    DeleteAction::make(),
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
