@@ -20,7 +20,7 @@ class ActiviyTypeResource extends Resource
 {
     protected static ?string $model = ActiviyType::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-group';
 
     public static function form(Form $form): Form
     {
