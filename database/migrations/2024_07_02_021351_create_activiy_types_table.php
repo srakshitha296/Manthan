@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->integer('credits')->default(1);
+            $table->enum('credits', ['1', '2', '3', '4', '5'])->default('1');
             $table->timestamps();
         });
     }
