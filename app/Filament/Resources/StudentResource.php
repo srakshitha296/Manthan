@@ -4,8 +4,10 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\StudentResource\Pages;
 use App\Filament\Resources\StudentResource\RelationManagers;
+use App\Filament\Resources\StudentResource\RelationManagers\ActivitiesRelationManager;
 use App\Models\Student;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -25,9 +27,9 @@ class StudentResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('user_id')->required()->numeric(),
-                TextInput::make('college_id')->required()->numeric(),
-                TextInput::make('department_id')->required()->numeric(),
+                Select::make('user_id')->required()->relationship('user', 'name'),
+                Select::make('college_id')->required()->relationship('college', 'name'),
+                Select::make('department_id')->required()->relationship('department', 'name'),
                 TextInput::make('usn')->required()->maxLength(255),
                 TextInput::make('semester')->required()->maxLength(255),
             ]);
@@ -61,7 +63,7 @@ class StudentResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            ActivitiesRelationManager::class    
         ];
     }
 
