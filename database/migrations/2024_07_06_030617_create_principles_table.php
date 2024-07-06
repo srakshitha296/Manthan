@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('qualification');
             $table->string('experience');
             $table->string('specialization');
-            $table->string('joining_date');
+            $table->dateTime('joining_date');
             $table->timestamps();
         });
     }
