@@ -50,7 +50,7 @@ class UserResource extends Resource
                         'HoD' => 'HoD',
                         'Principle' => 'Principle',
                     ])->required()->default('student'),
-                    FileUpload::make('image')->image()->directory('users')->nullable(),
+                    FileUpload::make('image')->image()->directory('users')->nullable()->downloadable()->preserveFilenames()->openable(),
                     Textarea::make('address')->nullable(),
                     TextInput::make('password')->label('Password')
                         ->required(fn(Page $livewire): bool => $livewire instanceof CreateRecord)
