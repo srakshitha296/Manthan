@@ -6,6 +6,11 @@ use App\Filament\Resources\FacultyResource\Pages;
 use App\Filament\Resources\FacultyResource\RelationManagers;
 use App\Models\Faculty;
 use Filament\Forms;
+use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -23,40 +28,48 @@ class FacultyResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('user_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('college_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('department_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('designation')
+                Group::make()->schema([
+                    Section::make('Faculty Name')->schema([
+                        Select::make('user_id')->relationship('user', 'name', fn($query) => $query->where('role', 'faculty'))
+                            ->searchable()->required(),
+                    ])
+                ])->columnSpan(1),
+                Group::make()->schema([
+                    Section::make('College Details')->schema([
+                        Select::make('college_id')->relationship('college', 'name')->required(),
+                    ]),
+                ])->columnSpan(1),
+                Group::make()->schema([
+                    Section::make('Department Details')->schema([
+                        Select::make('department_id')->relationship('department', 'name')->required(),
+                    ]),
+                ])->columnSpan(1),
+                Group::make()->schema([
+                    Section::make('Permissions and status')->schema([
+                        // TextInput::make('status')->required()->maxLength(255)->default('active'),
+                        Toggle::make('status')->required()->default(true),
+                        Toggle::make('is_cordinator')->required()->default(false),
+                    ])->columns(2),
+                ])->columnSpan(1),
+                TextInput::make('designation')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('qualification')
+                TextInput::make('qualification')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('experience')
+                TextInput::make('experience')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('specialization')
+                TextInput::make('specialization')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('joining_date')
+                TextInput::make('joining_date')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('leaving_date')
+                TextInput::make('leaving_date')
                     ->maxLength(255)
                     ->default(null),
-                Forms\Components\TextInput::make('status')
-                    ->required()
-                    ->maxLength(255)
-                    ->default('active'),
-                Forms\Components\Toggle::make('is_cordinator')
-                    ->required(),
-            ]);
+            ])->columns(2);
     }
 
     public static function table(Table $table): Table

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('specialization');
             $table->string('joining_date');
             $table->string('leaving_date')->nullable();
-            $table->string('status')->default('active');
+            $table->boolean('status')->default(false);
             $table->boolean('is_cordinator')->default(false);
             $table->timestamps();
         });
