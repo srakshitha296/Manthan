@@ -72,8 +72,16 @@ class ActivityResource extends Resource
                         Textarea::make('description')->required()->maxLength(255)->columnSpanFull(),
                     ])->columns(2),
                     Section::make('Activity Documents')->schema([
-                        FileUpload::make('file')->directory('activities/report')->acceptedFileTypes(['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'])->required(),
-                        FileUpload::make('certificate')->directory('activities/certificate')->image()->multiple()->nullable(),
+                        FileUpload::make('file')->directory('activities/report')->preserveFilenames()->openable()->downloadable()->acceptedFileTypes(['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'])->required(),
+                        FileUpload::make('certificate')
+                            ->directory('activities/certificate')
+                            ->preserveFilenames()
+                            ->openable()
+                            ->downloadable()
+                            ->multiple()
+                            ->nullable()
+                            ->acceptedFileTypes(['application/pdf', 'image/webp', 'image/png', 'image/jpeg', 'image/heic'])
+                            ->label('Upload Certificates'),
                         Select::make('status')->options([
                             'pending' => 'Pending',
                             'approved' => 'Approved',

@@ -24,7 +24,7 @@ class FacultyResource extends Resource
 {
     protected static ?string $model = Faculty::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
 
     public static function form(Form $form): Form
     {
@@ -33,17 +33,17 @@ class FacultyResource extends Resource
                 Group::make()->schema([
                     Section::make('Faculty Name')->schema([
                         Select::make('user_id')->relationship('user', 'name', fn($query) => $query->where('role', 'faculty'))
-                            ->searchable()->required(),
+                            ->searchable()->preload()->required(),
                     ])
                 ])->columnSpan(1),
                 Group::make()->schema([
                     Section::make('College Details')->schema([
-                        Select::make('college_id')->relationship('college', 'name')->required(),
+                        Select::make('college_id')->relationship('college', 'name')->preload()->searchable()->required(),
                     ]),
                 ])->columnSpan(1),
                 Group::make()->schema([
                     Section::make('Department Details')->schema([
-                        Select::make('department_id')->relationship('department', 'name')->required(),
+                        Select::make('department_id')->relationship('department', 'name')->preload()->searchable()->required(),
                     ]),
                 ])->columnSpan(1),
                 Group::make()->schema([
