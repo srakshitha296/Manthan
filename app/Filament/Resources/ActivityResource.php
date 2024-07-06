@@ -6,9 +6,22 @@ use App\Filament\Resources\ActivityResource\Pages;
 use App\Filament\Resources\ActivityResource\RelationManagers;
 use App\Models\Activity;
 use Filament\Forms;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -23,63 +36,81 @@ class ActivityResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('student_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('activiy_type_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('title')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('description')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('date')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('hours')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('file')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('certificate')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('status')
-                    ->required(),
-            ]);
+                Group::make()->schema([
+                    Section::make('Student Name')->schema([
+                        Select::make('student_id')->label('Student Name')
+                            ->relationship('student', 'id', function ($query) {
+                                return $query->select('students.id', 'users.name')
+                                    ->join('users', 'students.user_id', '=', 'users.id');
+                            })->searchable()
+                            ->getSearchResultsUsing(function ($query, $search) {
+                                return \App\Models\Student::query()
+                                    ->select('students.id', 'users.name')
+                                    ->join('users', 'students.user_id', '=', 'users.id')
+                                    ->where('users.name', 'like', "%{$search}%")
+                                    ->orWhere('students.id', 'like', "%{$search}%")
+                                    ->get()
+                                    ->mapWithKeys(fn($student) => [$student->id => $student->name]);
+                            })
+                            ->getOptionLabelUsing(function ($value) {
+                                $student = \App\Models\Student::find($value);
+                                return $student ? $student->user->name : null;
+                            })->required(),
+                    ])
+                ])->columnSpan(1),
+                Group::make()->schema([
+                    Section::make('Activty Type')->schema([
+                        Select::make('activity_type_id')->relationship('activityType', 'title')->required(),
+                    ]),
+                ])->columnSpan(1),
+                Group::make()->schema([
+                    Section::make('Activity Details')->schema([
+                        TextInput::make('title')->required()->maxLength(255),
+                        TextInput::make('hours')->required()->maxLength(255)->numeric()->rules(['numeric', 'min:80'])->placeholder('80')->helperText('Minimum 80 hours required'),
+                        DateTimePicker::make('start_date')->required()->default(now()),
+                        DateTimePicker::make('end_date')->required()->default(now()),
+                        Textarea::make('description')->required()->maxLength(255)->columnSpanFull(),
+                    ])->columns(2),
+                    Section::make('Activity Documents')->schema([
+                        FileUpload::make('file')->directory('activities/report')->acceptedFileTypes(['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'])->required(),
+                        FileUpload::make('certificate')->directory('activities/certificate')->image()->multiple()->nullable(),
+                        Select::make('status')->options([
+                            'pending' => 'Pending',
+                            'approved' => 'Approved',
+                            'rejected' => 'Rejected',
+                        ])->required()->default('pending'),
+                    ])->columns(2),
+                ])->columnSpanFull(),
+            ])->columns(2);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('student_id')
+                TextColumn::make('student_id')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('activiy_type_id')
-                    ->numeric()
+                TextColumn::make('activityType.title')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('title')
+                TextColumn::make('title')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('description')
+                TextColumn::make('description')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('date')
+                TextColumn::make('date')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('hours')
+                TextColumn::make('hours')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('file')
+                TextColumn::make('file')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('certificate')
+                TextColumn::make('certificate')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('status'),
-                Tables\Columns\TextColumn::make('created_at')
+                TextColumn::make('status'),
+                TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
+                TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -88,7 +119,11 @@ class ActivityResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                ActionGroup::make([
+                    ViewAction::make(),
+                    EditAction::make(),
+                    DeleteAction::make(),
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

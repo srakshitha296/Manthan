@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ActiviyType extends Model
+class ActivityType extends Model
 {
     use HasFactory;
 
@@ -14,5 +14,5 @@ class ActiviyType extends Model
     public function activities(){
         return $this->hasMany(Activity::class);
     }
-
+    
 }
