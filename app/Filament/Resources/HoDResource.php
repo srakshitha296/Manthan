@@ -15,6 +15,12 @@ use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -66,41 +72,27 @@ class HoDResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('college_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('department_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('designation')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('qualification')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('experience')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('specialization')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('joining_date')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('leaving_date')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('user.name')->sortable(),
+                TextColumn::make('college.name')->sortable(),
+                TextColumn::make('department.name')->sortable(),
+                TextColumn::make('qualification')->searchable(),
+                TextColumn::make('experience')->searchable(),
+                TextColumn::make('specialization')->searchable(),
+                IconColumn::make('status')->boolean(),
+                TextColumn::make('joining_date')->searchable()->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('leaving_date')->searchable()->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('created_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('updated_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                ActionGroup::make([
+                    ViewAction::make(),
+                    EditAction::make(),
+                    DeleteAction::make(),
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
