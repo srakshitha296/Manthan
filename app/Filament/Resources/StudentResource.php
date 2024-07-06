@@ -37,17 +37,17 @@ class StudentResource extends Resource
                 Group::make()->schema([
                     Section::make('Student Name')->schema([
                         Select::make('user_id')->relationship('user', 'name', fn($query) => $query->where('role', 'student'))
-                            ->searchable()->required(),
+                            ->searchable()->preload()->required(),
                     ])
                 ])->columnSpan(1),
                 Group::make()->schema([
                     Section::make('College Details')->schema([
-                        Select::make('college_id')->relationship('college', 'name')->searchable()->required(),
+                        Select::make('college_id')->relationship('college', 'name')->preload()->searchable()->required(),
                     ]),
                 ])->columnSpan(1),
                 Group::make()->schema([
                     Section::make('Department Details')->schema([
-                        Select::make('department_id')->relationship('department', 'name')->searchable()->required(),
+                        Select::make('department_id')->relationship('department', 'name')->preload()->searchable()->required(),
                     ]),
                 ])->columnSpan(1),
                 Group::make()->schema([

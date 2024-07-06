@@ -73,7 +73,15 @@ class ActivityResource extends Resource
                     ])->columns(2),
                     Section::make('Activity Documents')->schema([
                         FileUpload::make('file')->directory('activities/report')->preserveFilenames()->openable()->downloadable()->acceptedFileTypes(['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'])->required(),
-                        FileUpload::make('certificate')->directory('activities/certificate')->preserveFilenames()->openable()->downloadable()->image()->multiple()->nullable(),
+                        FileUpload::make('certificate')
+                            ->directory('activities/certificate')
+                            ->preserveFilenames()
+                            ->openable()
+                            ->downloadable()
+                            ->multiple()
+                            ->nullable()
+                            ->acceptedFileTypes(['application/pdf', 'image/webp', 'image/png', 'image/jpeg', 'image/heic'])
+                            ->label('Upload Certificates'),
                         Select::make('status')->options([
                             'pending' => 'Pending',
                             'approved' => 'Approved',
