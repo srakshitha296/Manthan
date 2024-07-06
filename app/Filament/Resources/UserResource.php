@@ -67,7 +67,7 @@ class UserResource extends Resource
                 TextColumn::make('name')->label('User Name')->searchable(),
                 TextColumn::make('email')->label('User Email Id')->searchable(),
                 TextColumn::make('phone')->label('User Phone')->searchable(),
-                ImageColumn::make('image')->searchable(),
+                // ImageColumn::make('image')->searchable(),
                 SelectColumn::make('role')->options([
                     'student' => 'Student',
                     'faculty' => 'Faculty',
