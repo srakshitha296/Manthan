@@ -16,12 +16,12 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDeleteCascade();
             $table->foreignId('college_id')->constrained('colleges')->onDeleteCascade();
             $table->foreignId('department_id')->constrained('departments')->onDeleteCascade();
-            $table->string('designation');
+            $table->boolean('status')->default(false);
             $table->string('qualification');
             $table->string('experience');
             $table->string('specialization');
-            $table->string('joining_date');
-            $table->string('leaving_date')->nullable();
+            $table->dateTime('joining_date');
+            $table->dateTime('leaving_date')->nullable();
             $table->timestamps();
         });
     }

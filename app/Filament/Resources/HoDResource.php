@@ -6,6 +6,12 @@ use App\Filament\Resources\HoDResource\Pages;
 use App\Filament\Resources\HoDResource\RelationManagers;
 use App\Models\HoD;
 use Filament\Forms;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -23,34 +29,37 @@ class HoDResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('user_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('college_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('department_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('designation')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('qualification')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('experience')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('specialization')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('joining_date')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('leaving_date')
-                    ->maxLength(255)
-                    ->default(null),
-            ]);
+                Group::make()->schema([
+                    Section::make('Faculty Name')->schema([
+                        Select::make('user_id')->relationship('user', 'name', fn($query) => $query->where('role', 'hod'))
+                            ->searchable()->preload()->required(),
+                    ])
+                ])->columnSpan(1),
+                Group::make()->schema([
+                    Section::make('College Details')->schema([
+                        Select::make('college_id')->relationship('college', 'name')->preload()->searchable()->required(),
+                    ]),
+                ])->columnSpan(1),
+                Group::make()->schema([
+                    Section::make('Department Details')->schema([
+                        Select::make('department_id')->relationship('department', 'name')->preload()->searchable()->required(),
+                    ]),
+                ])->columnSpan(1),
+                Group::make()->schema([
+                    Section::make('Status')->schema([
+                        Toggle::make('status')->required()->default(true),
+                    ])->columns(2),
+                ])->columnSpan(1),
+                Group::make()->schema([   
+                    Section::make('Faculty Details')->schema([
+                        TextInput::make('qualification')->required()->maxLength(255),
+                        TextInput::make('experience')->required()->maxLength(255),
+                        TextInput::make('specialization')->required()->maxLength(255),
+                        DatePicker::make('joining_date')->required(),
+                        DatePicker::make('leaving_date')->default(null),
+                    ])->columns(2),
+                ])->columnSpanFull(),
+            ])->columns(2);
     }
 
     public static function table(Table $table): Table
