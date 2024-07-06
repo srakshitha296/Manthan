@@ -18,6 +18,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use PhpParser\Node\Stmt\Goto_;
 
 class FacultyResource extends Resource
 {
@@ -47,30 +48,33 @@ class FacultyResource extends Resource
                 ])->columnSpan(1),
                 Group::make()->schema([
                     Section::make('Permissions and status')->schema([
-                        // TextInput::make('status')->required()->maxLength(255)->default('active'),
                         Toggle::make('status')->required()->default(true),
                         Toggle::make('is_cordinator')->required()->default(false),
                     ])->columns(2),
                 ])->columnSpan(1),
-                Select::make('designation')->required()->options([
-                    'Proffesor' => 'Proffesor',
-                    'Associate Proffesor' => 'Associate Proffesor',
-                    'Assistant Proffesor' => 'Assistant Proffesor',
-                    'Guest Proffesor' => 'Guest Proffesor',
-                ])->default('Assistant Proffesor'),
-                TextInput::make('qualification')
-                    ->required()
-                    ->maxLength(255),
-                TextInput::make('experience')
-                    ->required()
-                    ->maxLength(255),
-                TextInput::make('specialization')
-                    ->required()
-                    ->maxLength(255),
-                DatePicker::make('joining_date')
-                    ->required(),
-                DatePicker::make('leaving_date')
-                    ->default(null),
+                Group::make()->schema([   
+                    Section::make('Faculty Details')->schema([
+                        Select::make('designation')->required()->options([
+                            'Proffesor' => 'Proffesor',
+                            'Associate Proffesor' => 'Associate Proffesor',
+                            'Assistant Proffesor' => 'Assistant Proffesor',
+                            'Guest Proffesor' => 'Guest Proffesor',
+                        ])->default('Assistant Proffesor'),
+                        TextInput::make('qualification')
+                            ->required()
+                            ->maxLength(255),
+                        TextInput::make('experience')
+                            ->required()
+                            ->maxLength(255),
+                        TextInput::make('specialization')
+                            ->required()
+                            ->maxLength(255),
+                        DatePicker::make('joining_date')
+                            ->required(),
+                        DatePicker::make('leaving_date')
+                            ->default(null),
+                    ])->columns(2),
+                ])->columnSpanFull(),
             ])->columns(2);
     }
 
