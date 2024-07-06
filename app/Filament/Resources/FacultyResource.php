@@ -6,6 +6,7 @@ use App\Filament\Resources\FacultyResource\Pages;
 use App\Filament\Resources\FacultyResource\RelationManagers;
 use App\Models\Faculty;
 use Filament\Forms;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
@@ -51,9 +52,12 @@ class FacultyResource extends Resource
                         Toggle::make('is_cordinator')->required()->default(false),
                     ])->columns(2),
                 ])->columnSpan(1),
-                TextInput::make('designation')
-                    ->required()
-                    ->maxLength(255),
+                Select::make('designation')->required()->options([
+                    'Proffesor' => 'Proffesor',
+                    'Associate Proffesor' => 'Associate Proffesor',
+                    'Assistant Proffesor' => 'Assistant Proffesor',
+                    'Guest Proffesor' => 'Guest Proffesor',
+                ])->default('Assistant Proffesor'),
                 TextInput::make('qualification')
                     ->required()
                     ->maxLength(255),
@@ -63,11 +67,9 @@ class FacultyResource extends Resource
                 TextInput::make('specialization')
                     ->required()
                     ->maxLength(255),
-                TextInput::make('joining_date')
-                    ->required()
-                    ->maxLength(255),
-                TextInput::make('leaving_date')
-                    ->maxLength(255)
+                DatePicker::make('joining_date')
+                    ->required(),
+                DatePicker::make('leaving_date')
                     ->default(null),
             ])->columns(2);
     }
