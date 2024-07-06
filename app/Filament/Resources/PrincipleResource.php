@@ -6,9 +6,19 @@ use App\Filament\Resources\PrincipleResource\Pages;
 use App\Filament\Resources\PrincipleResource\RelationManagers;
 use App\Models\Principle;
 use Filament\Forms;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -23,59 +33,50 @@ class PrincipleResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('user_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('college_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('qualification')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('experience')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('specialization')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('joining_date')
-                    ->required()
-                    ->maxLength(255),
-            ]);
+                Group::make()->schema([
+                    Section::make('Principle Name')->schema([
+                        Select::make('user_id')->relationship('user', 'name', fn($query) => $query->where('role', 'Principle'))
+                            ->searchable()->preload()->required(),
+                    ])
+                ])->columnSpan(1),
+                Group::make()->schema([
+                    Section::make('College Details')->schema([
+                        Select::make('college_id')->relationship('college', 'name')->preload()->searchable()->required(),
+                    ]),
+                ])->columnSpan(1),
+                Group::make()->schema([
+                    Section::make('College Details')->schema([
+                        TextInput::make('qualification')->required()->maxLength(255),
+                        TextInput::make('experience')->required()->maxLength(255),
+                        TextInput::make('specialization')->required()->maxLength(255),
+                        DatePicker::make('joining_date')->required(),
+                    ])->columns(2),
+                ])->columnSpan(2),
+            ])->columns(2);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('college_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('qualification')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('experience')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('specialization')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('joining_date')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('user.name')->numeric()->sortable(),
+                TextColumn::make('college.name')->numeric()->sortable(),
+                TextColumn::make('qualification')->searchable(),
+                TextColumn::make('experience')->searchable(),
+                TextColumn::make('specialization')->searchable(),
+                TextColumn::make('joining_date')->searchable(),
+                TextColumn::make('created_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('updated_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                ActionGroup::make([
+                    ViewAction::make(),
+                    EditAction::make(),
+                    DeleteAction::make(),
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

@@ -36,7 +36,7 @@ class HoDResource extends Resource
         return $form
             ->schema([
                 Group::make()->schema([
-                    Section::make('Faculty Name')->schema([
+                    Section::make('HoD Name')->schema([
                         Select::make('user_id')->relationship('user', 'name', fn($query) => $query->where('role', 'hod'))
                             ->searchable()->preload()->required(),
                     ])
