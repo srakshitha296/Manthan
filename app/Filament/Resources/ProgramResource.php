@@ -21,6 +21,8 @@ use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -62,17 +64,22 @@ class ProgramResource extends Resource
                             TextInput::make('organiser')->prefix('Mr/Mrs')->required()->maxLength(255),
                             TextInput::make('fees')->prefix('₹')->numeric()->maxLength(255)->default(null),
                             TextInput::make('location')->required()->maxLength(255),
-                            ToggleButtons::make('status')->inline()->default(false)->required()->options([
-                                true => "Active",
-                                false => "In active",
-                            ])->colors([
-                                        true => "info",
-                                        false => "warning",
-                                        
-                                    ])->icons([
-                                        true => "heroicon-m-check-circle",
-                                        false => "heroicon-m-x-circle",
-                                    ]),
+                            ToggleButtons::make('status')
+                                ->inline()
+                                ->default(false)
+                                ->required()
+                                ->options([
+                                    true => "Active",
+                                    false => "Inactive",
+                                ])
+                                ->colors([
+                                    true => "info",
+                                    false => "warning",
+                                ])
+                                ->icons([
+                                    true => "heroicon-m-check-circle",
+                                    false => "heroicon-m-x-circle",
+                                ]),
                         ])->columns(2),
                     ]),
                 ])->columnSpanFull(),
@@ -83,28 +90,28 @@ class ProgramResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
+                TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('type'),
-                Tables\Columns\TextColumn::make('start_date')
+                TextColumn::make('type'),
+                TextColumn::make('start_date')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('end_date')
+                TextColumn::make('end_date')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('duration')
+                TextColumn::make('duration')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('fees')
+                TextColumn::make('fees')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('location')
+                TextColumn::make('location')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('organiser')
+                TextColumn::make('organiser')
                     ->searchable(),
-                Tables\Columns\IconColumn::make('status')
+                IconColumn::make('status')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('created_at')
+                TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
+                TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
