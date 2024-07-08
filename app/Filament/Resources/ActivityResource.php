@@ -60,7 +60,7 @@ class ActivityResource extends Resource
                 ])->columnSpan(1),
                 Group::make()->schema([
                     Section::make('Activty Type')->schema([
-                        Select::make('activity_type_id')->relationship('activityType', 'title')->required(),
+                        Select::make('activity_type_id')->relationship('activityType', 'title')->searchable()->preload()->required(),
                     ]),
                 ])->columnSpan(1),
                 Group::make()->schema([
