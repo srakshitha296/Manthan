@@ -64,22 +64,6 @@ class ProgramResource extends Resource
                             TextInput::make('organiser')->prefix('Mr/Mrs')->required()->maxLength(255),
                             TextInput::make('fees')->prefix('₹')->numeric()->maxLength(255)->default(null),
                             TextInput::make('location')->required()->maxLength(255),
-                            ToggleButtons::make('status')
-                                ->inline()
-                                ->default(false)
-                                ->required()
-                                ->options([
-                                    true => "Active",
-                                    false => "Inactive",
-                                ])
-                                ->colors([
-                                    true => "info",
-                                    false => "warning",
-                                ])
-                                ->icons([
-                                    true => "heroicon-m-check-circle",
-                                    false => "heroicon-m-x-circle",
-                                ]),
                         ])->columns(2),
                     ]),
                 ])->columnSpanFull(),
@@ -90,31 +74,16 @@ class ProgramResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')
-                    ->searchable(),
-                TextColumn::make('type'),
-                TextColumn::make('start_date')
-                    ->searchable(),
-                TextColumn::make('end_date')
-                    ->searchable(),
-                TextColumn::make('duration')
-                    ->searchable(),
-                TextColumn::make('fees')
-                    ->searchable(),
-                TextColumn::make('location')
-                    ->searchable(),
-                TextColumn::make('organiser')
-                    ->searchable(),
-                IconColumn::make('status')
-                    ->boolean(),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('name')->searchable(),
+                TextColumn::make('type')->searchable(),
+                TextColumn::make('start_date')->searchable(),
+                TextColumn::make('end_date')->searchable(),
+                TextColumn::make('duration')->searchable(),
+                TextColumn::make('fees')->searchable(),
+                TextColumn::make('location')->searchable(),
+                TextColumn::make('organiser')->searchable(),
+                TextColumn::make('created_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('updated_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

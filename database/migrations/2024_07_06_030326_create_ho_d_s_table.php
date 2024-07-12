@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDeleteCascade();
             $table->foreignId('college_id')->constrained('colleges')->onDeleteCascade();
             $table->foreignId('department_id')->constrained('departments')->onDeleteCascade();
-            $table->boolean('status')->default(false);
             $table->string('qualification');
             $table->string('experience');
             $table->string('specialization');

@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('fees')->nullable();
             $table->string('location');
             $table->string('organiser')->nullable();
-            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }
@@ -30,6 +29,7 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
+
     public function down(): void
     {
         Schema::dropIfExists('programs');

@@ -11,7 +11,7 @@ class HoDListTest extends TestCase
     /**
      * A basic feature test example.
      */
-    public function test_example(): void
+    public function test_Get_HoD_List_test(): void
     {
         $response = $this->get('/admin/ho-ds');
 
