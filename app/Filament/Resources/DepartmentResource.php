@@ -34,12 +34,12 @@ class DepartmentResource extends Resource
             ->schema([
                 Section::make('Department Information')->schema([
                     TextInput::make('name')
-                        ->required()
-                        ->maxLength(255)->columnSpanFull(),
+                        ->required()->label("Department Name")
+                        ->maxLength(255),
                     FileUpload::make('image')
                         ->image()->directory('departments')->nullable()->columnSpanFull(),
-                ]),
-            ]);
+                ])->columns(2),
+            ])->columns(1);
     }
 
     public static function table(Table $table): Table
