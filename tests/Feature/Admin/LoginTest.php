@@ -11,7 +11,7 @@ class LoginTest extends TestCase
     /**
      * A basic feature test example.
      */
-    public function test_example(): void
+    public function test_Login(): void
     {
         $response = $this->get('/admin/login');
 

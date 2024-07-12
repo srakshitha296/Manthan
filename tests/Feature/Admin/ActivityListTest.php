@@ -11,7 +11,7 @@ class ActivityListTest extends TestCase
     /**
      * A basic feature test example.
      */
-    public function test_example(): void
+    public function test_Activity_List_Check(): void
     {
         $response = $this->get('/admin/activities');
 

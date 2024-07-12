@@ -11,7 +11,7 @@ class DashboardTest extends TestCase
     /**
      * A basic feature test example.
      */
-    public function test_example(): void
+    public function test_Dashboard_status_check(): void
     {
         $response = $this->get('/admin');
 
