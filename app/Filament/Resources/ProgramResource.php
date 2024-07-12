@@ -64,22 +64,22 @@ class ProgramResource extends Resource
                             TextInput::make('organiser')->prefix('Mr/Mrs')->required()->maxLength(255),
                             TextInput::make('fees')->prefix('₹')->numeric()->maxLength(255)->default(null),
                             TextInput::make('location')->required()->maxLength(255),
-                            ToggleButtons::make('status')
-                                ->inline()
-                                ->default(false)
-                                ->required()
-                                ->options([
-                                    true => "Active",
-                                    false => "Inactive",
-                                ])
-                                ->colors([
-                                    true => "info",
-                                    false => "warning",
-                                ])
-                                ->icons([
-                                    true => "heroicon-m-check-circle",
-                                    false => "heroicon-m-x-circle",
-                                ]),
+                            // ToggleButtons::make('status')
+                            //     ->inline()
+                            //     ->default(false)
+                            //     ->required()
+                            //     ->options([
+                            //         true => "Active",
+                            //         false => "Inactive",
+                            //     ])
+                            //     ->colors([
+                            //         true => "info",
+                            //         false => "warning",
+                            //     ])
+                            //     ->icons([
+                            //         true => "heroicon-m-check-circle",
+                            //         false => "heroicon-m-x-circle",
+                            //     ]),
                         ])->columns(2),
                     ]),
                 ])->columnSpanFull(),

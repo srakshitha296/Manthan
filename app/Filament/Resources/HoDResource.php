@@ -12,6 +12,7 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\ToggleButtons;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -51,13 +52,29 @@ class HoDResource extends Resource
                         Select::make('department_id')->relationship('department', 'name')->preload()->searchable()->required(),
                     ]),
                 ])->columnSpan(1),
-                Group::make()->schema([
-                    Section::make('Status')->schema([
-                        Toggle::make('status')->required()->default(true),
-                    ])->columns(2),
-                ])->columnSpan(1),
+                // Group::make()->schema([
+                //     Section::make('Status')->schema([
+                //         // Toggle::make('status')->required()->default(true),
+                //         ToggleButtons::make('status')
+                //                 ->inline()
+                //                 ->default('inactive')
+                //                 ->required()
+                //                 ->options([
+                //                     'active' => "Active",
+                //                     'inactive' => "Inactive",
+                //                 ])
+                //                 ->colors([
+                //                     'active' => "info",
+                //                     'inactive' => "warning",
+                //                 ])
+                //                 ->icons([
+                //                     'active' => "heroicon-m-check-circle",
+                //                     'inactive' => "heroicon-m-x-circle",
+                //                 ]),
+                //     ])->columns(2),
+                // ])->columnSpan(1),
                 Group::make()->schema([   
-                    Section::make('Faculty Details')->schema([
+                    Section::make('HoD Details')->schema([
                         TextInput::make('qualification')->required()->maxLength(255),
                         TextInput::make('experience')->required()->maxLength(255),
                         TextInput::make('specialization')->required()->maxLength(255),
@@ -78,7 +95,6 @@ class HoDResource extends Resource
                 TextColumn::make('qualification')->searchable(),
                 TextColumn::make('experience')->searchable(),
                 TextColumn::make('specialization')->searchable(),
-                IconColumn::make('status')->boolean(),
                 TextColumn::make('joining_date')->searchable()->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('leaving_date')->searchable()->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('created_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),

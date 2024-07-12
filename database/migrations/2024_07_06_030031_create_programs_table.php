@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('fees')->nullable();
             $table->string('location');
             $table->string('organiser')->nullable();
-            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }
