@@ -36,6 +36,7 @@ class DepartmentResource extends Resource
                     TextInput::make('name')
                         ->required()->label("Department Name")
                         ->maxLength(255),
+                    TextInput::make('dept_code')->required(),
                     FileUpload::make('image')
                         ->image()->directory('departments')->nullable()->columnSpanFull(),
                 ])->columns(2),
