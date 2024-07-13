@@ -60,7 +60,7 @@ class FacultyResource extends Resource
                         Toggle::make('is_cordinator')->required()->default(false),
                     ])->columns(2),
                 ])->columnSpan(1),
-                Group::make()->schema([   
+                Group::make()->schema([
                     Section::make('Faculty Details')->schema([
                         Select::make('designation')->required()->options([
                             'Proffesor' => 'Proffesor',
@@ -68,9 +68,21 @@ class FacultyResource extends Resource
                             'Assistant Proffesor' => 'Assistant Proffesor',
                             'Guest Proffesor' => 'Guest Proffesor',
                         ])->default('Assistant Proffesor'),
-                        TextInput::make('qualification')->required()->maxLength(255),
+                        Select::make('qualification')->options([
+                            'B.Tech' => 'B.Tech',
+                            'M.Tech' => 'M.Tech',
+                            'PhD' => 'PhD',
+                            'M.Sc' => 'M.Sc',
+                            'B.Sc' => 'B.Sc',
+                        ])->required()->multiple(),
+                        Select::make('specialization')->options([
+                            'B.Tech' => 'B.Tech',
+                            'M.Tech' => 'M.Tech',
+                            'PhD' => 'PhD',
+                            'M.Sc' => 'M.Sc',
+                            'B.Sc' => 'B.Sc',
+                        ])->required()->multiple(),
                         TextInput::make('experience')->required()->maxLength(255),
-                        TextInput::make('specialization')->required()->maxLength(255),
                         DatePicker::make('joining_date')->required(),
                         DatePicker::make('leaving_date')->default(null),
                     ])->columns(2),
