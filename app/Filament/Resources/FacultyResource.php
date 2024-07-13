@@ -68,19 +68,11 @@ class FacultyResource extends Resource
                             'Assistant Proffesor' => 'Assistant Proffesor',
                             'Guest Proffesor' => 'Guest Proffesor',
                         ])->default('Assistant Proffesor'),
-                        TextInput::make('qualification')
-                            ->required()
-                            ->maxLength(255),
-                        TextInput::make('experience')
-                            ->required()
-                            ->maxLength(255),
-                        TextInput::make('specialization')
-                            ->required()
-                            ->maxLength(255),
-                        DatePicker::make('joining_date')
-                            ->required(),
-                        DatePicker::make('leaving_date')
-                            ->default(null),
+                        TextInput::make('qualification')->required()->maxLength(255),
+                        TextInput::make('experience')->required()->maxLength(255),
+                        TextInput::make('specialization')->required()->maxLength(255),
+                        DatePicker::make('joining_date')->required(),
+                        DatePicker::make('leaving_date')->default(null),
                     ])->columns(2),
                 ])->columnSpanFull(),
             ])->columns(2);

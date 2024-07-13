@@ -49,6 +49,7 @@ class DepartmentResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')->sortable()->searchable(),
+                TextColumn::make('dept_code')->sortable()->searchable(),
                 ImageColumn::make('image'),
                 TextColumn::make('created_at')->dateTime()->sortable(),
                 TextColumn::make('updated_at')->dateTime()->sortable(),
