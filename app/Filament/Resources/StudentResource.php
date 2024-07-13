@@ -71,7 +71,7 @@ class StudentResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('user.name')->numeric()->sortable()->searchable(),
+                TextColumn::make('user.name')->sortable()->searchable(),
                 TextColumn::make('college.name')->numeric()->sortable(),
                 TextColumn::make('department.name')->numeric()->sortable(),
                 TextColumn::make('usn')->searchable(),

@@ -21,7 +21,10 @@ use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -96,35 +99,29 @@ class ActivityResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('student_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('activityType.title')
-                    ->sortable(),
-                TextColumn::make('title')
-                    ->searchable(),
-                TextColumn::make('description')
-                    ->searchable(),
-                TextColumn::make('date')
-                    ->searchable(),
-                TextColumn::make('hours')
-                    ->searchable(),
-                TextColumn::make('file')
-                    ->searchable(),
-                TextColumn::make('certificate')
-                    ->searchable(),
-                TextColumn::make('status'),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('student.user.name')->numeric()->sortable(),
+                TextColumn::make('activityType.title')->sortable(),
+                TextColumn::make('title')->searchable(),
+                TextColumn::make('description')->searchable(),
+                TextColumn::make('start_date')->dateTime()->toggleable(isToggledHiddenByDefault: true)->searchable(),
+                TextColumn::make('end_date')->dateTime()->toggleable(isToggledHiddenByDefault: true)->searchable(),
+                TextColumn::make('hours')->searchable(),
+                ImageColumn::make('certificate')->searchable(),
+                SelectColumn::make('status')->options([
+                    'pending' => 'Pending',
+                    'approved' => 'Approved',
+                    'rejected' => 'Rejected',
+                ]),
+                TextColumn::make('created_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('updated_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('status')->options([
+                    'pending' => 'Pending',
+                    'approved' => 'Approved',
+                    'rejected' => 'Rejected',
+                ])->label('Activity Status'),
+                SelectFilter::make('activity_type_id')->relationship('activityType', 'title'),
             ])
             ->actions([
                 ActionGroup::make([
