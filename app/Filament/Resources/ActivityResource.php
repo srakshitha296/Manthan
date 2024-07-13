@@ -77,12 +77,8 @@ class ActivityResource extends Resource
                     Section::make('Activity Documents')->schema([
                         FileUpload::make('file')->directory('activities/report')->preserveFilenames()->openable()->downloadable()->acceptedFileTypes(['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'])->required(),
                         FileUpload::make('certificate')
-                            ->directory('activities/certificate')
-                            ->preserveFilenames()
-                            ->openable()
-                            ->downloadable()
-                            ->multiple()
-                            ->nullable()
+                            ->directory('activities/certificate')->preserveFilenames()
+                            ->openable()->downloadable()->multiple()->nullable()
                             ->acceptedFileTypes(['application/pdf', 'image/webp', 'image/png', 'image/jpeg', 'image/heic'])
                             ->label('Upload Certificates'),
                         Select::make('status')->options([
@@ -99,9 +95,9 @@ class ActivityResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('student.user.name')->numeric()->sortable(),
+                TextColumn::make('student.user.name')->numeric()->sortable()->searchable()->label("Student Name"),
                 TextColumn::make('activityType.title')->sortable(),
-                TextColumn::make('title')->searchable(),
+                TextColumn::make('title')->label('Activity Title')->searchable(),
                 TextColumn::make('description')->searchable(),
                 TextColumn::make('start_date')->dateTime()->toggleable(isToggledHiddenByDefault: true)->searchable(),
                 TextColumn::make('end_date')->dateTime()->toggleable(isToggledHiddenByDefault: true)->searchable(),

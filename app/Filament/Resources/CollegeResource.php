@@ -60,7 +60,7 @@ class CollegeResource extends Resource
                 TextColumn::make('updated_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                // SelectFilter::make('name')
+                
             ])
             ->actions([
                 ActionGroup::make([
