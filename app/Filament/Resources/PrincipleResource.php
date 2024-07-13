@@ -46,9 +46,21 @@ class PrincipleResource extends Resource
                 ])->columnSpan(1),
                 Group::make()->schema([
                     Section::make('College Details')->schema([
-                        TextInput::make('qualification')->required()->maxLength(255),
+                        Select::make('qualification')->options([
+                            'B.Tech' => 'B.Tech',
+                            'M.Tech' => 'M.Tech',
+                            'PhD' => 'PhD',
+                            'M.Sc' => 'M.Sc',
+                            'B.Sc' => 'B.Sc',
+                        ])->required()->multiple(),
+                        Select::make('specialization')->options([
+                            'B.Tech' => 'B.Tech',
+                            'M.Tech' => 'M.Tech',
+                            'PhD' => 'PhD',
+                            'M.Sc' => 'M.Sc',
+                            'B.Sc' => 'B.Sc',
+                        ])->required()->multiple(),
                         TextInput::make('experience')->required()->maxLength(255),
-                        TextInput::make('specialization')->required()->maxLength(255),
                         DatePicker::make('joining_date')->required(),
                     ])->columns(2),
                 ])->columnSpan(2),

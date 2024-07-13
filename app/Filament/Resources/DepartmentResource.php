@@ -36,8 +36,10 @@ class DepartmentResource extends Resource
                     TextInput::make('name')
                         ->required()->label("Department Name")
                         ->maxLength(255),
-                    FileUpload::make('image')
-                        ->image()->directory('departments')->nullable()->columnSpanFull(),
+                    TextInput::make('dept_code')->required(),
+                    FileUpload::make('image')->preserveFilenames()
+                    ->openable()->downloadable()->image()->directory('departments')->nullable()
+                    ->columnSpanFull(),
                 ])->columns(2),
             ])->columns(1);
     }
@@ -47,6 +49,7 @@ class DepartmentResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')->sortable()->searchable(),
+                TextColumn::make('dept_code')->sortable()->searchable(),
                 ImageColumn::make('image'),
                 TextColumn::make('created_at')->dateTime()->sortable(),
                 TextColumn::make('updated_at')->dateTime()->sortable(),

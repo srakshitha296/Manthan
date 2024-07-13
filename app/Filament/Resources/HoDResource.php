@@ -37,11 +37,13 @@ class HoDResource extends Resource
         return $form
             ->schema([
                 Group::make()->schema([
-                    Section::make('HoD Name')->schema([
+                    Section::make()->schema([
                         Select::make('user_id')->relationship('user', 'name', fn($query) => $query->where('role', 'hod'))
+                            ->searchable()->preload()->required()->label("Hod Name"),
+                        Select::make('email')->relationship('user', 'email', fn($query) => $query->where('role', 'hod'))
                             ->searchable()->preload()->required(),
-                    ])
-                ])->columnSpan(1),
+                    ])->columns(2),
+                ])->columnSpan(2),
                 Group::make()->schema([
                     Section::make('College Details')->schema([
                         Select::make('college_id')->relationship('college', 'name')->preload()->searchable()->required(),
@@ -52,32 +54,23 @@ class HoDResource extends Resource
                         Select::make('department_id')->relationship('department', 'name')->preload()->searchable()->required(),
                     ]),
                 ])->columnSpan(1),
-                // Group::make()->schema([
-                //     Section::make('Status')->schema([
-                //         // Toggle::make('status')->required()->default(true),
-                //         ToggleButtons::make('status')
-                //                 ->inline()
-                //                 ->default('inactive')
-                //                 ->required()
-                //                 ->options([
-                //                     'active' => "Active",
-                //                     'inactive' => "Inactive",
-                //                 ])
-                //                 ->colors([
-                //                     'active' => "info",
-                //                     'inactive' => "warning",
-                //                 ])
-                //                 ->icons([
-                //                     'active' => "heroicon-m-check-circle",
-                //                     'inactive' => "heroicon-m-x-circle",
-                //                 ]),
-                //     ])->columns(2),
-                // ])->columnSpan(1),
                 Group::make()->schema([   
                     Section::make('HoD Details')->schema([
-                        TextInput::make('qualification')->required()->maxLength(255),
+                        Select::make('qualification')->options([
+                            'B.Tech' => 'B.Tech',
+                            'M.Tech' => 'M.Tech',
+                            'PhD' => 'PhD',
+                            'M.Sc' => 'M.Sc',
+                            'B.Sc' => 'B.Sc',
+                        ])->required()->multiple(),
+                        Select::make('specialization')->options([
+                            'B.Tech' => 'B.Tech',
+                            'M.Tech' => 'M.Tech',
+                            'PhD' => 'PhD',
+                            'M.Sc' => 'M.Sc',
+                            'B.Sc' => 'B.Sc',
+                        ])->required()->multiple(),
                         TextInput::make('experience')->required()->maxLength(255),
-                        TextInput::make('specialization')->required()->maxLength(255),
                         DatePicker::make('joining_date')->required(),
                         DatePicker::make('leaving_date')->default(null),
                     ])->columns(2),
