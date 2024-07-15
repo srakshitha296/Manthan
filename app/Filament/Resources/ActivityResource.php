@@ -102,7 +102,7 @@ class ActivityResource extends Resource
                 TextColumn::make('start_date')->dateTime()->toggleable(isToggledHiddenByDefault: true)->searchable(),
                 TextColumn::make('end_date')->dateTime()->toggleable(isToggledHiddenByDefault: true)->searchable(),
                 TextColumn::make('hours')->searchable(),
-                ImageColumn::make('certificate')->searchable(),
+                ImageColumn::make('certificate')->stacked()->circular()->limit(3)->limitedRemainingText(size: 'sm')->extraImgAttributes(['loading' => 'lazy']),
                 SelectColumn::make('status')->options([
                     'pending' => 'Pending',
                     'approved' => 'Approved',
