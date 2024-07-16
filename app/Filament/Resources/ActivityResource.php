@@ -80,7 +80,6 @@ class ActivityResource extends Resource
                             'approved' => 'Approved',
                             'rejected' => 'Rejected',
                         ])->required()->default('pending'),
-                        // Select::make('p_o_e_s_id')->relationship('poe', 'label')->searchable()->required()->preload(),
                         Select::make('program_expected_outcomes_id')->relationship('programExpectedOutcomes', 'label')->searchable()->required()->preload(),
                         FileUpload::make('file')->directory('activities/report')->preserveFilenames()->openable()->downloadable()->acceptedFileTypes(['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'])->required(),
                         FileUpload::make('certificate')
