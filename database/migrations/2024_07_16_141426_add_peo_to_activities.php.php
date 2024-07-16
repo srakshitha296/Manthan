@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('p_o_e_s', function (Blueprint $table) {
-            $table->id();
-            $table->string('label');
-            $table->string('name');
-            $table->string('description');
-            $table->timestamps();
+        Schema::table('activities', function (Blueprint $table) {
+            $table->foreignId('program_expected_outcomes_id')->constrained('program_expected_outcomes')->onDeleteCascade()->after('activity_type_id');
         });
     }
 
@@ -25,6 +21,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('p_o_e_s');
+        //
     }
 };
