@@ -64,3 +64,4 @@ jobs:
           DB_USERNAME: runner
           DB_PASSWORD: ''
         run: vendor/bin/pest
+        
