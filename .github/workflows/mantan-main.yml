@@ -9,7 +9,7 @@ on:
       - "main"
 
 jobs:
-  dev-branch-tests:
+  main-branch-tests:
     runs-on: ubuntu-latest
 
     steps:
