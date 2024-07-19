@@ -7,6 +7,7 @@ use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Faker\Core\File;
 use Filament\Forms;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Section;
@@ -22,6 +23,7 @@ use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -56,6 +58,7 @@ class UserResource extends Resource
                         ->required(fn(Page $livewire): bool => $livewire instanceof CreateRecord)
                         ->password()->placeholder('********')->dehydrated(fn($state) => filled($state)),
                     DateTimePicker::make('email_verified_at')->label('Email Verified At')->default(now()),
+                    Checkbox::make('is_admin')->label('Is Admin')->default(false),
                 ])->columns(2),
             ]);
     }
@@ -74,6 +77,7 @@ class UserResource extends Resource
                     'HoD' => 'HoD',
                     'Principle' => 'Principle',
                 ])->searchable()->sortable(),
+                IconColumn::make('is_admin')->boolean()->label('Is Admin')->sortable(),
                 TextColumn::make('email_verified_at')->dateTime()->sortable(),
                 TextColumn::make('address')->sortable()->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('created_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
