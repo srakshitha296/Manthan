@@ -40,6 +40,8 @@ class HoDResource extends Resource
 
     protected static ?string $navigationGroup = 'Employees and Students';
 
+    protected static ?int $navigationSort = 2;
+
     public static function form(Form $form): Form
     {
         return $form
