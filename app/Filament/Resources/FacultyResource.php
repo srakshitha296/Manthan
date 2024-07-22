@@ -42,6 +42,8 @@ class FacultyResource extends Resource
 
     protected static ?string $navigationGroup = 'Employees and Students';
 
+    protected static ?int $navigationSort = 3;
+
     public static function form(Form $form): Form
     {
         return $form

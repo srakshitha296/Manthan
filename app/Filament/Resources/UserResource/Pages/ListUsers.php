@@ -18,10 +18,10 @@ class ListUsers extends ListRecords
         ];
     }
 
-    public function getTabs() : array {
-        return [
-            "All" => Tab::make(),
-            "Students" => Tab::make(),
-        ];
-    }
+    // public function getTabs() : array {
+    //     return [
+    //         "All" => Tab::make(),
+    //         "Students" => Tab::make(),
+    //     ];
+    // }
 }
