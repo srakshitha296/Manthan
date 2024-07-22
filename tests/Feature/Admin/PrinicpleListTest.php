@@ -13,7 +13,7 @@ class PrinicpleListTest extends TestCase
      */
     public function test_Get_Principle_List_test(): void
     {
-        $response = $this->get('/admin/principles');
+        $response = $this->get('/admin/college-principals');
 
         $response->assertStatus(302);
     }

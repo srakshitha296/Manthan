@@ -13,7 +13,7 @@ class HoDListTest extends TestCase
      */
     public function test_Get_HoD_List_test(): void
     {
-        $response = $this->get('/admin/ho-ds');
+        $response = $this->get('/admin/college-hods');
 
         $response->assertStatus(302);
     }

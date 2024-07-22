@@ -13,7 +13,7 @@ class StudentListTest extends TestCase
      */
     public function test_Get_student_List_test(): void
     {
-        $response = $this->get('/admin/students');
+        $response = $this->get('/admin/college-students');
 
         $response->assertStatus(302);
     }
