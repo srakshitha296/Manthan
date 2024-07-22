@@ -89,7 +89,7 @@ class UserResource extends Resource
                     'faculty' => 'Faculty',
                     'HoD' => 'HoD',
                     'Principle' => 'Principle',
-                ])->label('Role'),
+                ])->label('Role')->searchable()->preload()->indicator("role"),
             ])
             ->actions([
                 ActionGroup::make([
