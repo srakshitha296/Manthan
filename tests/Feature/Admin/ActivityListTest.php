@@ -13,7 +13,7 @@ class ActivityListTest extends TestCase
      */
     public function test_Activity_List_Check(): void
     {
-        $response = $this->get('/admin/activities');
+        $response = $this->get('/admin/student-activities');
 
         $response->assertStatus(302);
     }
