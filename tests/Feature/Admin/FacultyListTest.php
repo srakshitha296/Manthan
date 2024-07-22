@@ -13,7 +13,7 @@ class FacultyListTest extends TestCase
      */
     public function test_Get_faculty_List_test(): void
     {
-        $response = $this->get('/admin/faculties');
+        $response = $this->get('/admin/college-faculties');
 
         $response->assertStatus(302);
     }

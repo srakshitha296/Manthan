@@ -29,6 +29,14 @@ class PrincipleResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-shield-exclamation';
 
+    protected static ?string $navigationLabel = 'Principal';
+
+    protected static ?string $slug = 'college-principals';
+
+    protected static ?string $modelLabel = 'Principal';
+
+    protected static ?string $navigationGroup = 'Employees and Students';
+
     public static function form(Form $form): Form
     {
         return $form

@@ -32,6 +32,14 @@ class HoDResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-user';
 
+    protected static ?string $navigationLabel = 'HoD';
+
+    protected static ?string $slug = 'college-hods';
+
+    protected static ?string $modelLabel = 'H.O.D';
+
+    protected static ?string $navigationGroup = 'Employees and Students';
+
     public static function form(Form $form): Form
     {
         return $form

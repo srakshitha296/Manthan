@@ -33,6 +33,14 @@ class ProgramResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-swatch';
 
+    protected static ?string $navigationLabel = 'Program and activities';
+
+    protected static ?string $slug = 'programs';
+
+    protected static ?string $modelLabel = 'Program';
+
+    // protected static ?string $navigationGroup = 'Programs and activities';
+
     public static function form(Form $form): Form
     {
         return $form

@@ -35,6 +35,14 @@ class ActivityResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-chart-bar';
 
+    protected static ?string $navigationLabel = 'Student Activity';
+
+    protected static ?string $modelLabel = 'Student Activity';
+
+    protected static ?string $slug = 'student-activities';
+
+    protected static ?string $navigationGroup = 'AICTE Activity';
+
     public static function form(Form $form): Form
     {
         return $form
