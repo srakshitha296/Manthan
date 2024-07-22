@@ -28,6 +28,14 @@ class DepartmentResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-book-open';
 
+    protected static ?string $navigationLabel = 'College Departments';
+
+    protected static ?string $slug = 'college-departments';
+
+    protected static ?string $modelLabel = 'Department';
+
+    protected static ?string $navigationGroup = 'Affliated Institutions';
+
     public static function form(Form $form): Form
     {
         return $form
