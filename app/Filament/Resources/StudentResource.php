@@ -30,6 +30,14 @@ class StudentResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
 
+    protected static ?string $navigationLabel = 'Student';
+
+    protected static ?string $slug = 'college-students';
+
+    protected static ?string $modelLabel = 'Student';
+
+    protected static ?string $navigationGroup = 'Employees and Students';
+
     public static function form(Form $form): Form
     {
         return $form

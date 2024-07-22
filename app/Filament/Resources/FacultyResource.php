@@ -34,6 +34,14 @@ class FacultyResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
 
+    protected static ?string $navigationLabel = 'Faculty';
+
+    protected static ?string $slug = 'college-faculties';
+
+    protected static ?string $modelLabel = 'Faculty';
+
+    protected static ?string $navigationGroup = 'Employees and Students';
+
     public static function form(Form $form): Form
     {
         return $form
