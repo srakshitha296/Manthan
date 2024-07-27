@@ -63,7 +63,6 @@ class StatsAdminOverview extends BaseWidget
                 ->description('Activity Type available in Mantan')
                 ->descriptionIcon('heroicon-m-rectangle-group', IconPosition::Before)
                 ->color('success'),
-            
         ];
     }
 }
