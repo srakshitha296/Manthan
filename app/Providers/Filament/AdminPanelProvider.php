@@ -9,6 +9,7 @@ use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Pages;
 use Filament\Panel;
+use Filament\Panel\Concerns\HasBrandName;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Widgets;
@@ -61,6 +62,7 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ])->defaultThemeMode(ThemeMode::Light)
             // ->brandLogo(asset('images/logo.png'))
+            ->brandName("Manthan")
             ->brandLogoHeight('2rem');
     }
 }

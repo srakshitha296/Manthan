@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('registered_events', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDeleteCascade();
+            $table->foreignId('program_id')->constrained('programs')->onDeleteCascade();
+            $table->dateTime('registration_date');
+            $table->boolean('is_attended')->default(false);
             $table->timestamps();
         });
     }
