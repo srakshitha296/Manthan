@@ -62,6 +62,7 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ])->defaultThemeMode(ThemeMode::Light)
             // ->brandLogo(asset('images/logo.png'))
+            
             ->brandName("Manthan")
             ->brandLogoHeight('2rem');
     }
