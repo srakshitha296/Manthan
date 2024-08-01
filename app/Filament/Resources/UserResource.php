@@ -20,6 +20,7 @@ use Filament\Pages\Page;
 use Filament\Resources\Pages\CreateRecord;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Actions\BulkActionGroup;
@@ -100,7 +101,8 @@ class UserResource extends Resource
                     ViewAction::make(),
                     EditAction::make(),
                     DeleteAction::make(),
-                ])
+                ]),
+                // Action::make('Download pdf')->icon('heroicon-o-user'),
             ])
             ->bulkActions([
                 BulkActionGroup::make([
