@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\UserResource\Pages;
 
+use App\Exports\UsersExport;
 use App\Filament\Resources\UserResource;
 use App\Imports\UsersImport;
 use Filament\Actions;
@@ -9,6 +10,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Resources\Pages\ListRecords\Tab;
+use Illuminate\Database\Eloquent\Collection;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ListUsers extends ListRecords
@@ -24,12 +26,20 @@ class ListUsers extends ListRecords
                 FileUpload::make('attachment')->directory('xlsx')->preserveFilenames(),
             ])->color('danger')
             ->action(function(array $data){
-                $file = public_path('storage/'.$data['attachment']);
+                // dd($data);
+                // $file = public_path('storage'.$data['attachment']);
+                $file = storage_path('app/public/'.$data['attachment']);
+                // dd($file, file_exists($file));
+                // dd($file);
 
                 Excel::import(new UsersImport, $file);
 
                 Notification::make()->title('Users Imported')->success()->send();
             }),
+            Actions\Action::make('exportUsers')->label('Export Users')->icon('heroicon-o-document-arrow-down')
+            ->action(function (Collection $records){
+                return Excel::download(new UsersExport($records, 0), 'users.xlsx');  
+            })
         ];
     }
 

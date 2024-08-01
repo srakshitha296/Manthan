@@ -108,7 +108,7 @@ class UserResource extends Resource
                     BulkAction::make('export')->label('Export')
                     ->icon('heroicon-o-document-arrow-down')
                     ->action(function (Collection $records){
-                        return Excel::download(new UsersExport($records), 'users.xlsx');  
+                        return Excel::download(new UsersExport($records, 1), 'users.xlsx');  
                     })
                 ]),
             ]);

@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-// use App\Models\User;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
@@ -16,13 +16,18 @@ class UsersExport implements FromCollection, WithMapping, WithHeadings
     * @return \Illuminate\Support\Collection
     */
 
-    public function __construct( public Collection $records)
+    public function __construct( public Collection $records, public int $type)
     {
         // 
     }
     public function collection()
     {
-        return $this->records;
+        if($this->type == 1){
+            return $this->records;
+        }else{
+            return User::all();
+        }
+        // return $this->records;
     }
 
     public function map($user): array
