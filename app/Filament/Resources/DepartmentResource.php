@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\CollegeResource\RelationManagers\FacultiesRelationManager;
 use App\Filament\Resources\DepartmentResource\Pages;
 use App\Filament\Resources\DepartmentResource\RelationManagers;
+use App\Filament\Resources\DepartmentResource\RelationManagers\HodRelationManager;
 use App\Models\Department;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
@@ -78,6 +79,7 @@ class DepartmentResource extends Resource
     {
         return [
             FacultiesRelationManager::class,
+            HodRelationManager::class,
         ];
     }
 

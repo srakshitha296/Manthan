@@ -11,6 +11,11 @@ class HoD extends Model
 
     protected $fillable = ['user_id', 'college_id', 'department_id', 'designation', 'qualification','experience', 'specialization','joining_date', 'leaving_date'];
 
+    protected $casts = [
+        'qualification' => 'array',
+        'specialization' => 'array',
+    ];
+    
     public function user(){
         return $this->belongsTo(User::class);
     }
