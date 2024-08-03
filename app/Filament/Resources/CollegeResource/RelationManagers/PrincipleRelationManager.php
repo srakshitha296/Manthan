@@ -51,7 +51,7 @@ class PrincipleRelationManager extends RelationManager
                             'M.Sc' => 'M.Sc',
                             'B.Sc' => 'B.Sc',
                         ])->required()->multiple(),
-                        TextInput::make('experience')->required()->maxLength(255),
+                        TextInput::make('experience')->required()->suffix(' years')->maxLength(255),
                         DatePicker::make('joining_date')->required(),
                     ])->columns(2),
                 ])->columnSpan(2),
