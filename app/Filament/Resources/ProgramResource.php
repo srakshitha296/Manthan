@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProgramResource\Pages;
 use App\Filament\Resources\ProgramResource\RelationManagers;
+use App\Filament\Resources\ProgramResource\RelationManagers\ActivitiesRelationManager;
 use App\Models\Program;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
@@ -109,7 +110,7 @@ class ProgramResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            // ActivitiesRelationManager::class,
         ];
     }
 
