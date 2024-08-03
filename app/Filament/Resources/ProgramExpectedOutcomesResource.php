@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProgramExpectedOutcomesResource\Pages;
 use App\Filament\Resources\ProgramExpectedOutcomesResource\RelationManagers;
+use App\Filament\Resources\ProgramExpectedOutcomesResource\RelationManagers\ActivitiesRelationManager;
 use App\Models\ProgramExpectedOutcomes;
 use Filament\Forms;
 use Filament\Forms\Components\Group;
@@ -80,7 +81,7 @@ class ProgramExpectedOutcomesResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            ActivitiesRelationManager::class,
         ];
     }
 
