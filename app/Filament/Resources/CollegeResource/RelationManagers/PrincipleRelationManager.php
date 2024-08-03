@@ -19,6 +19,9 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class PrincipleRelationManager extends RelationManager
 {
     protected static string $relationship = 'principle';
+    
+    protected static ?string $slug = 'college-principals';
+    protected static ?string $modelLabel = 'Principal';
 
     public function form(Form $form): Form
     {
