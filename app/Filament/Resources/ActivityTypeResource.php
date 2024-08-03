@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ActivityTypeResource\Pages;
 use App\Filament\Resources\ActivityTypeResource\RelationManagers;
+use App\Filament\Resources\ActivityTypeResource\RelationManagers\ActivitiesRelationManager;
 use App\Models\ActivityType;
 use Filament\Forms;
 use Filament\Forms\Components\MarkdownEditor;
@@ -93,7 +94,7 @@ class ActivityTypeResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            ActivitiesRelationManager::class,
         ];
     }
     public static function getPages(): array
