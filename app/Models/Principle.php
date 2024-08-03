@@ -9,8 +9,12 @@ class Principle extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'college_id', 'qualification', 'experience', 'specialization','joining_date'];
+    protected $fillable = ['user_id', 'college_id', 'qualification', 'specialization', 'experience','joining_date'];
 
+    protected $casts = [
+        'qualification' => 'array',
+        'specialization' => 'array',
+    ];
     public function user(){
         return $this->belongsTo(User::class);
     }

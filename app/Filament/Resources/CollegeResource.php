@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CollegeResource\Pages;
 use App\Filament\Resources\CollegeResource\RelationManagers;
+use App\Filament\Resources\CollegeResource\RelationManagers\PrincipleRelationManager;
 use App\Models\College;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
@@ -83,7 +84,7 @@ class CollegeResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            PrincipleRelationManager::class,
         ];
     }
 
