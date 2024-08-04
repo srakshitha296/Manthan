@@ -6,12 +6,12 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class DashboardTest extends TestCase
+class dashboard extends TestCase
 {
     /**
      * A basic feature test example.
      */
-    public function test_Dashboard_status_check(): void
+    public function test_dashboard_status_check(): void
     {
         $response = $this->get('/admin');
 

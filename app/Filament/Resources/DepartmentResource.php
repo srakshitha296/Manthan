@@ -2,8 +2,11 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\CollegeResource\RelationManagers\FacultiesRelationManager;
 use App\Filament\Resources\DepartmentResource\Pages;
 use App\Filament\Resources\DepartmentResource\RelationManagers;
+use App\Filament\Resources\DepartmentResource\RelationManagers\HodRelationManager;
+use App\Filament\Resources\DepartmentResource\RelationManagers\StudentsRelationManager;
 use App\Models\Department;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
@@ -76,7 +79,9 @@ class DepartmentResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            FacultiesRelationManager::class,
+            HodRelationManager::class,
+            StudentsRelationManager::class,
         ];
     }
 
