@@ -13,20 +13,19 @@ class UsersExport implements FromCollection, WithMapping, WithHeadings
 {
     use Exportable;
     /**
-    * @return \Illuminate\Support\Collection
-    */
+     * @return \Illuminate\Support\Collection
+     */
 
-    public function __construct( public Collection $records, public int $type)
+    public function __construct(public Collection $records, public int $type)
     {
         // 
     }
     public function collection()
     {
-        if($this->type == 1){
-            return $this->records;
-        }else{
-            return User::all();
-        }
+        return match ($this->type) {
+            1 => $this->records,
+            default => User::all(),
+        };
         // return $this->records;
     }
 

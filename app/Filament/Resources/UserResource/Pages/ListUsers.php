@@ -39,7 +39,7 @@ class ListUsers extends ListRecords
             Actions\Action::make('exportUsers')->label('Export Users')->icon('heroicon-o-document-arrow-down')
             ->action(function (Collection $records){
                 return Excel::download(new UsersExport($records, 0), 'users.xlsx');  
-            })
+            }),
         ];
     }
 
