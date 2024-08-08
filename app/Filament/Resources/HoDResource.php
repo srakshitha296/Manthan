@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Exports\HODsExport;
 use App\Filament\Resources\HoDResource\Pages;
 use App\Filament\Resources\HoDResource\RelationManagers;
 use App\Models\HoD;
@@ -17,14 +18,19 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Actions\BulkAction;
+use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Maatwebsite\Excel\Facades\Excel;
 
 class HoDResource extends Resource
 {
@@ -107,8 +113,13 @@ class HoDResource extends Resource
                 ]),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
+                    BulkAction::make('export')->label('Export')
+                    ->icon('heroicon-o-document-arrow-down')
+                    ->action(function (Collection $records){
+                        return Excel::download(new HODsExport($records, 1), 'HoDs.xlsx');  
+                    })
                 ]),
             ]);
     }
