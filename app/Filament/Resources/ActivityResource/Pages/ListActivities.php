@@ -19,7 +19,7 @@ class ListActivities extends ListRecords
         if(Activity::count()){
             return[
                 Actions\CreateAction::make(),
-                Actions\Action::make('exportHod')->label('Export HoDs')->icon('heroicon-o-document-arrow-down')
+                Actions\Action::make('exportActivity')->label('Export Student Activities')->icon('heroicon-o-document-arrow-down')
                     ->action(function (Collection $records) {
                         return Excel::download(new ActivitiesExport($records, 0), 'student-activities.xlsx');
                     })
