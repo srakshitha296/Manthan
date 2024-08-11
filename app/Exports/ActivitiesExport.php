@@ -27,13 +27,6 @@ class ActivitiesExport implements FromCollection, WithMapping, WithHeadings
     public function map($activity): array
     {
         return [
-            // $activity->student->user->name,
-            // $activity->student->user->email,
-            // $activity->student->user->phone,
-            // $activity->student->user->address,
-            // $activity->user->college->name,
-            // $activity->user->department->name,
-            // $activity->user->department->name,
             $activity->title,
             $activity->description,
             $activity->activityType->title,

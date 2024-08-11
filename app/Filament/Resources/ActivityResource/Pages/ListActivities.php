@@ -29,8 +29,5 @@ class ListActivities extends ListRecords
                 Actions\CreateAction::make(),
             ];
         }
-        // return [
-        //     Actions\CreateAction::make(),
-        // ];
     }
 }
