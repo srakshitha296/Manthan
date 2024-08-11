@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Exports\ActivitiesExport;
 use App\Filament\Resources\ActivityResource\Pages;
 use App\Filament\Resources\ActivityResource\RelationManagers;
 use App\Models\Activity;
@@ -18,6 +19,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
@@ -27,7 +29,9 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ActivityResource extends Resource
 {
@@ -132,6 +136,10 @@ class ActivityResource extends Resource
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
+                    BulkAction::make('exportActivity')->label('Export Activities')->icon('heroicon-o-document-arrow-down')
+                    ->action(function (Collection $records) {
+                        return Excel::download(new ActivitiesExport($records, 1), 'student-activities.xlsx');
+                    })
                 ]),
             ]);
     }
