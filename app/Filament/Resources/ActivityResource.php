@@ -98,7 +98,7 @@ class ActivityResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('student.user.name')->numeric()->sortable()->searchable()->label("Student Name"),
+                TextColumn::make('student.user.name')->sortable()->searchable()->label("Student Name"),
                 TextColumn::make('activityType.title')->sortable(),
                 TextColumn::make('title')->label('Activity Title')->searchable(),
                 TextColumn::make('description')->searchable(),

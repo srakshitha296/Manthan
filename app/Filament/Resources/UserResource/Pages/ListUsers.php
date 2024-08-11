@@ -5,6 +5,7 @@ namespace App\Filament\Resources\UserResource\Pages;
 use App\Exports\UsersExport;
 use App\Filament\Resources\UserResource;
 use App\Imports\UsersImport;
+use App\Models\User;
 use Filament\Actions;
 use Filament\Forms\Components\FileUpload;
 use Filament\Notifications\Notification;
@@ -19,34 +20,40 @@ class ListUsers extends ListRecords
 
     protected function getHeaderActions(): array
     {
-        return [
-            Actions\CreateAction::make(),
-            Actions\Action::make('importUsers')->label('Import Users')->icon('heroicon-o-user-group')
-            ->form([
-                FileUpload::make('attachment')->directory('xlsx')->preserveFilenames(),
-            ])->color('danger')
-            ->action(function(array $data){
-                // dd($data);
-                // $file = public_path('storage'.$data['attachment']);
-                $file = storage_path('app/public/'.$data['attachment']);
-                // dd($file, file_exists($file));
-                // dd($file);
+        if (User::count()) {
+            return [
+                Actions\CreateAction::make(),
+                Actions\Action::make('importUsers')->label('Import Users')->icon('heroicon-o-user-group')
+                    ->form([
+                        FileUpload::make('attachment')->directory('xlsx')->preserveFilenames(),
+                    ])->color('danger')
+                    ->action(function (array $data) {
+                        // $file = public_path('storage'.$data['attachment']);
+                        $file = storage_path('app/public/' . $data['attachment']);
+                        // dd($file, file_exists($file));
+                        // dd($file);
+                        Excel::import(new UsersImport, $file);
+                        Notification::make()->title('Users Imported')->success()->send();
+                    }),
+                Actions\Action::make('exportUsers')->label('Export Users')->icon('heroicon-o-document-arrow-down')
+                    ->action(function (Collection $records) {
+                        return Excel::download(new UsersExport($records, 0), 'users.xlsx');
+                    }),
+            ];
+        } else {
+            return [
+                Actions\CreateAction::make(),
+                Actions\Action::make('importUsers')->label('Import Users')->icon('heroicon-o-user-group')
+                    ->form([
+                        FileUpload::make('attachment')->directory('xlsx')->preserveFilenames(),
+                    ])->color('danger')
+                    ->action(function (array $data) {
+                        $file = storage_path('app/public/' . $data['attachment']);
+                        Excel::import(new UsersImport, $file);
 
-                Excel::import(new UsersImport, $file);
-
-                Notification::make()->title('Users Imported')->success()->send();
-            }),
-            Actions\Action::make('exportUsers')->label('Export Users')->icon('heroicon-o-document-arrow-down')
-            ->action(function (Collection $records){
-                return Excel::download(new UsersExport($records, 0), 'users.xlsx');  
-            }),
-        ];
+                        Notification::make()->title('Users Imported')->success()->send();
+                    }),
+            ];
+        }
     }
-
-    // public function getTabs() : array {
-    //     return [
-    //         "All" => Tab::make(),
-    //         "Students" => Tab::make(),
-    //     ];
-    // }
 }
