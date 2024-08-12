@@ -47,7 +47,6 @@ class CollegesExport implements FromCollection, WithMapping, WithHeadings
             'Principle',
             // 'Total HODs',
             // 'Total Faculties',
-            // 'Total Students',
         ];
     }
 }
