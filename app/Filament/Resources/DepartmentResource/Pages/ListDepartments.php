@@ -2,9 +2,13 @@
 
 namespace App\Filament\Resources\DepartmentResource\Pages;
 
+use App\Exports\DepartmentsExport;
 use App\Filament\Resources\DepartmentResource;
+use App\Models\Department;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
+use Illuminate\Database\Eloquent\Collection;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ListDepartments extends ListRecords
 {
@@ -12,8 +16,18 @@ class ListDepartments extends ListRecords
 
     protected function getHeaderActions(): array
     {
-        return [
-            Actions\CreateAction::make(),
-        ];
+        if (Department::count()) {
+            return [
+                Actions\CreateAction::make(),
+                Actions\Action::make('exportHod')->label('Export Departments')->icon('heroicon-o-document-arrow-down')
+                    ->action(function (Collection $records) {
+                        return Excel::download(new DepartmentsExport($records, 0), 'Departments.xlsx');
+                    })
+            ];
+        }else{
+            return [
+                Actions\CreateAction::make(),
+            ];
+        }
     }
 }
