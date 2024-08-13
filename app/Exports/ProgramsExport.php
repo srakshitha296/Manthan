@@ -25,21 +25,33 @@ class ProgramsExport implements FromCollection, WithMapping, WithHeadings
             default => Program::all(),
         };
     }
-    public function map($peo): array
+    public function map($program): array
     {
         return [
-            $peo->label,
-            $peo->name,
-            $peo->description,
+            $program->name,
+            $program->description,
+            $program->type,
+            $program->start_date,
+            $program->end_date,
+            $program->duration,
+            $program->fees,
+            $program->location,
+            $program->organiser,
         ];
     }
 
     public function headings(): array
     {
         return [
-            'PEO Label',
-            'PEO Name',
-            'Description',
+            'Program Name',
+            'Program Description',
+            'Program Type',
+            'Start Date',
+            'End Date',
+            'Duration',
+            'Registeration Fees',
+            'Location',
+            'Program Organiser',
         ];
     }
 }
