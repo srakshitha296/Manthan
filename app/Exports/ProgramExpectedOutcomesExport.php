@@ -27,33 +27,18 @@ class ProgramExpectedOutcomesExport implements FromCollection, WithMapping, With
     public function map($peo): array
     {
         return [
-            $peo->user->name,
-            $peo->user->email,
-            $peo->user->phone,
-            $peo->user->address,
-            $peo->college->name,
-            $peo->department->name,
-            $peo->qualification,
-            $peo->experience,
-            $peo->specialization,
-            $peo->joining_date,
-            // $hod->activities->count(),
+            $peo->label,
+            $peo->name,
+            $peo->description,
         ];
     }
 
     public function headings(): array
     {
         return [
-            'Hod Name',
-            'Hod Email',
-            'Hod Phone',
-            'Hod Address',
-            'College',
-            'Department',
-            'Qualification',
-            'Experience',
-            'Specialization',
-            'Joining Date',
+            'PEO Label',
+            'PEO Name',
+            'Description',
         ];
     }
 }
