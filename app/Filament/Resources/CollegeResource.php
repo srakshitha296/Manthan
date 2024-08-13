@@ -36,9 +36,7 @@ use Maatwebsite\Excel\Facades\Excel;
 class CollegeResource extends Resource
 {
     protected static ?string $model = College::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
-
     protected static ?string $navigationLabel = 'Affliated Colleges';
     protected static ?string $slug = 'affliated-colleges';
     protected static ?string $modelLabel = 'Affliated College';

@@ -18,7 +18,9 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\BulkAction;
+use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\ImageColumn;
@@ -74,8 +76,8 @@ class DepartmentResource extends Resource
                 ]),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                     BulkAction::make('export')->label('Export')
                     ->icon('heroicon-o-document-arrow-down')
                     ->action(function (Collection $records){
