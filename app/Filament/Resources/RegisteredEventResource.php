@@ -6,6 +6,11 @@ use App\Filament\Resources\RegisteredEventResource\Pages;
 use App\Filament\Resources\RegisteredEventResource\RelationManagers;
 use App\Models\RegisteredEvent;
 use Filament\Forms;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -24,9 +29,25 @@ class RegisteredEventResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                //
-            ]);
+        ->schema([
+            Section::make('User Details')->schema([
+                Select::make('user_id')->label("User Email")->relationship('user','email')
+                ->searchable()->preload()->required(),
+                Select::make('user_id')->label("User Email")->relationship('user','email')
+                ->searchable()->preload(),
+            ])->collapsible()->columns(2),
+            Section::make('Event / Program Details')->schema([
+                Group::make()->schema([
+                    Select::make('program_id')->label("Program / Event Name")->relationship('program','name')
+                    ->searchable()->preload()->required(),
+                    DatePicker::make('registration_date')->default(now())->required(),
+                ])->columns(2),
+                Group::make()->schema([
+                    Toggle::make('is_paid')->label("Is Paid ?")->default(false),
+                    Toggle::make('is_attended')->label("Has Attended")->default(false),
+                ])->columns(2),
+            ])->columnSpanFull(),
+        ]);
     }
 
     public static function table(Table $table): Table
