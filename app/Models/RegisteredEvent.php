@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class RegisteredEvent extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['user_id', 'program_id', 'registration_date', 'is_paid', 'is_attended'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function program()
+    {
+        return $this->belongsTo(Program::class);
+    }
+
 }

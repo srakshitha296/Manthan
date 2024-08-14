@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDeleteCascade();
             $table->foreignId('program_id')->constrained('programs')->onDeleteCascade();
             $table->dateTime('registration_date');
+            $table->boolean('is_paid')->default(false);
             $table->boolean('is_attended')->default(false);
             $table->timestamps();
         });
