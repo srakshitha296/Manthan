@@ -11,5 +11,4 @@ class Program extends Model
 
     protected $fillable = ['name', 'description', 'type', 'start_date', 'end_date', 'duration', 'fees', 'location', 'organiser'];
 
-
 }
