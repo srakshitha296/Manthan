@@ -22,6 +22,8 @@ use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -64,7 +66,14 @@ class RegisteredEventResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('user.name')->label("User")->searchable()->sortable(),
+                TextColumn::make('user.email')->label("User Email")->searchable()->sortable(),
+                TextColumn::make('user.phone')->label("User Phone")->searchable()->sortable(),
+                TextColumn::make('program.name')->label("Program Name")->searchable()->sortable(),
+                TextColumn::make('program.type')->label("Program Type")->searchable()->sortable(),
+                TextColumn::make('registration_date')->label("Registered Date")->date()->sortable(),
+                IconColumn::make('is_paid')->boolean()->label('Is Paid')->sortable(),
+                IconColumn::make('is_attended')->boolean()->label('Is Attended')->sortable(),
             ])
             ->filters([
                 //
