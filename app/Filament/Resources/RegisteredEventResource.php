@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Exports\Registeration;
 use App\Filament\Resources\RegisteredEventResource\Pages;
 use App\Filament\Resources\RegisteredEventResource\RelationManagers;
 use App\Models\RegisteredEvent;
@@ -14,9 +15,20 @@ use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Actions\BulkAction;
+use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RegisteredEventResource extends Resource
 {
@@ -54,17 +66,33 @@ class RegisteredEventResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('user.name')->label("User")->searchable()->sortable(),
+                TextColumn::make('user.email')->label("User Email")->searchable()->sortable(),
+                TextColumn::make('user.phone')->label("User Phone")->searchable()->sortable(),
+                TextColumn::make('program.name')->label("Program Name")->searchable()->sortable(),
+                TextColumn::make('program.type')->label("Program Type")->searchable()->sortable(),
+                TextColumn::make('registration_date')->label("Registered Date")->date()->sortable(),
+                IconColumn::make('is_paid')->boolean()->label('Is Paid')->sortable(),
+                IconColumn::make('is_attended')->boolean()->label('Is Attended')->sortable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                ActionGroup::make([
+                    ViewAction::make(),
+                    EditAction::make(),
+                    DeleteAction::make(),
+                ]),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
+                    BulkAction::make('exportRegisterations')->label('Export Registerations')
+                    ->icon('heroicon-o-document-arrow-down')
+                    ->action(function (Collection $records){
+                        return Excel::download(new Registeration($records, 1), 'Registerations.xlsx');  
+                    })
                 ]),
             ]);
     }
