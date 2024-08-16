@@ -17,7 +17,13 @@ class CollegeFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail(),
+            'phone' => fake()->unique()->phoneNumber(),
+            'address' => fake()->address(),
+            'logo' => fake()->image(),
+            'website' => fake()->url(),
+            'college_code' => fake()->unique()->regexify('[A-Z]{3}[0-9]{3}'),
         ];
     }
 }

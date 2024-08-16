@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\College;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -28,5 +29,6 @@ class DatabaseSeeder extends Seeder
             'is_admin' => false,
         ]);
         User::factory(10)->create();
+        College::factory(10)->create();
     }
 }
