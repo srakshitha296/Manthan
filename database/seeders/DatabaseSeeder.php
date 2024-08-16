@@ -29,8 +29,8 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('12345678'),
             'is_admin' => false,
         ]);
-        User::factory(10)->create();
-        College::factory(10)->create();
-        Department::factory(10)->create();
+        User::factory(5)->create();
+        College::factory(5)->create();
+        Department::factory(5)->create();
     }
 }
