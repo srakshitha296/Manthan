@@ -6,6 +6,7 @@ use App\Exports\ActivitiesExport;
 use App\Filament\Resources\ActivityResource\Pages;
 use App\Filament\Resources\ActivityResource\RelationManagers;
 use App\Models\Activity;
+use App\Models\Student;
 use Filament\Forms;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
@@ -55,7 +56,7 @@ class ActivityResource extends Resource
                                     ->join('users', 'students.user_id', '=', 'users.id');
                             })->searchable()
                             ->getSearchResultsUsing(function ($query, $search) {
-                                return \App\Models\Student::query()
+                                return Student::query()
                                     ->select('students.id', 'users.name')
                                     ->join('users', 'students.user_id', '=', 'users.id')
                                     ->where('users.name', 'like', "%{$search}%")
@@ -64,7 +65,7 @@ class ActivityResource extends Resource
                                     ->mapWithKeys(fn($student) => [$student->id => $student->name]);
                             })
                             ->getOptionLabelUsing(function ($value) {
-                                $student = \App\Models\Student::find($value);
+                                $student = Student::find($value);
                                 return $student ? $student->user->name : null;
                             })->required(),
                     ])
