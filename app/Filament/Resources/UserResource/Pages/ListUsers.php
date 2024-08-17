@@ -6,7 +6,8 @@ use App\Exports\UsersExport;
 use App\Filament\Resources\UserResource;
 use App\Imports\UsersImport;
 use App\Models\User;
-use Filament\Actions;
+use Filament\Actions\CreateAction;
+use Filament\Actions\Action;
 use Filament\Forms\Components\FileUpload;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
@@ -22,8 +23,8 @@ class ListUsers extends ListRecords
     {
         if (User::count()) {
             return [
-                Actions\CreateAction::make(),
-                Actions\Action::make('importUsers')->label('Import Users')->icon('heroicon-o-user-group')
+               CreateAction::make(),
+               Action::make('importUsers')->label('Import Users')->icon('heroicon-o-user-group')
                     ->form([
                         FileUpload::make('attachment')->directory('xlsx')->preserveFilenames(),
                     ])->color('danger')
@@ -35,15 +36,15 @@ class ListUsers extends ListRecords
                         Excel::import(new UsersImport, $file);
                         Notification::make()->title('Users Imported')->success()->send();
                     }),
-                Actions\Action::make('exportUsers')->label('Export Users')->icon('heroicon-o-document-arrow-down')
+               Action::make('exportUsers')->label('Export Users')->icon('heroicon-o-document-arrow-down')
                     ->action(function (Collection $records) {
                         return Excel::download(new UsersExport($records, 0), 'users.xlsx');
                     }),
             ];
         } else {
             return [
-                Actions\CreateAction::make(),
-                Actions\Action::make('importUsers')->label('Import Users')->icon('heroicon-o-user-group')
+                CreateAction::make(),
+                Action::make('importUsers')->label('Import Users')->icon('heroicon-o-user-group')
                     ->form([
                         FileUpload::make('attachment')->directory('xlsx')->preserveFilenames(),
                     ])->color('danger')
