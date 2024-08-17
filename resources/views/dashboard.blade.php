@@ -5,14 +5,14 @@
         </h2>
     </x-slot> --}}
 
-    <div class="py-12">
-        <div class="max-w-9xl mx-auto sm:px-6 lg:px-8">
+    <div>
+        <div class="max-w-9xl mx-auto">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
                     <!--Bootstrap code-->
                     <div class="row mx-0 ">
-                        <div class="col-md-2">
+                        <div class="col-md-2 bg-dark m-4px">
                             <!-- Nav tabs -->
                             <ul class="nav nav-pills flex-column" id="myTab" role="tablist">
                                 <li class="nav-item" role="presentation">
