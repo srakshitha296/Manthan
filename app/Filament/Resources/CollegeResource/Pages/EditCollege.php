@@ -3,7 +3,8 @@
 namespace App\Filament\Resources\CollegeResource\Pages;
 
 use App\Filament\Resources\CollegeResource;
-use Filament\Actions;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\ViewAction;
 use Filament\Resources\Pages\EditRecord;
 
 class EditCollege extends EditRecord
@@ -13,8 +14,8 @@ class EditCollege extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\ViewAction::make(),
-            Actions\DeleteAction::make(),
+            ViewAction::make(),
+            DeleteAction::make(),
         ];
     }
 }
