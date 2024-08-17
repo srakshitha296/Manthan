@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\ProgramExpectedOutcomesResource\Pages;
 
 use App\Filament\Resources\ProgramExpectedOutcomesResource;
-use Filament\Actions;
+use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 
 class EditProgramExpectedOutcomes extends EditRecord
@@ -13,7 +13,7 @@ class EditProgramExpectedOutcomes extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            DeleteAction::make(),
         ];
     }
 }

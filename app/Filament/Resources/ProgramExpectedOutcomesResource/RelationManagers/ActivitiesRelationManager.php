@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\ProgramExpectedOutcomesResource\RelationManagers;
 
+use App\Models\Student;
 use Filament\Forms;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
@@ -15,6 +16,7 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\CreateAction;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
@@ -30,7 +32,6 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class ActivitiesRelationManager extends RelationManager
 {
     protected static string $relationship = 'activities';
-
     public function form(Form $form): Form
     {
         return $form
@@ -43,7 +44,7 @@ class ActivitiesRelationManager extends RelationManager
                                     ->join('users', 'students.user_id', '=', 'users.id');
                             })->searchable()
                             ->getSearchResultsUsing(function ($query, $search) {
-                                return \App\Models\Student::query()
+                                return Student::query()
                                     ->select('students.id', 'users.name')
                                     ->join('users', 'students.user_id', '=', 'users.id')
                                     ->where('users.name', 'like', "%{$search}%")
@@ -52,7 +53,7 @@ class ActivitiesRelationManager extends RelationManager
                                     ->mapWithKeys(fn($student) => [$student->id => $student->name]);
                             })
                             ->getOptionLabelUsing(function ($value) {
-                                $student = \App\Models\Student::find($value);
+                                $student = Student::find($value);
                                 return $student ? $student->user->name : null;
                             })->required(),
                     ])
@@ -117,7 +118,7 @@ class ActivitiesRelationManager extends RelationManager
                 ])->label('Activity Status'),
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
+                CreateAction::make(),
             ])
             ->actions([
                 ActionGroup::make([
