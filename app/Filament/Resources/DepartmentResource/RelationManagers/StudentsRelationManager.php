@@ -11,7 +11,10 @@ use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\CreateAction;
 use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
@@ -26,7 +29,6 @@ class StudentsRelationManager extends RelationManager
     protected static ?string $navigationLabel = 'Student';
     protected static ?string $slug = 'college-students';
     protected static ?string $modelLabel = 'Student';
-
     public function form(Form $form): Form
     {
         return $form
@@ -86,7 +88,7 @@ class StudentsRelationManager extends RelationManager
                 ]),
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
+                CreateAction::make(),
             ])
             ->actions([
                 ActionGroup::make([
@@ -96,8 +98,8 @@ class StudentsRelationManager extends RelationManager
                 ]),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }

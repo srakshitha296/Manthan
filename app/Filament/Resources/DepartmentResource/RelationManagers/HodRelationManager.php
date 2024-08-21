@@ -12,7 +12,10 @@ use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\CreateAction;
 use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
@@ -26,7 +29,6 @@ class HodRelationManager extends RelationManager
     protected static ?string $navigationLabel = 'HoD';
     protected static ?string $slug = 'college-hods';
     protected static ?string $modelLabel = 'H.O.D';
-
     public function form(Form $form): Form
     {
         return $form
@@ -93,7 +95,7 @@ class HodRelationManager extends RelationManager
                 //
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
+                CreateAction::make(),
             ])
             ->actions([
                 ActionGroup::make([
@@ -103,8 +105,8 @@ class HodRelationManager extends RelationManager
                 ]),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
