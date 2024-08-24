@@ -12,7 +12,7 @@ Route::get('/home', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard.dashboard');
+    return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
