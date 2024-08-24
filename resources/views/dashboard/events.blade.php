@@ -1,3 +1,4 @@
+<div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">
 <div class="row gx-6 gy-3 my-5 align-items-center">
     <div class="col-auto">
         <h2 class="mb-0">Events<span class="fw-normal text-body-tertiary ms-3">(32)</span></h2>
@@ -83,4 +84,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>
