@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Board extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name', 'description'];
+
+    public function members()
+    {
+        return $this->belongsToMany(BoardMembers::class);
+    }
+
+    public function president()
+    {
+        return $this->hasOne(BoardPresidents::class);
+    }
 }
