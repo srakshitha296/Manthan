@@ -29,7 +29,7 @@ class BoardResource extends Resource
             ->schema([
                 Section::make("Board Details")->schema([
                     TextInput::make('name')->label('Name')->required(),
-                    ToggleButtons::make('is_active')->label('Board Active?')->boolean()->grouped(),
+                    // ToggleButtons::make('is_active')->label('Board Active?')->boolean()->grouped(), //
                     RichEditor::make('description')->label('Description')->required()->columnSpanFull(),
                 ])->columns(2),
             ]);
