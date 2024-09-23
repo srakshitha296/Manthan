@@ -4,6 +4,8 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\BoardResource\Pages;
 use App\Filament\Resources\BoardResource\RelationManagers;
+use App\Filament\Resources\BoardResource\RelationManagers\MembersRelationManager;
+use App\Filament\Resources\BoardResource\RelationManagers\PresidentRelationManager;
 use App\Models\Board;
 use Filament\Forms;
 use Filament\Forms\Components\RichEditor;
@@ -34,7 +36,7 @@ class BoardResource extends Resource
             ->schema([
                 Section::make("Board Details")->schema([
                     TextInput::make('name')->label('Name')->required(),
-                    // ToggleButtons::make('is_active')->label('Board Active?')->boolean()->grouped(), // not working
+                    ToggleButtons::make('is_active')->label('Board Active?')->boolean()->grouped(), // not working
                     RichEditor::make('description')->label('Description')->required()->columnSpanFull(),
                 ])->columns(2),
             ]);
@@ -72,7 +74,8 @@ class BoardResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            PresidentRelationManager::class,
+            MembersRelationManager::class,
         ];
     }
 
