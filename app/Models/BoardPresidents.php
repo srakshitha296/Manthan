@@ -13,11 +13,11 @@ class BoardPresidents extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasOne(User::class);
     }
 
     public function board()
     {
-        return $this->belongsTo(Board::class);
+        return $this->hasMany(Board::class);
     }
 }
