@@ -13,11 +13,11 @@ class BoardMembers extends Model
 
     public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function board()
     {
-        return $this->hasMany(Board::class);
+        return $this->belongsTo(Board::class);
     }
 }

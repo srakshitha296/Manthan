@@ -3,9 +3,11 @@
 namespace App\Filament\Resources\BoardResource\RelationManagers;
 
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -18,18 +20,21 @@ class MembersRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('id')
-                    ->required()
-                    ->maxLength(255),
+                Select::make('user_id')->relationship('user', 'name')
+                    ->searchable()->preload()->required(),
+                Select::make('board_id')->relationship('board', 'name')
+                    ->searchable()->preload()->required(),
             ]);
     }
 
     public function table(Table $table): Table
     {
         return $table
-            ->recordTitleAttribute('id')
+            ->recordTitleAttribute('user_id')
             ->columns([
-                Tables\Columns\TextColumn::make('id'),
+                TextColumn::make('user.name'),
+                TextColumn::make('user.role'),
+                TextColumn::make('user.college.name'),
             ])
             ->filters([
                 //
