@@ -13,7 +13,7 @@ class Board extends Model
 
     public function members()
     {
-        return $this->belongsToMany(BoardMembers::class);
+        return $this->hasMany(BoardMembers::class);
     }
 
     public function president()
