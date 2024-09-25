@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Principle extends Model
+class Principal extends Model
 {
     use HasFactory;
 
@@ -22,5 +22,4 @@ class Principle extends Model
     public function college(){
         return $this->belongsTo(College::class);
     }
-
 }
