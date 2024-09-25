@@ -25,6 +25,7 @@ return new class extends Migration
             $table->boolean('status')->default(false);
             $table->boolean('is_cordinator')->default(false);
             $table->timestamps();
+
         });
     }
 

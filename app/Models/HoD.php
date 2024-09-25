@@ -31,5 +31,4 @@ class HoD extends Model
     public function faculties(){
         return $this->hasMany(Faculty::class);
     }
-
 }

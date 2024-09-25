@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('departments', function (Blueprint $table) {
-            $table->string('dept_code');
+        Schema::table('activities', function (Blueprint $table) {
+            $table->foreignId('program_expected_outcomes_id')->constrained('program_expected_outcomes')->onDeleteCascade()->after('activity_type_id');
+        
         });
     }
 
@@ -21,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('activities', function (Blueprint $table) {
+            //
+        });
     }
 };

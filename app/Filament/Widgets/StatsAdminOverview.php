@@ -8,7 +8,7 @@ use App\Models\College;
 use App\Models\Department;
 use App\Models\Faculty;
 use App\Models\HoD;
-use App\Models\Principle;
+use App\Models\Principal;
 use App\Models\Program;
 use App\Models\Student;
 use App\Models\User;
@@ -39,7 +39,7 @@ class StatsAdminOverview extends BaseWidget
                 ->description('HoDs registered in Mantan')
                 ->descriptionIcon('heroicon-m-user', IconPosition::Before)
                 ->color('success'),
-            Stat::make('Principals', Principle::count())
+            Stat::make('Principals', Principal::count())
                 ->description('Principals registered in Mantan')
                 ->descriptionIcon('heroicon-m-shield-exclamation', IconPosition::Before)
                 ->color('success'),

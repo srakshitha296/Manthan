@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RegisteredEvent extends Model
+class RegisteredEvents extends Model
 {
     use HasFactory;
 
@@ -20,5 +20,4 @@ class RegisteredEvent extends Model
     {
         return $this->belongsTo(Program::class);
     }
-
 }

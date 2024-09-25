@@ -78,6 +78,7 @@ class BoardResource extends Resource
     {
         return [
            MembersRelationManager::class,
+           PresidentRelationManager::class,
         ];
     }
 
