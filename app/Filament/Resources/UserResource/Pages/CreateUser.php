@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\UserResource\Pages;
 
 use App\Filament\Resources\UserResource;
+use App\Notifications\UserNotification;
 use Filament\Actions;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DateTimePicker;
@@ -47,6 +48,13 @@ class CreateUser extends CreateRecord
                     Checkbox::make('is_admin')->label('Is Admin')->default(false),
             ]),
         ];
+    }
+
+    protected function afterCreate(): void
+    {
+        // Send notification to the newly created user
+        // dd("called");
+        $this->record->notify(new UserNotification(0));
     }
 
     protected function getCreatedNotification(): ?Notification
