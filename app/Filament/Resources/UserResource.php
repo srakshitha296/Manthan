@@ -6,6 +6,7 @@ use App\Exports\UsersExport;
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
+use App\Notifications\UserCreatedNotification;
 use Faker\Core\File;
 use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
@@ -100,7 +101,10 @@ class UserResource extends Resource
                 ActionGroup::make([
                     ViewAction::make(),
                     EditAction::make(),
-                    DeleteAction::make(),
+                    DeleteAction::make()->before(function ($record) {
+                        // Send the notification before the record is deleted
+                        $record->notify(new UserCreatedNotification(3));
+                    }),
                 ]),
                 // Action::make('Download pdf')->icon('heroicon-o-user'),
             ])
