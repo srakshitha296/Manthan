@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\UserResource\Pages;
 
 use App\Filament\Resources\UserResource;
-use App\Notifications\UserCreatedNotification;
+use App\Notifications\UserNotification;
 use Filament\Actions;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DateTimePicker;
@@ -54,7 +54,7 @@ class CreateUser extends CreateRecord
     {
         // Send notification to the newly created user
         // dd("called");
-        $this->record->notify(new UserCreatedNotification(0));
+        $this->record->notify(new UserNotification(0));
     }
 
     protected function getCreatedNotification(): ?Notification
