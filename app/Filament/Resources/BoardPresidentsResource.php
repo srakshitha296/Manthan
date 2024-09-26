@@ -22,7 +22,7 @@ class BoardPresidentsResource extends Resource
 {
     protected static ?string $model = BoardPresidents::class;
     protected static ?string $navigationGroup = 'Boards / Committees';
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
     protected static ?string $navigationLabel = 'Board Presidents';
     protected static ?string $slug = 'aicte-board-presidents';
     protected static ?string $modelLabel = 'Board President';

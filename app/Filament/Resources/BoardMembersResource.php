@@ -19,7 +19,7 @@ class BoardMembersResource extends Resource
     protected static ?string $model = BoardMembers::class;
 
     protected static ?string $navigationGroup = 'Boards / Committees';
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
     protected static ?string $navigationLabel = 'Board Members';
     protected static ?string $slug = 'aicte-board-members';
     protected static ?string $modelLabel = 'Board Member';
