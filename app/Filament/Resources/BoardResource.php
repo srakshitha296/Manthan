@@ -28,7 +28,7 @@ class BoardResource extends Resource
     protected static ?string $model = Board::class;
 
     protected static ?string $navigationGroup = 'Boards / Committees';
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-window';
     protected static ?string $navigationLabel = 'Boards';
     protected static ?string $slug = 'aicte-boards';
     protected static ?string $modelLabel = 'Board';

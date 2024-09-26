@@ -32,7 +32,7 @@ use Maatwebsite\Excel\Facades\Excel;
 class ProgramExpectedOutcomesResource extends Resource
 {
     protected static ?string $model = ProgramExpectedOutcomes::class;
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-list';
     protected static ?string $navigationLabel = 'Program Expected Outcomes';
     protected static ?string $slug = 'program-expected-outcomes';
     protected static ?string $modelLabel = 'Program Expected Outcome';

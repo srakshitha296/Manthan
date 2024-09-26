@@ -5,7 +5,7 @@ namespace App\Filament\Resources;
 use App\Exports\Registeration;
 use App\Filament\Resources\RegisteredEventResource\Pages;
 use App\Filament\Resources\RegisteredEventResource\RelationManagers;
-use App\Models\RegisteredEvent;
+use App\Models\RegisteredEvents;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Group;
@@ -32,8 +32,8 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class RegisteredEventResource extends Resource
 {
-    protected static ?string $model = RegisteredEvent::class;
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $model = RegisteredEvents::class;
+    protected static ?string $navigationIcon = 'heroicon-o-circle-stack';
     protected static ?string $navigationLabel = 'Registerations';
     protected static ?string $slug = 'registered-events';
     protected static ?string $modelLabel = 'Registerations';
