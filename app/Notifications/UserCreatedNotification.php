@@ -44,7 +44,7 @@ class UserCreatedNotification extends Notification
                 ->line('You can now log in using your registered email address and password.')
                 ->action('Login', url('/login'))
                 ->line('Thank you for joining us!');
-        } else if($this->type === 1) {
+        }else if($this->type === 1) {
             return (new MailMessage)
             ->subject('Your Account Details Have Been Updated')
             ->greeting('Hello, ' . $notifiable->name)
@@ -52,7 +52,7 @@ class UserCreatedNotification extends Notification
             ->line('If you did not request this change, please contact support immediately.')
             ->action('View Account', url('/profile'))
             ->line('Thank you for using our platform!');
-        }else if($this->type === 2){
+        }else{
             return (new MailMessage)
             ->subject('Your Account Has Been Deleted')
             ->greeting('Hello, ' . $notifiable->name)
