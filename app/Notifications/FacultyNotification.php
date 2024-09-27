@@ -11,35 +11,48 @@ class FacultyNotification extends Notification
 {
     use Queueable;
 
+    protected $faculty;
+    protected $action;
+
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct($faculty, $action)
     {
-        //
+        $this->faculty = $faculty;
+        $this->action = $action;
     }
 
     /**
      * Get the notification's delivery channels.
-     *
-     * @return array<int, string>
      */
-    public function via(object $notifiable): array
+    public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail']; // You can also add other channels like 'database' if required
     }
 
     /**
      * Get the mail representation of the notification.
      */
-    public function toMail(object $notifiable): MailMessage
+    public function toMail($notifiable)
     {
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+        if($this->action === 'created'){
+            return (new MailMessage)
+                ->subject('Welcome ' . $this->faculty->user->name)
+                ->greeting('Hello ' . $this->faculty->user->name . ',')
+                ->line('You have been successfully registered as a faculty in the system.')
+                ->action('View Your Profile', url('/your-profile'))  // Replace with actual URL if needed
+                ->line('Thank you for being a part of our institution!');
+        }
+        if($this->action === 'updated'){
+            return (new MailMessage)
+                ->subject('Profile Updated ' . $this->faculty->user->name)
+                ->greeting('Hello ' . $this->faculty->user->name . ',')
+                ->line('Your faculty profile has been successfully updated in the system.')
+                ->action('View Your Profile', url('/your-profile'))  // Replace with actual URL if needed
+                ->line('Thank you for being a part of our institution!');
+        }
     }
-
     /**
      * Get the array representation of the notification.
      *
