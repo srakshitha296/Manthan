@@ -53,7 +53,7 @@ class CreateStudent extends CreateRecord
 
         // Notify the user if found
         if ($student->user) {
-            $student->user->notify(new StudentNotification($student));
+            $student->user->notify(new StudentNotification($student, 'created'));
         } else {
             dd('No associated user found for this student.');
         }
