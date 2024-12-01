@@ -15,7 +15,7 @@
         <div class="page-header-content">
             <h1 class="title">Event Page</h1>
             <h4 class="sub-title"><a class="home" href="{{ route('home') }}">Home </a><span class="icon">/</span>
-                <a class="inner-page" href="{{ route('events') }}"> Events</a></h4>
+                <a class="inner-page" href="{{ route('events') }}"> Events </a></h4>
         </div>
     </div>
 </section>
