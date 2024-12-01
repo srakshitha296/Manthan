@@ -13,7 +13,7 @@
                 <div class="top-bar-right">
                     <div class="register-box">
                         <div class="icon"><i class="fa-regular fa-user"></i></div>
-                        <a href="#">Login / Register</a>
+                        <a href="/">Login / Register</a>
                     </div>
                     <div class="top-social-wrap">
                         <span>Follow Us</span>
@@ -34,7 +34,7 @@
             <div class="primary-header-inner">
                 <div class="header-logo d-lg-block">
                     <a href="">
-                        <img src="{{ asset('ui/assets/img/logo/logo-1.png') }}" alt="Logo">
+                        <img src="{{ asset('ui/assets/img/logo/logo.png') }}" alt="Logo">
                     </a>
                 </div>
                 <div class="header-right-wrap">
@@ -152,7 +152,7 @@
 <div class="mobile-side-menu-overlay"></div>
 
 <div id="preloader">
-    <div class="spinner-logo"><img src="ui/assets/img/favicon.png" alt="logo"></div>
+    <div class="spinner-logo"><img src="{{ asset('ui/assets/img/logo/logo-landing.png') }}" style="width: 100px" alt="logo"></div>
     <div class="spinner"></div>
 </div>
 <!-- ./ preloader -->
