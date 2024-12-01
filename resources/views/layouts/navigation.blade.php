@@ -1,100 +1,158 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
-    <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+<!-- header-area-start -->
+<header class="header header-2 sticky-active">
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-inner">
+                <div class="top-bar-left">
+                    <ul class="top-bar-list">
+                        <li><i class="fa-regular fa-phone"></i><a href="tel:256214203215">+91 901 9003 490</a></li>
+                        <li><i class="fa-regular fa-location-dot"></i><span>A J Institute of Engineering and Technolgy, Mangalore</span></li>
+                        <li><i class="fa-regular fa-clock"></i><span>Mon - Sat: 9:00 - 5:00</span></li>
+                    </ul>
+                </div>
+                <div class="top-bar-right">
+                    <div class="register-box">
+                        <div class="icon"><i class="fa-regular fa-user"></i></div>
+                        <a href="#">Login / Register</a>
+                    </div>
+                    <div class="top-social-wrap">
+                        <span>Follow Us</span>
+                        <ul class="social-list">
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-discord"></i></a></li>
+                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="primary-header">
+        <div class="container">
+            <div class="primary-header-inner">
+                <div class="header-logo d-lg-block">
+                    <a href="">
+                        <img src="{{ asset('ui/assets/img/logo/logo-1.png') }}" alt="Logo">
                     </a>
                 </div>
-
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
+                <div class="header-right-wrap">
+                    <div class="header-menu-wrap">
+                        <div class="mobile-menu-items">
+                            <ul class="sub-menu">
+                                <li class="menu-item-has-children active">
+                                    <a href="index.html">Home</a>
+                                    <ul>
+                                        <li><a href="index.html">Main Demo</a></li>
+                                        <li><a href="index-2.html">Online Education</a></li>
+                                        <li><a href="index-3.html">Digital Education</a></li>
+                                        <li><a href="index-4.html">Online Course</a></li>
+                                        <li><a href="index-5.html">Eduction Platform</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="course.html">Courses</a>
+                                    <ul>
+                                        <li><a href="course.html">Course</a></li>
+                                        <li><a href="course-details.html">Course Details</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="shop.html">Shop</a>
+                                    <ul>
+                                        <li><a href="shop.html">Shop</a></li>
+                                        <li><a href="shop-details.html">Shop Details</a></li>
+                                        <li><a href="cart.html">Cart</a></li>
+                                        <li><a href="wishlist.html">Wishlist</a></li>
+                                        <li><a href="checkout.html">Checkout</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="#">Pages</a>
+                                    <ul>
+                                        <li><a href="about.html">About Us</a></li>
+                                        <li><a href="teachers.html">Instructor</a></li>
+                                        <li><a href="pricing.html">Pricing Table</a></li>
+                                        <li><a href="event.html">Event</a></li>
+                                        <li><a href="event-details.html">Event Details</a></li>
+                                        <li><a href="error-page.html">404 Error</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="blog-grid.html">Blog</a>
+                                    <ul>
+                                        <li><a href="blog-grid.html">Blog Post</a></li>
+                                        <li><a href="blog.html">Blog Standard</a></li>
+                                        <li><a href="blog-list.html">Blog List</a></li>
+                                        <li><a href="blog-details.html">Blog Details</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.header-menu-wrap -->
+                    <div class="header-right">
+                        <div class="header-right-icon d-xl-block d-lg-none">
+                            <a href="wishlist.html"><i class="fa-sharp fa-regular fa-heart"></i></a>
+                            <span class="number">0</span>
+                        </div>
+                        <div class="header-right-icon shop-btn">
+                            <a href="cart.html"><i class="fa-regular fa-cart-shopping"></i></a>
+                            <span class="number">0</span>
+                        </div>
+                        <a href="contact.html" class="ed-primary-btn header-btn">Get a quote <i
+                                class="fa-sharp fa-regular fa-arrow-right"></i></a>
+                        <div class="header-logo d-none d-lg-none">
+                            <a href="index.html">
+                                <img src="ui/assets/img/logo/logo-1.png" alt="Logo">
+                            </a>
+                        </div>
+                        <div class="header-right-item d-lg-none d-md-block">
+                            <a href="javascript:void(0)" class="mobile-side-menu-toggle"><i
+                                    class="fa-sharp fa-solid fa-bars"></i></a>
+                        </div>
+                    </div>
+                    <!-- /.header-right -->
                 </div>
             </div>
-
-            <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
-                <x-dropdown align="right" width="48">
-                    <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
-
-                            <div class="ms-1">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                        </button>
-                    </x-slot>
-
-                    <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                        </x-dropdown-link>
-
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
-                    </x-slot>
-                </x-dropdown>
-            </div>
-
-            <!-- Hamburger -->
-            <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
+            <!-- /.primary-header-inner -->
         </div>
     </div>
+</header>
+<!-- /.Main Header -->
 
-    <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-        </div>
-
-        <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
-            <div class="px-4">
-                <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-            </div>
-
-            <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
-                </x-responsive-nav-link>
-
-                <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-responsive-nav-link>
-                </form>
-            </div>
-        </div>
+<div id="popup-search-box">
+    <div class="box-inner-wrap d-flex align-items-center">
+        <form id="form" action="#" method="get" role="search">
+            <input id="popup-search" type="text" name="s" placeholder="Type keywords here...">
+        </form>
+        <div class="search-close"><i class="fa-sharp fa-regular fa-xmark"></i></div>
     </div>
-</nav>
+</div>
+<!-- /#popup-search-box -->
+
+<div class="mobile-side-menu">
+    <div class="side-menu-content">
+        <div class="side-menu-head">
+            <a href="index.html"><img src="ui/assets/img/logo/logo-1.png" alt="logo"></a>
+            <button class="mobile-side-menu-close"><i class="fa-regular fa-xmark"></i></button>
+        </div>
+        <div class="side-menu-wrap"></div>
+        <ul class="side-menu-list">
+            <li><i class="fa-light fa-location-dot"></i>Address : <span>Amsterdam, 109-74</span></li>
+            <li><i class="fa-light fa-phone"></i>Phone : <a href="tel:+01569896654">+01 569 896 654</a></li>
+            <li><i class="fa-light fa-envelope"></i>Email : <a href="mailto:info@example.com">info@example.com</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- /.mobile-side-menu -->
+<div class="mobile-side-menu-overlay"></div>
+
+<div id="preloader">
+    <div class="spinner-logo"><img src="ui/assets/img/favicon.png" alt="logo"></div>
+    <div class="spinner"></div>
+</div>
+<!-- ./ preloader -->
