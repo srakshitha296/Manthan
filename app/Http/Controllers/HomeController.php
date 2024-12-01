@@ -10,4 +10,16 @@ class HomeController extends Controller
     {
         return view('home.index');
     }
+
+    public function about(){
+        return view('');
+    }
+
+    public function contact(){
+        return view('');
+    }
+
+    public function events(){
+        return view('events.index');
+    }
 }
