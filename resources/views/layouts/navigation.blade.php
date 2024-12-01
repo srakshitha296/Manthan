@@ -41,53 +41,21 @@
                     <div class="header-menu-wrap">
                         <div class="mobile-menu-items">
                             <ul class="sub-menu">
-                                <li class="menu-item-has-children active">
-                                    <a href="index.html">Home</a>
-                                    <ul>
-                                        <li><a href="index.html">Main Demo</a></li>
-                                        <li><a href="index-2.html">Online Education</a></li>
-                                        <li><a href="index-3.html">Digital Education</a></li>
-                                        <li><a href="index-4.html">Online Course</a></li>
-                                        <li><a href="index-5.html">Eduction Platform</a></li>
-                                    </ul>
+                                <li class="menu-item active">
+                                    <a href="{{ route('home') }}">Home</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="{{ route('home') }}">About Us</a>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="course.html">Courses</a>
+                                    <a href="{{ route('events') }}">Events</a>
                                     <ul>
-                                        <li><a href="course.html">Course</a></li>
-                                        <li><a href="course-details.html">Course Details</a></li>
+                                        <li><a href="/">SDP</a></li>
+                                        <li><a href="/">FDP</a></li>
                                     </ul>
                                 </li>
-                                <li class="menu-item-has-children">
-                                    <a href="shop.html">Shop</a>
-                                    <ul>
-                                        <li><a href="shop.html">Shop</a></li>
-                                        <li><a href="shop-details.html">Shop Details</a></li>
-                                        <li><a href="cart.html">Cart</a></li>
-                                        <li><a href="wishlist.html">Wishlist</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Pages</a>
-                                    <ul>
-                                        <li><a href="about.html">About Us</a></li>
-                                        <li><a href="teachers.html">Instructor</a></li>
-                                        <li><a href="pricing.html">Pricing Table</a></li>
-                                        <li><a href="event.html">Event</a></li>
-                                        <li><a href="event-details.html">Event Details</a></li>
-                                        <li><a href="error-page.html">404 Error</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="blog-grid.html">Blog</a>
-                                    <ul>
-                                        <li><a href="blog-grid.html">Blog Post</a></li>
-                                        <li><a href="blog.html">Blog Standard</a></li>
-                                        <li><a href="blog-list.html">Blog List</a></li>
-                                        <li><a href="blog-details.html">Blog Details</a></li>
-                                    </ul>
-                                </li>
+                                
+                                <li><a href="/">Gallery</a></li>
                                 <li><a href="contact.html">Contact</a></li>
                             </ul>
                         </div>
