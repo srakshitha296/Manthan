@@ -71,7 +71,7 @@
                             <a href="cart.html"><i class="fa-regular fa-cart-shopping"></i></a>
                             <span class="number">0</span>
                         </div> --}}
-                        <a href="contact.html" class="ed-primary-btn header-btn">Get a quote <i
+                        <a href="{{ route('contact') }}" class="ed-primary-btn header-btn">Get a quote <i
                                 class="fa-sharp fa-regular fa-arrow-right"></i></a>
                         <div class="header-logo d-none d-lg-none">
                             <a href="index.html">

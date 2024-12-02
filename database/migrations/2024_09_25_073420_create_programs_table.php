@@ -24,7 +24,9 @@ return new class extends Migration
             $table->string('duration');
             $table->string('fees')->nullable();
             $table->string('location');
-            $table->string('organiser')->nullable();
+            $table->boolean('is_featured')->default(false);
+            $table->string('address')->nullable();
+            $table->boolean('requires_registration')->default(true);
             $table->timestamps();
         });
     }
