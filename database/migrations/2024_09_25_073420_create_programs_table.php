@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('programs', function (Blueprint $table) {
             $table->id();
+            $table->string('banner')->nullable();
             $table->string('name');
             $table->text('description');
             $table->enum('type', ['SDP', 'FDP', 'STTP', 'Workshop', 'Seminar', 'Conference', 'Webinar', 'Hackathon', 'Bootcamp', 'Other'])->default('Other');
             $table->dateTime('start_date');
             $table->dateTime('end_date');
+            $table->time('start_time');
+            $table->time('end_time');
             $table->string('duration');
             $table->string('fees')->nullable();
             $table->string('location');

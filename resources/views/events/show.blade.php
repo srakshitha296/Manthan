@@ -3,10 +3,10 @@
 @section('content')
 <section class="page-header">
     <div class="bg-item">
-        <div class="bg-img" data-background="{{ asset('ui/assets/img/bg-img/page-header-bg.png') }}"></div>
+        {{-- <div class="bg-img" data-background="{{ asset('ui/assets/img/bg-img/page-header-bg.png') }}"></div> --}}
         <div class="overlay"></div>
         <div class="shapes">
-            <div class="shape shape-1"><img src="{{ asset('ui/assets/img/shapes/page-header-shape-1.png') }}" alt="shape"></div>
+            {{-- <div class="shape shape-1"><img src="{{ asset('ui/assets/img/shapes/page-header-shape-1.png') }}" alt="shape"></div> --}}
             <div class="shape shape-2"><img src="{{ asset('ui/assets/img/shapes/page-header-shape-2.png') }}" alt="shape"></div>
             <div class="shape shape-3"><img src="{{ asset('ui/assets/img/shapes/page-header-shape-3.png') }}" alt="shape"></div>
         </div>
@@ -27,7 +27,7 @@
             <div class="col-lg-8 col-md-12">
                 <div class="event-details-content">
                     <div class="event-details-img">
-                        <img src="ui/assets/img/images/event-details.png" alt="event">
+                        <img src="{{ asset('ui/assets/img/images/event-details.png') }}" alt="event">
                     </div>
                     <h2 class="title">Event Overview</h2>
                     <p class="mb-30">In today's rapidly evolving educational landscape, traditional teaching methods are being reimagined to meet the needs of a new generation of learners. The "Innovative Teaching Strategies for the 21st Century Classroom" event is designed to empower educators with cutting-edge tools, techniques, and insights that are transforming how we approach teaching and learning. This event will explore a wide range of innovative strategies, from integrating technology and fostering collaboration to promoting critical thinking and creativity in the classroom. Participants will engage with thought leaders and experienced educators who are at the forefront of educational innovation.</p>
