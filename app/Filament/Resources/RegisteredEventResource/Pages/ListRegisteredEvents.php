@@ -4,7 +4,7 @@ namespace App\Filament\Resources\RegisteredEventResource\Pages;
 
 use App\Exports\Registeration;
 use App\Filament\Resources\RegisteredEventResource;
-use App\Models\RegisteredEvent;
+use App\Models\RegisteredEvents;
 use Filament\Actions\CreateAction;
 use Filament\Actions\Action;
 use Filament\Resources\Pages\ListRecords;
@@ -17,7 +17,7 @@ class ListRegisteredEvents extends ListRecords
 
     protected function getHeaderActions(): array
     {
-        if(RegisteredEvent::count()){
+        if(RegisteredEvents::count()){
             return[
                 CreateAction::make(),
                 Action::make('export')->label('Export Registerations')->icon('heroicon-o-document-arrow-down')

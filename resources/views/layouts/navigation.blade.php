@@ -38,7 +38,7 @@
         <div class="container">
             <div class="primary-header-inner">
                 <div class="header-logo d-lg-block">
-                    <a href="">
+                    <a href="{{ route('home') }}">
                         <img src="{{ asset('ui/assets/img/logo/logo.png') }}" alt="Logo">
                     </a>
                 </div>
@@ -63,14 +63,14 @@
                     </div>
                     <!-- /.header-menu-wrap -->
                     <div class="header-right">
-                        <div class="header-right-icon d-xl-block d-lg-none">
+                        {{-- <div class="header-right-icon d-xl-block d-lg-none">
                             <a href="wishlist.html"><i class="fa-sharp fa-regular fa-heart"></i></a>
                             <span class="number">0</span>
                         </div>
                         <div class="header-right-icon shop-btn">
                             <a href="cart.html"><i class="fa-regular fa-cart-shopping"></i></a>
                             <span class="number">0</span>
-                        </div>
+                        </div> --}}
                         <a href="contact.html" class="ed-primary-btn header-btn">Get a quote <i
                                 class="fa-sharp fa-regular fa-arrow-right"></i></a>
                         <div class="header-logo d-none d-lg-none">

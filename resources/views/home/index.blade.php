@@ -17,7 +17,7 @@
                     <li><img src="ui/assets/img/images/faq-thumb-5.png" alt="faq"></li>
                     <li class="number">+</li>
                 </ul>
-                <p><span>200+</span> <br>Instuctor</p>
+                <p><span>200+</span> <br>Instuctors</p>
             </div>
         </div>
         <div class="hero-text-box">
@@ -39,16 +39,16 @@
                     <div class="section-heading mb-20">
                         <h4 class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span
                                 class="heading-icon"><i class="fa-sharp fa-solid fa-bolt"></i></span>Welcome to
-                            Online Education</h4>
-                        <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Start learning from the
-                            <br>world’s <span>best sites</span></h2>
+                            Manthan - AICTE Activity/Event Management System    </h4>
+                        <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Start benefiting from the
+                            <br>world's <span>best tech council</span></h2>
                     </div>
                     <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus
                         <br> nec ullamcorper mattis</p>
                     <div class="hero-form">
-                        <form action="https://html.rrdevs.net/edcare/mail.php">
+                        <form action="/">
                             <input type="text" id="text" name="text" class="form-control"
-                                placeholder="What do you want to learn today?">
+                                placeholder="What do you want to explore today?">
                         </form>
                         <button class="ed-primary-btn">Search Now <i class="fa-regular fa-arrow-right"></i></button>
                         <div class="icon"><i class="fa-regular fa-magnifying-glass"></i></div>
@@ -59,7 +59,7 @@
                             <div class="content">
                                 <h3 class="title"><span class="odometer" data-count="9.5">0</span><span
                                         class="number">K+</span></h3>
-                                <p>Total active students taking <br>gifted courses</p>
+                                <p>Total active faculties taking <br>benefits</p>
                             </div>
                         </div>
                         <div class="about-counter-item">
@@ -67,7 +67,7 @@
                             <div class="content">
                                 <h3 class="title"><span class="odometer" data-count="15.5">0</span><span
                                         class="number">K+</span></h3>
-                                <p>Total active students taking <br>gifted courses</p>
+                                <p>Total active students taking <br>benefitted courses</p>
                             </div>
                         </div>
                     </div>
@@ -87,11 +87,11 @@
         <div class="course-top heading-space align-items-end">
             <div class="section-heading mb-0">
                 <h4 class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
-                            class="fa-sharp fa-solid fa-bolt"></i></span>Trending Courses</h4>
-                <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Featured Courses</h2>
+                            class="fa-sharp fa-solid fa-bolt"></i></span>Trending Events</h4>
+                <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Featured Events</h2>
             </div>
             <div class="course-top-right wow fade-in-bottom" data-wow-delay="300ms">
-                <a href="course.html" class="ed-primary-btn">Browse All Courses <i
+                <a href="{{ route('events') }}" class="ed-primary-btn">Browse All Events <i
                         class="fa-regular fa-arrow-right"></i></a>
             </div>
         </div>
@@ -106,7 +106,7 @@
                     <div class="course-content-wrap">
                         <div class="course-content">
                             <span class="offer">Free</span>
-                            <h3 class="title"><a href="course-details.html">React Tutorial Beginners For Skills
+                            <h3 class="title"><a href="{{ route('events.show') }}">React Tutorial Beginners For Skills
                                     Building Carrera</a></h3>
                             <ul class="course-list">
                                 <li><i class="fa-light fa-file"></i>Lesson 8</li>
@@ -134,8 +134,8 @@
                             </div>
                         </div>
                         <div class="bottom-content">
-                            <span class="price">$59.00</span>
-                            <a href="course-details.html" class="course-btn">View Details</a>
+                            <span class="price">₹59.00</span>
+                            <a href="{{ route('events.show') }}" class="course-btn">View Details</a>
                         </div>
                     </div>
                 </div>
@@ -150,7 +150,7 @@
                     <div class="course-content-wrap">
                         <div class="course-content">
                             <span class="offer">Free</span>
-                            <h3 class="title"><a href="course-details.html">React Tutorial Beginners For Skills
+                            <h3 class="title"><a href="{{ route('events.show') }}">React Tutorial Beginners For Skills
                                     Building Carrera</a></h3>
                             <ul class="course-list">
                                 <li><i class="fa-light fa-file"></i>Lesson 8</li>
@@ -178,8 +178,8 @@
                             </div>
                         </div>
                         <div class="bottom-content">
-                            <span class="price">$59.00</span>
-                            <a href="course-details.html" class="course-btn">View Details</a>
+                            <span class="price">₹59.00</span>
+                            <a href="{{ route('events.show') }}" class="course-btn">View Details</a>
                         </div>
                     </div>
                 </div>
@@ -194,7 +194,7 @@
                     <div class="course-content-wrap">
                         <div class="course-content">
                             <span class="offer">Free</span>
-                            <h3 class="title"><a href="course-details.html">React Tutorial Beginners For Skills
+                            <h3 class="title"><a href="{{ route('events.show') }}">React Tutorial Beginners For Skills
                                     Building Carrera</a></h3>
                             <ul class="course-list">
                                 <li><i class="fa-light fa-file"></i>Lesson 8</li>
@@ -222,8 +222,8 @@
                             </div>
                         </div>
                         <div class="bottom-content">
-                            <span class="price">$59.00</span>
-                            <a href="course-details.html" class="course-btn">View Details</a>
+                            <span class="price">₹59.00</span>
+                            <a href="{{ route('events.show') }}" class="course-btn">View Details</a>
                         </div>
                     </div>
                 </div>
@@ -238,7 +238,7 @@
                     <div class="course-content-wrap">
                         <div class="course-content">
                             <span class="offer">Free</span>
-                            <h3 class="title"><a href="course-details.html">React Tutorial Beginners For Skills
+                            <h3 class="title"><a href="{{ route('events.show') }}">React Tutorial Beginners For Skills
                                     Building Carrera</a></h3>
                             <ul class="course-list">
                                 <li><i class="fa-light fa-file"></i>Lesson 8</li>
@@ -266,8 +266,8 @@
                             </div>
                         </div>
                         <div class="bottom-content">
-                            <span class="price">$59.00</span>
-                            <a href="course-details.html" class="course-btn">View Details</a>
+                            <span class="price">₹59.00</span>
+                            <a href="{{ route('events.show') }}" class="course-btn">View Details</a>
                         </div>
                     </div>
                 </div>
@@ -283,11 +283,11 @@
             <div class="course-top heading-space align-items-end white-content">
                 <div class="section-heading mb-0">
                     <h4 class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
-                                class="fa-sharp fa-solid fa-bolt"></i></span>Our Course Categories</h4>
-                    <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Featured Courses</h2>
+                                class="fa-sharp fa-solid fa-bolt"></i></span>Our Events</h4>
+                    <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Featured Events</h2>
                 </div>
                 <div class="course-top-right wow fade-in-bottom" data-wow-delay="300ms">
-                    <a href="course.html" class="ed-primary-btn">Browse All Courses <i
+                    <a href="{{ route('events') }}" class="ed-primary-btn">Browse All Courses <i
                             class="fa-regular fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -296,7 +296,7 @@
                     <div class="feature-item text-center wow fade-in-bottom" data-wow-delay="200ms">
                         <div class="icon"><img src="ui/assets/img/icon/feature-1.png" alt="feature"></div>
                         <h3 class="title">UI/UX <br>Design Service</h3>
-                        <a href="course-details.html" class="feature-btn"><i
+                        <a href="{{ route('events.show') }}" class="feature-btn"><i
                                 class="fa-regular fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -304,7 +304,7 @@
                     <div class="feature-item text-center wow fade-in-bottom" data-wow-delay="200ms">
                         <div class="icon"><img src="ui/assets/img/icon/feature-2.png" alt="feature"></div>
                         <h3 class="title">Software <br>Development</h3>
-                        <a href="course-details.html" class="feature-btn"><i
+                        <a href="{{ route('events.show') }}" class="feature-btn"><i
                                 class="fa-regular fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -312,7 +312,7 @@
                     <div class="feature-item text-center wow fade-in-bottom" data-wow-delay="400ms">
                         <div class="icon"><img src="ui/assets/img/icon/feature-3.png" alt="feature"></div>
                         <h3 class="title">Digital <br>Marketing</h3>
-                        <a href="course-details.html" class="feature-btn"><i
+                        <a href="{{ route('events.show') }}" class="feature-btn"><i
                                 class="fa-regular fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -320,7 +320,7 @@
                     <div class="feature-item text-center wow fade-in-bottom" data-wow-delay="500ms">
                         <div class="icon"><img src="ui/assets/img/icon/feature-4.png" alt="feature"></div>
                         <h3 class="title">Self <br>Managments</h3>
-                        <a href="course-details.html" class="feature-btn"><i
+                        <a href="{{ route('events.show') }}" class="feature-btn"><i
                                 class="fa-regular fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -328,7 +328,7 @@
                     <div class="feature-item text-center wow fade-in-bottom" data-wow-delay="600ms">
                         <div class="icon"><img src="ui/assets/img/icon/feature-5.png" alt="feature"></div>
                         <h3 class="title">Application <br>Development</h3>
-                        <a href="course-details.html" class="feature-btn"><i
+                        <a href="{{ route('events.show') }}" class="feature-btn"><i
                                 class="fa-regular fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -336,7 +336,7 @@
                     <div class="feature-item text-center wow fade-in-bottom" data-wow-delay="700ms">
                         <div class="icon"><img src="ui/assets/img/icon/feature-6.png" alt="feature"></div>
                         <h3 class="title">UI/UX Graphic <br>Design</h3>
-                        <a href="course-details.html" class="feature-btn"><i
+                        <a href="{{ route('events.show') }}" class="feature-btn"><i
                                 class="fa-regular fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -363,7 +363,7 @@
                     </div>
                     <div class="course-content">
                         <span class="offer">Free</span>
-                        <h3 class="title"><a href="course-details.html">React Tutorial Beginners For Skills Building
+                        <h3 class="title"><a href="{{ route('events.show') }}">React Tutorial Beginners For Skills Building
                                 Carrera</a></h3>
                         <ul class="course-list">
                             <li><i class="fa-light fa-file"></i>Lesson 8</li>
@@ -391,8 +391,8 @@
                         </div>
                     </div>
                     <div class="bottom-content">
-                        <span class="price">$59.00</span>
-                        <a href="course-details.html" class="course-btn">View Details</a>
+                        <span class="price">₹59.00</span>
+                        <a href="{{ route('events.show') }}" class="course-btn">View Details</a>
                     </div>
                 </div>
             </div>
@@ -405,7 +405,7 @@
                     </div>
                     <div class="course-content">
                         <span class="offer">Free</span>
-                        <h3 class="title"><a href="course-details.html">Cultural Perspectives in Teaching <br>and
+                        <h3 class="title"><a href="{{ route('events.show') }}">Cultural Perspectives in Teaching <br>and
                                 Learning Environments</a></h3>
                         <ul class="course-list">
                             <li><i class="fa-light fa-file"></i>Lesson 8</li>
@@ -433,8 +433,8 @@
                         </div>
                     </div>
                     <div class="bottom-content">
-                        <span class="price">$59.00</span>
-                        <a href="course-details.html" class="course-btn">View Details</a>
+                        <span class="price">₹59.00</span>
+                        <a href="{{ route('events.show') }}" class="course-btn">View Details</a>
                     </div>
                 </div>
             </div>
@@ -447,7 +447,7 @@
                     </div>
                     <div class="course-content">
                         <span class="offer">Free</span>
-                        <h3 class="title"><a href="course-details.html">Innovative Instructional Strategies <br>for
+                        <h3 class="title"><a href="{{ route('events.show') }}">Innovative Instructional Strategies <br>for
                                 Enhancing Student</a></h3>
                         <ul class="course-list">
                             <li><i class="fa-light fa-file"></i>Lesson 8</li>
@@ -475,8 +475,8 @@
                         </div>
                     </div>
                     <div class="bottom-content">
-                        <span class="price">$59.00</span>
-                        <a href="course-details.html" class="course-btn">View Details</a>
+                        <span class="price">₹59.00</span>
+                        <a href="{{ route('events.show') }}" class="course-btn">View Details</a>
                     </div>
                 </div>
             </div>

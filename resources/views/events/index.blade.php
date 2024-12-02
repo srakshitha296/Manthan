@@ -32,9 +32,10 @@
                     </div>
                     <div class="event-content">
                         <span class="time"><i class="fa-regular fa-clock"></i> 7:00 pm - 9:00 pm</span>
-                        <h3 class="title"><a href="couse-details.html">Engaging Students in Real-World <br>Problems Finding</a></h3>
+                        <h3 class="title"><a href="{{ route('events.show') }}">Engaging Students in Real-World <br>Problems Finding</a></h3>
                         <div class="location"><span><i class="fa-regular fa-location-dot"></i>Springfield, IL 62704 United States</span></div>
-                        <a href="couse-details.html" class="ed-primary-btn">View Details</a>
+                        <a href="{{ route('events.show') }}" class="ed-primary-btn">View Details</a>
+                        <a href="{{ route('events.show') }}" class="ed-primary-btn">View Details</a>
                     </div>
                 </div>
             </div>
@@ -46,9 +47,9 @@
                     </div>
                     <div class="event-content">
                         <span class="time"><i class="fa-regular fa-clock"></i> 7:00 pm - 9:00 pm</span>
-                        <h3 class="title"><a href="couse-details.html">Innovative Teaching Strategies for <br>the 21st Century Classroom</a></h3>
+                        <h3 class="title"><a href="{{ route('events.show') }}">Innovative Teaching Strategies for <br>the 21st Century Classroom</a></h3>
                         <div class="location"><span><i class="fa-regular fa-location-dot"></i>Springfield, IL 62704 United States</span></div>
-                        <a href="couse-details.html" class="ed-primary-btn">View Details</a>
+                        <a href="{{ route('events.show') }}" class="ed-primary-btn">View Details</a>
                     </div>
                 </div>
             </div>
@@ -60,9 +61,9 @@
                     </div>
                     <div class="event-content">
                         <span class="time"><i class="fa-regular fa-clock"></i> 7:00 pm - 9:00 pm</span>
-                        <h3 class="title"><a href="couse-details.html">Impact of Artificial Intelligence on <br>the Future of Education</a></h3>
+                        <h3 class="title"><a href="{{ route('events.show') }}">Impact of Artificial Intelligence on <br>the Future of Education</a></h3>
                         <div class="location"><span><i class="fa-regular fa-location-dot"></i>Springfield, IL 62704 United States</span></div>
-                        <a href="couse-details.html" class="ed-primary-btn">View Details</a>
+                        <a href="{{ route('events.show') }}" class="ed-primary-btn">View Details</a>
                     </div>
                 </div>
             </div>
@@ -74,9 +75,9 @@
                     </div>
                     <div class="event-content">
                         <span class="time"><i class="fa-regular fa-clock"></i> 7:00 pm - 9:00 pm</span>
-                        <h3 class="title"><a href="couse-details.html">Teaching Students to Think Beyond <br>the Textbook</a></h3>
+                        <h3 class="title"><a href="{{ route('events.show') }}">Teaching Students to Think Beyond <br>the Textbook</a></h3>
                         <div class="location"><span><i class="fa-regular fa-location-dot"></i>Springfield, IL 62704 United States</span></div>
-                        <a href="couse-details.html" class="ed-primary-btn">View Details</a>
+                        <a href="{{ route('events.show') }}" class="ed-primary-btn">View Details</a>
                     </div>
                 </div>
             </div>
@@ -88,9 +89,9 @@
                     </div>
                     <div class="event-content">
                         <span class="time"><i class="fa-regular fa-clock"></i> 7:00 pm - 9:00 pm</span>
-                        <h3 class="title"><a href="couse-details.html">Creating Learning Environments for Students of All Abilities</a></h3>
+                        <h3 class="title"><a href="{{ route('events.show') }}">Creating Learning Environments for Students of All Abilities</a></h3>
                         <div class="location"><span><i class="fa-regular fa-location-dot"></i>Springfield, IL 62704 United States</span></div>
-                        <a href="couse-details.html" class="ed-primary-btn">View Details</a>
+                        <a href="{{ route('events.show') }}" class="ed-primary-btn">View Details</a>
                     </div>
                 </div>
             </div>
@@ -102,9 +103,9 @@
                     </div>
                     <div class="event-content">
                         <span class="time"><i class="fa-regular fa-clock"></i> 7:00 pm - 9:00 pm</span>
-                        <h3 class="title"><a href="couse-details.html">Role of Social-Emotional Learning <br>in Student Success</a></h3>
+                        <h3 class="title"><a href="{{ route('events.show') }}">Role of Social-Emotional Learning <br>in Student Success</a></h3>
                         <div class="location"><span><i class="fa-regular fa-location-dot"></i>Springfield, IL 62704 United States</span></div>
-                        <a href="couse-details.html" class="ed-primary-btn">View Details</a>
+                        <a href="{{ route('events.show') }}" class="ed-primary-btn">View Details</a>
                     </div>
                 </div>
             </div>
@@ -116,9 +117,9 @@
                     </div>
                     <div class="event-content">
                         <span class="time"><i class="fa-regular fa-clock"></i> 7:00 pm - 9:00 pm</span>
-                        <h3 class="title"><a href="couse-details.html">Project-Based Learning: Engaging <br>Students Through Real-World </a></h3>
+                        <h3 class="title"><a href="{{ route('events.show') }}">Project-Based Learning: Engaging <br>Students Through Real-World </a></h3>
                         <div class="location"><span><i class="fa-regular fa-location-dot"></i>Springfield, IL 62704 United States</span></div>
-                        <a href="couse-details.html" class="ed-primary-btn">View Details</a>
+                        <a href="{{ route('events.show') }}" class="ed-primary-btn">View Details</a>
                     </div>
                 </div>
             </div>
@@ -130,9 +131,9 @@
                     </div>
                     <div class="event-content">
                         <span class="time"><i class="fa-regular fa-clock"></i> 7:00 pm - 9:00 pm</span>
-                        <h3 class="title"><a href="couse-details.html">How Meaningful Assignments Can <br>Drive Deeper Learning</a></h3>
+                        <h3 class="title"><a href="{{ route('events.show') }}">How Meaningful Assignments Can <br>Drive Deeper Learning</a></h3>
                         <div class="location"><span><i class="fa-regular fa-location-dot"></i>Springfield, IL 62704 United States</span></div>
-                        <a href="couse-details.html" class="ed-primary-btn">View Details</a>
+                        <a href="{{ route('events.show') }}" class="ed-primary-btn">View Details</a>
                     </div>
                 </div>
             </div>
@@ -144,9 +145,9 @@
                     </div>
                     <div class="event-content">
                         <span class="time"><i class="fa-regular fa-clock"></i> 7:00 pm - 9:00 pm</span>
-                        <h3 class="title"><a href="couse-details.html">Innovative Teaching Strategies for <br>the 21st Century Classroom</a></h3>
+                        <h3 class="title"><a href="{{ route('events.show') }}">Innovative Teaching Strategies for <br>the 21st Century Classroom</a></h3>
                         <div class="location"><span><i class="fa-regular fa-location-dot"></i>Springfield, IL 62704 United States</span></div>
-                        <a href="couse-details.html" class="ed-primary-btn">View Details</a>
+                        <a href="{{ route('events.show') }}" class="ed-primary-btn">View Details</a>
                     </div>
                 </div>
             </div>
