@@ -18,5 +18,6 @@ Route::get('/',[HomeController::class,'home'])->name('home');
 Route::get('/events',[HomeController::class,'events'])->name('events');
 Route::get('/events-details',[HomeController::class, 'eventDetails'])->name('events.show');
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
+Route::get('/about',[HomeController::class,'about'])->name('about');
 
 require __DIR__.'/auth.php';

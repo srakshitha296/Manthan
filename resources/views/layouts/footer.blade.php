@@ -4,7 +4,7 @@
             <div class="footer-top text-center">
                 <h2 class="title">Subscribe Our Newsletter For <br>Latest Updates</h2>
                 <div class="footer-form-wrap">
-                    <form action="https://html.rrdevs.net/edcare/mail.php" class="footer-form">
+                    <form action="/" class="footer-form">
                         <div class="form-item">
                             <input type="text" id="email-2" name="email" class="form-control"
                                 placeholder="Enter Your E-mail">
@@ -84,7 +84,7 @@
     <div class="copyright-area">
         <div class="container">
             <div class="copyright-content">
-                <p>Copyright © 2024 EdCare. All Rights Reserved.</p>
+                <p>Copyright © 2024 Manthan. All Rights Reserved.</p>
             </div>
         </div>
     </div>

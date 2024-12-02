@@ -13,7 +13,12 @@
                 <div class="top-bar-right">
                     <div class="register-box">
                         <div class="icon"><i class="fa-regular fa-user"></i></div>
-                        <a href="/">Login / Register</a>
+                        @auth
+                        <a href="{{ route('dashboard') }}">Dashboard</a>
+                        @endauth
+                        @guest
+                        <a href="{{ route('login') }}">Login</a><a href="{{ route('register') }}">/ Register</a>
+                        @endguest
                     </div>
                     <div class="top-social-wrap">
                         <span>Follow Us</span>
@@ -45,14 +50,10 @@
                                     <a href="{{ route('home') }}">Home</a>
                                 </li>
                                 <li class="menu-item">
-                                    <a href="{{ route('home') }}">About Us</a>
+                                    <a href="{{ route('about') }}">About Us</a>
                                 </li>
-                                <li class="menu-item-has-children">
+                                <li class="menu-item">
                                     <a href="{{ route('events') }}">Events</a>
-                                    <ul>
-                                        <li><a href="/">SDP</a></li>
-                                        <li><a href="/">FDP</a></li>
-                                    </ul>
                                 </li>
                                 
                                 <li><a href="/">Gallery</a></li>
@@ -104,7 +105,7 @@
 <div class="mobile-side-menu">
     <div class="side-menu-content">
         <div class="side-menu-head">
-            <a href="index.html"><img src="ui/assets/img/logo/logo-1.png" alt="logo"></a>
+            <a href="index.html"><img src="{{ asset('ui/assets/img/logo/logo.png') }}" alt="logo"></a>
             <button class="mobile-side-menu-close"><i class="fa-regular fa-xmark"></i></button>
         </div>
         <div class="side-menu-wrap"></div>
