@@ -13,7 +13,12 @@
                 <div class="top-bar-right">
                     <div class="register-box">
                         <div class="icon"><i class="fa-regular fa-user"></i></div>
-                        <a href="/">Login / Register</a>
+                        @auth
+                        <a href="{{ route('dashboard') }}">Dashboard</a>
+                        @endauth
+                        @guest
+                        <a href="{{ route('login') }}">Login</a><a href="{{ route('register') }}">/ Register</a>
+                        @endguest
                     </div>
                     <div class="top-social-wrap">
                         <span>Follow Us</span>
@@ -33,8 +38,8 @@
         <div class="container">
             <div class="primary-header-inner">
                 <div class="header-logo d-lg-block">
-                    <a href="">
-                        <img src="{{ asset('ui/assets/img/logo/logo.png') }}" alt="Logo">
+                    <a href="{{ route('home') }}">
+                        <img src="{{ asset('ui/assets/img/logo/logo-dark.png') }}" style="width: 300px; height: auto" alt="Logo">
                     </a>
                 </div>
                 <div class="header-right-wrap">
@@ -45,14 +50,10 @@
                                     <a href="{{ route('home') }}">Home</a>
                                 </li>
                                 <li class="menu-item">
-                                    <a href="{{ route('home') }}">About Us</a>
+                                    <a href="{{ route('about') }}">About Us</a>
                                 </li>
-                                <li class="menu-item-has-children">
+                                <li class="menu-item">
                                     <a href="{{ route('events') }}">Events</a>
-                                    <ul>
-                                        <li><a href="/">SDP</a></li>
-                                        <li><a href="/">FDP</a></li>
-                                    </ul>
                                 </li>
                                 
                                 <li><a href="/">Gallery</a></li>
@@ -62,15 +63,15 @@
                     </div>
                     <!-- /.header-menu-wrap -->
                     <div class="header-right">
-                        <div class="header-right-icon d-xl-block d-lg-none">
+                        {{-- <div class="header-right-icon d-xl-block d-lg-none">
                             <a href="wishlist.html"><i class="fa-sharp fa-regular fa-heart"></i></a>
                             <span class="number">0</span>
                         </div>
                         <div class="header-right-icon shop-btn">
                             <a href="cart.html"><i class="fa-regular fa-cart-shopping"></i></a>
                             <span class="number">0</span>
-                        </div>
-                        <a href="contact.html" class="ed-primary-btn header-btn">Get a quote <i
+                        </div> --}}
+                        <a href="{{ route('contact') }}" class="ed-primary-btn header-btn">Get a quote <i
                                 class="fa-sharp fa-regular fa-arrow-right"></i></a>
                         <div class="header-logo d-none d-lg-none">
                             <a href="index.html">
@@ -104,7 +105,7 @@
 <div class="mobile-side-menu">
     <div class="side-menu-content">
         <div class="side-menu-head">
-            <a href="index.html"><img src="ui/assets/img/logo/logo-1.png" alt="logo"></a>
+            <a href="index.html"><img src="{{ asset('ui/assets/img/logo/logo.png') }}" alt="logo"></a>
             <button class="mobile-side-menu-close"><i class="fa-regular fa-xmark"></i></button>
         </div>
         <div class="side-menu-wrap"></div>
@@ -120,7 +121,7 @@
 <div class="mobile-side-menu-overlay"></div>
 
 <div id="preloader">
-    <div class="spinner-logo"><img src="{{ asset('ui/assets/img/logo/logo-landing.png') }}" style="width: 100px" alt="logo"></div>
+    <div class="spinner-logo"><img src="{{ asset('ui/assets/img/favicon.png') }}" alt="logo"></div>
     <div class="spinner"></div>
 </div>
 <!-- ./ preloader -->

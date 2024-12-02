@@ -6,14 +6,19 @@ use App\Exports\ProgramsExport;
 use App\Filament\Resources\ProgramResource\Pages;
 use App\Filament\Resources\ProgramResource\RelationManagers;
 use App\Filament\Resources\ProgramResource\RelationManagers\ActivitiesRelationManager;
+use App\Filament\Resources\ProgramResource\RelationManagers\ObjectivesRelationManager;
+use App\Filament\Resources\ProgramResource\RelationManagers\SpeakersRelationManager;
 use App\Models\Program;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\TimePicker;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\ToggleButtons;
 use Filament\Forms\Form;
@@ -60,19 +65,26 @@ class ProgramResource extends Resource
                             'Hackathon' => 'Hackathon',
                             'Bootcamp' => 'Bootcamp',
                             'Other' => 'Other',
-                        ])->required(),
-                        TextInput::make('duration')->label('Program Duration')->suffix("Hours")->numeric()->required()->maxLength(255),
+                            ])->required(),
+                            TextInput::make('duration')->label('Program Duration')->suffix("Hours")->numeric()->required()->maxLength(255),
+                            FileUpload::make('banner')->image()->required()->directory('/program-banners')->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg']),
                         Textarea::make('description')->required()->columnSpanFull(),
-                    ])->columns(3),
+                    ])->columns(2),
                     Section::make()->schema([
                         Section::make('Program Timings')->schema([
                             DatePicker::make('start_date')->required(),
                             DatePicker::make('end_date')->required(),
+                            TimePicker::make('start_time')->required()->default('09:00'),
+                            TimePicker::make('end_time')->required()->default('17:00'),
                         ])->columns(2),
                         Section::make('Program venue and organiser')->schema([
-                            TextInput::make('organiser')->prefix('Mr/Mrs')->required()->maxLength(255),
-                            TextInput::make('fees')->prefix('₹')->numeric()->maxLength(255)->default(null),
+                            TextInput::make('fees')->prefix('₹')->numeric()->maxLength(255)->default(null)->columns(2),
                             TextInput::make('location')->required()->maxLength(255),
+                            Grid::make('')->schema([
+                                TextInput::make('address')->maxLength(255),
+                                ToggleButtons::make('is_featured')->label('is Featured?')->boolean()->grouped()->default(false),
+                                ToggleButtons::make('requires_registration')->label('Requires Registration?')->boolean()->grouped()->default(false),
+                            ])->columns(3),
                         ])->columns(2),
                     ]),
                 ])->columnSpanFull(),
@@ -119,7 +131,8 @@ class ProgramResource extends Resource
     public static function getRelations(): array
     {
         return [
-            // ActivitiesRelationManager::class,
+            SpeakersRelationManager::class,
+            ObjectivesRelationManager::class,
         ];
     }
 

@@ -12,7 +12,7 @@ class HomeController extends Controller
     }
 
     public function about(){
-        return view('');
+        return view('about.index');
     }
 
     public function events(){
