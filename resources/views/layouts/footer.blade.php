@@ -4,7 +4,7 @@
             <div class="footer-top text-center">
                 <h2 class="title">Subscribe Our Newsletter For <br>Latest Updates</h2>
                 <div class="footer-form-wrap">
-                    <form action="https://html.rrdevs.net/edcare/mail.php" class="footer-form">
+                    <form action="/" class="footer-form">
                         <div class="form-item">
                             <input type="text" id="email-2" name="email" class="form-control"
                                 placeholder="Enter Your E-mail">
@@ -19,9 +19,8 @@
                         <h3 class="widget-header">Get in touch!</h3>
                         <p class="mb-30">Fusce varius, dolor tempor interdum tristiquei bibendum.</p>
                         <div class="footer-contact">
-                            <span class="number"><i class="fa-regular fa-phone"></i><a href="tel:702123-1478">(702)
-                                    123-1478</a></span>
-                            <a href="mailto:info@company.com" class="mail">info@company.com</a>
+                            <span class="number"><i class="fa-regular fa-phone"></i><a href="tel:702123-1478">+91 901 1900 3490</a></span>
+                            <a href="mailto:drshnbhandary@gmail.com" class="mail">drshnbhandary@gmail.com</a>
                         </div>
                         <ul class="footer-social">
                             <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -35,11 +34,11 @@
                     <div class="footer-widget widget-2">
                         <h3 class="widget-header">Company Info</h3>
                         <ul class="footer-list">
-                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="{{ route('about') }}">About Us</a></li>
                             <li><a href="service.html">Resource Center</a></li>
                             <li><a href="team.html">Careers</a></li>
-                            <li><a href="contact.html">Instructor</a></li>
-                            <li><a href="contact.html">Become A Teacher</a></li>
+                            <li><a href="{{ route('contact') }}">Instructor</a></li>
+                            <li><a href="{{ route('contact') }}">Become A Teacher</a></li>
                         </ul>
                     </div>
                 </div>
@@ -84,7 +83,7 @@
     <div class="copyright-area">
         <div class="container">
             <div class="copyright-content">
-                <p>Copyright © 2024 EdCare. All Rights Reserved.</p>
+                <p>Copyright © 2024 Manthan. All Rights Reserved.</p>
             </div>
         </div>
     </div>
