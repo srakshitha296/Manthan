@@ -15,14 +15,6 @@ class HomeController extends Controller
         return view('about.index');
     }
 
-    public function events(){
-        return view('events.index');
-    }
-
-    public function eventDetails(){
-        return view('events.show');
-    }
-
     public function contact(){
         return view('contact.index');
     }

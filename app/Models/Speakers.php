@@ -10,7 +10,7 @@ class Speakers extends Model
     /** @use HasFactory<\Database\Factories\SpeakersFactory> */
     use HasFactory;
 
-    protected $fillable = [ 'name', 'designation', 'email', 'phone', 'linkedin', 'instagram', 'twitter', 'program_id' ] ;
+    protected $fillable = [ 'image' ,'name', 'designation', 'email', 'phone', 'linkedin', 'instagram', 'twitter', 'program_id' ] ;
 
     public function programs(){
         return $this->hasMany(Program::class);

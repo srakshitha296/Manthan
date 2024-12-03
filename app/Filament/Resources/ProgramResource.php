@@ -37,6 +37,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ProgramResource extends Resource
@@ -67,7 +68,9 @@ class ProgramResource extends Resource
                             'Other' => 'Other',
                             ])->required(),
                             TextInput::make('duration')->label('Program Duration')->suffix("Hours")->numeric()->required()->maxLength(255),
-                            FileUpload::make('banner')->image()->required()->directory('/program-banners')->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg']),
+                            FileUpload::make('banner')->required()->label('Event Banner')->image()->acceptedFileTypes(['image/*'])
+                        ->deleteUploadedFileUsing(fn($file) => Storage::disk('public')->delete($file))
+                        ->directory('events/banner')->downloadable()->preserveFilenames()->openable(),
                         Textarea::make('description')->required()->columnSpanFull(),
                     ])->columns(2),
                     Section::make()->schema([
@@ -79,13 +82,14 @@ class ProgramResource extends Resource
                         ])->columns(2),
                         Section::make('Program venue and organiser')->schema([
                             TextInput::make('fees')->prefix('₹')->numeric()->maxLength(255)->default(null)->columns(2),
-                            TextInput::make('location')->required()->maxLength(255),
+                            TextInput::make('location')->required()->maxLength(500),
+                            TextInput::make('venue')->maxLength(255),
                             Grid::make('')->schema([
                                 TextInput::make('address')->maxLength(255),
                                 ToggleButtons::make('is_featured')->label('is Featured?')->boolean()->grouped()->default(false),
                                 ToggleButtons::make('requires_registration')->label('Requires Registration?')->boolean()->grouped()->default(false),
                             ])->columns(3),
-                        ])->columns(2),
+                        ])->columns(3),
                     ]),
                 ])->columnSpanFull(),
             ])->columns(3);
