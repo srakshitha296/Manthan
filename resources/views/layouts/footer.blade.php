@@ -1,3 +1,8 @@
+@php
+    use Illuminate\Support\Facades\DB;
+    $latestEvents = DB::table('programs')->orderBy('start_date', 'desc')->take(2)->get();
+@endphp
+
 <footer class="footer-section pt-120" data-background="ui/assets/img/bg-img/footer-bg.png">
     <div class="footer-top-wrap">
         <div class="container">
@@ -32,12 +37,12 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget widget-2">
-                        <h3 class="widget-header">Company Info</h3>
+                        <h3 class="widget-header">Short Navs</h3>
                         <ul class="footer-list">
+                            <li><a href="{{ route('home') }}">Home</a></li>
                             <li><a href="{{ route('about') }}">About Us</a></li>
-                            <li><a href="service.html">Resource Center</a></li>
-                            <li><a href="team.html">Careers</a></li>
-                            <li><a href="{{ route('contact') }}">Instructor</a></li>
+                            <li><a href="{{ route('events') }}">Events</a></li>
+                            <li><a href="/">Gallery</a></li>
                             <li><a href="{{ route('contact') }}">Become A Teacher</a></li>
                         </ul>
                     </div>
@@ -46,35 +51,29 @@
                     <div class="footer-widget widget-2">
                         <h3 class="widget-header">Useful Links</h3>
                         <ul class="footer-list">
-                            <li><a href="contact.html">All Courses</a></li>
-                            <li><a href="contact.html">Digital Marketing</a></li>
-                            <li><a href="contact.html">Design & Branding</a></li>
-                            <li><a href="contact.html">Storytelling & Voice Over</a></li>
-                            <li><a href="contact.html">News & Blogs</a></li>
+                            <li><a href="{{ route('contact') }}">Featured Events</a></li>
+                            <li><a href="{{ route('contact') }}">Latest Events</a></li>
+                            <li><a href="{{ route('contact') }}">SDPs</a></li>
+                            <li><a href="{{ route('contact') }}">FDPs</a></li>
+                            <li><a href="{{ route('contact') }}">News & Blogs</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget">
                         <h3 class="widget-header">Recent Post</h3>
+                        @foreach ($latestEvents as $item)
                         <div class="sidebar-post mb-20">
-                            <img src="ui/assets/img/images/footer-post-1.png" alt="post">
+                            <img src="{{ Storage::url($item->banner) }}" alt="post">
                             <div class="post-content">
-                                <h3 class="title"><a href="#">Where Dreams Find a Home</a></h3>
+                                <h3 class="title"><a href="{{ route('events.show', $item->id) }}">{{ $item->name }}</a></h3>
                                 <ul class="post-meta">
-                                    <li><i class="fa-light fa-calendar"></i>20 April, 2024</li>
+                                    <li><i class="fa-light fa-calendar"></i>{{ \Carbon\Carbon::parse($item->start_date)->format('d M, Y') }}</li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="sidebar-post">
-                            <img src="ui/assets/img/images/footer-post-2.png" alt="post">
-                            <div class="post-content">
-                                <h3 class="title"><a href="#">Where Dreams Find a Home</a></h3>
-                                <ul class="post-meta">
-                                    <li><i class="fa-light fa-calendar"></i>20 April, 2024</li>
-                                </ul>
-                            </div>
-                        </div>
+                        @endforeach
+                        
                     </div>
                 </div>
             </div>
