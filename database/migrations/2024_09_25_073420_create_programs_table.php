@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('location');
             $table->boolean('is_featured')->default(false);
             $table->string('address')->nullable();
+            $table->string('venue')->nullable();
             $table->boolean('requires_registration')->default(true);
             $table->timestamps();
         });

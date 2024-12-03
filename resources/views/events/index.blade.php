@@ -24,133 +24,27 @@
 <section class="features-event pt-120 pb-120">
     <div class="container">
         <div class="row gy-4 justify-content-center">
+            @foreach ($programs as $program)
             <div class="col-lg-4 col-md-6">
                 <div class="event-item wow fade-in-bottom" data-wow-delay="400ms">
                     <div class="event-thumb">
-                        <img src="{{ asset('ui/assets/img/images/event-img-1.png') }}" alt="event">
-                        <div class="date-wrap"><h5 class="date">15 <span>Dec</span></h5></div>
+                        <img src="{{ Storage::url($program->banner) }}" alt="{{ $program->name }}">
+                        <div class="date-wrap"><h5 class="date">{{ \Carbon\Carbon::parse($program->start_date)->format('d') }}
+                            <span>{{ \Carbon\Carbon::parse($program->start_date)->format('M') }}</span></h5></div>
                     </div>
                     <div class="event-content">
-                        <span class="time"><i class="fa-regular fa-clock"></i> 7:00 pm - 9:00 pm</span>
-                        <h3 class="title"><a href="{{ route('events.show') }}">Engaging Students in Real-World <br>Problems Finding</a></h3>
-                        <div class="location"><span><i class="fa-regular fa-location-dot"></i>Springfield, IL 62704 United States</span></div>
-                        <a href="{{ route('events.show') }}" class="ed-primary-btn">View Details</a>
-                        <a href="{{ route('events.show') }}" class="ed-primary-btn">View Details</a>
+                        <span class="time"><i class="fa-regular fa-clock"></i>
+                            {{ \Carbon\Carbon::createFromFormat('H:i:s', $program->start_time)->format('h:i a') }} - 
+                            {{ \Carbon\Carbon::createFromFormat('H:i:s', $program->end_time)->format('h:i a') }}
+                        </span>
+                        <h3 class="title"><a href="{{ route('events.show', $program->id) }}">{{ $program->name }}</a></h3>
+                        <div class="location"><span><i class="fa-regular fa-location-dot"></i>{{ $program->address }}</span></div>
+                        <a href="{{ route('events.show', $program->id) }}" class="ed-primary-btn">View Details</a>
+                        <a href="{{ route('events.show', $program->id) }}" class="ed-primary-btn">Register</a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="event-item wow fade-in-bottom" data-wow-delay="500ms">
-                    <div class="event-thumb">
-                        <img src="{{ asset('ui/assets/img/images/event-img-2.png') }}" alt="event">
-                        <div class="date-wrap"><h5 class="date">15 <span>Dec</span></h5></div>
-                    </div>
-                    <div class="event-content">
-                        <span class="time"><i class="fa-regular fa-clock"></i> 7:00 pm - 9:00 pm</span>
-                        <h3 class="title"><a href="{{ route('events.show') }}">Innovative Teaching Strategies for <br>the 21st Century Classroom</a></h3>
-                        <div class="location"><span><i class="fa-regular fa-location-dot"></i>Springfield, IL 62704 United States</span></div>
-                        <a href="{{ route('events.show') }}" class="ed-primary-btn">View Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="event-item wow fade-in-bottom" data-wow-delay="600ms">
-                    <div class="event-thumb">
-                        <img src="{{ asset('ui/assets/img/images/event-img-3.png') }}" alt="event">
-                        <div class="date-wrap"><h5 class="date">15 <span>Dec</span></h5></div>
-                    </div>
-                    <div class="event-content">
-                        <span class="time"><i class="fa-regular fa-clock"></i> 7:00 pm - 9:00 pm</span>
-                        <h3 class="title"><a href="{{ route('events.show') }}">Impact of Artificial Intelligence on <br>the Future of Education</a></h3>
-                        <div class="location"><span><i class="fa-regular fa-location-dot"></i>Springfield, IL 62704 United States</span></div>
-                        <a href="{{ route('events.show') }}" class="ed-primary-btn">View Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="event-item wow fade-in-bottom" data-wow-delay="400ms">
-                    <div class="event-thumb">
-                        <img src="{{ asset('ui/assets/img/images/event-img-4.png') }}" alt="event">
-                        <div class="date-wrap"><h5 class="date">15 <span>Dec</span></h5></div>
-                    </div>
-                    <div class="event-content">
-                        <span class="time"><i class="fa-regular fa-clock"></i> 7:00 pm - 9:00 pm</span>
-                        <h3 class="title"><a href="{{ route('events.show') }}">Teaching Students to Think Beyond <br>the Textbook</a></h3>
-                        <div class="location"><span><i class="fa-regular fa-location-dot"></i>Springfield, IL 62704 United States</span></div>
-                        <a href="{{ route('events.show') }}" class="ed-primary-btn">View Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="event-item wow fade-in-bottom" data-wow-delay="500ms">
-                    <div class="event-thumb">
-                        <img src="{{ asset('ui/assets/img/images/event-img-1.png') }}" alt="event">
-                        <div class="date-wrap"><h5 class="date">15 <span>Dec</span></h5></div>
-                    </div>
-                    <div class="event-content">
-                        <span class="time"><i class="fa-regular fa-clock"></i> 7:00 pm - 9:00 pm</span>
-                        <h3 class="title"><a href="{{ route('events.show') }}">Creating Learning Environments for Students of All Abilities</a></h3>
-                        <div class="location"><span><i class="fa-regular fa-location-dot"></i>Springfield, IL 62704 United States</span></div>
-                        <a href="{{ route('events.show') }}" class="ed-primary-btn">View Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="event-item wow fade-in-bottom" data-wow-delay="600ms">
-                    <div class="event-thumb">
-                        <img src="{{ asset('ui/assets/img/images/event-img-1.png') }}" alt="event">
-                        <div class="date-wrap"><h5 class="date">15 <span>Dec</span></h5></div>
-                    </div>
-                    <div class="event-content">
-                        <span class="time"><i class="fa-regular fa-clock"></i> 7:00 pm - 9:00 pm</span>
-                        <h3 class="title"><a href="{{ route('events.show') }}">Role of Social-Emotional Learning <br>in Student Success</a></h3>
-                        <div class="location"><span><i class="fa-regular fa-location-dot"></i>Springfield, IL 62704 United States</span></div>
-                        <a href="{{ route('events.show') }}" class="ed-primary-btn">View Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="event-item wow fade-in-bottom" data-wow-delay="400ms">
-                    <div class="event-thumb">
-                        <img src="{{ asset('ui/assets/img/images/event-img-1.png') }}" alt="event">
-                        <div class="date-wrap"><h5 class="date">15 <span>Dec</span></h5></div>
-                    </div>
-                    <div class="event-content">
-                        <span class="time"><i class="fa-regular fa-clock"></i> 7:00 pm - 9:00 pm</span>
-                        <h3 class="title"><a href="{{ route('events.show') }}">Project-Based Learning: Engaging <br>Students Through Real-World </a></h3>
-                        <div class="location"><span><i class="fa-regular fa-location-dot"></i>Springfield, IL 62704 United States</span></div>
-                        <a href="{{ route('events.show') }}" class="ed-primary-btn">View Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="event-item wow fade-in-bottom" data-wow-delay="500ms">
-                    <div class="event-thumb">
-                        <img src="{{ asset('ui/assets/img/images/event-img-1.png') }}" alt="event">
-                        <div class="date-wrap"><h5 class="date">15 <span>Dec</span></h5></div>
-                    </div>
-                    <div class="event-content">
-                        <span class="time"><i class="fa-regular fa-clock"></i> 7:00 pm - 9:00 pm</span>
-                        <h3 class="title"><a href="{{ route('events.show') }}">How Meaningful Assignments Can <br>Drive Deeper Learning</a></h3>
-                        <div class="location"><span><i class="fa-regular fa-location-dot"></i>Springfield, IL 62704 United States</span></div>
-                        <a href="{{ route('events.show') }}" class="ed-primary-btn">View Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="event-item wow fade-in-bottom" data-wow-delay="600ms">
-                    <div class="event-thumb">
-                        <img src="{{ asset('ui/assets/img/images/event-img-1.png') }}" alt="event">
-                        <div class="date-wrap"><h5 class="date">15 <span>Dec</span></h5></div>
-                    </div>
-                    <div class="event-content">
-                        <span class="time"><i class="fa-regular fa-clock"></i> 7:00 pm - 9:00 pm</span>
-                        <h3 class="title"><a href="{{ route('events.show') }}">Innovative Teaching Strategies for <br>the 21st Century Classroom</a></h3>
-                        <div class="location"><span><i class="fa-regular fa-location-dot"></i>Springfield, IL 62704 United States</span></div>
-                        <a href="{{ route('events.show') }}" class="ed-primary-btn">View Details</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
