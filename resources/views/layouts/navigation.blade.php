@@ -56,7 +56,7 @@
                                     <a href="{{ route('events') }}">Events</a>
                                 </li>
                                 
-                                <li><a href="/">Gallery</a></li>
+                                <li><a href="{{ route('gallery') }}">Gallery</a></li>
                                 <li><a href="{{ route('contact') }}">Contact</a></li>
                             </ul>
                         </div>
