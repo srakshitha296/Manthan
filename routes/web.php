@@ -22,7 +22,7 @@ Route::get('/about',[HomeController::class,'about'])->name('about');
 
 Route::get('/events',[EventController::class,'events'])->name('events');
 Route::get('/events-details/{id}',[EventController::class, 'show'])->name('events.show');
-Route::post('/event-register/{id}',[EventController::class, 'store'])->name('event.register');
+Route::post('/event-register/{id}',[EventController::class, 'register'])->name('event.register')->middleware('auth');
 
 Route::get('/gallery',[GalleryController::class, 'index'])->name('gallery');
 
