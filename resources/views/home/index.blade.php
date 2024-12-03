@@ -43,8 +43,8 @@
                         <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Start benefiting from the
                             <br>world's <span>best tech council</span></h2>
                     </div>
-                    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus
-                        <br> nec ullamcorper mattis</p>
+                    <p class="desc">Unlock your potential beyond academics
+                        <br> where technical skills meet leadership, creativity, and responsibility.</p>
                     <div class="hero-form">
                         <form action="/">
                             <input type="text" id="text" name="text" class="form-control"
@@ -493,15 +493,12 @@
     </div>
     <div class="container">
         <div class="cta-content">
-            <h2 class="title wow fade-in-bottom" data-wow-delay="200ms">50% Offer For Very First 50 Student’s &
-                Mentors</h2>
-            <p class="wow fade-in-bottom" data-wow-delay="400ms">The ability to learn at my own pace was a
-                game-changer for me. The flexible schedule allowed me to balance my studies with work and personal
-                life, making it possible to complete the course without feeling overwhelmed."</p>
+            <h2 class="title wow fade-in-bottom" data-wow-delay="200ms">Where Education Meets Opportunity</h2>
+            <p class="wow fade-in-bottom" data-wow-delay="400ms">Transform your academic life with real-time updates on AICTE programs, activities, and growth opportunities. Be ready for success.</p>
             <div class="cta-btn-wrap wow fade-in-bottom" data-wow-delay="500ms">
-                <a href="contact.html" class="ed-primary-btn cta-btn">Become a Student<i
+                <a href="contact.html" class="ed-primary-btn cta-btn">Sign In<i
                         class="fa-regular fa-arrow-right"></i></a>
-                <a href="contact.html" class="ed-primary-btn cta-btn-2">Become a Teacher<i
+                <a href="contact.html" class="ed-primary-btn cta-btn-2">Sign Up<i
                         class="fa-regular fa-arrow-right"></i></a>
             </div>
         </div>
@@ -538,8 +535,7 @@
                         <h4 class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span
                                 class="heading-icon"><i class="fa-sharp fa-solid fa-bolt"></i></span>Our Course
                             Categories</h4>
-                        <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Powerful Dashboard And
-                            High Performance Framework</h2>
+                        <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Centralized platform for tracking activity points and event management.</h2>
                     </div>
                     <div class="faq-accordion">
                         <div class="accordion" id="accordionExample">
@@ -547,16 +543,12 @@
                                 <h2 class="accordion-header" id="headingOne">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseOne" aria-expanded="true"
-                                        aria-controls="collapseOne"><span>01.</span>What courses do you
-                                        offer?</button>
+                                        aria-controls="collapseOne"><span>01.</span>Easy Tracking of Activity Points</button>
                                 </h2>
                                 <div id="collapseOne" class="accordion-collapse collapse show"
                                     aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        We offer a wide range of courses in various subjects, including science,
-                                        technology, engineering, mathematics, humanities, and social sciences. Our
-                                        courses are designed for different education levels, from primary school to
-                                        university.
+                                        Students can track their progress, see completed activities, and ensure they meet the minimum required points for graduation.
                                     </div>
                                 </div>
                             </div>
@@ -564,16 +556,12 @@
                                 <h2 class="accordion-header" id="headingTwo">
                                     <button class="accordion-button collapsed" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                                        aria-expanded="false" aria-controls="collapseTwo"><span>02.</span>How Can
-                                        Teachers Effectively Manage a Diverse Classroom?</button>
+                                        aria-expanded="false" aria-controls="collapseTwo"><span>02.</span>Streamlined Verification Process</button>
                                 </h2>
                                 <div id="collapseTwo" class="accordion-collapse collapse"
                                     aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        We offer a wide range of courses in various subjects, including science,
-                                        technology, engineering, mathematics, humanities, and social sciences. Our
-                                        courses are designed for different education levels, from primary school to
-                                        university.
+                                        Faculty coordinators can easily verify and approve students' activities, reducing the administrative burden.
                                     </div>
                                 </div>
                             </div>
@@ -581,16 +569,38 @@
                                 <h2 class="accordion-header" id="headingThree">
                                     <button class="accordion-button collapsed" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#collapseThree"
-                                        aria-expanded="false" aria-controls="collapseThree"><span>03.</span>How Is
-                                        Special Education Delivered in Inclusive Classrooms?</button>
+                                        aria-expanded="false" aria-controls="collapseThree"><span>03.</span>Effective Communication of AICTE Programs</button>
                                 </h2>
                                 <div id="collapseThree" class="accordion-collapse collapse"
                                     aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        We offer a wide range of courses in various subjects, including science,
-                                        technology, engineering, mathematics, humanities, and social sciences. Our
-                                        courses are designed for different education levels, from primary school to
-                                        university.
+                                        Stay up-to-date with the latest AICTE development programs like the Faculty Development Program (FDP) and student workshops. Real-time notifications will help you never miss an opportunity.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item wow fade-in-bottom" data-wow-delay="200ms">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                        aria-expanded="false" aria-controls="collapseThree"><span>04.</span>Real-Time Notifications</button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse"
+                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Get instant updates on AICTE programs, events, and deadlines to ensure you are always informed.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item wow fade-in-bottom" data-wow-delay="200ms">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                        aria-expanded="false" aria-controls="collapseThree"><span>05.</span>Activity Points Dashboard</button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse"
+                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Track the points earned and activities completed. The system will also guide you through the steps needed to complete required activities.
                                     </div>
                                 </div>
                             </div>

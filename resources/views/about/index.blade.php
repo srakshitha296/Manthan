@@ -57,7 +57,7 @@
                     <div class="section-heading mb-40">
                         <h4 class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i class="fa-sharp fa-solid fa-bolt"></i></span>Get More About Us</h4>
                         <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Over 10 Years in Distant learning <br>for Skill Development</h2>
-                        <p class="mt-20 wow fade-in-bottom" data-wow-delay="500ms">Compellingly procrastinate equity invested markets with efficient process improvements.  actualize mission-critical partnerships with integrated portals. Authoritatively optimize low-risk high-yield metrics and plug-and-play potentialities.</p>
+                        <p class="mt-20 wow fade-in-bottom" data-wow-delay="500ms">Stay up-to-date with the latest AICTE development programs like the Faculty Development Program (FDP) and student workshops. Real-time notifications will help you never miss an opportunity!</p>
                     </div>
                     <div class="about-counter-items wow fade-in-bottom" data-wow-delay="600ms">
                         <div class="about-counter-item">
