@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\ProgramResource\RelationManagers;
 
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -10,14 +11,18 @@ use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\CreateAction;
 use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Storage;
 
 class SpeakersRelationManager extends RelationManager
 {
@@ -28,6 +33,9 @@ class SpeakersRelationManager extends RelationManager
         return $form
             ->schema([
                 Section::make('Speaker Details')->columns(2)->schema([
+                    FileUpload::make('image')->label('Speaker Image')->required()->image()->acceptedFileTypes(['image/*'])
+                    ->deleteUploadedFileUsing(fn($file) => Storage::disk('public')->delete($file))
+                    ->directory('events/speaker')->downloadable()->preserveFilenames()->openable(),
                     TextInput::make('name')->label('Speaker Name')->required()->maxLength(255),
                     TextInput::make('designation')->label('Speaker Designation')->required()->maxLength(255),
                     TextInput::make('email')->label('Speaker Email')->required()->email()->maxLength(255),
@@ -47,6 +55,7 @@ class SpeakersRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('program_id')
             ->columns([
+                ImageColumn::make('image')->searchable()->sortable()->circular(),
                 TextColumn::make('name')->searchable()->sortable(),
                 TextColumn::make('designation')->searchable()->sortable(),
                 TextColumn::make('email')->searchable()->sortable(),
@@ -66,8 +75,8 @@ class SpeakersRelationManager extends RelationManager
                 ]),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }

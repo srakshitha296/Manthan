@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Program;
+use App\Models\Speakers;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -18,6 +19,8 @@ class EventController extends Controller
             abort(404);
         }
 
-        return view('events.show', compact('program'));
+        $speakers = Speakers::where('program_id',$id)->get();
+
+        return view('events.show', compact('program', 'speakers'));
     }
 }

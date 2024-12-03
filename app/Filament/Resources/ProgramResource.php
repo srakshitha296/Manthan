@@ -14,6 +14,7 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Group;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -71,7 +72,7 @@ class ProgramResource extends Resource
                             FileUpload::make('banner')->required()->label('Event Banner')->image()->acceptedFileTypes(['image/*'])
                         ->deleteUploadedFileUsing(fn($file) => Storage::disk('public')->delete($file))
                         ->directory('events/banner')->downloadable()->preserveFilenames()->openable(),
-                        Textarea::make('description')->required()->columnSpanFull(),
+                        RichEditor::make('description')->required()->columnSpanFull(),
                     ])->columns(2),
                     Section::make()->schema([
                         Section::make('Program Timings')->schema([
