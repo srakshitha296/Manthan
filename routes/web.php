@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\GalleryController;
@@ -22,6 +23,9 @@ Route::get('/events-details/{id}',[EventController::class, 'show'])->name('event
 Route::post('/event-register/{id}',[EventController::class, 'register'])->name('event.register')->middleware('auth');
 
 Route::get('/gallery',[GalleryController::class, 'index'])->name('gallery');
+
+Route::get('/blogs',[BlogController::class,'index'])->name('blogs');
+Route::get('/blogs-details/{id}',[BlogController::class,'show'])->name('blogs.show');
 
 Route::get('/user-dashboard',[DashboardController::class,'index'])->name('user.dashboard')->middleware('auth');
 

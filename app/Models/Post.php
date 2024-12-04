@@ -18,6 +18,7 @@ class Post extends Model
         'tags',
         'category_id',
         'published',
+        'user_id',
     ];
 
     protected $casts = [
@@ -26,6 +27,10 @@ class Post extends Model
     ];
 
     public function category(){
-        return $this->hasMany(Category::class);
+        return $this->belongsTo(Category::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

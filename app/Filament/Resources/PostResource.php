@@ -8,14 +8,20 @@ use App\Models\Post;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\ToggleButtons;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -34,17 +40,23 @@ class PostResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('title')->label('Post Title')->required()->maxLength(150)->minLength(1)->live()
-                    ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
-                        // dd('called');
-                        $set('slug', Str::slug($state));
-                    }),
-                TextInput::make('slug')->unique(ignoreRecord: true)->required(),
-                FileUpload::make('image')->required()->label('Post Image')->image()->acceptedFileTypes(['image/*'])
-                    ->deleteUploadedFileUsing(fn($file) => Storage::disk('public')->delete($file))
-                    ->directory('posts/image')->downloadable()->preserveFilenames()->openable(),
-                MarkdownEditor::make('content')->label('Post Content')->required(),
-                Select::make('category_id')->label('Category')->relationship('category', 'name')->required(),
+                Section::make('Post Information')->schema([
+                    FileUpload::make('image')->required()->label('Post Image')->image()->acceptedFileTypes(['image/*'])
+                        ->deleteUploadedFileUsing(fn($file) => Storage::disk('public')->delete($file))
+                        ->directory('posts/image')->downloadable()->preserveFilenames()->openable()->columnSpanFull(),
+                    TextInput::make('title')->label('Post Title')->required()->maxLength(150)->minLength(1)->live()
+                        ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
+                            $set('slug', Str::slug($state));
+                        }),
+                    TextInput::make('slug')->unique(ignoreRecord: true)->required(),
+                    Select::make('user_id')->label('Author')->relationship('user', 'name')->required(),
+                    MarkdownEditor::make('content')->label('Post Content')->required()->columnSpanFull(),
+                ])->columns(3)->collapsible(),
+                Section::make('Post Settings')->schema([
+                    TagsInput::make('tags')->label('Tags')->required()->columnSpanFull(),
+                    Select::make('category_id')->label('Category')->relationship('category', 'name')->required(),
+                    ToggleButtons::make('published')->label('Publish the post')->boolean()->inline()->default(false),
+                ])->columns(2)->collapsible(),
             ]);
     }
 
@@ -55,13 +67,18 @@ class PostResource extends Resource
                 ImageColumn::make('image')->label('Post Image')->searchable()->sortable()->circular(),
                 TextColumn::make('title')->label('Post Title')->searchable()->sortable(),
                 TextColumn::make('slug')->label('Slug')->searchable()->sortable(),
+                TextColumn::make('user.name')->label('Author')->searchable()->sortable(),
                 // TextColumn::make('posts.name')->label('')->searchable()->sortable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                EditAction::make(),
+                // ActionGroup::make([
+                    ViewAction::make(),
+                    EditAction::make(),
+                    DeleteAction::make(),
+                // ]),
             ])
             ->bulkActions([
                 BulkActionGroup::make([
