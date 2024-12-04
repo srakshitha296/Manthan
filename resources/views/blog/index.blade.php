@@ -42,7 +42,7 @@
                             <h3 class="title"><a href="blog-details.html">{{ $post->title }}</a></h3>
                             <p>{{ \Illuminate\Support\Str::words($post->content, 100, '...') }}</p>
                             <div class="post-bottom">
-                                <a class="read-more ed-primary-btn" href="blog-details.html">Read More<i
+                                <a class="read-more ed-primary-btn" href="{{ route('blogs.show', $post->id) }}">Read More<i
                                         class="fa-regular fa-arrow-right"></i></a>
                             </div>
                         </div>
