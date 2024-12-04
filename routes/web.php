@@ -23,6 +23,7 @@ Route::get('/events-details/{id}',[EventController::class, 'show'])->name('event
 Route::post('/event-register/{id}',[EventController::class, 'register'])->name('event.register')->middleware('auth');
 
 Route::get('/gallery',[GalleryController::class, 'index'])->name('gallery');
+Route::get('/gallery-details/{id}',[GalleryController::class, 'show'])->name('gallery.show');
 
 Route::get('/blogs',[BlogController::class,'index'])->name('blogs');
 Route::get('/blogs-details/{id}',[BlogController::class,'show'])->name('blogs.show');

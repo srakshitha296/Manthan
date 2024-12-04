@@ -11,4 +11,10 @@ class GalleryController extends Controller
         $gallery = Gallery::all();
         return view("gallery.index", compact("gallery"));
     }
+
+    public function show($id){
+        $gallery = Gallery::find($id);
+        // dd($gallery->gallery_images);
+        return view('gallery.show', compact('gallery'));
+    }
 }
