@@ -57,6 +57,7 @@
                                 </li>
                                 
                                 <li><a href="{{ route('gallery') }}">Gallery</a></li>
+                                <li><a href="{{ route('blogs') }}">Blog</a></li>
                                 <li><a href="{{ route('contact') }}">Contact</a></li>
                             </ul>
                         </div>

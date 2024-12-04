@@ -13,7 +13,7 @@
     </div>
     <div class="container">
         <div class="page-header-content">
-            <h1 class="title">Our Instructor</h1>
+            <h1 class="title">Our Gallery</h1>
             <h4 class="sub-title"><a class="home" href="{{ route('home') }}">Home </a><span class="icon">/</span><a class="inner-page" href="{{ route('gallery') }}"> Our Gallery</a></h4>
         </div>
     </div>

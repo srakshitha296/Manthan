@@ -43,7 +43,7 @@
                             <li><a href="{{ route('about') }}">About Us</a></li>
                             <li><a href="{{ route('events') }}">Events</a></li>
                             <li><a href="{{ route('gallery') }}">Gallery</a></li>
-                            <li><a href="{{ route('contact') }}">Blogs</a></li>
+                            <li><a href="{{ route('blogs') }}">Blogs</a></li>
                         </ul>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                             <li><a href="{{ route('contact') }}">Latest Events</a></li>
                             <li><a href="{{ route('contact') }}">SDPs</a></li>
                             <li><a href="{{ route('contact') }}">FDPs</a></li>
-                            <li><a href="{{ route('home') }}">News & Blogs</a></li>
+                            <li><a href="{{ route('blogs') }}">News & Blogs</a></li>
                         </ul>
                     </div>
                 </div>
