@@ -4,7 +4,7 @@ namespace App\Filament\Resources\PrincipleResource\Pages;
 
 use App\Exports\PrinciplesExport;
 use App\Filament\Resources\PrincipleResource;
-use App\Models\Principle;
+use App\Models\Principal;
 use Filament\Actions\Action;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
@@ -17,7 +17,7 @@ class ListPrinciples extends ListRecords
 
     protected function getHeaderActions(): array
     {
-        if (Principle::count()) {
+        if (Principal::count()) {
             return [
                 CreateAction::make(),
                 Action::make('exportPrinciple')->label('Export Principals')->icon('heroicon-o-document-arrow-down')

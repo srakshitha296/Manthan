@@ -5,7 +5,7 @@ namespace App\Filament\Resources;
 use App\Exports\PrinciplesExport;
 use App\Filament\Resources\PrincipleResource\Pages;
 use App\Filament\Resources\PrincipleResource\RelationManagers;
-use App\Models\Principle;
+use App\Models\Principal;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Group;
@@ -31,7 +31,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class PrincipleResource extends Resource
 {
-    protected static ?string $model = Principle::class;
+    protected static ?string $model = Principal::class;
     protected static ?string $navigationIcon = 'heroicon-o-shield-exclamation';
     protected static ?string $navigationLabel = 'Principal';
     protected static ?string $slug = 'college-principals';

@@ -23,6 +23,6 @@ class VerifyAdmin
         }
 
         // abort(403, ' You are not authorized to access this page');
-        return redirect()->route('dashboard');
+        return redirect()->route('user.dashboard');
     }
 }

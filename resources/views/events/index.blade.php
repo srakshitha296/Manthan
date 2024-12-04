@@ -39,8 +39,9 @@
                         </span>
                         <h3 class="title"><a href="{{ route('events.show', $program->id) }}">{{ $program->name }}</a></h3>
                         <div class="location"><span><i class="fa-regular fa-location-dot"></i>{{ $program->address }}</span></div>
-                        <a href="{{ route('events.show', $program->id) }}" class="ed-primary-btn">View Details</a>
-                        <a href="{{ route('events.show', $program->id) }}" class="ed-primary-btn">Register</a>
+                        <center>
+                            <a href="{{ route('events.show', $program->id) }}" class="ed-primary-btn mb-2" >View Details</a>
+                        </center>
                     </div>
                 </div>
             </div>

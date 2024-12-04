@@ -42,8 +42,8 @@
                             <li><a href="{{ route('home') }}">Home</a></li>
                             <li><a href="{{ route('about') }}">About Us</a></li>
                             <li><a href="{{ route('events') }}">Events</a></li>
-                            <li><a href="/">Gallery</a></li>
-                            <li><a href="{{ route('contact') }}">Become A Teacher</a></li>
+                            <li><a href="{{ route('gallery') }}">Gallery</a></li>
+                            <li><a href="{{ route('contact') }}">Blogs</a></li>
                         </ul>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                             <li><a href="{{ route('contact') }}">Latest Events</a></li>
                             <li><a href="{{ route('contact') }}">SDPs</a></li>
                             <li><a href="{{ route('contact') }}">FDPs</a></li>
-                            <li><a href="{{ route('contact') }}">News & Blogs</a></li>
+                            <li><a href="{{ route('home') }}">News & Blogs</a></li>
                         </ul>
                     </div>
                 </div>

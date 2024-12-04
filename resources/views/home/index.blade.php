@@ -106,12 +106,11 @@
                     <div class="course-content-wrap">
                         <div class="course-content">
                             <span class="offer">Free</span>
-                            <h3 class="title"><a href="/">React Tutorial Beginners For Skills
-                                    Building Carrera</a></h3>
+                            <h3 class="title"><a href="/">Demo Events</a></h3>
                             <ul class="course-list">
-                                <li><i class="fa-light fa-file"></i>Lesson 8</li>
-                                <li><i class="fa-light fa-user"></i>Students 50</li>
-                                <li><i class="fa-light fa-eye"></i>View: 12K</li>
+                                <li><i class="fa-light fa-file"></i>duration</li>
+                                <li><i class="fa-light fa-user"></i>limit</li>
+                                <li><i class="fa-light fa-eye"></i>Views</li>
                             </ul>
                             <div class="course-author-box">
                                 <div class="course-author">
@@ -120,7 +119,7 @@
                                     </div>
                                     <div class="author-info">
                                         <h4 class="name">Kevin Perry</h4>
-                                        <span>Instructor</span>
+                                        <span>Speaker designation</span>
                                     </div>
                                 </div>
                                 <ul class="course-review">
@@ -134,37 +133,36 @@
                             </div>
                         </div>
                         <div class="bottom-content">
-                            <span class="price">₹59.00</span>
+                            <span class="price">₹59.00 (price if needed)</span>
                             <a href="/" class="course-btn">View Details</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-xl-6 col-lg-12">
-                <div class="course-item course-item-2 wow fade-in-bottom" data-wow-delay="500ms">
+                <div class="course-item course-item-2 wow fade-in-bottom" data-wow-delay="300ms">
                     <div class="course-thumb-wrap">
                         <div class="course-thumb">
-                            <img src="ui/assets/img/service/course-img-5.png" alt="course">
+                            <img src="ui/assets/img/service/course-img-4.png" alt="course">
                         </div>
                     </div>
                     <div class="course-content-wrap">
                         <div class="course-content">
                             <span class="offer">Free</span>
-                            <h3 class="title"><a href="/">React Tutorial Beginners For Skills
-                                    Building Carrera</a></h3>
+                            <h3 class="title"><a href="/">Demo Events</a></h3>
                             <ul class="course-list">
-                                <li><i class="fa-light fa-file"></i>Lesson 8</li>
-                                <li><i class="fa-light fa-user"></i>Students 50</li>
-                                <li><i class="fa-light fa-eye"></i>View: 12K</li>
+                                <li><i class="fa-light fa-file"></i>duration</li>
+                                <li><i class="fa-light fa-user"></i>limit</li>
+                                <li><i class="fa-light fa-eye"></i>Views</li>
                             </ul>
                             <div class="course-author-box">
                                 <div class="course-author">
                                     <div class="author-img">
-                                        <img src="ui/assets/img/images/course-author-2.png" alt="course">
+                                        <img src="ui/assets/img/images/course-author-1.png" alt="course">
                                     </div>
                                     <div class="author-info">
                                         <h4 class="name">Kevin Perry</h4>
-                                        <span>Instructor</span>
+                                        <span>Speaker designation</span>
                                     </div>
                                 </div>
                                 <ul class="course-review">
@@ -178,37 +176,36 @@
                             </div>
                         </div>
                         <div class="bottom-content">
-                            <span class="price">₹59.00</span>
+                            <span class="price">₹59.00 (price if needed)</span>
                             <a href="/" class="course-btn">View Details</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-xl-6 col-lg-12">
-                <div class="course-item course-item-2 wow fade-in-bottom" data-wow-delay="600ms">
+                <div class="course-item course-item-2 wow fade-in-bottom" data-wow-delay="300ms">
                     <div class="course-thumb-wrap">
                         <div class="course-thumb">
-                            <img src="ui/assets/img/service/course-img-6.png" alt="course">
+                            <img src="ui/assets/img/service/course-img-4.png" alt="course">
                         </div>
                     </div>
                     <div class="course-content-wrap">
                         <div class="course-content">
                             <span class="offer">Free</span>
-                            <h3 class="title"><a href="/">React Tutorial Beginners For Skills
-                                    Building Carrera</a></h3>
+                            <h3 class="title"><a href="/">Demo Events</a></h3>
                             <ul class="course-list">
-                                <li><i class="fa-light fa-file"></i>Lesson 8</li>
-                                <li><i class="fa-light fa-user"></i>Students 50</li>
-                                <li><i class="fa-light fa-eye"></i>View: 12K</li>
+                                <li><i class="fa-light fa-file"></i>duration</li>
+                                <li><i class="fa-light fa-user"></i>limit</li>
+                                <li><i class="fa-light fa-eye"></i>Views</li>
                             </ul>
                             <div class="course-author-box">
                                 <div class="course-author">
                                     <div class="author-img">
-                                        <img src="ui/assets/img/images/course-author-3.png" alt="course">
+                                        <img src="ui/assets/img/images/course-author-1.png" alt="course">
                                     </div>
                                     <div class="author-info">
                                         <h4 class="name">Kevin Perry</h4>
-                                        <span>Instructor</span>
+                                        <span>Speaker designation</span>
                                     </div>
                                 </div>
                                 <ul class="course-review">
@@ -222,37 +219,36 @@
                             </div>
                         </div>
                         <div class="bottom-content">
-                            <span class="price">₹59.00</span>
+                            <span class="price">₹59.00 (price if needed)</span>
                             <a href="/" class="course-btn">View Details</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-xl-6 col-lg-12">
-                <div class="course-item course-item-2 wow fade-in-bottom" data-wow-delay="700ms">
+                <div class="course-item course-item-2 wow fade-in-bottom" data-wow-delay="300ms">
                     <div class="course-thumb-wrap">
                         <div class="course-thumb">
-                            <img src="ui/assets/img/service/course-img-7.png" alt="course">
+                            <img src="ui/assets/img/service/course-img-4.png" alt="course">
                         </div>
                     </div>
                     <div class="course-content-wrap">
                         <div class="course-content">
                             <span class="offer">Free</span>
-                            <h3 class="title"><a href="/">React Tutorial Beginners For Skills
-                                    Building Carrera</a></h3>
+                            <h3 class="title"><a href="/">Demo Events</a></h3>
                             <ul class="course-list">
-                                <li><i class="fa-light fa-file"></i>Lesson 8</li>
-                                <li><i class="fa-light fa-user"></i>Students 50</li>
-                                <li><i class="fa-light fa-eye"></i>View: 12K</li>
+                                <li><i class="fa-light fa-file"></i>duration</li>
+                                <li><i class="fa-light fa-user"></i>limit</li>
+                                <li><i class="fa-light fa-eye"></i>Views</li>
                             </ul>
                             <div class="course-author-box">
                                 <div class="course-author">
                                     <div class="author-img">
-                                        <img src="ui/assets/img/images/course-author-4.png" alt="course">
+                                        <img src="ui/assets/img/images/course-author-1.png" alt="course">
                                     </div>
                                     <div class="author-info">
                                         <h4 class="name">Kevin Perry</h4>
-                                        <span>Instructor</span>
+                                        <span>Speaker designation</span>
                                     </div>
                                 </div>
                                 <ul class="course-review">
@@ -266,7 +262,7 @@
                             </div>
                         </div>
                         <div class="bottom-content">
-                            <span class="price">₹59.00</span>
+                            <span class="price">₹59.00 (price if needed)</span>
                             <a href="/" class="course-btn">View Details</a>
                         </div>
                     </div>
