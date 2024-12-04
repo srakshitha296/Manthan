@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class BlogController extends Controller
 {
     public function index(){
-        $posts = Post::orderBy("created_at","desc")->paginate(1);
+        $posts = Post::orderBy("created_at","desc")->paginate(10);
         $categories = Category::all();
         return view('blog.index', compact('posts', 'categories'));
     }
