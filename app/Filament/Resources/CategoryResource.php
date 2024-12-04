@@ -7,13 +7,23 @@ use App\Filament\Resources\CategoryResource\RelationManagers;
 use App\Models\Category;
 use Filament\Forms;
 use Filament\Forms\Components\ColorPicker;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Columns\ColorColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class CategoryResource extends Resource
 {
@@ -25,10 +35,16 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')->label('Category Name')->required(),
-                TextInput::make('slug')->label('Slug')->required(),
-                TextInput::make('description')->label('Description'),
-                ColorPicker::make('color')->label('Color'),
+                Section::make('Category Information')->schema([
+                    TextInput::make('name')->label('Category Name')->required()->maxLength(150)->minLength(1)->live()
+                    ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
+                        // dd('called');
+                        $set('slug', Str::slug($state));
+                    }),
+                    TextInput::make('slug')->label('Slug')->required(),
+                    TextInput::make('description')->label('Description'),
+                    ColorPicker::make('color')->label('Color'),
+                ])->columns(2)->collapsible(),
             ]);
     }
 
@@ -36,17 +52,24 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name')->label('Category Name')->searchable()->sortable(),
+                TextColumn::make('slug')->label('Slug')->searchable()->sortable(),
+                TextColumn::make('description')->label('Description')->searchable()->sortable(),
+                ColorColumn::make('color')->label('Color')->sortable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                ActionGroup::make([
+                    ViewAction::make(),
+                    EditAction::make(),
+                    DeleteAction::make(),
+                ]),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
