@@ -26,12 +26,14 @@
             @foreach ($gallery as $item)    
             <div class="col-xl-4 col-lg-4 col-md-6">
                 <div class="team-item-2 wow fade-in-bottom" data-wow-delay="200ms">
-                    <div class="team-thumb">
+                    <div class="team-thumb"><a href="{{ route('gallery.show', $item->id) }}">
                         <img src="{{ Storage::url($item->image) }}" alt="team">
+                    </a>
                         <center>   
                             <div class="team-content">
-                                <div class="instructor-info text-center">
+                                <div class="instructor-info text-center"><a href="{{ route('gallery.show', $item->id) }}">
                                     <h2 class="title">{{ $item->name }}</h2>
+                                </a>
                                 </div>
                             </div>
                         </center>
