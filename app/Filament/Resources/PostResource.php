@@ -20,6 +20,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class PostResource extends Resource
 {
@@ -34,8 +35,12 @@ class PostResource extends Resource
                 FileUpload::make('image')->required()->label('Post Image')->image()->acceptedFileTypes(['image/*'])
                 ->deleteUploadedFileUsing(fn($file) => Storage::disk('public')->delete($file))
                 ->directory('posts/image')->downloadable()->preserveFilenames()->openable(),
-                TextInput::make('title')->label('Post Title')->required(),
-                TextInput::make('slug')->label('Slug')->required(),
+                TextInput::make('title')->label('Post Title')->required()->maxLength(150)->minLength(1)->live()
+                ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
+                    // dd('called');
+                    $set('slug', Str::slug($state));
+                }),
+            TextInput::make('slug')->unique(ignoreRecord: true)->required(),
                 MarkdownEditor::make('content')->label('Post Content')->required(),
                 Select::make('category_id')->label('Category')->relationship('category', 'name')->required(),
             ]);
