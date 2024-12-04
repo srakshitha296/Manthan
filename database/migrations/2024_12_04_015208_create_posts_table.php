@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('content');
+            $table->foreignId('user_id')->constrained('users')->onDeleteCascade();
             $table->foreignId('category_id')->constrained('categories')->onDeleteCascade();
             $table->json('tags')->nullable();
             $table->boolean('published')->default(false);

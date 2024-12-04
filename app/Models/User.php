@@ -56,4 +56,8 @@ class User extends Authenticatable
     public function college(){
         return $this->belongsTo(College::class);
     }
+
+    public function user(){
+        return $this->hasMany(Post::class);
+    }
 }
