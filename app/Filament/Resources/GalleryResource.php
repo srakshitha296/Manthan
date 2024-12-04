@@ -24,8 +24,13 @@ use Illuminate\Support\Facades\Storage;
 class GalleryResource extends Resource
 {
     protected static ?string $model = Gallery::class;
+    protected static ?string $navigationLabel = 'Gallery';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Settings';
+
+    protected static ?string $navigationBadgeTooltip = 'The number of galleries';
+
+    protected static ?string $navigationIcon = 'heroicon-o-photo';
 
     public static function form(Form $form): Form
     {

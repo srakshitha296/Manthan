@@ -23,6 +23,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class CategoryResource extends Resource
 {
@@ -35,7 +36,11 @@ class CategoryResource extends Resource
         return $form
             ->schema([
                 Section::make('Category Information')->schema([
-                    TextInput::make('name')->label('Category Name')->required(),
+                    TextInput::make('name')->label('Category Name')->required()->maxLength(150)->minLength(1)->live()
+                    ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
+                        // dd('called');
+                        $set('slug', Str::slug($state));
+                    }),
                     TextInput::make('slug')->label('Slug')->required(),
                     TextInput::make('description')->label('Description'),
                     ColorPicker::make('color')->label('Color'),
