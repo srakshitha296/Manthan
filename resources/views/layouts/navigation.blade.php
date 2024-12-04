@@ -14,7 +14,7 @@
                     <div class="register-box">
                         <div class="icon"><i class="fa-regular fa-user"></i></div>
                         @auth
-                        <a href="{{ route('dashboard') }}">Dashboard</a>
+                        <a href="{{ route('user.dashboard') }}">Dashboard</a>
                         @endauth
                         @guest
                         <a href="{{ route('login') }}">Login</a><a href="{{ route('register') }}">/ Register</a>
