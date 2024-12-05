@@ -28,7 +28,7 @@
                     <h2 class="title mb-0">Leave A Reply</h2>
                     <p class="mb-30 mt-10">Fill-up The Form and Message us of your amazing question</p>
                     <div class="request-form">
-                        <form action="https://html.rrdevs.net/edcare/mail.php" method="post" id="ajax_contact" class="form-horizontal">
+                        <form action="/" method="POST" id="ajax_contact" class="form-horizontal">
                             <div class="form-group row">
                                 <div class="col-md-6">
                                     <div class="form-item">
@@ -78,8 +78,8 @@
                             </div>
                             <div class="content">
                                 <h4 class="title">Phone Number & Email</h4>
-                                <span><a href="tel:+65485965789">(+65) - 48596 - 5789</a></span>
-                                <span><a href="mailto:hello@edcare.com">hello@edcare.com</a></span>
+                                <span><a href="tel:+65485965789">(+91) 901 - 9003 - 490</a></span>
+                                <span><a href="mailto:hello@edcare.com">drshnbhandary@gmail.com</a></span>
                             </div>
                         </div>
                         <div class="list-item">
@@ -88,7 +88,7 @@
                             </div>
                             <div class="content">
                                 <h4 class="title">Our Office Address</h4>
-                                <p>2690 Hilton Street Victoria Road, <br>New York, Canada</p>
+                                <p>3rd floor, <br>A J IET, MAngalore</p>
                             </div>
                         </div>
                         <div class="list-item">
@@ -97,8 +97,8 @@
                             </div>
                             <div class="content">
                                 <h4 class="title">Official Work Time</h4>
-                                <span>Monday - Friday: 09:00 - 20:00</span>
-                                <span>Sunday & Saturday: 10:30 - 22:00</span>
+                                <span>Monday - Friday: 09:00 am - 08:00 pm</span>
+                                <span>Sunday & Saturday: 10:30 am - 09:00 pm</span>
                             </div>
                         </div>
                     </div>
