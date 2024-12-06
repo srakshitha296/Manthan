@@ -17,10 +17,8 @@
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta name="description" content="">
         
-            <!-- Site Title -->
             <title>Manthan - AICTE Activty/Event management system</title>
         
-            <!-- Place favicon.ico in the root directory -->
             <link rel="shortcut icon" type="image/x-icon" href="{{ asset('ui/assets/img/favicon.png') }}">
         
             <!-- CSS here -->
