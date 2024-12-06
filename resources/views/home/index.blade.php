@@ -37,14 +37,16 @@
             <div class="col-lg-7 col-md-12">
                 <div class="hero-content-2">
                     <div class="section-heading mb-20">
-                        <h4 class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span
-                                class="heading-icon"><i class="fa-sharp fa-solid fa-bolt"></i></span>Welcome to
-                            Manthan - AICTE Activity/Event Management System    </h4>
+                        <h4 class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
+                                    class="fa-sharp fa-solid fa-bolt"></i></span>Welcome to
+                            Manthan - AICTE Activity/Event Management System </h4>
                         <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Start benefiting from the
-                            <br>world's <span>best tech council</span></h2>
+                            <br>world's <span>best tech council</span>
+                        </h2>
                     </div>
                     <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus
-                        <br> nec ullamcorper mattis</p>
+                        <br> nec ullamcorper mattis
+                    </p>
                     <div class="hero-form">
                         <form action="/">
                             <input type="text" id="text" name="text" class="form-control"
@@ -96,178 +98,56 @@
             </div>
         </div>
         <div class="row gy-4">
+            @foreach ($events as $event)
             <div class="col-xl-6 col-lg-12">
                 <div class="course-item course-item-2 wow fade-in-bottom" data-wow-delay="300ms">
                     <div class="course-thumb-wrap">
                         <div class="course-thumb">
-                            <img src="ui/assets/img/service/course-img-4.png" alt="course">
+                            <img src="{{ Storage::url($event->banner) }}" alt="course">
                         </div>
                     </div>
                     <div class="course-content-wrap">
                         <div class="course-content">
                             <span class="offer">Free</span>
-                            <h3 class="title"><a href="/">Demo Events</a></h3>
+                            <h3 class="title"><a href="/">{{ $event->name }}</a></h3>
                             <ul class="course-list">
-                                <li><i class="fa-light fa-file"></i>duration</li>
-                                <li><i class="fa-light fa-user"></i>limit</li>
-                                <li><i class="fa-light fa-eye"></i>Views</li>
+                                <li><i class="fa-light fa-file"></i>{{ $event->duration }}</li>
+                                <li><i class="fa-light fa-user"></i>{{ $event->type }}</li>
+                                <li><i class="fa-light fa-eye"></i>{{ $event->fees }}</li>
                             </ul>
                             <div class="course-author-box">
+                                @if ($event->speakers->isNotEmpty())
+                                @php
+                                $speaker = $event->speakers->first();
+                                @endphp
                                 <div class="course-author">
                                     <div class="author-img">
-                                        <img src="ui/assets/img/images/course-author-1.png" alt="course">
+                                        <img src="{{ Storage::url($speaker->image) }}" alt="course">
                                     </div>
                                     <div class="author-info">
-                                        <h4 class="name">Kevin Perry</h4>
-                                        <span>Speaker designation</span>
+                                        <h4 class="name">{{ $speaker->name }}</h4>
+                                        <span>{{ $speaker->designation }}</span>
                                     </div>
                                 </div>
-                                <ul class="course-review">
+                                @endif
+                                {{-- <ul class="course-review">
                                     <li><i class="fa-sharp fa-solid fa-star"></i></li>
                                     <li><i class="fa-sharp fa-solid fa-star"></i></li>
                                     <li><i class="fa-sharp fa-solid fa-star"></i></li>
                                     <li><i class="fa-sharp fa-solid fa-star"></i></li>
                                     <li><i class="fa-sharp fa-solid fa-star"></i></li>
                                     <li class="point">(4.7)</li>
-                                </ul>
+                                </ul> --}}
                             </div>
                         </div>
                         <div class="bottom-content">
-                            <span class="price">₹59.00 (price if needed)</span>
-                            <a href="/" class="course-btn">View Details</a>
+                            <span class="price"> ₹ {{ $event->fees }}</span>
+                            <a href="{{ route('events.show', $event->id) }}" class="course-btn">View Details</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-6 col-lg-12">
-                <div class="course-item course-item-2 wow fade-in-bottom" data-wow-delay="300ms">
-                    <div class="course-thumb-wrap">
-                        <div class="course-thumb">
-                            <img src="ui/assets/img/service/course-img-4.png" alt="course">
-                        </div>
-                    </div>
-                    <div class="course-content-wrap">
-                        <div class="course-content">
-                            <span class="offer">Free</span>
-                            <h3 class="title"><a href="/">Demo Events</a></h3>
-                            <ul class="course-list">
-                                <li><i class="fa-light fa-file"></i>duration</li>
-                                <li><i class="fa-light fa-user"></i>limit</li>
-                                <li><i class="fa-light fa-eye"></i>Views</li>
-                            </ul>
-                            <div class="course-author-box">
-                                <div class="course-author">
-                                    <div class="author-img">
-                                        <img src="ui/assets/img/images/course-author-1.png" alt="course">
-                                    </div>
-                                    <div class="author-info">
-                                        <h4 class="name">Kevin Perry</h4>
-                                        <span>Speaker designation</span>
-                                    </div>
-                                </div>
-                                <ul class="course-review">
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li class="point">(4.7)</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="bottom-content">
-                            <span class="price">₹59.00 (price if needed)</span>
-                            <a href="/" class="course-btn">View Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-6 col-lg-12">
-                <div class="course-item course-item-2 wow fade-in-bottom" data-wow-delay="300ms">
-                    <div class="course-thumb-wrap">
-                        <div class="course-thumb">
-                            <img src="ui/assets/img/service/course-img-4.png" alt="course">
-                        </div>
-                    </div>
-                    <div class="course-content-wrap">
-                        <div class="course-content">
-                            <span class="offer">Free</span>
-                            <h3 class="title"><a href="/">Demo Events</a></h3>
-                            <ul class="course-list">
-                                <li><i class="fa-light fa-file"></i>duration</li>
-                                <li><i class="fa-light fa-user"></i>limit</li>
-                                <li><i class="fa-light fa-eye"></i>Views</li>
-                            </ul>
-                            <div class="course-author-box">
-                                <div class="course-author">
-                                    <div class="author-img">
-                                        <img src="ui/assets/img/images/course-author-1.png" alt="course">
-                                    </div>
-                                    <div class="author-info">
-                                        <h4 class="name">Kevin Perry</h4>
-                                        <span>Speaker designation</span>
-                                    </div>
-                                </div>
-                                <ul class="course-review">
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li class="point">(4.7)</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="bottom-content">
-                            <span class="price">₹59.00 (price if needed)</span>
-                            <a href="/" class="course-btn">View Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-6 col-lg-12">
-                <div class="course-item course-item-2 wow fade-in-bottom" data-wow-delay="300ms">
-                    <div class="course-thumb-wrap">
-                        <div class="course-thumb">
-                            <img src="ui/assets/img/service/course-img-4.png" alt="course">
-                        </div>
-                    </div>
-                    <div class="course-content-wrap">
-                        <div class="course-content">
-                            <span class="offer">Free</span>
-                            <h3 class="title"><a href="/">Demo Events</a></h3>
-                            <ul class="course-list">
-                                <li><i class="fa-light fa-file"></i>duration</li>
-                                <li><i class="fa-light fa-user"></i>limit</li>
-                                <li><i class="fa-light fa-eye"></i>Views</li>
-                            </ul>
-                            <div class="course-author-box">
-                                <div class="course-author">
-                                    <div class="author-img">
-                                        <img src="ui/assets/img/images/course-author-1.png" alt="course">
-                                    </div>
-                                    <div class="author-info">
-                                        <h4 class="name">Kevin Perry</h4>
-                                        <span>Speaker designation</span>
-                                    </div>
-                                </div>
-                                <ul class="course-review">
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li class="point">(4.7)</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="bottom-content">
-                            <span class="price">₹59.00 (price if needed)</span>
-                            <a href="/" class="course-btn">View Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -283,59 +163,21 @@
                     <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Featured Events</h2>
                 </div>
                 <div class="course-top-right wow fade-in-bottom" data-wow-delay="300ms">
-                    <a href="{{ route('events') }}" class="ed-primary-btn">Browse All Courses <i
+                    <a href="{{ route('events') }}" class="ed-primary-btn">Browse All Events <i
                             class="fa-regular fa-arrow-right"></i></a>
                 </div>
             </div>
             <div class="row gy-xl-0 gy-4 justify-content-center">
-                <div class="col-xl-2 col-lg-3 col-md-4">
+                @foreach ($eventTypes as $item)
+                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
                     <div class="feature-item text-center wow fade-in-bottom" data-wow-delay="200ms">
                         <div class="icon"><img src="ui/assets/img/icon/feature-1.png" alt="feature"></div>
-                        <h3 class="title">UI/UX <br>Design Service</h3>
-                        <a href="/" class="feature-btn"><i
+                        <h3 class="title">{{ $item }}</h3>
+                        <a href="{{ route('events') }}" class="feature-btn"><i
                                 class="fa-regular fa-arrow-right"></i></a>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-3 col-md-4">
-                    <div class="feature-item text-center wow fade-in-bottom" data-wow-delay="200ms">
-                        <div class="icon"><img src="ui/assets/img/icon/feature-2.png" alt="feature"></div>
-                        <h3 class="title">Software <br>Development</h3>
-                        <a href="/" class="feature-btn"><i
-                                class="fa-regular fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-3 col-md-4">
-                    <div class="feature-item text-center wow fade-in-bottom" data-wow-delay="400ms">
-                        <div class="icon"><img src="ui/assets/img/icon/feature-3.png" alt="feature"></div>
-                        <h3 class="title">Digital <br>Marketing</h3>
-                        <a href="/" class="feature-btn"><i
-                                class="fa-regular fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-3 col-md-4">
-                    <div class="feature-item text-center wow fade-in-bottom" data-wow-delay="500ms">
-                        <div class="icon"><img src="ui/assets/img/icon/feature-4.png" alt="feature"></div>
-                        <h3 class="title">Self <br>Managments</h3>
-                        <a href="/" class="feature-btn"><i
-                                class="fa-regular fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-3 col-md-4">
-                    <div class="feature-item text-center wow fade-in-bottom" data-wow-delay="600ms">
-                        <div class="icon"><img src="ui/assets/img/icon/feature-5.png" alt="feature"></div>
-                        <h3 class="title">Application <br>Development</h3>
-                        <a href="/" class="feature-btn"><i
-                                class="fa-regular fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-3 col-md-4">
-                    <div class="feature-item text-center wow fade-in-bottom" data-wow-delay="700ms">
-                        <div class="icon"><img src="ui/assets/img/icon/feature-6.png" alt="feature"></div>
-                        <h3 class="title">UI/UX Graphic <br>Design</h3>
-                        <a href="/" class="feature-btn"><i
-                                class="fa-regular fa-arrow-right"></i></a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -531,8 +373,8 @@
             <div class="col-lg-6 col-md-12">
                 <div class="faq-content">
                     <div class="section-heading mb-30">
-                        <h4 class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span
-                                class="heading-icon"><i class="fa-sharp fa-solid fa-bolt"></i></span>Our Course
+                        <h4 class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
+                                    class="fa-sharp fa-solid fa-bolt"></i></span>Our Course
                             Categories</h4>
                         <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Powerful Dashboard And
                             High Performance Framework</h2>
@@ -558,13 +400,13 @@
                             </div>
                             <div class="accordion-item wow fade-in-bottom" data-wow-delay="200ms">
                                 <h2 class="accordion-header" id="headingTwo">
-                                    <button class="accordion-button collapsed" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                                        aria-expanded="false" aria-controls="collapseTwo"><span>02.</span>How Can
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="false"
+                                        aria-controls="collapseTwo"><span>02.</span>How Can
                                         Teachers Effectively Manage a Diverse Classroom?</button>
                                 </h2>
-                                <div id="collapseTwo" class="accordion-collapse collapse"
-                                    aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         We offer a wide range of courses in various subjects, including science,
                                         technology, engineering, mathematics, humanities, and social sciences. Our
@@ -575,9 +417,9 @@
                             </div>
                             <div class="accordion-item wow fade-in-bottom" data-wow-delay="200ms">
                                 <h2 class="accordion-header" id="headingThree">
-                                    <button class="accordion-button collapsed" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapseThree"
-                                        aria-expanded="false" aria-controls="collapseThree"><span>03.</span>How Is
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree"><span>03.</span>How Is
                                         Special Education Delivered in Inclusive Classrooms?</button>
                                 </h2>
                                 <div id="collapseThree" class="accordion-collapse collapse"
@@ -800,7 +642,8 @@
                                     items rather total</a></h3>
                             <p>we understand the importance of preparing students for the real world curriculum is
                                 <br> designed strong emphasis on practical skills and real-world applications. By
-                                integrating <br> project-based learning, internships, and industry partnerships,</p>
+                                integrating <br> project-based learning, internships, and industry partnerships,
+                            </p>
                             <a href="blog-details.html" class="ed-primary-btn">Read More <i
                                     class="fa-regular fa-arrow-right"></i></a>
                         </div>
@@ -822,7 +665,8 @@
                                     21st-Century Learners</a></h3>
                             <p>we understand the importance of preparing students for the real world curriculum is
                                 <br> designed strong emphasis on practical skills and real-world applications. By
-                                integrating <br> project-based learning, internships, and industry partnerships,</p>
+                                integrating <br> project-based learning, internships, and industry partnerships,
+                            </p>
                             <a href="blog-details.html" class="ed-primary-btn">Read More <i
                                     class="fa-regular fa-arrow-right"></i></a>
                         </div>
@@ -844,7 +688,8 @@
                                     Building Resilient</a></h3>
                             <p>we understand the importance of preparing students for the real world curriculum is
                                 <br> designed strong emphasis on practical skills and real-world applications. By
-                                integrating <br> project-based learning, internships, and industry partnerships,</p>
+                                integrating <br> project-based learning, internships, and industry partnerships,
+                            </p>
                             <a href="blog-details.html" class="ed-primary-btn">Read More <i
                                     class="fa-regular fa-arrow-right"></i></a>
                         </div>
@@ -855,5 +700,5 @@
     </div>
 </section>
 <!-- ./ blog-section -->
-    
+
 @endsection
