@@ -46,19 +46,24 @@
                     <div class="header-menu-wrap">
                         <div class="mobile-menu-items">
                             <ul class="sub-menu">
-                                <li class="menu-item active">
+                                <li class="menu-item {{ request()->routeIs('home') ? 'active' : '' }}">
                                     <a href="{{ route('home') }}">Home</a>
                                 </li>
-                                <li class="menu-item">
+                                <li class="menu-item {{ request()->routeIs('about') ? 'active' : '' }}">
                                     <a href="{{ route('about') }}">About Us</a>
                                 </li>
-                                <li class="menu-item">
+                                <li class="menu-item {{ request()->routeIs('events') ? 'active' : '' }}">
                                     <a href="{{ route('events') }}">Events</a>
                                 </li>
-                                
-                                <li><a href="{{ route('gallery') }}">Gallery</a></li>
-                                <li><a href="{{ route('blogs') }}">Blog</a></li>
-                                <li><a href="{{ route('contact') }}">Contact</a></li>
+                                <li class="menu-item {{ request()->routeIs('gallery') ? 'active' : '' }}">
+                                    <a href="{{ route('gallery') }}">Gallery</a>
+                                </li>
+                                <li class="menu-item {{ request()->routeIs('blogs') ? 'active' : '' }}">
+                                    <a href="{{ route('blogs') }}">Blog</a>
+                                </li>
+                                <li class="menu-item {{ request()->routeIs('contact') ? 'active' : '' }}">
+                                    <a href="{{ route('contact') }}">Contact</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
