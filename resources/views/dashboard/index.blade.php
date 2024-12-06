@@ -56,9 +56,6 @@
 </head>
 
 <body>
-    <!-- ===============================================-->
-    <!--    Main Content-->
-    <!-- ===============================================-->
     <main class="main" id="top">
         <nav class="navbar navbar-vertical navbar-expand-lg" style="display:none;">
             <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
@@ -1093,13 +1090,8 @@
                 </div>
             </footer>
         </div>
-    </main><!-- ===============================================-->
-    <!--    End of Main Content-->
-    <!-- ===============================================-->
+    </main>
 
-    <!-- ===============================================-->
-    <!--    JavaScripts-->
-    <!-- ===============================================-->
     <script src="{{ asset('dashboard/vendors/popper/popper.min.js') }}"></script>
     <script src="{{ asset('dashboard/vendors/bootstrap/bootstrap.min.js') }}"></script>
     <script src="{{ asset('dashboard/vendors/anchorjs/anchor.min.js') }}"></script>
