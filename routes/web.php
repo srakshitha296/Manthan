@@ -29,6 +29,8 @@ Route::get('/blogs',[BlogController::class,'index'])->name('blogs');
 Route::get('/blogs-details/{id}',[BlogController::class,'show'])->name('blogs.show');
 
 Route::get('/user-dashboard',[DashboardController::class,'index'])->name('user.dashboard')->middleware('auth');
+Route::get('/user-dashboard/profile',[DashboardController::class,'viewProfile'])->name('user.view.profile')->middleware('auth');
+Route::get('/user-dashboard/profile/edit',[DashboardController::class,'editProfile'])->name('user.edit.profile')->middleware('auth');
 
 
 require __DIR__.'/auth.php';

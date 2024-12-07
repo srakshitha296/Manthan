@@ -21,13 +21,13 @@
                             <ul class="nav collapse parent show" data-bs-parent="#navbarVerticalCollapse"
                                 id="nv-Profile">
                                 <li class="collapsed-nav-item-title d-none">Profile</li>
-                                <li class="nav-item"><a class="nav-link active" href="view_profile.html">
+                                <li class="nav-item"><a class="nav-link active" href="{{ route('user.view.profile') }}">
                                         <div class="d-flex align-items-center"><span class="nav-link-text">View
                                                 Profile
                                             </span></div>
                                     </a><!-- more inner pages-->
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="edit_profile.html">
+                                <li class="nav-item"><a class="nav-link" href="{{ route('user.edit.profile') }}">
                                         <div class="d-flex align-items-center"><span class="nav-link-text">Edit
                                                 Profile</span></div>
                                     </a><!-- more inner pages-->
