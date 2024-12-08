@@ -60,7 +60,7 @@
         <div class="col-sm-10 col-md-8 col-lg-5 col-xl-5 col-xxl-3">
             <a class="d-flex flex-center text-decoration-none mb-4" href="{{ route('home') }}">
                 <div class="d-flex align-items-center fw-bolder fs-3 d-inline-block">
-                    <img src="{{ asset('dashboard/assets/img/icons/logo.png') }}" alt="phoenix" width="58" />
+                    <img src="{{ asset('ui/assets/img/favicon.png') }}" alt="logo" width="58" />
                 </div>
             </a>
             <div class="text-center mb-3">
@@ -81,21 +81,23 @@
             </div> --}}
             <form method="POST" action="{{ route('register') }}">
                 @csrf
-                <div class="mb-3 text-start"><label class="form-label" for="name" >Name</label>
-                    <input
-                        class="form-control" id="name" type="text" placeholder="Name" name="name" required
-                        autofocus autocomplete="name" /></div>
+                <div class="mb-3 text-start"><label class="form-label" for="name">Name</label>
+                    <input class="form-control" id="name" type="text" placeholder="Name" name="name" required autofocus
+                        autocomplete="name" />
+                </div>
                 <div class="mb-3 text-start">
                     <label class="form-label" for="email">Email address</label>
-                    <input class="form-control" id="email" type="email" placeholder="name@example.com" type="email" name="email" required autocomplete="username" />
+                    <input class="form-control" id="email" type="email" placeholder="name@example.com" type="email"
+                        name="email" required autocomplete="username" />
                 </div>
                 <div class="row g-3 mb-3">
                     <div class="col-sm-6"><label class="form-label" for="password">Password</label>
                         <div class="position-relative" data-password="data-password">
-                            <input
-                                class="form-control form-icon-input pe-6" id="password" type="password" name="password" required autocomplete="new-password"
-                                placeholder="Password" data-password-input="data-password-input" />
-                            <button class="btn px-3 py-0 h-100 position-absolute top-0 end-0 fs-7 text-body-tertiary" data-password-toggle="data-password-toggle">
+                            <input class="form-control form-icon-input pe-6" id="password" type="password"
+                                name="password" required autocomplete="new-password" placeholder="Password"
+                                data-password-input="data-password-input" />
+                            <button class="btn px-3 py-0 h-100 position-absolute top-0 end-0 fs-7 text-body-tertiary"
+                                data-password-toggle="data-password-toggle">
                                 <span class="uil uil-eye show"></span>
                                 <span class="uil uil-eye-slash hide"></span>
                             </button>
@@ -104,9 +106,11 @@
                     <div class="col-sm-6">
                         <label class="form-label" for="password_confirmation">Confirm Password</label>
                         <div class="position-relative" data-password="data-password">
-                            <input class="form-control form-icon-input pe-6" id="password_confirmation" type="password" placeholder="Confirm Password" 
-                            data-password-input="data-password-input" />
-                            <button class="btn px-3 py-0 h-100 position-absolute top-0 end-0 fs-7 text-body-tertiary" data-password-toggle="data-password-toggle">
+                            <input class="form-control form-icon-input pe-6" id="password_confirmation" type="password"
+                                name="password_confirmation" placeholder="Confirm Password"
+                                data-password-input="data-password-input" />
+                            <button class="btn px-3 py-0 h-100 position-absolute top-0 end-0 fs-7 text-body-tertiary"
+                                data-password-toggle="data-password-toggle">
                                 <span class="uil uil-eye show"></span>
                                 <span class="uil uil-eye-slash hide"></span>
                             </button>
@@ -116,8 +120,9 @@
                 <div class="form-check mb-3"><input class="form-check-input" id="termsService" type="checkbox" /><label
                         class="form-label fs-9 text-transform-none" for="termsService">I accept the <a href="#!">terms
                         </a>and <a href="#!">privacy policy</a></label></div>
-                        <button class="btn btn-primary w-100 mb-3" type="submit">Sign up</button>
-                <div class="text-center"><a class="fs-9 fw-bold" href="sign-in.html">Sign in to an existing account</a>
+                <button class="btn btn-primary w-100 mb-3" type="submit">Sign up</button>
+                <div class="text-center"><a class="fs-9 fw-bold" href="{{ route('login') }}">Sign in to an existing
+                        account</a>
                 </div>
             </form>
         </div>

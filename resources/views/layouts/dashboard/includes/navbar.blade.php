@@ -720,6 +720,7 @@
                             <hr /> --}}
                             <div class="px-3 mt-2 mb-2"> 
                                 <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
                                     <button class="btn btn-phoenix-secondary d-flex flex-center w-100" type="submit">
                                         <span class="me-2" data-feather="log-out"> </span>Sign out</a></button>
                                 </form>

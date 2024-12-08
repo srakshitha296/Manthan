@@ -8,7 +8,7 @@
             <div class="col-sm-10 col-md-8 col-lg-5 col-xl-5 col-xxl-3"><a
                     class="d-flex flex-center text-decoration-none mb-4" href="{{ route('home') }}">
                     <div class="d-flex align-items-center fw-bolder fs-3 d-inline-block"><img
-                            src="{{ ('dashboard/assets/img/icons/logo.png') }}" alt="phoenix" width="58" /></div>
+                            src="{{ asset('ui/assets/img/favicon.png') }}" alt="logo" width="58" /></div>
                 </a>
                 <div class="text-center mb-7">
                     <h3 class="text-body-highlight">Sign In</h3>
