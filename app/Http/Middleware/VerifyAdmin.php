@@ -22,7 +22,7 @@ class VerifyAdmin
             return $next($request);
         }
 
-        // abort(403, ' You are not authorized to access this page');
+        // abort(403);
         return redirect()->route('user.dashboard');
     }
 }

@@ -49,12 +49,12 @@
                     <div class="parent-wrapper label-1">
                         <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-Events">
                             <li class="collapsed-nav-item-title d-none">Events</li>
-                            <li class="nav-item"><a class="nav-link" href="view_registered_events.html">
+                            <li class="nav-item"><a class="nav-link" href="{{ route('user.view.events') }}">
                                     <div class="d-flex align-items-center"><span class="nav-link-text">View
                                             Registered Events</span></div>
                                 </a><!-- more inner pages-->
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="register_events.html">
+                            <li class="nav-item"><a class="nav-link" href="{{ route('user.my.events') }}">
                                     <div class="d-flex align-items-center"><span class="nav-link-text">Register
                                             Events</span></div>
                                 </a><!-- more inner pages-->
@@ -718,8 +718,14 @@
                                             data-feather="user-plus"></span>Add another account</a></li>
                             </ul>
                             <hr /> --}}
-                            <div class="px-3 mt-2 mb-2"> <a class="btn btn-phoenix-secondary d-flex flex-center w-100"
-                                    href="#!"> <span class="me-2" data-feather="log-out"> </span>Sign out</a>
+                            <div class="px-3 mt-2 mb-2"> 
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button class="btn btn-phoenix-secondary d-flex flex-center w-100" type="submit">
+                                        <span class="me-2" data-feather="log-out"> </span>Sign out</a></button>
+                                </form>
+                                {{-- <a class="btn btn-phoenix-secondary d-flex flex-center w-100"
+                                    href="#"> <span class="me-2" data-feather="log-out"> </span>Sign out</a> --}}
                             </div>
                             {{-- <div class="my-2 text-center fw-bold fs-10 text-body-quaternary"><a
                                     class="text-body-quaternary me-1" href="#!">Privacy policy</a>&bull;<a

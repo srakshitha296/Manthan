@@ -31,6 +31,7 @@ Route::get('/blogs-details/{id}',[BlogController::class,'show'])->name('blogs.sh
 Route::get('/user-dashboard',[DashboardController::class,'index'])->name('user.dashboard')->middleware('auth');
 Route::get('/user-dashboard/profile',[DashboardController::class,'viewProfile'])->name('user.view.profile')->middleware('auth');
 Route::get('/user-dashboard/profile/edit',[DashboardController::class,'editProfile'])->name('user.edit.profile')->middleware('auth');
-
+Route::get('/user-dashboard/events',[DashboardController::class,'viewEvents'])->name('user.view.events')->middleware('auth');
+Route::get('/user-dashboard/my-events',[DashboardController::class,'myEvents'])->name('user.my.events')->middleware('auth');
 
 require __DIR__.'/auth.php';

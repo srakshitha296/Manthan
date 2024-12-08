@@ -21,4 +21,12 @@ class DashboardController extends Controller
     public function editProfile(){
         return view('dashboard.profile.edit');
     }
+
+    public function viewEvents(){
+        return view('dashboard.events.index');
+    }
+
+    public function myEvents(){
+        return view('dashboard.events.events');
+    }
 }
