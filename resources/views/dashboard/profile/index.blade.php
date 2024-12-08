@@ -24,7 +24,7 @@
                                 <div class="row align-items-center g-5 mb-3 text-center text-sm-start">
                                     <div class="col-12 col-sm-auto mb-sm-2">
                                         <div class="avatar avatar-5xl"><img class="rounded-circle"
-                                                src="../../../assets/img/team/15.webp" alt="" /></div>
+                                                src="{{ asset('dashboard/assets/img/team/15.webp') }}" alt="" /></div>
                                     </div>
                                     <div class="col-12 col-sm-auto flex-1">
                                         <h3>Ansolo Lazinatov</h3>
