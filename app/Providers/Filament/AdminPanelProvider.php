@@ -54,7 +54,8 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
                 VerifyAdmin::class,
-            ])->brandName('Manthan')
+            ])->brandLogo(asset('ui/assets/img/logo/logo-dark.png'))
+            ->brandLogoHeight('3.8rem')
             ->sidebarCollapsibleOnDesktop();
     }
 }
