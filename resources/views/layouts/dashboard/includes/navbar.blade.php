@@ -77,7 +77,7 @@
                         <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse"
                             id="nv-Activity">
                             <li class="collapsed-nav-item-title d-none">Activity</li>
-                            <li class="nav-item"><a class="nav-link" href="view_activity.html">
+                            <li class="nav-item"><a class="nav-link" href="{{ route('user.activity.index') }}">
                                     <div class="d-flex align-items-center"><span class="nav-link-text">View
                                             Activity</span>
                                     </div>
@@ -85,11 +85,6 @@
                             </li>
                             <li class="nav-item"><a class="nav-link" href="add_activity.html">
                                     <div class="d-flex align-items-center"><span class="nav-link-text">Add
-                                            Activity</span></div>
-                                </a><!-- more inner pages-->
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="edit_activity.html">
-                                    <div class="d-flex align-items-center"><span class="nav-link-text">Edit
                                             Activity</span></div>
                                 </a><!-- more inner pages-->
                             </li>
