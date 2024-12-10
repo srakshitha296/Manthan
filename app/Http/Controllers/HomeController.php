@@ -12,14 +12,14 @@ class HomeController extends Controller
 {
     public function home()
     {
-        $converter = new CommonMarkConverter();
+        // $converter = new CommonMarkConverter();
         $eventTypes = ['SDP', 'FDP', 'STTP', 'Workshop', 'Seminar', 'Conference', 'Webinar', 'Hackathon', 'Bootcamp', 'Other'];
         $events = Program::orderBy('created_at','desc')->with('speakers')->limit(4)->get();
         $posts = Post::orderBy('created_at','desc')->with('category')->limit(3)->get();
 
-        foreach ($posts as $post) {
-            $post->content = $converter->convertToHtml($post->content);
-        }
+        // foreach ($posts as $post) {
+        //     $post->content = $converter->convertToHtml($post->content);
+        // }
         // dd($posts);
         return view('home.index', compact('eventTypes', 'events', 'posts'));
     }
