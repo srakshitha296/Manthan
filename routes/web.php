@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
@@ -33,5 +34,8 @@ Route::get('/user-dashboard/profile',[DashboardController::class,'viewProfile'])
 Route::get('/user-dashboard/profile/edit',[DashboardController::class,'editProfile'])->name('user.edit.profile')->middleware('auth');
 Route::get('/user-dashboard/events',[DashboardController::class,'viewEvents'])->name('user.view.events')->middleware('auth');
 Route::get('/user-dashboard/my-events',[DashboardController::class,'myEvents'])->name('user.my.events')->middleware('auth');
+Route::get('/user-dashboard/view-activities',[ActivityController::class,'index'])->name('user.activity.index')->middleware('auth');
+Route::get('/user-dashboard/add-activity',[ActivityController::class,'create'])->name('user.activity.create')->middleware('auth');
+Route::get('/user-dashboard/edit-activity/',[ActivityController::class,'edit'])->name('user.activity.edit')->middleware('auth');
 
 require __DIR__.'/auth.php';

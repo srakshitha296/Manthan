@@ -36,44 +36,79 @@
         </div>
     </div>
 
-    <div class="row g-4 p-4 m-2 d-flex mb-9">
+    <div class="row justify-content-center align-items-center mb-9 me-3 g-4">
         <div class="card" style="max-width:20rem;">
             <img class="card-img-top" src="docker.png" alt="...">
-            <div class="card-body d-flex flex-column  justify-content-between">
+            <div class="card-body d-flex flex-column  justify-content-center">
                 <button class="btn btn-success">Register</button>
             </div>
         </div>
         <div class="card" style="max-width:20rem;">
             <img class="card-img-top" src="docker.png" alt="...">
-            <div class="card-body d-flex flex-column  justify-content-between">
+            <div class="card-body d-flex flex-column  justify-content-center">
                 <button class="btn btn-success">Register</button>
             </div>
         </div>
         <div class="card" style="max-width:20rem;">
             <img class="card-img-top" src="docker.png" alt="...">
-            <div class="card-body d-flex flex-column  justify-content-between">
+            <div class="card-body d-flex flex-column  justify-content-center">
                 <button class="btn btn-success">Register</button>
             </div>
         </div>
         <div class="card" style="max-width:20rem;">
             <img class="card-img-top" src="docker.png" alt="...">
-            <div class="card-body d-flex flex-column  justify-content-between">
+            <div class="card-body d-flex flex-column  justify-content-center">
                 <button class="btn btn-success">Register</button>
             </div>
         </div>
         <div class="card" style="max-width:20rem;">
             <img class="card-img-top" src="docker.png" alt="...">
-            <div class="card-body d-flex flex-column  justify-content-between">
+            <div class="card-body d-flex flex-column  justify-content-center">
                 <button class="btn btn-success">Register</button>
             </div>
         </div>
         <div class="card" style="max-width:20rem;">
             <img class="card-img-top" src="docker.png" alt="...">
-            <div class="card-body d-flex flex-column  justify-content-between">
+            <div class="card-body d-flex flex-column  justify-content-center">
                 <button class="btn btn-success">Register</button>
             </div>
         </div>
-
+        <div class="card" style="max-width:20rem;">
+            <img class="card-img-top" src="docker.png" alt="...">
+            <div class="card-body d-flex flex-column  justify-content-center">
+                <button class="btn btn-success">Register</button>
+            </div>
+        </div>
+        <div class="card" style="max-width:20rem;">
+            <img class="card-img-top" src="docker.png" alt="...">
+            <div class="card-body d-flex flex-column  justify-content-center">
+                <button class="btn btn-success">Register</button>
+            </div>
+        </div>
+        <div class="card" style="max-width:20rem;">
+            <img class="card-img-top" src="docker.png" alt="...">
+            <div class="card-body d-flex flex-column  justify-content-center">
+                <button class="btn btn-success">Register</button>
+            </div>
+        </div>
+        <div class="card" style="max-width:20rem;">
+            <img class="card-img-top" src="docker.png" alt="...">
+            <div class="card-body d-flex flex-column  justify-content-center">
+                <button class="btn btn-success">Register</button>
+            </div>
+        </div>
+        <div class="card" style="max-width:20rem;">
+            <img class="card-img-top" src="docker.png" alt="...">
+            <div class="card-body d-flex flex-column  justify-content-center">
+                <button class="btn btn-success">Register</button>
+            </div>
+        </div>
+        <div class="card" style="max-width:20rem;">
+            <img class="card-img-top" src="docker.png" alt="...">
+            <div class="card-body d-flex flex-column  justify-content-center">
+                <button class="btn btn-success">Register</button>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
