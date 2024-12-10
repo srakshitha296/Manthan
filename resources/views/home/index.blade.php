@@ -627,6 +627,7 @@
             <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Latest News Updates</h2>
         </div>
         <div class="row gy-lg-0 gy-4 justify-content-center post-card-2-wrap">
+            @foreach ($posts as $post)    
             <div class="col-lg-12 col-md-6">
                 <div class="post-card-2 wow fade-in-bottom" data-wow-delay="200ms">
                     <div class="post-thumb">
@@ -635,14 +636,11 @@
                     <div class="post-content-wrap">
                         <div class="post-content">
                             <ul class="post-meta">
-                                <li><i class="fa-sharp fa-regular fa-clock"></i>August 15, 2024</li>
-                                <li><i class="fa-sharp fa-regular fa-folder"></i>Marketing</li>
+                                <li><i class="fa-sharp fa-regular fa-clock"></i>{{ $post->created_at->format('F, d') }}</li>
+                                <li><i class="fa-sharp fa-regular fa-folder"></i>{{ $post->category->name }}</li>
                             </ul>
-                            <h3 class="title"><a href="blog-details.html">Repurpose mission critical action life
-                                    items rather total</a></h3>
-                            <p>we understand the importance of preparing students for the real world curriculum is
-                                <br> designed strong emphasis on practical skills and real-world applications. By
-                                integrating <br> project-based learning, internships, and industry partnerships,
+                            <h3 class="title"><a href="blog-details.html">{{ $post->title }}</a></h3>
+                            <p>{{ $post->content }}
                             </p>
                             <a href="blog-details.html" class="ed-primary-btn">Read More <i
                                     class="fa-regular fa-arrow-right"></i></a>
@@ -650,52 +648,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-12 col-md-6">
-                <div class="post-card-2 wow fade-in-bottom" data-wow-delay="400ms">
-                    <div class="post-thumb">
-                        <img src="ui/assets/img/blog/post-5.png" alt="post">
-                    </div>
-                    <div class="post-content-wrap">
-                        <div class="post-content">
-                            <ul class="post-meta">
-                                <li><i class="fa-sharp fa-regular fa-clock"></i>August 15, 2024</li>
-                                <li><i class="fa-sharp fa-regular fa-folder"></i>Marketing</li>
-                            </ul>
-                            <h3 class="title"><a href="blog-details.html">Transforming Traditional Classrooms for
-                                    21st-Century Learners</a></h3>
-                            <p>we understand the importance of preparing students for the real world curriculum is
-                                <br> designed strong emphasis on practical skills and real-world applications. By
-                                integrating <br> project-based learning, internships, and industry partnerships,
-                            </p>
-                            <a href="blog-details.html" class="ed-primary-btn">Read More <i
-                                    class="fa-regular fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-12 col-md-6">
-                <div class="post-card-2 wow fade-in-bottom" data-wow-delay="500ms">
-                    <div class="post-thumb">
-                        <img src="ui/assets/img/blog/post-6.png" alt="post">
-                    </div>
-                    <div class="post-content-wrap">
-                        <div class="post-content">
-                            <ul class="post-meta">
-                                <li><i class="fa-sharp fa-regular fa-clock"></i>August 15, 2024</li>
-                                <li><i class="fa-sharp fa-regular fa-folder"></i>Marketing</li>
-                            </ul>
-                            <h3 class="title"><a href="blog-details.html">The Role of Social-Emotional Learning in
-                                    Building Resilient</a></h3>
-                            <p>we understand the importance of preparing students for the real world curriculum is
-                                <br> designed strong emphasis on practical skills and real-world applications. By
-                                integrating <br> project-based learning, internships, and industry partnerships,
-                            </p>
-                            <a href="blog-details.html" class="ed-primary-btn">Read More <i
-                                    class="fa-regular fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
