@@ -15,7 +15,7 @@ class EditUser extends EditRecord
     protected function afterSave(): void
     {
         // Send a notification to the user after update
-        $this->record->notify(new UserNotification(1));
+        // $this->record->notify(new UserNotification(1));
     }
 
     protected function getHeaderActions(): array

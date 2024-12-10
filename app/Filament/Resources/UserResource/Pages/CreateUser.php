@@ -54,7 +54,7 @@ class CreateUser extends CreateRecord
     {
         // Send notification to the newly created user
         // dd("called");
-        $this->record->notify(new UserNotification(0));
+        // $this->record->notify(new UserNotification(0));
     }
 
     protected function getCreatedNotification(): ?Notification
