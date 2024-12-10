@@ -29,7 +29,7 @@ class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-tag';
     protected static ?string $navigationLabel = 'Categories';
     protected static ?string $slug = 'blogs-and-news-categories';
     protected static ?string $modelLabel = 'Category';
