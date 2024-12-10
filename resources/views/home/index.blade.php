@@ -488,53 +488,25 @@
         <div class="section-heading white-content text-center">
             <h4 class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
                         class="fa-sharp fa-solid fa-bolt"></i></span>Our Testimonials</h4>
-            <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">What Students Think and Say About
-                EdCare</h2>
+            <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">What Users Think and Say About Manthan
+            </h2>
         </div>
         <div class="testi-carousel-3 swiper">
             <div class="swiper-wrapper">
+                @foreach ($testimonials as $testimonial)
                 <div class="swiper-slide">
                     <div class="testi-item">
-                        <h3 class="title">Interactive Learning Experience</h3>
-                        <p>"I've been thoroughly impressed with how engaging and interactive the courses are on this
-                            platform. The use of multimedia, quizzes, and live sessions makes learning enjoyable and
-                            keeps me motivated.”</p>
+                        <h3 class="title">{{ $testimonial->title }}</h3>
+                        <p>"{{ $testimonial->testimonial }}”</p>
                         <div class="testi-author">
                             <div class="author-img">
-                                <img src="ui/assets/img/images/testi-author-1.png" alt="testi">
+                                <img src="{{ Storage::url($testimonial->user->image) }}" alt="{{ $testimonial->user->name }}">
                             </div>
-                            <h4 class="name">Markus Adina <span>Writer</span></h4>
+                            <h4 class="name">{{ $testimonial->user->name }} <span>{{ $testimonial->user->role }}</span></h4>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="testi-item">
-                        <h3 class="title">Exceptional Instructor Support</h3>
-                        <p>"I've been thoroughly impressed with how engaging and interactive the courses are on this
-                            platform. The use of multimedia, quizzes, and live sessions makes learning enjoyable and
-                            keeps me motivated.”</p>
-                        <div class="testi-author">
-                            <div class="author-img">
-                                <img src="ui/assets/img/images/testi-author-2.png" alt="testi">
-                            </div>
-                            <h4 class="name">Markus Adina <span>Writer</span></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="testi-item">
-                        <h3 class="title">Need Personalized Learning</h3>
-                        <p>"I've been thoroughly impressed with how engaging and interactive the courses are on this
-                            platform. The use of multimedia, quizzes, and live sessions makes learning enjoyable and
-                            keeps me motivated.”</p>
-                        <div class="testi-author">
-                            <div class="author-img">
-                                <img src="ui/assets/img/images/testi-author-4.png" alt="testi">
-                            </div>
-                            <h4 class="name">Markus Adina <span>Writer</span></h4>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

@@ -103,7 +103,7 @@ class UserResource extends Resource
                     EditAction::make(),
                     DeleteAction::make()->before(function ($record) {
                         // Send the notification before the record is deleted
-                        $record->notify(new UserNotification(3));
+                        // $record->notify(new UserNotification(3));
                     }),
                 ]),
                 // Action::make('Download pdf')->icon('heroicon-o-user'),
