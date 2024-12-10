@@ -90,7 +90,7 @@
             <div class="section-heading mb-0">
                 <h4 class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
                             class="fa-sharp fa-solid fa-bolt"></i></span>Trending Events</h4>
-                <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Featured Events</h2>
+                <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Latest Events</h2>
             </div>
             <div class="course-top-right wow fade-in-bottom" data-wow-delay="300ms">
                 <a href="{{ route('events') }}" class="ed-primary-btn">Browse All Events <i
@@ -160,7 +160,7 @@
                 <div class="section-heading mb-0">
                     <h4 class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
                                 class="fa-sharp fa-solid fa-bolt"></i></span>Our Events</h4>
-                    <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Featured Events</h2>
+                    <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Event Types</h2>
                 </div>
                 <div class="course-top-right wow fade-in-bottom" data-wow-delay="300ms">
                     <a href="{{ route('events') }}" class="ed-primary-btn">Browse All Events <i
@@ -188,36 +188,41 @@
     <div class="container">
         <div class="section-heading text-center">
             <h4 class="sub-heading wow fade-in-bottom" data-wow-delay="200ms"><span class="heading-icon"><i
-                        class="fa-sharp fa-solid fa-bolt"></i></span>Top Class Courses</h4>
-            <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Explore Featured Courses</h2>
+                        class="fa-sharp fa-solid fa-bolt"></i></span>Top Class Events</h4>
+            <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Explore Featured Events</h2>
         </div>
         <div class="row gy-xl-0 gy-4 justify-content-center">
+            @foreach ($events->where('is_featured', true)->take(3) as $event)
             <div class="col-xl-4 col-lg-6 col-md-6">
                 <div class="course-item wow fade-in-bottom" data-wow-delay="200ms">
                     <div class="course-thumb-wrap">
                         <div class="course-thumb">
-                            <img src="ui/assets/img/images/course-img-1.png" alt="course">
+                            <img src="{{ Storage::url($event->banner) }}" alt="{{ $event->name }}">
                         </div>
                     </div>
                     <div class="course-content">
                         <span class="offer">Free</span>
-                        <h3 class="title"><a href="/">React Tutorial Beginners For Skills Building
-                                Carrera</a></h3>
+                        <h3 class="title"><a href="/">{{ $event->name }}</a></h3>
                         <ul class="course-list">
-                            <li><i class="fa-light fa-file"></i>Lesson 8</li>
-                            <li><i class="fa-light fa-user"></i>Students 50</li>
-                            <li><i class="fa-light fa-eye"></i>View: 12K</li>
+                            <li><i class="fa-light fa-file"></i>{{ $event->duration }}</li>
+                            <li><i class="fa-light fa-user"></i>{{ $event->type }}</li>
+                            <li><i class="fa-light fa-eye"></i>{{ $event->fees }}</li>
                         </ul>
                         <div class="course-author-box">
+                            @if ($event->speakers->isNotEmpty())
+                            @php
+                            $speaker = $event->speakers->first();
+                            @endphp
                             <div class="course-author">
                                 <div class="author-img">
-                                    <img src="ui/assets/img/images/course-author-1.png" alt="course">
+                                    <img src="{{ Storage::url($speaker->image) }}" alt="course">
                                 </div>
                                 <div class="author-info">
-                                    <h4 class="name">Kevin Perry</h4>
-                                    <span>Instructor</span>
+                                    <h4 class="name">{{ $speaker->name }}</h4>
+                                    <span>{{ $speaker->designation }}</span>
                                 </div>
                             </div>
+                            @endif
                             <ul class="course-review">
                                 <li><i class="fa-sharp fa-solid fa-star"></i></li>
                                 <li><i class="fa-sharp fa-solid fa-star"></i></li>
@@ -229,95 +234,12 @@
                         </div>
                     </div>
                     <div class="bottom-content">
-                        <span class="price">₹59.00</span>
-                        <a href="/" class="course-btn">View Details</a>
+                        <span class="price"> ₹ {{ $event->fees }}</span>
+                        <a href="{{ route('events.show', $event->id) }}" class="course-btn">View Details</a>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-lg-6 col-md-6">
-                <div class="course-item wow fade-in-bottom" data-wow-delay="400ms">
-                    <div class="course-thumb-wrap">
-                        <div class="course-thumb">
-                            <img src="ui/assets/img/images/course-img-2.png" alt="course">
-                        </div>
-                    </div>
-                    <div class="course-content">
-                        <span class="offer">Free</span>
-                        <h3 class="title"><a href="/">Cultural Perspectives in Teaching <br>and
-                                Learning Environments</a></h3>
-                        <ul class="course-list">
-                            <li><i class="fa-light fa-file"></i>Lesson 8</li>
-                            <li><i class="fa-light fa-user"></i>Students 50</li>
-                            <li><i class="fa-light fa-eye"></i>View: 12K</li>
-                        </ul>
-                        <div class="course-author-box">
-                            <div class="course-author">
-                                <div class="author-img">
-                                    <img src="ui/assets/img/images/course-author-2.png" alt="course">
-                                </div>
-                                <div class="author-info">
-                                    <h4 class="name">Kevin Perry</h4>
-                                    <span>Instructor</span>
-                                </div>
-                            </div>
-                            <ul class="course-review">
-                                <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                <li class="point">(4.7)</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="bottom-content">
-                        <span class="price">₹59.00</span>
-                        <a href="/" class="course-btn">View Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6">
-                <div class="course-item wow fade-in-bottom" data-wow-delay="500ms">
-                    <div class="course-thumb-wrap">
-                        <div class="course-thumb">
-                            <img src="ui/assets/img/images/course-img-3.png" alt="course">
-                        </div>
-                    </div>
-                    <div class="course-content">
-                        <span class="offer">Free</span>
-                        <h3 class="title"><a href="/">Innovative Instructional Strategies <br>for
-                                Enhancing Student</a></h3>
-                        <ul class="course-list">
-                            <li><i class="fa-light fa-file"></i>Lesson 8</li>
-                            <li><i class="fa-light fa-user"></i>Students 50</li>
-                            <li><i class="fa-light fa-eye"></i>View: 12K</li>
-                        </ul>
-                        <div class="course-author-box">
-                            <div class="course-author">
-                                <div class="author-img">
-                                    <img src="ui/assets/img/images/course-author-3.png" alt="course">
-                                </div>
-                                <div class="author-info">
-                                    <h4 class="name">Kevin Perry</h4>
-                                    <span>Instructor</span>
-                                </div>
-                            </div>
-                            <ul class="course-review">
-                                <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                <li class="point">(4.7)</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="bottom-content">
-                        <span class="price">₹59.00</span>
-                        <a href="/" class="course-btn">View Details</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -627,75 +549,28 @@
             <h2 class="section-title wow fade-in-bottom" data-wow-delay="400ms">Latest News Updates</h2>
         </div>
         <div class="row gy-lg-0 gy-4 justify-content-center post-card-2-wrap">
+            @foreach ($posts as $post)
             <div class="col-lg-12 col-md-6">
                 <div class="post-card-2 wow fade-in-bottom" data-wow-delay="200ms">
                     <div class="post-thumb">
-                        <img src="ui/assets/img/blog/post-4.png" alt="post">
+                        <img src="{{ Storage::url($post->image) }}" alt="{{ $post->title }}">
                     </div>
                     <div class="post-content-wrap">
                         <div class="post-content">
                             <ul class="post-meta">
-                                <li><i class="fa-sharp fa-regular fa-clock"></i>August 15, 2024</li>
-                                <li><i class="fa-sharp fa-regular fa-folder"></i>Marketing</li>
+                                <li><i class="fa-sharp fa-regular fa-clock"></i>{{ $post->created_at->format('F, d') }}
+                                </li>
+                                <li><i class="fa-sharp fa-regular fa-folder"></i>{{ $post->category->name }}</li>
                             </ul>
-                            <h3 class="title"><a href="blog-details.html">Repurpose mission critical action life
-                                    items rather total</a></h3>
-                            <p>we understand the importance of preparing students for the real world curriculum is
-                                <br> designed strong emphasis on practical skills and real-world applications. By
-                                integrating <br> project-based learning, internships, and industry partnerships,
-                            </p>
-                            <a href="blog-details.html" class="ed-primary-btn">Read More <i
+                            <h3 class="title"><a href="{{ route('blogs.show', $post->id) }}">{{ $post->title }}</a></h3>
+                            <p>{{ \Illuminate\Support\Str::words($post->content, 100, '...') }}</p>
+                            <a href="{{ route('blogs.show', $post->id) }}" class="ed-primary-btn">Read More <i
                                     class="fa-regular fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-12 col-md-6">
-                <div class="post-card-2 wow fade-in-bottom" data-wow-delay="400ms">
-                    <div class="post-thumb">
-                        <img src="ui/assets/img/blog/post-5.png" alt="post">
-                    </div>
-                    <div class="post-content-wrap">
-                        <div class="post-content">
-                            <ul class="post-meta">
-                                <li><i class="fa-sharp fa-regular fa-clock"></i>August 15, 2024</li>
-                                <li><i class="fa-sharp fa-regular fa-folder"></i>Marketing</li>
-                            </ul>
-                            <h3 class="title"><a href="blog-details.html">Transforming Traditional Classrooms for
-                                    21st-Century Learners</a></h3>
-                            <p>we understand the importance of preparing students for the real world curriculum is
-                                <br> designed strong emphasis on practical skills and real-world applications. By
-                                integrating <br> project-based learning, internships, and industry partnerships,
-                            </p>
-                            <a href="blog-details.html" class="ed-primary-btn">Read More <i
-                                    class="fa-regular fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-12 col-md-6">
-                <div class="post-card-2 wow fade-in-bottom" data-wow-delay="500ms">
-                    <div class="post-thumb">
-                        <img src="ui/assets/img/blog/post-6.png" alt="post">
-                    </div>
-                    <div class="post-content-wrap">
-                        <div class="post-content">
-                            <ul class="post-meta">
-                                <li><i class="fa-sharp fa-regular fa-clock"></i>August 15, 2024</li>
-                                <li><i class="fa-sharp fa-regular fa-folder"></i>Marketing</li>
-                            </ul>
-                            <h3 class="title"><a href="blog-details.html">The Role of Social-Emotional Learning in
-                                    Building Resilient</a></h3>
-                            <p>we understand the importance of preparing students for the real world curriculum is
-                                <br> designed strong emphasis on practical skills and real-world applications. By
-                                integrating <br> project-based learning, internships, and industry partnerships,
-                            </p>
-                            <a href="blog-details.html" class="ed-primary-btn">Read More <i
-                                    class="fa-regular fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

@@ -39,7 +39,7 @@
                     </div>
                     <div class="blog-details-content">
                         <h1 class="display-3 mb-4">{{ $blog->title }}</h1>
-                        {{ $blog->content }}
+                        {!! $blog->content !!}
                         <div class="tag-wrap">
                             <div class="tags">
                                 <h4 class="tag">Tags:</h4>
