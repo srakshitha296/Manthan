@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDeleteCascade();
+            $table->string('title');
+            $table->text('testimonial');
+            $table->boolean('is_published')->default(false);
             $table->timestamps();
         });
     }
