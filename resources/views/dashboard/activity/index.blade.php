@@ -3,7 +3,8 @@
 @section('content')
 <div class="mb-9">
     <div id="projectSummary"
-        data-list='{"valueNames":["activityTitle","assignees","start","end","points","projectprogress","status","action"],"page":6,"pagination":true}'>
+        {{-- data-list='{"valueNames":["activityTitle","assignees","start","end","points","projectprogress","status","action"],"page":6,"pagination":true}' --}}
+        >
         <div class="row mb-4 gx-6 gy-3 align-items-center">
             <div class="col-auto">
                 <h2 class="mb-0">Activities<span class="fw-normal text-body-tertiary ms-3">(32)</span>
@@ -52,7 +53,7 @@
                                     aria-expanded="false" data-bs-reference="parent"><span
                                         class="fas fa-ellipsis-h fs-10"></span></button>
                                 <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item"
-                                        href="{{  }}">View</a><a class="dropdown-item" href="#!">Export</a>
+                                        href="#!">View</a><a class="dropdown-item" href="#!">Export</a>
                                     <div class="dropdown-divider"></div><a class="dropdown-item text-danger"
                                         href="#!">Remove</a>
                                 </div>
@@ -82,7 +83,9 @@
                                     aria-expanded="false" data-bs-reference="parent"><span
                                         class="fas fa-ellipsis-h fs-10"></span></button>
                                 <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item"
-                                        href="#!">View</a><a class="dropdown-item" href="#!">Export</a>
+                                        href="#!">View</a>
+                                        <a class="dropdown-item" href="{{ route('user.activity.edit') }}">Edit</a>
+                                        <a class="dropdown-item" href="#!">Export</a>
                                     <div class="dropdown-divider"></div><a class="dropdown-item text-danger"
                                         href="#!">Remove</a>
                                 </div>
@@ -92,6 +95,21 @@
                 </tbody>
             </table>
         </div>
+        {{-- <div
+            class="d-flex flex-wrap align-items-center justify-content-between py-3 pe-0 fs-9 border-bottom border-translucent">
+            <div class="d-flex">
+                <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body" data-list-info="data-list-info"></p>
+                <a class="fw-semibold" href="#!" data-list-view="*">View all<span class="fas fa-angle-right ms-1"
+                        data-fa-transform="down-1"></span></a><a class="fw-semibold d-none" href="#!"
+                    data-list-view="less">View Less<span class="fas fa-angle-right ms-1"
+                        data-fa-transform="down-1"></span></a>
+            </div>
+            <div class="d-flex"><button class="page-link" data-list-pagination="prev"><span
+                        class="fas fa-chevron-left"></span></button>
+                <ul class="mb-0 pagination"></ul><button class="page-link pe-0" data-list-pagination="next"><span
+                        class="fas fa-chevron-right"></span></button>
+            </div>
+        </div> --}}
     </div>
 </div>
 @endsection

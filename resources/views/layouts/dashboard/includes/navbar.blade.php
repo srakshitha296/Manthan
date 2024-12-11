@@ -83,7 +83,7 @@
                                     </div>
                                 </a><!-- more inner pages-->
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="add_activity.html">
+                            <li class="nav-item"><a class="nav-link" href="{{ route('user.activity.create') }}">
                                     <div class="d-flex align-items-center"><span class="nav-link-text">Add
                                             Activity</span></div>
                                 </a><!-- more inner pages-->
@@ -106,13 +106,13 @@
                         <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse"
                             id="nv-Testimonial">
                             <li class="collapsed-nav-item-title d-none">Testimonial</li>
-                            <li class="nav-item"><a class="nav-link" href="my_testimonial.html">
+                            <li class="nav-item"><a class="nav-link" href="{{ route('user.testimonials') }}">
                                     <div class="d-flex align-items-center"><span class="nav-link-text">My
                                             Testimonial</span>
                                     </div>
                                 </a><!-- more inner pages-->
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="add_testimonial.html">
+                            <li class="nav-item"><a class="nav-link" href="{{ route('user.testimonial.create') }}">
                                     <div class="d-flex align-items-center"><span class="nav-link-text">Add
                                             Testimonial</span>
                                     </div>
