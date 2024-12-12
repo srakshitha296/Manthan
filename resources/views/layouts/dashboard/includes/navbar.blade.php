@@ -555,7 +555,7 @@
                         <circle cx="8" cy="2" r="2" fill="currentColor"></circle>
                         <circle cx="14" cy="2" r="2" fill="currentColor"></circle>
                     </svg></a>
-                <div class="dropdown-menu dropdown-menu-end navbar-dropdown-caret py-0 dropdown-nine-dots shadow border"
+                {{-- <div class="dropdown-menu dropdown-menu-end navbar-dropdown-caret py-0 dropdown-nine-dots shadow border"
                     aria-labelledby="navbarDropdownNindeDots">
                     <div class="card bg-body-emphasis position-relative border-0">
                         <div class="card-body pt-3 px-3 pb-0 overflow-auto scrollbar" style="height: 20rem;">
@@ -661,13 +661,13 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </li>
             <li class="nav-item dropdown"><a class="nav-link lh-1 pe-0" id="navbarDropdownUser" href="#!"
                     role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true"
                     aria-expanded="false">
                     <div class="avatar avatar-l ">
-                        <img class="rounded-circle " src="dashboard/assets/img/team/40x40/57.webp" alt="" />
+                        <img class="rounded-circle " src="{{ asset('dashboard/assets/img/team/40x40/57.webp') }}" alt="" />
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end navbar-dropdown-caret py-0 dropdown-profile shadow border"

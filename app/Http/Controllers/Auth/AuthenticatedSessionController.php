@@ -31,9 +31,9 @@ class AuthenticatedSessionController extends Controller
 
         if ($request->user()->name == "admin" && $request->user()->email == "admin@admin.com" && $request->user()->id == 1) {
             // dd('admin');
-            return redirect()->to('/admin');
+            return redirect()->to('/admin')->with('success','Welcome back, Admin!');
         }else{
-            return redirect()->intended(route('user.dashboard', absolute: false));
+            return redirect()->intended(route('user.dashboard', absolute: false))->with('success','Welcome back, '.$request->user()->name.'!');
         }
     }
 

@@ -41,4 +41,5 @@ Route::get('/user-dashboard/edit-activity/',[ActivityController::class,'edit'])-
 Route::get('/user-dashboard/my-testimonials',[TestimonialController::class,'index'])->name('user.testimonials')->middleware('auth');
 Route::get('/user-dashboard/add-testimonial',[TestimonialController::class,'create'])->name('user.testimonial.create')->middleware('auth');
 
+
 require __DIR__.'/auth.php';
