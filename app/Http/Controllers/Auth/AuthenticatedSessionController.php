@@ -29,11 +29,23 @@ class AuthenticatedSessionController extends Controller
         // dd($request->user());
         $request->session()->regenerate();
 
-        if ($request->user()->name == "admin" && $request->user()->email == "admin@admin.com" && $request->user()->id == 1) {
+        if ($request->user()->is_admin == 1) {
             // dd('admin');
-            return redirect()->to('/admin');
+            return redirect()->to('/admin')->with('success','Welcome back, Admin!');
         }else{
-            return redirect()->intended(route('user.dashboard', absolute: false));
+            // dd($request->user()->role);
+            switch ($request->user()->role) {
+                case 'student':
+                    // dd('student');
+                    return redirect()->intended(route('user.dashboard', absolute: false))->with('success', 'Welcome back, ' . $request->user()->name . '!');
+                case 'faculty':
+                    dd('faculty');
+                    // Add your code for faculty here
+                    break;
+                default:
+                    // dd('others');
+                    return redirect()->intended(route('home'))->with('success', 'Welcome back, ' . $request->user()->name . '!');
+            }
         }
     }
 
