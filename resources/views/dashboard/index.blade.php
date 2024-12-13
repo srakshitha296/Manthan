@@ -1,6 +1,7 @@
 @extends('layouts.dashboard.dashboard')
 
 @section('content')
+
 @if (Auth::user()->role == 'student')
 <div class="pb-5">
     <div class="row g-4">
@@ -186,6 +187,7 @@
         </div>
     </div>
 </div>    
+
 @elseif (Auth::user()->role == 'faculty')
 <div class="row gy-3 mb-6 justify-content-between">
     <div class="col-md-9 col-auto">
@@ -276,7 +278,6 @@
         </div>
     </div>
 </div>
-
 <div class="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-body-emphasis pt-7 pb-3 border-y">
     <div class="row">
         <div class="col-12 col-xl-7 col-xxl-6">
@@ -330,9 +331,13 @@
         </div>
     </div>
 </div>  
+
 @elseif (Auth::user()->role == 'HoD')
     <h1>hod dashboard</h1>
+
+
 @elseif (Auth::user()->role == 'Principle')
     <h1>principle dashboard</h1>
 @endif
+
 @endsection

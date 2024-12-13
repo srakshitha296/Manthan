@@ -2,9 +2,8 @@
 
 @section('content')
 <div class="mb-9">
-    <div id="projectSummary"
-        {{-- data-list='{"valueNames":["activityTitle","assignees","start","end","points","projectprogress","status","action"],"page":6,"pagination":true}' --}}
-        >
+    <div id="projectSummary" {{--
+         
         <div class="row mb-4 gx-6 gy-3 align-items-center">
             <div class="col-auto">
                 <h2 class="mb-0">Activities<span class="fw-normal text-body-tertiary ms-3">(32)</span>
@@ -32,36 +31,6 @@
                 <tbody class="list" id="project-list-table-body">
                     <tr class="position-static">
                         <td class="align-middle time white-space-nowrap ps-0 activityTitle py-4"><a class="fw-bold fs-8"
-                                href="#">Helping local schools to get good results</a>
-                        </td>
-
-                        <td class="align-middle white-space-nowrap start ps-3 py-4">
-                            <p class="mb-0 fs-9 text-body">Nov 17, 2020</p>
-                        </td>
-                        <td class="align-middle white-space-nowrap end ps-3 py-4">
-                            <p class="mb-0 fs-9 text-body">May 21, 2028</p>
-                        </td>
-                        <td class="align-middle white-space-nowrap statuses"><span
-                                class="badge badge-phoenix fs-10 badge-phoenix-success">APPROVED</span></td>
-                        <td class="align-middle white-space-nowrap points ps-3 py-4">
-                            <p class="fw-bo text-body fs-9 mb-0">20</p>
-                        </td>
-                        <td class="align-middle text-end white-space-nowrap pe-0 action">
-                            <div class="btn-reveal-trigger position-static"><button
-                                    class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10"
-                                    type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true"
-                                    aria-expanded="false" data-bs-reference="parent"><span
-                                        class="fas fa-ellipsis-h fs-10"></span></button>
-                                <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item"
-                                        href="#!">View</a><a class="dropdown-item" href="#!">Export</a>
-                                    <div class="dropdown-divider"></div><a class="dropdown-item text-danger"
-                                        href="#!">Remove</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="position-static">
-                        <td class="align-middle time white-space-nowrap ps-0 activityTitle py-4"><a class="fw-bold fs-8"
                                 href="#">Skill rural population</a>
                         </td>
 
@@ -84,10 +53,12 @@
                                         class="fas fa-ellipsis-h fs-10"></span></button>
                                 <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item"
                                         href="#!">View</a>
-                                        <a class="dropdown-item" href="{{ route('user.activity.edit') }}">Edit</a>
-                                        <a class="dropdown-item" href="#!">Export</a>
-                                    <div class="dropdown-divider"></div><a class="dropdown-item text-danger"
-                                        href="#!">Remove</a>
+                                    <a class="dropdown-item" href="#!">Export</a>
+                                    @if (Auth::user()->role == 'student')
+                                    <a class="dropdown-item" href="{{ route('user.activity.edit') }}">Edit</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item text-danger" href="#!">Remove</a>
+                                    @endif
                                 </div>
                             </div>
                         </td>
