@@ -3,17 +3,17 @@
 @section('content')
 <div class="container">
     @if (session()->has('error'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ session('error')}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
-        @if (session()->has('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('success')}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('error')}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+    @if (session()->has('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success')}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
     <form method="POST" action="{{ route('login') }}">
         @csrf
         <div class="row flex-center min-vh-100 py-5">
@@ -31,46 +31,33 @@
                 <div class="mb-3 text-start">
                     <label class="form-label" for="email">Email address</label>
                     <div class="form-icon-container">
-                        <input 
-                            class="form-control form-icon-input @error('email') is-invalid @enderror" 
-                            id="email" 
-                            type="email" 
-                            name="email"
-                            value="{{ old('email') }}" 
-                            autofocus 
-                            autocomplete="username"
-                            placeholder="name@example.com" 
-                        />
+                        <input class="form-control form-icon-input @error('email') is-invalid @enderror" id="email"
+                            type="email" name="email" value="{{ old('email') }}" autofocus autocomplete="username"
+                            placeholder="name@example.com" />
                         <span class="fas fa-user text-body fs-9 form-icon"></span>
                     </div>
                     @error('email')
-                        <div class="invalid-feedback">{{ $message }}</div>
+                    <div>
+                        <p class="invalid-feedback" >{{ $message }}</p>
+                    </div>
                     @enderror
                 </div>
 
                 <div class="mb-3 text-start">
                     <label class="form-label" for="password">Password</label>
                     <div class="form-icon-container" data-password="data-password">
-                        <input 
-                            class="form-control form-icon-input pe-6 @error('password') is-invalid @enderror" 
-                            id="password" 
-                            placeholder="Password"
-                            type="password" 
-                            name="password" 
-                            required 
-                            autocomplete="current-password"
-                            data-password-input="data-password-input" 
-                        />
+                        <input class="form-control form-icon-input pe-6 @error('password') is-invalid @enderror"
+                            id="password" placeholder="Password" type="password" name="password" required
+                            autocomplete="current-password" data-password-input="data-password-input" />
                         <span class="fas fa-key text-body fs-9 form-icon"></span>
-                        <button 
-                            class="btn px-3 py-0 h-100 position-absolute top-0 end-0 fs-7 text-body-tertiary"
+                        <button class="btn px-3 py-0 h-100 position-absolute top-0 end-0 fs-7 text-body-tertiary"
                             data-password-toggle="data-password-toggle">
                             <span class="uil uil-eye show"></span>
                             <span class="uil uil-eye-slash hide"></span>
                         </button>
                     </div>
                     @error('password')
-                        <div class="invalid-feedback">{{ $message }}</div>
+                    <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
