@@ -29,15 +29,11 @@ class AuthenticatedSessionController extends Controller
         // dd($request->user());
         $request->session()->regenerate();
 
-        switch (true) {
-            case $request->user()->is_admin == 1:
-            return redirect()->to('/admin')->with('success', 'Welcome back, Admin!');
-            case $request->user()->role == 'student':
+        if($request->user()->is_admin == 1){
+            return redirect()->back()->with('error', 'Your account is not active. Please contact the administrator.');
+
+        }else{
             return redirect()->intended(route('user.dashboard', absolute: false))->with('success', 'Welcome back, ' . $request->user()->name . '!');
-            case $request->user()->role == 'faculty':
-            return redirect()->intended(route('faculty.dashboard'))->with('success', 'Welcome back, ' . $request->user()->name . '!');
-            default:
-            return redirect()->intended(route('home'))->with('success', 'Welcome back, ' . $request->user()->name . '!');
         }
     }
 
