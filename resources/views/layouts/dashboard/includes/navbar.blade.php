@@ -158,28 +158,30 @@
                             </div>
                             <span class="nav-link-icon"><span data-feather="phone"></span></span>
                             <span class="nav-link-text">Students</span>
-                            @if (request()->routeIs('user.testimonials') || request()->routeIs('user.testimonial.create'))
+                            @if (request()->routeIs('user.students') || request()->routeIs('user.students.create'))
                             <span class="fa-solid fa-circle text-info ms-1 new-page-indicator" style="font-size: 6px"></span>
                             @endif
                         </div>
                     </a>
                     <div class="parent-wrapper label-1">
-                        <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-students">
+                        <ul class="nav collapse parent {{ request()->routeIs('user.students') || request()->routeIs('user.students.create') ? 'show' : '' }}" data-bs-parent="#navbarVerticalCollapse" id="nv-students">
                             <li class="collapsed-nav-item-title d-none">Students</li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user.view.events') }}">
+                                <a class="nav-link {{ request()->routeIs('user.students') ? 'active' : '' }}" href="{{ route('user.students') }}">
                                     <div class="d-flex align-items-center">
                                         <span class="nav-link-text">View My Students</span>
                                     </div>
                                 </a>
                             </li>
+                            @if (Auth::user()->role == 'faculty' || Auth::user()->role == 'HoD')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user.my.events') }}">
+                                <a class="nav-link {{ request()->routeIs('user.students.create') ? 'active' : '' }}" href="{{ route('user.students.create') }}">
                                     <div class="d-flex align-items-center">
                                         <span class="nav-link-text">Add Student</span>
                                     </div>
                                 </a>
                             </li>
+                            @endif
                         </ul>
                     </div>
                 </div>
