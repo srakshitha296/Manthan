@@ -6,6 +6,7 @@ use App\Exports\UsersExport;
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
+use App\Notifications\UserNotification;
 use Faker\Core\File;
 use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
@@ -42,7 +43,7 @@ use Maatwebsite\Excel\Facades\Excel;
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
-    protected static ?string $navigationIcon = 'heroicon-o-user-group';
+    protected static ?string $navigationIcon = 'heroicon-o-user-circle';
     public static function form(Form $form): Form
     {
         return $form
@@ -100,7 +101,10 @@ class UserResource extends Resource
                 ActionGroup::make([
                     ViewAction::make(),
                     EditAction::make(),
-                    DeleteAction::make(),
+                    DeleteAction::make()->before(function ($record) {
+                        // Send the notification before the record is deleted
+                        // $record->notify(new UserNotification(3));
+                    }),
                 ]),
                 // Action::make('Download pdf')->icon('heroicon-o-user'),
             ])

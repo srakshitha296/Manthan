@@ -28,7 +28,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => '#07a698',
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -54,6 +54,8 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
                 VerifyAdmin::class,
-            ]);
+            ])->brandLogo(asset('ui/assets/img/logo/logo-dark.png'))
+            ->brandLogoHeight('3.8rem')
+            ->sidebarCollapsibleOnDesktop();
     }
 }
