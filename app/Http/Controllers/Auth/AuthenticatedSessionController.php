@@ -29,11 +29,11 @@ class AuthenticatedSessionController extends Controller
         // dd($request->user());
         $request->session()->regenerate();
 
-        if ($request->user()->name == "admin" && $request->user()->email == "admin@admin.com" && $request->user()->id == 1) {
-            // dd('admin');
-            return redirect()->to('/admin');
+        if($request->user()->is_admin == 1){
+            return redirect()->back()->with('error', 'Your account is not active. Please contact the administrator.');
+
         }else{
-            return redirect()->intended(route('user.dashboard', absolute: false));
+            return redirect()->intended(route('user.dashboard', absolute: false))->with('success', 'Welcome back, ' . $request->user()->name . '!');
         }
     }
 
