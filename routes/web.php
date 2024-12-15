@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\HoDController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
@@ -47,5 +48,8 @@ Route::get('/user-dashboard/add-students',[StudentController::class,'create'])->
 
 Route::get('/user-dashboard/faculty',[FacultyController::class,'index'])->name('user.faculty')->middleware('auth');
 Route::get('/user-dashboard/add-faculty',[FacultyController::class,'create'])->name('user.faculty.create')->middleware('auth');
+
+Route::get('/user-dashboard/hod',[HoDController::class,'index'])->name('user.hod')->middleware('auth');
+Route::get('/user-dashboard/add-hod',[HoDController::class,'create'])->name('user.hod.create')->middleware('auth');
 
 require __DIR__.'/auth.php';
