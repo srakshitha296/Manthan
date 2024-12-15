@@ -187,6 +187,43 @@
                     </div>
                 </div>
                 @endif
+                @if ( Auth::user()->role == 'HoD' || Auth::user()->role == 'Principle')
+                <div class="nav-item-wrapper">
+                    <a class="nav-link dropdown-indicator label-1" href="#nv-faculty" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-faculty">
+                        <div class="d-flex align-items-center">
+                            <div class="dropdown-indicator-icon-wrapper">
+                                <span class="fas fa-caret-right dropdown-indicator-icon"></span>
+                            </div>
+                            <span class="nav-link-icon"><span data-feather="phone"></span></span>
+                            <span class="nav-link-text">faculty</span>
+                            @if (request()->routeIs('user.faculty') || request()->routeIs('user.faculty.create'))
+                            <span class="fa-solid fa-circle text-info ms-1 new-page-indicator" style="font-size: 6px"></span>
+                            @endif
+                        </div>
+                    </a>
+                    <div class="parent-wrapper label-1">
+                        <ul class="nav collapse parent {{ request()->routeIs('user.faculty') || request()->routeIs('user.faculty.create') ? 'show' : '' }}" data-bs-parent="#navbarVerticalCollapse" id="nv-faculty">
+                            <li class="collapsed-nav-item-title d-none">faculty</li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ request()->routeIs('user.faculty') ? 'active' : '' }}" href="{{ route('user.faculty') }}">
+                                    <div class="d-flex align-items-center">
+                                        <span class="nav-link-text">View My faculty</span>
+                                    </div>
+                                </a>
+                            </li>
+                            @if (Auth::user()->role == 'faculty' || Auth::user()->role == 'HoD' || Auth::user()->role == 'Principle')   
+                            <li class="nav-item">
+                                <a class="nav-link {{ request()->routeIs('user.faculty.create') ? 'active' : '' }}" href="{{ route('user.faculty.create') }}">
+                                    <div class="d-flex align-items-center">
+                                        <span class="nav-link-text">Add faculty</span>
+                                    </div>
+                                </a>
+                            </li>
+                            @endif
+                        </ul>
+                    </div>
+                </div>
+                @endif
 
             </ul>
         </div>
