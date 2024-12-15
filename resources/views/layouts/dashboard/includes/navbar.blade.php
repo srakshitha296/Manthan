@@ -150,6 +150,7 @@
                     </div>
                 </div>
 
+                @if (Auth::user()->role == 'faculty' || Auth::user()->role == 'HoD' || Auth::user()->role == 'Principle')
                 <div class="nav-item-wrapper">
                     <a class="nav-link dropdown-indicator label-1" href="#nv-students" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-students">
                         <div class="d-flex align-items-center">
@@ -173,7 +174,7 @@
                                     </div>
                                 </a>
                             </li>
-                            @if (Auth::user()->role == 'faculty' || Auth::user()->role == 'HoD')
+                            @if (Auth::user()->role == 'faculty' || Auth::user()->role == 'HoD' || Auth::user()->role == 'Principle')   
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->routeIs('user.students.create') ? 'active' : '' }}" href="{{ route('user.students.create') }}">
                                     <div class="d-flex align-items-center">
@@ -185,6 +186,7 @@
                         </ul>
                     </div>
                 </div>
+                @endif
 
             </ul>
         </div>
