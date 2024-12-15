@@ -195,7 +195,7 @@
                                 <span class="fas fa-caret-right dropdown-indicator-icon"></span>
                             </div>
                             <span class="nav-link-icon"><span data-feather="phone"></span></span>
-                            <span class="nav-link-text">faculty</span>
+                            <span class="nav-link-text">Faculties</span>
                             @if (request()->routeIs('user.faculty') || request()->routeIs('user.faculty.create'))
                             <span class="fa-solid fa-circle text-info ms-1 new-page-indicator" style="font-size: 6px"></span>
                             @endif
@@ -203,11 +203,11 @@
                     </a>
                     <div class="parent-wrapper label-1">
                         <ul class="nav collapse parent {{ request()->routeIs('user.faculty') || request()->routeIs('user.faculty.create') ? 'show' : '' }}" data-bs-parent="#navbarVerticalCollapse" id="nv-faculty">
-                            <li class="collapsed-nav-item-title d-none">faculty</li>
+                            <li class="collapsed-nav-item-title d-none">Faculties</li>
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->routeIs('user.faculty') ? 'active' : '' }}" href="{{ route('user.faculty') }}">
                                     <div class="d-flex align-items-center">
-                                        <span class="nav-link-text">View My faculty</span>
+                                        <span class="nav-link-text">View My Faculties</span>
                                     </div>
                                 </a>
                             </li>
@@ -215,7 +215,7 @@
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->routeIs('user.faculty.create') ? 'active' : '' }}" href="{{ route('user.faculty.create') }}">
                                     <div class="d-flex align-items-center">
-                                        <span class="nav-link-text">Add faculty</span>
+                                        <span class="nav-link-text">Add Faculty</span>
                                     </div>
                                 </a>
                             </li>
