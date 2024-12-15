@@ -41,7 +41,6 @@
                             </span>
                         @enderror
                     </div>
-                    @enderror
                 </div>
 
                 <div class="mb-3 text-start">
