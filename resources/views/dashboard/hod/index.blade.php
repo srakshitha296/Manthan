@@ -7,7 +7,7 @@
             <!-- data-list='{"valueNames":["studentName","usn","start","end","points","projectprogress","status","action"],"page":6,"pagination":true}' -->
             <div class="row mb-4 gx-6 gy-3 align-items-center">
                 <div class="col-auto">
-                    <h2 class="mb-0">Faculties<span class="fw-normal text-body-tertiary ms-3">(30)</span>
+                    <h2 class="mb-0">HoD's<span class="fw-normal text-body-tertiary ms-3">(30)</span>
                     </h2>
                 </div>
 
@@ -18,11 +18,15 @@
                     <thead>
                         <tr>
                             <th class="sort white-space-nowrap align-middle ps-0" scope="col"
-                                data-sort="faculty name" style="width:30%">NAME</th>
+                                data-sort="hod name" style="width:30%">NAME</th>
                             <th class="sort align-middle ps-3" scope="col" data-sort="email"
                                 style="width:30%">EMAIL</th>
-                            <th class="sort align-middle ps-3" scope="col" data-sort="phone" style="width:30%;">
+                            <th class="sort align-middle ps-3" scope="col" data-sort="phone"
+                                style="width:30%;">
                                 PHONE
+                            </th>
+                            <th class="sort align-middle ps-3" scope="col" data-sort="department" style="width:30%">
+                                DEPARTMENT
                             </th>
                             <th class="sort align-middle ps-3" scope="col" data-sort="designation"
                                 style="width:30%">
@@ -40,10 +44,12 @@
                                 style="width:30%">
                                 EXPERIENCE
                             </th>
-                            <th class="sort align-middle ps-3" scope="col" data-sort="doj" style="width:30%">
+                            <th class="sort align-middle ps-3" scope="col" data-sort="doj"
+                                style="width:30%">
                                 D.O.J
                             </th>
-                            <th class="sort align-middle ps-3" scope="col" data-sort="dol" style="width:30%">
+                            <th class="sort align-middle ps-3" scope="col" data-sort="dol"
+                                style="width:30%">
                                 D.O.L
                             </th>
                         </tr>
@@ -51,166 +57,19 @@
                     <tbody class="list" id="project-list-table-body">
                         <tr class="position-static">
                             <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a
-                                    class="fw-bold fs-8" href="#">Mrs. Ashwitha Shetty</a>
+                                    class="fw-bold fs-8" href="#">Dr. Antony P J</a>
                             </td>
                             <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ashwitha@gmail.com</p>
+                                <p class="mb-0 fs-9 text-body">antonypjohn@gmail.com</p>
                             </td>
                             <td class="align-middle white-space-nowrap points ps-3 py-4">
                                 <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
                             </td>
                             <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Assistant professor</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ML</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">7</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2023</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2025</p>
-                            </td>
-                        </tr>
-
-                        <tr class="position-static">
-                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Mrs.
-                                    Ashwitha Shetty</a>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ashwitha@gmail.com</p>
+                                <p class="fw-bo text-body fs-9 mb-0">CSE</p>
                             </td>
                             <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Assistant professor</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ML</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">7</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2023</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2025</p>
-                            </td>
-                        </tr>
-
-                        <tr class="position-static">
-                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Mrs.
-                                    Ashwitha Shetty</a>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ashwitha@gmail.com</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Assistant professor</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ML</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">7</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2023</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2025</p>
-                            </td>
-                        </tr>
-
-                        <tr class="position-static">
-                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Mrs.
-                                    Ashwitha Shetty</a>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ashwitha@gmail.com</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Assistant professor</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ML</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">7</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2023</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2025</p>
-                            </td>
-                        </tr>
-
-                        <tr class="position-static">
-                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Mrs.
-                                    Ashwitha Shetty</a>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ashwitha@gmail.com</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Assistant professor</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ML</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">7</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2023</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2025</p>
-                            </td>
-                        </tr>
-
-                        <tr class="position-static">
-                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Mrs.
-                                    Ashwitha Shetty</a>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ashwitha@gmail.com</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Assistant professor</p>
+                                <p class="fw-bo text-body fs-9 mb-0">Vice principal & HoD</p>
                             </td>
                             <td class="align-middle white-space-nowrap end ps-3 py-4">
                                 <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
@@ -229,17 +88,20 @@
                             </td>
                         </tr>
                         <tr class="position-static">
-                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Mrs.
-                                    Ashwitha Shetty</a>
+                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a
+                                    class="fw-bold fs-8" href="#">Dr. Antony P J</a>
                             </td>
                             <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ashwitha@gmail.com</p>
+                                <p class="mb-0 fs-9 text-body">antonypjohn@gmail.com</p>
                             </td>
                             <td class="align-middle white-space-nowrap points ps-3 py-4">
                                 <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
                             </td>
                             <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Assistant professor</p>
+                                <p class="fw-bo text-body fs-9 mb-0">CSE</p>
+                            </td>
+                            <td class="align-middle white-space-nowrap points ps-3 py-4">
+                                <p class="fw-bo text-body fs-9 mb-0">Vice principal & HoD</p>
                             </td>
                             <td class="align-middle white-space-nowrap end ps-3 py-4">
                                 <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
@@ -258,17 +120,20 @@
                             </td>
                         </tr>
                         <tr class="position-static">
-                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Mrs.
-                                    Ashwitha Shetty</a>
+                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Dr. Antony P
+                                    J</a>
                             </td>
                             <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ashwitha@gmail.com</p>
+                                <p class="mb-0 fs-9 text-body">antonypjohn@gmail.com</p>
                             </td>
                             <td class="align-middle white-space-nowrap points ps-3 py-4">
                                 <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
                             </td>
                             <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Assistant professor</p>
+                                <p class="fw-bo text-body fs-9 mb-0">CSE</p>
+                            </td>
+                            <td class="align-middle white-space-nowrap points ps-3 py-4">
+                                <p class="fw-bo text-body fs-9 mb-0">Vice principal & HoD</p>
                             </td>
                             <td class="align-middle white-space-nowrap end ps-3 py-4">
                                 <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
@@ -287,17 +152,20 @@
                             </td>
                         </tr>
                         <tr class="position-static">
-                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Mrs.
-                                    Ashwitha Shetty</a>
+                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Dr. Antony P
+                                    J</a>
                             </td>
                             <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ashwitha@gmail.com</p>
+                                <p class="mb-0 fs-9 text-body">antonypjohn@gmail.com</p>
                             </td>
                             <td class="align-middle white-space-nowrap points ps-3 py-4">
                                 <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
                             </td>
                             <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Assistant professor</p>
+                                <p class="fw-bo text-body fs-9 mb-0">CSE</p>
+                            </td>
+                            <td class="align-middle white-space-nowrap points ps-3 py-4">
+                                <p class="fw-bo text-body fs-9 mb-0">Vice principal & HoD</p>
                             </td>
                             <td class="align-middle white-space-nowrap end ps-3 py-4">
                                 <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
@@ -316,365 +184,20 @@
                             </td>
                         </tr>
                         <tr class="position-static">
-                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Mrs.
-                                    Ashwitha Shetty</a>
+                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Dr. Antony P
+                                    J</a>
                             </td>
                             <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ashwitha@gmail.com</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Assistant professor</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ML</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">7</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2023</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2025</p>
-                            </td>
-                        </tr>
-                        <tr class="position-static">
-                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Mrs.
-                                    Ashwitha Shetty</a>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ashwitha@gmail.com</p>
+                                <p class="mb-0 fs-9 text-body">antonypjohn@gmail.com</p>
                             </td>
                             <td class="align-middle white-space-nowrap points ps-3 py-4">
                                 <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
                             </td>
                             <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Assistant professor</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ML</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">7</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2023</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2025</p>
-                            </td>
-                        </tr>
-                        <tr class="position-static">
-                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Mrs.
-                                    Ashwitha Shetty</a>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ashwitha@gmail.com</p>
+                                <p class="fw-bo text-body fs-9 mb-0">CSE</p>
                             </td>
                             <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Assistant professor</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ML</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">7</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2023</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2025</p>
-                            </td>
-                        </tr>
-                        <tr class="position-static">
-                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Mrs.
-                                    Ashwitha Shetty</a>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ashwitha@gmail.com</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Assistant professor</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ML</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">7</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2023</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2025</p>
-                            </td>
-                        </tr>
-                        <tr class="position-static">
-                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Mrs.
-                                    Ashwitha Shetty</a>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ashwitha@gmail.com</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Assistant professor</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ML</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">7</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2023</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2025</p>
-                            </td>
-                        </tr>
-                        <tr class="position-static">
-                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Mrs.
-                                    Ashwitha Shetty</a>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ashwitha@gmail.com</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Assistant professor</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ML</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">7</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2023</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2025</p>
-                            </td>
-                        </tr>
-                        <tr class="position-static">
-                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Mrs.
-                                    Ashwitha Shetty</a>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ashwitha@gmail.com</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Assistant professor</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ML</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">7</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2023</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2025</p>
-                            </td>
-                        </tr>
-                        <tr class="position-static">
-                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Mrs.
-                                    Ashwitha Shetty</a>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ashwitha@gmail.com</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Assistant professor</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ML</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">7</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2023</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2025</p>
-                            </td>
-                        </tr>
-                        <tr class="position-static">
-                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Mrs.
-                                    Ashwitha Shetty</a>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ashwitha@gmail.com</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Assistant professor</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ML</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">7</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2023</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2025</p>
-                            </td>
-                        </tr>
-                        <tr class="position-static">
-                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Mrs.
-                                    Ashwitha Shetty</a>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ashwitha@gmail.com</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Assistant professor</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ML</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">7</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2023</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2025</p>
-                            </td>
-                        </tr>
-                        <tr class="position-static">
-                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Mrs.
-                                    Ashwitha Shetty</a>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ashwitha@gmail.com</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Assistant professor</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ML</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">7</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2023</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2025</p>
-                            </td>
-                        </tr>
-                        <tr class="position-static">
-                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Mrs.
-                                    Ashwitha Shetty</a>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ashwitha@gmail.com</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Assistant professor</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ML</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">7</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2023</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2025</p>
-                            </td>
-                        </tr>
-                        <tr class="position-static">
-                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Mrs.
-                                    Ashwitha Shetty</a>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ashwitha@gmail.com</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Assistant professor</p>
+                                <p class="fw-bo text-body fs-9 mb-0">Vice principal & HoD</p>
                             </td>
                             <td class="align-middle white-space-nowrap end ps-3 py-4">
                                 <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>

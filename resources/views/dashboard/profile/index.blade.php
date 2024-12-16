@@ -28,8 +28,8 @@
                                             src="{{ asset('dashboard/assets/img/team/150x150/58.webp') }}" alt="" /></div>
                                 </div>
                                 <div class="col-12 col-sm-auto flex-1">
-                                    <h3>Ansolo Lazinatov</h3>
-                                    <p class="text-body-secondary">A J Institute of Engineering and Technology, Mangaluru </br>Department of Computer Science and Engineering</p>
+                                    <h3>{{ $user->name }}</h3>
+                                    <p class="text-body-secondary">{{ $user->name }}</br>Department of Computer Science and Engineering</p>
                                     <div><a class="me-2" href="#!"><span
                                                 class="fab fa-linkedin-in text-body-quaternary text-opacity-75 text-primary-hover"></span></a><a
                                             class="me-2" href="#!"><span
