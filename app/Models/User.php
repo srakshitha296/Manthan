@@ -64,4 +64,16 @@ class User extends Authenticatable
     public function student(){
         return $this->hasOne(Student::class);
     }
+
+    public function faculty(){
+        return $this->hasOne(Faculty::class);
+    }
+
+    public function hod(){
+        return $this->hasOne(HoD::class);
+    }
+
+    public function principle(){
+        return $this->hasOne(Principal::class);
+    }
 }
