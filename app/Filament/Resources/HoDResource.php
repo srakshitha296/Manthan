@@ -47,9 +47,9 @@ class HoDResource extends Resource
             ->schema([
                 Group::make()->schema([
                     Section::make()->schema([
-                        Select::make('user_id')->relationship('user', 'name', fn($query) => $query->where('role', 'hod'))
+                        Select::make('user_id')->relationship('user', 'name', fn($query) => $query->where('role', 'HoD'))
                             ->searchable()->preload()->required()->label("Hod Name"),
-                        Select::make('email')->relationship('user', 'email', fn($query) => $query->where('role', 'hod'))
+                        Select::make('email')->relationship('user', 'email', fn($query) => $query->where('role', 'HoD'))
                             ->searchable()->preload()->required(),
                     ])->columns(2),
                 ])->columnSpan(2),
