@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,11 @@ class DashboardController extends Controller
     }
 
     public function viewProfile(){
-        return view('dashboard.profile.index');
+        $user = Auth::user();
+
+        // $user = User::where('id', $use->id)->with('student')->get();
+        // dd($user->student->usn);
+        return view('dashboard.profile.index', compact('user'));
     }
 
     public function editProfile(){

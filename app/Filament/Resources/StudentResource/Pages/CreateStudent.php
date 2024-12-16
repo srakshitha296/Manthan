@@ -44,18 +44,18 @@ class CreateStudent extends CreateRecord
         ];
     }
 
-    protected function afterCreate(): void
-    {
-        $student = $this->record;
+    // protected function afterCreate(): void
+    // {
+    //     $student = $this->record;
 
-        // Dump the student to inspect the user_id
-        // dd($student->user_id, $student->user);
+    //     // Dump the student to inspect the user_id
+    //     // dd($student->user_id, $student->user);
 
-        // Notify the user if found
-        if ($student->user) {
-            $student->user->notify(new StudentNotification($student, 'created'));
-        } else {
-            dd('No associated user found for this student.');
-        }
-    }
+    //     // Notify the user if found
+    //     if ($student->user) {
+    //         $student->user->notify(new StudentNotification($student, 'created'));
+    //     } else {
+    //         dd('No associated user found for this student.');
+    //     }
+    // }
 }
