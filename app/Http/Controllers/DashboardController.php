@@ -16,10 +16,9 @@ class DashboardController extends Controller
     }
 
     public function viewProfile(){
-        $user = Auth::user();
+        
+        $user = User::with('student')->find(Auth::id());
 
-        // $user = User::where('id', $use->id)->with('student')->get();
-        // dd($user->student->usn);
         return view('dashboard.profile.index', compact('user'));
     }
 

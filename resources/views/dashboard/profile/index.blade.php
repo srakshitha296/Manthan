@@ -25,11 +25,13 @@
                             <div class="row align-items-center g-5 mb-3 text-center text-sm-start">
                                 <div class="col-12 col-sm-auto mb-sm-2">
                                     <div class="avatar avatar-5xl"><img class="rounded-circle"
-                                            src="{{ asset('dashboard/assets/img/team/150x150/58.webp') }}" alt="" /></div>
+                                            {{-- src="{{ asset('dashboard/assets/img/team/150x150/58.webp') }}" --}}
+                                            src="{{ Storage::url($user->image) }}"
+                                             alt="{{ $user->name }}" /></div>
                                 </div>
                                 <div class="col-12 col-sm-auto flex-1">
                                     <h3>{{ $user->name }}</h3>
-                                    <p class="text-body-secondary">{{ $user->name }}</br>Department of Computer Science and Engineering</p>
+                                    <p class="text-body-secondary">{{ $user->student->department->name }}</br>{{ $user->student->college->name }}</p>
                                     <div><a class="me-2" href="#!"><span
                                                 class="fab fa-linkedin-in text-body-quaternary text-opacity-75 text-primary-hover"></span></a><a
                                             class="me-2" href="#!"><span
@@ -42,15 +44,15 @@
                             <div class="d-flex flex-between-center border-top border-dashed pt-4">
                                 <div>
                                     <h6>USN</h6>
-                                    <p class="fs-7 text-body-secondary mb-0">4JK21CS048</p>
+                                    <p class="fs-7 text-body-secondary mb-0">{{ $user->student->usn }}</p>
                                 </div>
                                 <div>
                                     <h6>BRANCH</h6>
-                                    <p class="fs-7 text-body-secondary mb-0">CSE</p>
+                                    <p class="fs-7 text-body-secondary mb-0">{{ $user->student->department->name }}</p>
                                 </div>
                                 <div>
                                     <h6>SEMESTER</h6>
-                                    <p class="fs-7 text-body-secondary mb-0">7</p>
+                                    <p class="fs-7 text-body-secondary mb-0">{{ $user->student->semester }}</p>
                                 </div>
                                 
                             </div>
@@ -65,14 +67,14 @@
                                         class=" fs-8 ms-3 text-body-quaternary"></span></button>
                             </div>
                             <h5 class="text-body-secondary">Address</h5>
-                            <p class="text-body-secondary">Shatinon Mekalan<br />Vancouver, British Columbia<br />Canada
+                            <p class="text-body-secondary">{{ $user->address }}
                             </p>
                             <div class="mb-3">
                                 <h5 class="text-body-secondary">Email</h5><a
-                                    href="mailto:shatinon@jeemail.com">shatinon@jeemail.com</a>
+                                    href="mailto:{{ $user->email }}">{{ $user->email }}</a>
                             </div>
                             <h5 class="text-body-secondary">Phone</h5><a class="text-body-secondary"
-                                href="tel:+1234567890">+1234567890</a>
+                                href="tel:+91{{ $user->phone }}">+91 {{ $user->phone }}</a>
                         </div>
                     </div>
                 </div>
