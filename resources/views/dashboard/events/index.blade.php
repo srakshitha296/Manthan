@@ -37,33 +37,12 @@
     </div>
 
     <div class="row justify-content-between align-items-end mb-9 me-0 g-4">
+        @foreach ($events as $event)
         <div class="card" style="max-width:20rem;">
-            <img class="card-img-top" src="docker.png" alt="...">
+            <img class="card-img-top p-1" src="{{ Storage::url($event->banner) }}" alt="{{ $event->name }}">
+            <h4 class="mt-2">{{ $event->name }}</h4>
         </div>
-        <div class="card" style="max-width:20rem;">
-            <img class="card-img-top" src="docker.png" alt="...">
-        </div>
-        <div class="card" style="max-width:20rem;">
-            <img class="card-img-top" src="docker.png" alt="...">
-        </div>
-        <div class="card" style="max-width:20rem;">
-            <img class="card-img-top" src="docker.png" alt="...">
-        </div>
-        <div class="card" style="max-width:20rem;">
-            <img class="card-img-top" src="docker.png" alt="...">
-        </div>
-        <div class="card" style="max-width:20rem;">
-            <img class="card-img-top" src="docker.png" alt="...">
-        </div>
-        <div class="card" style="max-width:20rem;">
-            <img class="card-img-top" src="docker.png" alt="...">
-        </div>
-        <div class="card" style="max-width:20rem;">
-            <img class="card-img-top" src="docker.png" alt="...">
-        </div>
-        <div class="card" style="max-width:20rem;">
-            <img class="card-img-top" src="docker.png" alt="...">
-        </div>
+        @endforeach
     </div>
 </div>
 @endsection

@@ -67,4 +67,14 @@ class EventController extends Controller
             return redirect()->route('events.show', $id)->with('success', 'You have successfully registered for the event.');
         } 
     }
+
+    public function viewEvents(){
+        $events = Program::where('event_date','>=',now())->get();
+        // dd($events);
+        return view('dashboard.events.index', compact('events'));
+    }
+
+    public function myEvents(){
+        return view('dashboard.events.events');
+    }
 }
