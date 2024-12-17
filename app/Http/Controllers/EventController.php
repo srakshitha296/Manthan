@@ -55,7 +55,7 @@ class EventController extends Controller
                 return redirect()->route('events.show',$id)->with('error', 'You have already registered for this event.');
             }
 
-            $registered = RegisteredEvents::create([
+            RegisteredEvents::create([
                 'program_id' => $id,
                 'user_id'=> Auth::user()->id,
                 'is_paid'=> 0,
@@ -69,31 +69,23 @@ class EventController extends Controller
     }
 
     public function viewEvents(){
-        switch (Auth::user()->role) {
-            case 'student':
-                // Code for student
-                $events = Program::where('event_date', '>=', now())->where('type', '!=', 'FDP')->get();
-                break;
-            case 'faculty':
-                // Code for faculty
-                $events = Program::where('event_date', '>=', now())->where('type', '!=', 'SDP')->get();
-                break;
-            case 'HoD':
-                // Code for HoD
-                $events = Program::where('event_date', '>=', now())->where('type', '!=', 'SDP')->get();
-                break;
-            case 'Principle':
-                $events = Program::where('event_date', '>=', now())->where('type', '!=', 'SDP')->get();
-                break;
-            default:
-                // Code for default case
-                break;
-        }
+        $events = match (Auth::user()->role) {
+            'student' => Program::where('event_date', '>=', now())->where('type', '!=', 'FDP')->get(),
+            'faculty', 'HoD', 'Principle' => Program::where('event_date', '>=', now())->where('type', '!=', 'SDP')->get(),
+            default => Program::where('event_date', '>=', now())->get(),
+        };
+
         // dd($events);
         return view('dashboard.events.index', compact('events'));
     }
 
     public function myEvents(){
-        return view('dashboard.events.events');
+        $user = Auth::user();
+        $events = match ($user->role) {
+            'student' =>$user->registeredPrograms()->where('event_date', '>=', now())->where('type', '!=', 'FDP')->get(),
+            'faculty', 'HoD', 'Principle' => $user->registeredPrograms()->where('event_date', '>=', now())->where('type', '!=', 'SDP')->get(),
+            default => Program::where('event_date', '>=', now())->get(),
+        };
+        return view('dashboard.events.events', compact('events'));
     }
 }

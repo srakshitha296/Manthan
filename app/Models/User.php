@@ -76,4 +76,16 @@ class User extends Authenticatable
     public function principle(){
         return $this->hasOne(Principal::class);
     }
+
+    public function registeredEvents()
+    {
+        return $this->hasMany(RegisteredEvents::class);
+    }
+
+    public function registeredPrograms()
+    {
+        return $this->hasManyThrough(
+            Program::class,RegisteredEvents::class, 'user_id', 'id', 'id', 'program_id'
+);
+    }
 }
