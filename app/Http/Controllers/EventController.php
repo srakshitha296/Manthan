@@ -69,7 +69,26 @@ class EventController extends Controller
     }
 
     public function viewEvents(){
-        $events = Program::where('event_date','>=',now())->get();
+        switch (Auth::user()->role) {
+            case 'student':
+                // Code for student
+                $events = Program::where('event_date', '>=', now())->where('type', '!=', 'FDP')->get();
+                break;
+            case 'faculty':
+                // Code for faculty
+                $events = Program::where('event_date', '>=', now())->where('type', '!=', 'SDP')->get();
+                break;
+            case 'HoD':
+                // Code for HoD
+                $events = Program::where('event_date', '>=', now())->where('type', '!=', 'SDP')->get();
+                break;
+            case 'Principle':
+                $events = Program::where('event_date', '>=', now())->where('type', '!=', 'SDP')->get();
+                break;
+            default:
+                // Code for default case
+                break;
+        }
         // dd($events);
         return view('dashboard.events.index', compact('events'));
     }
