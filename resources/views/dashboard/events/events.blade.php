@@ -27,8 +27,8 @@
         <div class="col-12 col-sm-auto">
             <div class="d-flex align-items-center">
                 <div class="search-box me-3">
-                    <form class="position-relative"><input class="form-control search-input search"
-                            type="search" placeholder="Search projects" aria-label="Search" />
+                    <form class="position-relative"><input class="form-control search-input search" type="search"
+                            placeholder="Search projects" aria-label="Search" />
                         <span class="fas fa-search search-box-icon"></span>
                     </form>
                 </div>
@@ -36,79 +36,20 @@
         </div>
     </div>
 
-    <div class="row justify-content-center align-items-center mb-9 me-3 g-4">
-        <div class="card" style="max-width:20rem;">
-            <img class="card-img-top" src="docker.png" alt="...">
-            <div class="card-body d-flex flex-column  justify-content-center">
-                <button class="btn btn-success">Register</button>
+    <div class="row justify-content-around align-items-center mb-9 me-3 g-4">
+        @foreach ($events as $event)
+        <a href="{{ route('events.show', $event->id) }}" target="_blank" style="text-decoration: none" >
+            <div class="card" style="max-width:20rem;">
+                <img class="card-img-top pt-2" src="{{ Storage::url($event->banner) }}" alt="{{ $event->name }}">
+                <center>
+                    <h3 class="mt-2 mb-0">{{ $event->name }}</h3>
+                </center>
+                <div class="card-body d-flex flex-column  justify-content-center">
+                    <a href="{{ route('events.show', $event->id) }}" class="btn btn-success" target="_blank">View Event</a>
+                </div>
             </div>
-        </div>
-        <div class="card" style="max-width:20rem;">
-            <img class="card-img-top" src="docker.png" alt="...">
-            <div class="card-body d-flex flex-column  justify-content-center">
-                <button class="btn btn-success">Register</button>
-            </div>
-        </div>
-        <div class="card" style="max-width:20rem;">
-            <img class="card-img-top" src="docker.png" alt="...">
-            <div class="card-body d-flex flex-column  justify-content-center">
-                <button class="btn btn-success">Register</button>
-            </div>
-        </div>
-        <div class="card" style="max-width:20rem;">
-            <img class="card-img-top" src="docker.png" alt="...">
-            <div class="card-body d-flex flex-column  justify-content-center">
-                <button class="btn btn-success">Register</button>
-            </div>
-        </div>
-        <div class="card" style="max-width:20rem;">
-            <img class="card-img-top" src="docker.png" alt="...">
-            <div class="card-body d-flex flex-column  justify-content-center">
-                <button class="btn btn-success">Register</button>
-            </div>
-        </div>
-        <div class="card" style="max-width:20rem;">
-            <img class="card-img-top" src="docker.png" alt="...">
-            <div class="card-body d-flex flex-column  justify-content-center">
-                <button class="btn btn-success">Register</button>
-            </div>
-        </div>
-        <div class="card" style="max-width:20rem;">
-            <img class="card-img-top" src="docker.png" alt="...">
-            <div class="card-body d-flex flex-column  justify-content-center">
-                <button class="btn btn-success">Register</button>
-            </div>
-        </div>
-        <div class="card" style="max-width:20rem;">
-            <img class="card-img-top" src="docker.png" alt="...">
-            <div class="card-body d-flex flex-column  justify-content-center">
-                <button class="btn btn-success">Register</button>
-            </div>
-        </div>
-        <div class="card" style="max-width:20rem;">
-            <img class="card-img-top" src="docker.png" alt="...">
-            <div class="card-body d-flex flex-column  justify-content-center">
-                <button class="btn btn-success">Register</button>
-            </div>
-        </div>
-        <div class="card" style="max-width:20rem;">
-            <img class="card-img-top" src="docker.png" alt="...">
-            <div class="card-body d-flex flex-column  justify-content-center">
-                <button class="btn btn-success">Register</button>
-            </div>
-        </div>
-        <div class="card" style="max-width:20rem;">
-            <img class="card-img-top" src="docker.png" alt="...">
-            <div class="card-body d-flex flex-column  justify-content-center">
-                <button class="btn btn-success">Register</button>
-            </div>
-        </div>
-        <div class="card" style="max-width:20rem;">
-            <img class="card-img-top" src="docker.png" alt="...">
-            <div class="card-body d-flex flex-column  justify-content-center">
-                <button class="btn btn-success">Register</button>
-            </div>
-        </div>
+        </a>
+        @endforeach
     </div>
 </div>
 @endsection

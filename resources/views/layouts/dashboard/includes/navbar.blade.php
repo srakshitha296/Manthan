@@ -63,14 +63,14 @@
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->routeIs('user.view.events') ? 'active' : '' }}" href="{{ route('user.view.events') }}">
                                     <div class="d-flex align-items-center">
-                                        <span class="nav-link-text">View Registered Events</span>
+                                        <span class="nav-link-text">Eligible Events</span>
                                     </div>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->routeIs('user.my.events') ? 'active' : '' }}" href="{{ route('user.my.events') }}">
                                     <div class="d-flex align-items-center">
-                                        <span class="nav-link-text">Register Events</span>
+                                        <span class="nav-link-text">My Events</span>
                                     </div>
                                 </a>
                             </li>
