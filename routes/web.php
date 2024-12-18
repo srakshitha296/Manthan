@@ -43,6 +43,7 @@ Route::get('/user-dashboard/add-activity',[ActivityController::class,'create'])-
 Route::get('/user-dashboard/edit-activity/',[ActivityController::class,'edit'])->name('user.activity.edit')->middleware('auth');
 Route::get('/user-dashboard/my-testimonials',[TestimonialController::class,'index'])->name('user.testimonials')->middleware('auth');
 Route::get('/user-dashboard/add-testimonial',[TestimonialController::class,'create'])->name('user.testimonial.create')->middleware('auth');
+Route::get('/user-dashboard/edit-testimonial',[TestimonialController::class,'edit'])->name('user.testimonial.edit')->middleware('auth');
 Route::get('/user-dashboard/students',[StudentController::class,'index'])->name('user.students')->middleware('auth');
 Route::get('/user-dashboard/add-students',[StudentController::class,'create'])->name('user.students.create')->middleware('auth');
 

@@ -40,9 +40,9 @@
             <div class="col-auto">
                 <div class="row g-2">
                     <div class="col-auto order-xxl-2">
-                        <button class="btn btn-primary lh-1">
-                            <span class="fa-solid fa-user-plus me-2"></span>Edit
-                        </button>
+                        <a href="{{ route('user.testimonial.edit') }}" class="btn btn-primary lh-1" >
+                                <span class="fa-solid fa-user-plus me-2"></span>Edit
+                        </a>
                     </div>
                     <div class="col-auto order-xxl-2">
                         <button class="btn btn-danger lh-1">
