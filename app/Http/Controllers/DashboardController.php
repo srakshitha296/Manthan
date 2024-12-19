@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,18 +16,34 @@ class DashboardController extends Controller
     }
 
     public function viewProfile(){
-        return view('dashboard.profile.index');
+
+        $user = null;
+        switch (Auth::user()->role) {
+            case 'student':
+                $user = User::with('student')->find(Auth::id());
+                break;
+            case 'faculty':
+                $user = User::with('faculty')->find(Auth::id());
+                // dd($user);
+                break;
+            case 'HoD':
+                $user = User::with('hod')->find(Auth::id());
+                // dd($user);
+                break;
+            case 'Principle':
+                $user = User::with('principle')->find(Auth::id());
+                // dd($user);
+                break;
+            default:
+                $user = User::find(Auth::id());
+                break;
+        }
+        
+
+        return view('dashboard.profile.index', compact('user'));
     }
 
     public function editProfile(){
         return view('dashboard.profile.edit');
-    }
-
-    public function viewEvents(){
-        return view('dashboard.events.index');
-    }
-
-    public function myEvents(){
-        return view('dashboard.events.events');
     }
 }

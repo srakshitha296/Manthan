@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\HoDController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
@@ -35,17 +36,21 @@ Route::get('/blogs-details/{id}',[BlogController::class,'show'])->name('blogs.sh
 Route::get('/user-dashboard',[DashboardController::class,'index'])->name('user.dashboard')->middleware('auth');
 Route::get('/user-dashboard/profile',[DashboardController::class,'viewProfile'])->name('user.view.profile')->middleware('auth');
 Route::get('/user-dashboard/profile/edit',[DashboardController::class,'editProfile'])->name('user.edit.profile')->middleware('auth');
-Route::get('/user-dashboard/events',[DashboardController::class,'viewEvents'])->name('user.view.events')->middleware('auth');
-Route::get('/user-dashboard/my-events',[DashboardController::class,'myEvents'])->name('user.my.events')->middleware('auth');
+Route::get('/user-dashboard/events',[EventController::class,'viewEvents'])->name('user.view.events')->middleware('auth');
+Route::get('/user-dashboard/my-events',[EventController::class,'myEvents'])->name('user.my.events')->middleware('auth');
 Route::get('/user-dashboard/view-activities',[ActivityController::class,'index'])->name('user.activity.index')->middleware('auth');
 Route::get('/user-dashboard/add-activity',[ActivityController::class,'create'])->name('user.activity.create')->middleware('auth');
 Route::get('/user-dashboard/edit-activity/',[ActivityController::class,'edit'])->name('user.activity.edit')->middleware('auth');
 Route::get('/user-dashboard/my-testimonials',[TestimonialController::class,'index'])->name('user.testimonials')->middleware('auth');
 Route::get('/user-dashboard/add-testimonial',[TestimonialController::class,'create'])->name('user.testimonial.create')->middleware('auth');
+Route::get('/user-dashboard/edit-testimonial',[TestimonialController::class,'edit'])->name('user.testimonial.edit')->middleware('auth');
 Route::get('/user-dashboard/students',[StudentController::class,'index'])->name('user.students')->middleware('auth');
 Route::get('/user-dashboard/add-students',[StudentController::class,'create'])->name('user.students.create')->middleware('auth');
 
 Route::get('/user-dashboard/faculty',[FacultyController::class,'index'])->name('user.faculty')->middleware('auth');
 Route::get('/user-dashboard/add-faculty',[FacultyController::class,'create'])->name('user.faculty.create')->middleware('auth');
+
+Route::get('/user-dashboard/hod',[HoDController::class,'index'])->name('user.hod')->middleware('auth');
+Route::get('/user-dashboard/add-hod',[HoDController::class,'create'])->name('user.hod.create')->middleware('auth');
 
 require __DIR__.'/auth.php';
