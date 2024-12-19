@@ -4,6 +4,7 @@ use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -43,5 +44,8 @@ Route::get('/user-dashboard/my-testimonials',[TestimonialController::class,'inde
 Route::get('/user-dashboard/add-testimonial',[TestimonialController::class,'create'])->name('user.testimonial.create')->middleware('auth');
 Route::get('/user-dashboard/students',[StudentController::class,'index'])->name('user.students')->middleware('auth');
 Route::get('/user-dashboard/add-students',[StudentController::class,'create'])->name('user.students.create')->middleware('auth');
+
+Route::get('/user-dashboard/faculty',[FacultyController::class,'index'])->name('user.faculty')->middleware('auth');
+Route::get('/user-dashboard/add-faculty',[FacultyController::class,'create'])->name('user.faculty.create')->middleware('auth');
 
 require __DIR__.'/auth.php';
