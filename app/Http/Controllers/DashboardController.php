@@ -14,36 +14,4 @@ class DashboardController extends Controller
         }
         return view("dashboard.index");
     }
-
-    public function viewProfile(){
-
-        $user = null;
-        switch (Auth::user()->role) {
-            case 'student':
-                $user = User::with('student')->find(Auth::id());
-                break;
-            case 'faculty':
-                $user = User::with('faculty')->find(Auth::id());
-                // dd($user);
-                break;
-            case 'HoD':
-                $user = User::with('hod')->find(Auth::id());
-                // dd($user);
-                break;
-            case 'Principle':
-                $user = User::with('principle')->find(Auth::id());
-                // dd($user);
-                break;
-            default:
-                $user = User::find(Auth::id());
-                break;
-        }
-        
-
-        return view('dashboard.profile.index', compact('user'));
-    }
-
-    public function editProfile(){
-        return view('dashboard.profile.edit');
-    }
 }
