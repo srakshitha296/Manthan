@@ -31,7 +31,8 @@
                                             </span></div>
                                     </a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="{{ route('user.edit.profile') }}">
+                                <li class="nav-item">
+                                    <a class="nav-link {{ request()->routeIs('user.edit.profile') ? 'active' : '' }} " href="{{ route('user.edit.profile') }}">
                                         <div class="d-flex align-items-center"><span class="nav-link-text">Edit
                                                 Profile</span></div>
                                     </a>
