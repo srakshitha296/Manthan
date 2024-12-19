@@ -14,10 +14,11 @@
 </div>
 <div class="row">
     <div class="col-xl-9">
-        <form class="row g-3 mb-9">
+        <form class="row g-3 mb-9" action="{{ route('profile.update') }}" method="POST">
+            @csrf
             <div class="d-flex align-items-end position-relative mb-7">
-                <input class="d-none" id="upload-avatar" type="file" />
-                <div class="hoverbox" style="width: 150px; height: 150px">
+                <input class="" id="upload-avatar" value="{{ Storage::url(Auth::user()->image) }}" type="file" name="image" />
+                {{-- <div class="hoverbox" style="width: 150px; height: 150px">
                     <div class="hoverbox-content rounded-circle d-flex flex-center z-1"
                         style="--phoenix-bg-opacity: .56;">
                         <span class="fa-solid fa-camera fs-1 text-body-quaternary"></span>
@@ -26,63 +27,69 @@
                         class="position-relative bg-body-quaternary rounded-circle cursor-pointer d-flex flex-center mb-xxl-7">
                         <div class="avatar avatar-5xl">
                             <img class="rounded-circle" src="{{ Storage::url(Auth::user()->image) }}"
-                                alt="{{ Auth::user()->name }}" />
+                                alt="{{ Auth::user()->name }}" name="image" />
                         </div>
                         <label class="w-100 h-100 position-absolute z-1" for="upload-avatar"></label>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <h4 class="mb-3">User Details</h4>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <input class="form-control" id="floatingInputName" type="text" value="{{ $user->name }}" />
+                    <input class="form-control" id="floatingInputName" type="text" value="{{ $user->name }}"
+                        name="name" />
                     <label for="floatingInputName">Name</label>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <input class="form-control" id="floatingInputUsn" type="text" placeholder="USN" value="{{ $user->student->usn }}" />
+                    <input class="form-control" id="floatingInputUsn" type="text" placeholder="USN"
+                        value="{{ $user->student->usn }}" name="usn" />
                     <label for="floatingInputName">USN</label>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <input class="form-control" id="floatingInputEmail" type="text" placeholder="email" value="{{ $user->email }}" />
+                    <input class="form-control" id="floatingInputEmail" type="text" placeholder="email"
+                        value="{{ $user->email }}" name="email" />
                     <label for="floatingInputEmail">Email</label>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <input class="form-control" id="floatingInputPhone" type="tel" placeholder="phone" value="" />
+                    <input class="form-control" id="floatingInputPhone" type="tel" placeholder="phone"
+                        value="{{ $user->phone }}" name="phone" />
                     <label for="floatingInputPhone">Phone</label>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <select class="form-select" id="floatingSelectInstitution">
-                        <option selected="selected">AJIET</option>
-                        <option value="1">SJEC</option>
-                        <option value="2">AIT</option>
-                        <option value="3">MITE</option>
-                        <option value="4">VCM</option>
+                    <select class="form-select" id="floatingSelectInstitution" name="college">
+                        @foreach ($college as $item)
+                        <option value="{{ $item->id }}" {{ $user->student->college->id == $item->id ? 'selected' : ''}}>
+                            {{ $item->name }}
+                        </option>
+                        @endforeach
                     </select>
                     <label for="floatingSelectInstitution">Institution</label>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <select class="form-select" id="floatingSelectInstitution">
-                        <option value="1">SJEC</option>
-                        <option value="2">AIT</option>
-                        <option value="3">MITE</option>
-                        <option value="4">VCM</option>
+                    <select class="form-select" id="floatingSelectInstitution" name="branch">
+                        @foreach ($departments as $item)
+                        <option value="{{ $item->id }}" {{ $user->student->department->id == $item->id ? 'selected' : ''
+                            }}>
+                            {{ $item->name }}
+                        </option>
+                        @endforeach
                     </select>
                     <label for="floatingSelectInstitution">Branch</label>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <select class="form-select" id="floatingSelectInstitution">
+                    <select class="form-select" id="floatingSelectInstitution" name="semester">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -98,17 +105,20 @@
             <h4 class="mt-6">Address Information</h4>
             <div class="col-12">
                 <div class="form-floating">
-                    <textarea class="form-control" id="floatingStudentAddress" placeholder="your address" style="height: 128px">
+                    <textarea class="form-control" id="floatingStudentAddress" placeholder="your address"
+                        style="height: 128px">
                         {{ $user->address }}
                     </textarea>
-                        <label
-                        for="floatingStudentAddress">Address</label></div>
+                    <label for="floatingStudentAddress">Address</label>
+                </div>
             </div>
-            <div class="col-12 d-flex justify-content-end mt-6"><button class="btn btn-primary">Edit</button>
+            <div class="col-12 d-flex justify-content-end mt-6">
+                <button type="submit" class="btn btn-primary">Edit</button>
             </div>
         </form>
     </div>
 </div>
+
 @elseif (Auth::user()->role == 'faculty')
 <div class="border-bottom border-translucent mb-7 mx-n3 px-2 mx-lg-n6 px-lg-6">
     <div class="row">
@@ -445,6 +455,7 @@
         </form>
     </div>
 </div>
+
 @elseif (Auth::user()->role == 'Principle')
 <div class="border-bottom border-translucent mb-7 mx-n3 px-2 mx-lg-n6 px-lg-6">
     <div class="row">
