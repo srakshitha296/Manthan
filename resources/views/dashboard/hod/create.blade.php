@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-xl-9">
             <div class="d-sm-flex justify-content-between">
-                <h2 class="mb-4">Edit Profile</h2>
+                <h2 class="mb-4">New HoD</h2>
 
             </div>
         </div>
@@ -67,6 +67,7 @@
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating"><select class="form-select" id="floatingSelectDesignation">
                         <option selected="selected">Principal</option>
+                        <option value="3">Vice Principal</option>
                         <option value="1">Assistant Professor</option>
                         <option value="2">Associate Professor</option>
                         <option value="3">HoD</option>
@@ -159,6 +160,8 @@
                     </div>
                 </div>
             </div>
+
+
             <h4 class="mt-4">Address Information</h4>
             <div class="col-12">
                 <div class="form-floating"><textarea class="form-control" id="floatingStudentAddress"
@@ -170,5 +173,5 @@
             </div>
         </form>
     </div>
-</div>      
+</div>
 @endsection

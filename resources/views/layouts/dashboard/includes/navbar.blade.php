@@ -63,14 +63,14 @@
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->routeIs('user.view.events') ? 'active' : '' }}" href="{{ route('user.view.events') }}">
                                     <div class="d-flex align-items-center">
-                                        <span class="nav-link-text">View Registered Events</span>
+                                        <span class="nav-link-text">Eligible Events</span>
                                     </div>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->routeIs('user.my.events') ? 'active' : '' }}" href="{{ route('user.my.events') }}">
                                     <div class="d-flex align-items-center">
-                                        <span class="nav-link-text">Register Events</span>
+                                        <span class="nav-link-text">My Events</span>
                                     </div>
                                 </a>
                             </li>
@@ -187,6 +187,7 @@
                     </div>
                 </div>
                 @endif
+
                 @if ( Auth::user()->role == 'HoD' || Auth::user()->role == 'Principle')
                 <div class="nav-item-wrapper">
                     <a class="nav-link dropdown-indicator label-1" href="#nv-faculty" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-faculty">
@@ -195,7 +196,7 @@
                                 <span class="fas fa-caret-right dropdown-indicator-icon"></span>
                             </div>
                             <span class="nav-link-icon"><span data-feather="phone"></span></span>
-                            <span class="nav-link-text">faculty</span>
+                            <span class="nav-link-text">Faculties</span>
                             @if (request()->routeIs('user.faculty') || request()->routeIs('user.faculty.create'))
                             <span class="fa-solid fa-circle text-info ms-1 new-page-indicator" style="font-size: 6px"></span>
                             @endif
@@ -203,11 +204,11 @@
                     </a>
                     <div class="parent-wrapper label-1">
                         <ul class="nav collapse parent {{ request()->routeIs('user.faculty') || request()->routeIs('user.faculty.create') ? 'show' : '' }}" data-bs-parent="#navbarVerticalCollapse" id="nv-faculty">
-                            <li class="collapsed-nav-item-title d-none">faculty</li>
+                            <li class="collapsed-nav-item-title d-none">Faculties</li>
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->routeIs('user.faculty') ? 'active' : '' }}" href="{{ route('user.faculty') }}">
                                     <div class="d-flex align-items-center">
-                                        <span class="nav-link-text">View My faculty</span>
+                                        <span class="nav-link-text">View My Faculties</span>
                                     </div>
                                 </a>
                             </li>
@@ -215,7 +216,44 @@
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->routeIs('user.faculty.create') ? 'active' : '' }}" href="{{ route('user.faculty.create') }}">
                                     <div class="d-flex align-items-center">
-                                        <span class="nav-link-text">Add faculty</span>
+                                        <span class="nav-link-text">Add Faculty</span>
+                                    </div>
+                                </a>
+                            </li>
+                            @endif
+                        </ul>
+                    </div>
+                </div>
+                @endif
+                @if ( Auth::user()->role == 'Principle')
+                <div class="nav-item-wrapper">
+                    <a class="nav-link dropdown-indicator label-1" href="#nv-hod" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-hod">
+                        <div class="d-flex align-items-center">
+                            <div class="dropdown-indicator-icon-wrapper">
+                                <span class="fas fa-caret-right dropdown-indicator-icon"></span>
+                            </div>
+                            <span class="nav-link-icon"><span data-feather="phone"></span></span>
+                            <span class="nav-link-text">HoD</span>
+                            @if (request()->routeIs('user.hod') || request()->routeIs('user.hod.create'))
+                            <span class="fa-solid fa-circle text-info ms-1 new-page-indicator" style="font-size: 6px"></span>
+                            @endif
+                        </div>
+                    </a>
+                    <div class="parent-wrapper label-1">
+                        <ul class="nav collapse parent {{ request()->routeIs('user.hod') || request()->routeIs('user.hod.create') ? 'show' : '' }}" data-bs-parent="#navbarVerticalCollapse" id="nv-hod">
+                            <li class="collapsed-nav-item-title d-none">HoD</li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ request()->routeIs('user.hod') ? 'active' : '' }}" href="{{ route('user.hod') }}">
+                                    <div class="d-flex align-items-center">
+                                        <span class="nav-link-text">View HoDs</span>
+                                    </div>
+                                </a>
+                            </li>
+                            @if ( Auth::user()->role == 'Principle')   
+                            <li class="nav-item">
+                                <a class="nav-link {{ request()->routeIs('user.hod.create') ? 'active' : '' }}" href="{{ route('user.hod.create') }}">
+                                    <div class="d-flex align-items-center">
+                                        <span class="nav-link-text">Add HoD</span>
                                     </div>
                                 </a>
                             </li>

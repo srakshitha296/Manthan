@@ -55,7 +55,7 @@ class EventController extends Controller
                 return redirect()->route('events.show',$id)->with('error', 'You have already registered for this event.');
             }
 
-            $registered = RegisteredEvents::create([
+            RegisteredEvents::create([
                 'program_id' => $id,
                 'user_id'=> Auth::user()->id,
                 'is_paid'=> 0,
@@ -66,5 +66,26 @@ class EventController extends Controller
             // dd('done');
             return redirect()->route('events.show', $id)->with('success', 'You have successfully registered for the event.');
         } 
+    }
+
+    public function viewEvents(){
+        $events = match (Auth::user()->role) {
+            'student' => Program::where('event_date', '>=', now())->where('type', '!=', 'FDP')->get(),
+            'faculty', 'HoD', 'Principle' => Program::where('event_date', '>=', now())->where('type', '!=', 'SDP')->get(),
+            default => Program::where('event_date', '>=', now())->get(),
+        };
+
+        // dd($events);
+        return view('dashboard.events.index', compact('events'));
+    }
+
+    public function myEvents(){
+        $user = Auth::user();
+        $events = match ($user->role) {
+            'student' =>$user->registeredPrograms()->where('event_date', '>=', now())->where('type', '!=', 'FDP')->get(),
+            'faculty', 'HoD', 'Principle' => $user->registeredPrograms()->where('event_date', '>=', now())->where('type', '!=', 'SDP')->get(),
+            default => Program::where('event_date', '>=', now())->get(),
+        };
+        return view('dashboard.events.events', compact('events'));
     }
 }
