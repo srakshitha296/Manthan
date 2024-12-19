@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\College;
+use App\Models\Department;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -41,8 +43,11 @@ class ProfileController extends Controller
             default => User::find(Auth::id()),
         };
 
-        
-        return view('dashboard.profile.edit', compact('user'));
+        $college = College::all();
+        $departments = Department::all();
+
+        // dd($user->student->college->id);
+        return view('dashboard.profile.edit', compact('user', 'college', 'departments'));
     }
     // public function edit(Request $request): View
     // {
@@ -67,8 +72,19 @@ class ProfileController extends Controller
     //     return Redirect::route('profile.edit')->with('status', 'profile-updated');
     // }
 
-    public function update(){
-        // daaa
+    public function updateProfile(Request $request){
+
+        $result = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,'.Auth::id(),
+            'phone' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'college_id' => 'required|integer',
+            'department_id' => 'required|integer',
+            'usn' => 'required|string|regex:/^[0-9]{1}[A-Z]{2}[0-9]{2}[A-Z]{2}[0-9]{3}$/',
+        ]);
+
     }
 
     /**
