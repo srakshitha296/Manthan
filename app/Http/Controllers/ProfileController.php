@@ -17,7 +17,8 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
-    public function viewProfile(){
+    public function viewProfile()
+    {
 
         $user = null;
         $user = match (Auth::user()->role) {
@@ -27,12 +28,13 @@ class ProfileController extends Controller
             'Principle' => User::with('principle')->find(Auth::id()),
             default => User::find(Auth::id()),
         };
-        
+
 
         return view('dashboard.profile.index', compact('user'));
     }
 
-    public function editProfile(){
+    public function editProfile()
+    {
 
         $user = null;
         $user = match (Auth::user()->role) {
@@ -72,20 +74,47 @@ class ProfileController extends Controller
     //     return Redirect::route('profile.edit')->with('status', 'profile-updated');
     // }
 
-    public function updateProfile(Request $request){
-
-        $result = $request->validate([
+    public function updateProfile(Request $request)
+    {
+        $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,'.Auth::id(),
-            'phone' => 'required|string|max:255',
-            'address' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'college_id' => 'required|integer',
-            'department_id' => 'required|integer',
-            'usn' => 'required|string|regex:/^[0-9]{1}[A-Z]{2}[0-9]{2}[A-Z]{2}[0-9]{3}$/',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:15',
+            'address' => 'nullable|string|max:255',
+            'usn' => 'nullable|string|max:20',
+            'college' => 'required|exists:colleges,id',
+            'branch' => 'required|exists:departments,id',
+            'semester' => 'nullable|integer|min:1|max:8',
         ]);
 
+        $user = User::findOrFail(Auth::id());
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+        ]);
+
+        if ($user->student) {
+            $user->student->update([
+                'college_id' => $request->college,
+                'department_id' => $request->branch, 
+                'usn' => $request->usn,
+                'semester' => $request->semester,
+            ]);
+        } else {
+            $user->student()->create([
+                'college_id' => $request->college,
+                'department_id' => $request->department,
+                'usn' => $request->usn,
+                'semester' => $request->semester,
+            ]);
+        }
+
+        return redirect()->route('user.view.profile')->with('status', 'Profile updated successfully');
     }
+
 
     /**
      * Delete the user's account.
