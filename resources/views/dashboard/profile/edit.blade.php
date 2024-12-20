@@ -7,109 +7,114 @@
         <div class="col-xl-9">
             <div class="d-sm-flex justify-content-between">
                 <h2 class="mb-4">Edit Profile</h2>
-
             </div>
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-xl-9">
-        <form class="row g-3 mb-9" action="{{ route('profile.update') }}" method="POST">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <form class="row g-3 mb-9" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="d-flex align-items-end position-relative mb-7">
-                <input class="" id="upload-avatar" value="{{ Storage::url(Auth::user()->image) }}" type="file" name="image" />
-                {{-- <div class="hoverbox" style="width: 150px; height: 150px">
-                    <div class="hoverbox-content rounded-circle d-flex flex-center z-1"
-                        style="--phoenix-bg-opacity: .56;">
-                        <span class="fa-solid fa-camera fs-1 text-body-quaternary"></span>
-                    </div>
-                    <div
-                        class="position-relative bg-body-quaternary rounded-circle cursor-pointer d-flex flex-center mb-xxl-7">
-                        <div class="avatar avatar-5xl">
-                            <img class="rounded-circle" src="{{ Storage::url(Auth::user()->image) }}"
-                                alt="{{ Auth::user()->name }}" name="image" />
-                        </div>
-                        <label class="w-100 h-100 position-absolute z-1" for="upload-avatar"></label>
-                    </div>
-                </div> --}}
+                <input class="" id="upload-avatar" type="file" name="image" />
             </div>
             <h4 class="mb-3">User Details</h4>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <input class="form-control" id="floatingInputName" type="text" value="{{ $user->name }}"
-                        name="name" />
+                    <input class="form-control @error('name') is-invalid @enderror" id="floatingInputName" type="text" value="{{ old('name', $user->name) }}" name="name" />
                     <label for="floatingInputName">Name</label>
+                    @error('name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <input class="form-control" id="floatingInputUsn" type="text" placeholder="USN"
-                        value="{{ $user->student->usn }}" name="usn" />
-                    <label for="floatingInputName">USN</label>
+                    <input class="form-control @error('usn') is-invalid @enderror" id="floatingInputUsn" type="text" placeholder="USN" value="{{ old('usn', $user->student->usn) }}" name="usn" />
+                    <label for="floatingInputUsn">USN</label>
+                    @error('usn')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <input class="form-control" id="floatingInputEmail" type="text" placeholder="email"
-                        value="{{ $user->email }}" name="email" />
+                    <input class="form-control @error('email') is-invalid @enderror" id="floatingInputEmail" type="text" placeholder="email" value="{{ old('email', $user->email) }}" name="email" />
                     <label for="floatingInputEmail">Email</label>
+                    @error('email')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <input class="form-control" id="floatingInputPhone" type="tel" placeholder="phone"
-                        value="{{ $user->phone }}" name="phone" />
+                    <input class="form-control @error('phone') is-invalid @enderror" id="floatingInputPhone" type="tel" placeholder="phone" value="{{ old('phone', $user->phone) }}" name="phone" />
                     <label for="floatingInputPhone">Phone</label>
+                    @error('phone')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <select class="form-select" id="floatingSelectInstitution" name="college">
+                    <select class="form-select @error('college') is-invalid @enderror" id="floatingSelectInstitution" name="college">
                         @foreach ($college as $item)
-                        <option value="{{ $item->id }}" {{ $user->student->college->id == $item->id ? 'selected' : ''}}>
-                            {{ $item->name }}
-                        </option>
+                            <option value="{{ $item->id }}" {{ old('college', $user->student->college->id) == $item->id ? 'selected' : '' }}>
+                                {{ $item->name }}
+                            </option>
                         @endforeach
                     </select>
                     <label for="floatingSelectInstitution">Institution</label>
+                    @error('college')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <select class="form-select" id="floatingSelectInstitution" name="branch">
+                    <select class="form-select @error('branch') is-invalid @enderror" id="floatingSelectBranch" name="branch">
                         @foreach ($departments as $item)
-                        <option value="{{ $item->id }}" {{ $user->student->department->id == $item->id ? 'selected' : ''
-                            }}>
-                            {{ $item->name }}
-                        </option>
+                            <option value="{{ $item->id }}" {{ old('branch', $user->student->department->id) == $item->id ? 'selected' : '' }}>
+                                {{ $item->name }}
+                            </option>
                         @endforeach
                     </select>
-                    <label for="floatingSelectInstitution">Branch</label>
+                    <label for="floatingSelectBranch">Branch</label>
+                    @error('branch')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <select class="form-select" id="floatingSelectInstitution" name="semester">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
+                    <select class="form-select @error('semester') is-invalid @enderror" id="floatingSelectSemester" name="semester">
+                        @for ($i = 1; $i <= 8; $i++)
+                            <option value="{{ $i }}" {{ old('semester', $user->student->semester) == $i ? 'selected' : '' }}>{{ $i }}</option>
+                        @endfor
                     </select>
-                    <label for="floatingSelectInstitution">Semester</label>
+                    <label for="floatingSelectSemester">Semester</label>
+                    @error('semester')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <h4 class="mt-6">Address Information</h4>
             <div class="col-12">
                 <div class="form-floating">
-                    <textarea class="form-control" id="floatingStudentAddress" placeholder="your address"
-                        style="height: 128px">
-                        {{ $user->address }}
-                    </textarea>
+                    <textarea class="form-control @error('address') is-invalid @enderror" id="floatingStudentAddress" placeholder="your address" style="height: 128px" name="address">{{ old('address', $user->address) }}</textarea>
                     <label for="floatingStudentAddress">Address</label>
+                    @error('address')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="col-12 d-flex justify-content-end mt-6">
@@ -118,6 +123,7 @@
         </form>
     </div>
 </div>
+
 
 @elseif (Auth::user()->role == 'faculty')
 <div class="border-bottom border-translucent mb-7 mx-n3 px-2 mx-lg-n6 px-lg-6">
