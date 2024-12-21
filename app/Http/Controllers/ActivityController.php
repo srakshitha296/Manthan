@@ -35,7 +35,9 @@ class ActivityController extends Controller
 
     public function create()
     {
-        return view('dashboard.activity.create');
+        $activityTypes = ActivityType::all();
+        $peos = ProgramExpectedOutcomes::all();
+        return view('dashboard.activity.create', compact('activityTypes', 'peos'));
     }
 
     public function edit($id)
@@ -120,5 +122,90 @@ class ActivityController extends Controller
 
         // dd("done update");   
         return redirect()->route('user.activity.index')->with('success', 'Activity updated successfully');
+    }
+
+    public function store(Request $request){
+        // dd($request->all());
+
+        if(Auth::check()){
+            if (Auth::user()->role == 'student') {
+                if(Auth::user()->student){
+                    $request->validate([
+                        'title' => 'required|string|max:255',
+                        'activity_type' => 'required|integer|exists:activity_types,id',
+                        'peo' => 'required|integer|exists:program_expected_outcomes,id',
+                        'start_date' => 'required|date|before_or_equal:end_date',
+                        'end_date' => 'required|date|after_or_equal:start_date',
+                        'hours' => 'required|integer|min:1',
+                        'description' => 'required|string',
+                        'report' => 'required|file|mimes:pdf,doc,docx|max:20480',
+                        'certificate' => 'required|file|mimes:pdf,doc,docx,jpg,png|max:20480',
+                    ]);
+
+                    $activity = new Activity();
+
+                    if ($request->hasFile('report')) {
+                        if ($activity->file) {
+                            Storage::disk('public')->delete($activity->file);
+                        }
+            
+                        $file = $request->file('report');
+                        $originalFileName = $file->getClientOriginalName();
+                        $fileName = time() . '-' . $originalFileName;
+            
+                        $path = $file->storeAs('activities/report', $fileName, 'public');
+                        $activity->file = $path;
+                    }
+            
+                    if ($request->hasFile('certificate')) {
+                        if ($activity->certificate) {
+                            Storage::disk('public')->delete($activity->certificate);
+                        }
+            
+                        $file = $request->file('certificate');
+                        $fileName = time() . '-' . $file->getClientOriginalName();
+                        $path = $file->storeAs('activities/certificate', $fileName, 'public');
+                        $activity->certificate = $path;
+                    }
+
+                    $activity->create([
+                        'student_id' => Auth::user()->student->id,
+                        'title' => $request->title,
+                        'activity_type_id' => $request->activity_type,
+                        'program_expected_outcomes_id' => $request->peo,
+                        'start_date' => $request->start_date,
+                        'end_date' => $request->end_date,
+                        'hours' => $request->hours,
+                        'description' => $request->description,
+                        'status' => 'pending',
+                        'file' => $activity->file,
+                        'certificate' => $activity->certificate,
+                    ]);
+
+                }else{
+                    dd('no data found');
+                }
+            }
+        }else{
+            return redirect()->route('login');
+        }
+        return redirect()->route('user.activity.index')->with('success', 'Activity added successfully');
+    }
+
+    public function destroy($id)
+    {
+        $activity = Activity::find($id);
+        if ($activity) {
+            if ($activity->file) {
+                Storage::disk('public')->delete($activity->file);
+            }
+            if ($activity->certificate) {
+                Storage::disk('public')->delete($activity->certificate);
+            }
+            $activity->delete();
+            return redirect()->route('user.activity.index')->with('success', 'Activity deleted successfully');
+        } else {
+            return redirect()->route('user.activity.index')->with('error', 'Activity not found');
+        }
     }
 }
