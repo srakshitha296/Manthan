@@ -81,6 +81,7 @@
     <script src="{{ asset('dashboard/vendors/choices/choices.min.js') }}"></script>
     <script src="{{ asset('dashboard/vendors/prism/prism.js') }}"></script>
     <script src="{{ asset('dashboard/assets/js/ecommerce-dashboard.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/js/echarts-example.js') }}"></script>
     <script src="{{ asset('dashboard/vendors/dropzone/dropzone-min.js') }}"></script>
 </body>
 
