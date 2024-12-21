@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
@@ -75,45 +76,62 @@ class ProfileController extends Controller
     // }
 
     public function updateProfile(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'phone' => 'required|string|max:15',
-            'address' => 'nullable|string|max:255',
-            'usn' => 'nullable|string|max:20',
-            'college' => 'required|exists:colleges,id',
-            'branch' => 'required|exists:departments,id',
-            'semester' => 'nullable|integer|min:1|max:8',
-        ]);
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
+        'phone' => 'required|string|max:15',
+        'address' => 'nullable|string|max:255',
+        'usn' => 'nullable|string|max:20',
+        'college' => 'required|exists:colleges,id',
+        'branch' => 'required|exists:departments,id',
+        'semester' => 'nullable|integer|min:1|max:8',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate image file
+    ]);
 
-        $user = User::findOrFail(Auth::id());
+    $user = User::findOrFail(Auth::id());
 
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'address' => $request->address,
-        ]);
-
-        if ($user->student) {
-            $user->student->update([
-                'college_id' => $request->college,
-                'department_id' => $request->branch, 
-                'usn' => $request->usn,
-                'semester' => $request->semester,
-            ]);
-        } else {
-            $user->student()->create([
-                'college_id' => $request->college,
-                'department_id' => $request->department,
-                'usn' => $request->usn,
-                'semester' => $request->semester,
-            ]);
+    if ($request->hasFile('image')) {
+        // dd("called");
+       
+        if ($user->image) {
+            Storage::disk('public')->delete($user->image);
         }
 
-        return redirect()->route('user.view.profile')->with('status', 'Profile updated successfully');
+        $file = $request->file('image');    
+        $originalFileName = $file->getClientOriginalName();
+        $fileName = time() . '-' . $originalFileName;
+
+        $path = $file->storeAs('users', $fileName, 'public');
+
+        $user->image = $path;
     }
+
+    $user->update([
+        'name' => $request->name,
+        'email' => $request->email,
+        'phone' => $request->phone,
+        'address' => $request->address,
+    ]);
+
+    if ($user->student) {
+        $user->student->update([
+            'college_id' => $request->college,
+            'department_id' => $request->branch,
+            'usn' => $request->usn,
+            'semester' => $request->semester,
+        ]);
+    } else {
+        $user->student()->create([
+            'college_id' => $request->college,
+            'department_id' => $request->branch,
+            'usn' => $request->usn,
+            'semester' => $request->semester,
+        ]);
+    }
+
+    return redirect()->route('user.view.profile')->with('status', 'Profile updated successfully');
+}
 
 
     /**
