@@ -76,6 +76,7 @@
     <script src="{{ asset('dashboard/assets/js/phoenix.js') }}"></script>
     <script src="{{ asset('dashboard/vendors/echarts/echarts.min.js') }}"></script>
     <script src="{{ asset('dashboard/assets/js/ecommerce-dashboard.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/js/echarts-example.js') }}"></script>
     <script src="{{ asset('dashboard/vendors/dropzone/dropzone-min.js') }}"></script>
 </body>
 
