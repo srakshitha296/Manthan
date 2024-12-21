@@ -48,7 +48,11 @@ Route::post('/user-dashboard/delete-activity/{id}',[ActivityController::class,'d
 
 Route::get('/user-dashboard/my-testimonials',[TestimonialController::class,'index'])->name('user.testimonials')->middleware('auth');
 Route::get('/user-dashboard/add-testimonial',[TestimonialController::class,'create'])->name('user.testimonial.create')->middleware('auth');
+Route::post('/user-dashboard/add-testimonial',[TestimonialController::class,'store'])->name('user.testimonial.store')->middleware('auth');
 Route::get('/user-dashboard/edit-testimonial',[TestimonialController::class,'edit'])->name('user.testimonial.edit')->middleware('auth');
+Route::post('/user-dashboard/update-testimonial/{id}',[TestimonialController::class,'update'])->name('user.testimonial.update')->middleware('auth');
+Route::post('/user-dashboard/delete-testimonial/{id}',[TestimonialController::class,'destroy'])->name('user.testimonial.destroy')->middleware('auth');
+
 Route::get('/user-dashboard/students',[StudentController::class,'index'])->name('user.students')->middleware('auth');
 Route::get('/user-dashboard/add-students',[StudentController::class,'create'])->name('user.students.create')->middleware('auth');
 
