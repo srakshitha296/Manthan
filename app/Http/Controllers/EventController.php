@@ -81,6 +81,8 @@ class EventController extends Controller
 
     public function myEvents(){
         $user = Auth::user();
+
+        
         $events = match ($user->role) {
             'student' =>$user->registeredPrograms()->where('event_date', '>=', now())->where('type', '!=', 'FDP')->get(),
             'faculty', 'HoD', 'Principle' => $user->registeredPrograms()->where('event_date', '>=', now())->where('type', '!=', 'SDP')->get(),

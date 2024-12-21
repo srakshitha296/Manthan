@@ -35,14 +35,24 @@ Route::get('/blogs-details/{id}',[BlogController::class,'show'])->name('blogs.sh
 Route::get('/user-dashboard',[DashboardController::class,'index'])->name('user.dashboard')->middleware('auth');
 Route::get('/user-dashboard/profile',[ProfileController::class,'viewProfile'])->name('user.view.profile')->middleware('auth');
 Route::get('/user-dashboard/profile/edit',[ProfileController::class,'editProfile'])->name('user.edit.profile')->middleware('auth');
+
 Route::get('/user-dashboard/events',[EventController::class,'viewEvents'])->name('user.view.events')->middleware('auth');
 Route::get('/user-dashboard/my-events',[EventController::class,'myEvents'])->name('user.my.events')->middleware('auth');
+
 Route::get('/user-dashboard/view-activities',[ActivityController::class,'index'])->name('user.activity.index')->middleware('auth');
 Route::get('/user-dashboard/add-activity',[ActivityController::class,'create'])->name('user.activity.create')->middleware('auth');
-Route::get('/user-dashboard/edit-activity/',[ActivityController::class,'edit'])->name('user.activity.edit')->middleware('auth');
+Route::post('/user-dashboard/add-activity',[ActivityController::class,'store'])->name('user.activity.store')->middleware('auth');
+Route::get('/user-dashboard/edit-activity/{id}',[ActivityController::class,'edit'])->name('user.activity.edit')->middleware('auth');
+Route::post('/user-dashboard/update-activity/{id}',[ActivityController::class,'update'])->name('user.activity.update')->middleware('auth');
+Route::post('/user-dashboard/delete-activity/{id}',[ActivityController::class,'destroy'])->name('user.activity.destroy')->middleware('auth');
+
 Route::get('/user-dashboard/my-testimonials',[TestimonialController::class,'index'])->name('user.testimonials')->middleware('auth');
 Route::get('/user-dashboard/add-testimonial',[TestimonialController::class,'create'])->name('user.testimonial.create')->middleware('auth');
+Route::post('/user-dashboard/add-testimonial',[TestimonialController::class,'store'])->name('user.testimonial.store')->middleware('auth');
 Route::get('/user-dashboard/edit-testimonial',[TestimonialController::class,'edit'])->name('user.testimonial.edit')->middleware('auth');
+Route::post('/user-dashboard/update-testimonial/{id}',[TestimonialController::class,'update'])->name('user.testimonial.update')->middleware('auth');
+Route::post('/user-dashboard/delete-testimonial/{id}',[TestimonialController::class,'destroy'])->name('user.testimonial.destroy')->middleware('auth');
+
 Route::get('/user-dashboard/students',[StudentController::class,'index'])->name('user.students')->middleware('auth');
 Route::get('/user-dashboard/add-students',[StudentController::class,'create'])->name('user.students.create')->middleware('auth');
 

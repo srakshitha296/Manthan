@@ -1,6 +1,9 @@
 @extends('layouts.dashboard.dashboard')
 
 @section('content')
+@if (!$testimonials)
+    <h1>No Testimonials</h1>
+@else
 <div class="card mb-5">
     <div class="card-header d-flex justify-content-center align-items-end position-relative mb-7 mb-xxl-0"
         style="min-height: 214px; ">
@@ -45,9 +48,12 @@
                         </a>
                     </div>
                     <div class="col-auto order-xxl-2">
-                        <button class="btn btn-danger lh-1">
-                            <span class=" me-2" data-feather="trash"></span>Delete
-                        </button>
+                        <form action="{{ route('user.testimonial.destroy', $testimonials->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-danger lh-1">
+                                <span class=" me-2" data-feather="trash"></span>Delete
+                            </button>
+                        </form>
                     </div>
                     {{-- <div class="col-auto order-xxl-1">
                         <button class="btn btn-phoenix-primary lh-1">
@@ -60,4 +66,5 @@
         </div>
     </div>
 </div>
+@endif
 @endsection

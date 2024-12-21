@@ -248,9 +248,9 @@
                         <div class="d-flex">
                             <div class="d-flex align-items-end me-3"><label
                                     class="form-check-label mb-0 me-2 lh-1 text-body" for="progress">Progress</label>
-                                <div class="form-check form-switch min-h-auto mb-0"><input class="form-check-input"
-                                        id="progress" type="checkbox" checked=""
-                                        data-gantt-progress="data-gantt-progress" /></div>
+                                <div class="form-check form-switch min-h-auto mb-0">
+                                    <input class="form-check-input" id="progress" type="checkbox" checked="" data-gantt-progress="data-gantt-progress" />
+                                </div>
                             </div>
                             <div class="d-flex align-items-end flex-1"><label
                                     class="form-check-label mb-0 me-2 lh-1 text-body" for="links">Links</label>

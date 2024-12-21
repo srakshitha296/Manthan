@@ -38,7 +38,7 @@
 
     <div class="row justify-content-between align-items-end mb-9 me-0 g-4">
         @foreach ($events as $event)
-        <a href="{{ route('events.show', $event->id) }}" target="_blank" >
+        <a href="{{ route('events.show', $event->id) }}" style="text-decoration: none" target="_blank" >
             <div class="card" style="max-width:20rem;">
                 <img class="card-img-top pt-2" src="{{ Storage::url($event->banner) }}" alt="{{ $event->name }}">
                 <center>

@@ -25,10 +25,9 @@
     <link rel="stylesheet" href="{{ asset('dashboard/asset/css/line.css') }}">
     <link href="{{ asset('dashboard/assets/css/theme-rtl.min.css') }}" type="text/css" rel="stylesheet" id="style-rtl">
     <link href="{{ asset('dashboard/assets/css/theme.min.css') }}" type="text/css" rel="stylesheet" id="style-default">
-    <link href="{{ asset('dashboard/assets/css/user-rtl.min.css') }}" type="text/css" rel="stylesheet"
-        id="user-style-rtl">
-    <link href="{{ asset('dashboard/assets/css/user.min.css') }}" type="text/css" rel="stylesheet"
-        id="user-style-default">
+    <link href="{{ asset('dashboard/assets/css/user-rtl.min.css') }}" type="text/css" rel="stylesheet" id="user-style-rtl">
+    <link href="{{ asset('dashboard/vendors/dropzone/dropzone.css') }}" type="text/css" rel="stylesheet" id="user-style-rtl">
+    <link href="{{ asset('dashboard/assets/css/user.min.css') }}" type="text/css" rel="stylesheet" id="user-style-default">
     <link href="{{ asset('dashboard/vendors/choices/choices.min.css') }}" rel="stylesheet">
     <link href="{{ asset('dashboard/vendors/prism/prism-okaidia.css') }}" rel="stylesheet">
     <script>
@@ -82,6 +81,7 @@
     <script src="{{ asset('dashboard/vendors/choices/choices.min.js') }}"></script>
     <script src="{{ asset('dashboard/vendors/prism/prism.js') }}"></script>
     <script src="{{ asset('dashboard/assets/js/ecommerce-dashboard.js') }}"></script>
+    <script src="{{ asset('dashboard/vendors/dropzone/dropzone-min.js') }}"></script>
 </body>
 
 </html>

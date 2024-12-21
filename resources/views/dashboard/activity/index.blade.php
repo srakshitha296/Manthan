@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="mb-9">
-    <div id="projectSummary" {{--
-         
+    <div id="projectSummary">
+
         <div class="row mb-4 gx-6 gy-3 align-items-center">
             <div class="col-auto">
                 <h2 class="mb-0">Activities<span class="fw-normal text-body-tertiary ms-3">(32)</span>
@@ -16,58 +16,81 @@
             <table class="table fs-9 mb-0 border-top border-translucent">
                 <thead>
                     <tr>
-                        <th class="sort white-space-nowrap align-middle ps-0" scope="col" data-sort="activityTitle"
-                            style="width:30%;">TITLE</th>
-                        <th class="sort align-middle ps-3" scope="col" data-sort="start" style="width:10%;">
-                            START DATE</th>
-                        <th class="sort align-middle ps-3" scope="col" data-sort="end" style="width:15%;">END
-                            DATE</th>
-                        <th class="sort align-middle" scope="col" data-sort="statuses" style="width:20%;">STATUS</th>
-                        <th class="sort align-middle ps-3" scope="col" data-sort="points" style="width:12%;">
-                            POINTS</th>
+                        <th class="sort white-space-nowrap align-middle ps-0" scope="col" data-sort="activityTitle" style="width:10%;">TITLE</th>
+                        <th class="sort white-space-nowrap align-middle ps-0" scope="col" data-sort="activityType" style="width:10%;">Activity Type</th>
+                        <th class="sort align-middle ps-3" scope="col" data-sort="start" style="width:5%;"> START DATE</th>
+                        <th class="sort align-middle ps-3" scope="col" data-sort="end" style="width:5%;">END DATE</th>
+                        <th class="sort align-middle" scope="col" data-sort="statuses" style="width:10%;">STATUS</th>
+                        <th class="sort align-middle ps-3" scope="col" data-sort="points" style="width:10%;"> POINTS </th>
+                        <th class="sort align-middle ps-3" scope="col" data-sort="points" style="width:10%;"> Download Report </th>
+                        <th class="sort align-middle ps-3" scope="col" data-sort="points" style="width:10%;"> Download Certificates </th>
+                        <th class="sort align-middle ps-3" scope="col" data-sort="points" style="width:10%;"> Duration(hours) </th>
                         <th class="sort align-middle text-end" scope="col" style="width:10%;"></th>
                     </tr>
                 </thead>
                 <tbody class="list" id="project-list-table-body">
+                    @foreach ($activities as $activity)
                     <tr class="position-static">
-                        <td class="align-middle time white-space-nowrap ps-0 activityTitle py-4"><a class="fw-bold fs-8"
-                                href="#">Skill rural population</a>
+                        <td class="align-middle time white-space-nowrap ps-0 activityTitle py-4">
+                            <a class="fw-bold fs-7" href="#">{{ $activity->title }}</a>
+                        </td>
+                        
+                        <td class="align-middle time white-space-nowrap ps-0 activityTitle py-4">
+                            <p class="fs-7 text-body mb-0" >{{ $activity->activityType->title }}</p class="fs-7">
                         </td>
 
                         <td class="align-middle white-space-nowrap start ps-3 py-4">
-                            <p class="mb-0 fs-9 text-body">Mar 08, 2021</p>
+                            <p class="mb-0 fs-7 text-body">{{ \Carbon\Carbon::parse($activity->start_date)->format('M d, Y') }}</p>
                         </td>
                         <td class="align-middle white-space-nowrap end ps-3 py-4">
-                            <p class="mb-0 fs-9 text-body">Sep 15, 2022</p>
+                            <p class="mb-0 fs-7 text-body">{{ \Carbon\Carbon::parse($activity->end_date)->format('M d, Y') }}</p>
                         </td>
-                        <td class="align-middle white-space-nowrap statuses"><span
-                                class="badge badge-phoenix fs-10 badge-phoenix-warning">PENDING</span></td>
+                        <td class="align-middle white-space-nowrap statuses">
+                            @if ($activity->status == 'approved')
+                                <span class="badge badge-phoenix fs-8 badge-phoenix-success">{{ $activity->status }}</span>
+                            @elseif ($activity->status == 'pending')
+                                <span class="badge badge-phoenix fs-8 badge-phoenix-warning">{{ $activity->status }}</span>
+                            @else
+                            <span class="badge badge-phoenix fs-8 pt-1 badge-phoenix-danger">{{ $activity->status }}</span>
+                            @endif
+                        </td>
                         <td class="align-middle white-space-nowrap points ps-3 py-4">
-                            <p class="fw-bo text-body fs-9 mb-0">0</p>
+                            <p class="fw-bo text-body fs-7 mb-0">{{ $activity->activityType->credits }}</p>
+                        </td>
+                        <td class="align-middle white-space-nowrap points ps-3 py-4">
+                                <a href="{{ Storage::url($activity->file) }}" target="_blank" download class="fw-bo fs-8 mb-0"> Download</a>
+                        </td>
+                        <td class="align-middle white-space-nowrap points ps-3 py-4">
+                            <a href="{{ Storage::url($activity->certificate) }}" target="_blank" download class="fw-bo fs-8 mb-0"> Download</a>
+                        </td>
+                        <td class="align-middle white-space-nowrap points ps-3 py-4">
+                            <p class="fw-bo text-body fs-7 mb-0">{{ $activity->hours }}</p>
                         </td>
                         <td class="align-middle text-end white-space-nowrap pe-0 action">
-                            <div class="btn-reveal-trigger position-static"><button
-                                    class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10"
-                                    type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true"
-                                    aria-expanded="false" data-bs-reference="parent"><span
-                                        class="fas fa-ellipsis-h fs-10"></span></button>
-                                <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item"
-                                        href="#!">View</a>
-                                    <a class="dropdown-item" href="#!">Export</a>
+                            <div class="btn-reveal-trigger position-static">
+                                <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true"
+                                    aria-expanded="false" data-bs-reference="parent">
+                                    <span class="fas fa-ellipsis-h fs-10"></span>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end py-2">
                                     @if (Auth::user()->role == 'student')
-                                    <a class="dropdown-item" href="{{ route('user.activity.edit') }}">Edit</a>
+                                    <a class="dropdown-item" href="{{ route('user.activity.edit', $activity->id) }}">Edit</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item text-danger" href="#!">Remove</a>
+                                    <form action="{{ route('user.activity.destroy', $activity->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item text-danger">Remove</a>
+                                    </form>
                                     @endif
                                 </div>
                             </div>
                         </td>
                     </tr>
+                    @endforeach
+
                 </tbody>
             </table>
         </div>
-        {{-- <div
-            class="d-flex flex-wrap align-items-center justify-content-between py-3 pe-0 fs-9 border-bottom border-translucent">
+        {{-- <div class="d-flex flex-wrap align-items-center justify-content-between py-3 pe-0 fs-9 border-bottom border-translucent">
             <div class="d-flex">
                 <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body" data-list-info="data-list-info"></p>
                 <a class="fw-semibold" href="#!" data-list-view="*">View all<span class="fas fa-angle-right ms-1"
