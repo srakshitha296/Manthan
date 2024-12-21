@@ -41,8 +41,10 @@ Route::get('/user-dashboard/my-events',[EventController::class,'myEvents'])->nam
 
 Route::get('/user-dashboard/view-activities',[ActivityController::class,'index'])->name('user.activity.index')->middleware('auth');
 Route::get('/user-dashboard/add-activity',[ActivityController::class,'create'])->name('user.activity.create')->middleware('auth');
+Route::post('/user-dashboard/add-activity',[ActivityController::class,'store'])->name('user.activity.store')->middleware('auth');
 Route::get('/user-dashboard/edit-activity/{id}',[ActivityController::class,'edit'])->name('user.activity.edit')->middleware('auth');
 Route::post('/user-dashboard/update-activity/{id}',[ActivityController::class,'update'])->name('user.activity.update')->middleware('auth');
+Route::post('/user-dashboard/delete-activity/{id}',[ActivityController::class,'destroy'])->name('user.activity.destroy')->middleware('auth');
 
 Route::get('/user-dashboard/my-testimonials',[TestimonialController::class,'index'])->name('user.testimonials')->middleware('auth');
 Route::get('/user-dashboard/add-testimonial',[TestimonialController::class,'create'])->name('user.testimonial.create')->middleware('auth');

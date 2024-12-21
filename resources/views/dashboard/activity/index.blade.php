@@ -23,7 +23,7 @@
                         <th class="sort align-middle" scope="col" data-sort="statuses" style="width:10%;">STATUS</th>
                         <th class="sort align-middle ps-3" scope="col" data-sort="points" style="width:10%;"> POINTS </th>
                         <th class="sort align-middle ps-3" scope="col" data-sort="points" style="width:10%;"> Download Report </th>
-                        {{-- <th class="sort align-middle ps-3" scope="col" data-sort="points" style="width:10%;"> Download Certificates </th> --}}
+                        <th class="sort align-middle ps-3" scope="col" data-sort="points" style="width:10%;"> Download Certificates </th>
                         <th class="sort align-middle ps-3" scope="col" data-sort="points" style="width:10%;"> Duration(hours) </th>
                         <th class="sort align-middle text-end" scope="col" style="width:10%;"></th>
                     </tr>
@@ -60,9 +60,9 @@
                         <td class="align-middle white-space-nowrap points ps-3 py-4">
                                 <a href="{{ Storage::url($activity->file) }}" target="_blank" download class="fw-bo fs-8 mb-0"> Download</a>
                         </td>
-                        {{-- <td class="align-middle white-space-nowrap points ps-3 py-4">
-                            <p class="fw-bo text-body fs-7 mb-0">{{ $activity->certificate }}</p>
-                        </td> --}}
+                        <td class="align-middle white-space-nowrap points ps-3 py-4">
+                            <a href="{{ Storage::url($activity->certificate) }}" target="_blank" download class="fw-bo fs-8 mb-0"> Download</a>
+                        </td>
                         <td class="align-middle white-space-nowrap points ps-3 py-4">
                             <p class="fw-bo text-body fs-7 mb-0">{{ $activity->hours }}</p>
                         </td>
@@ -76,7 +76,10 @@
                                     @if (Auth::user()->role == 'student')
                                     <a class="dropdown-item" href="{{ route('user.activity.edit', $activity->id) }}">Edit</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item text-danger" href="#!">Remove</a>
+                                    <form action="{{ route('user.activity.destroy', $activity->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item text-danger">Remove</a>
+                                    </form>
                                     @endif
                                 </div>
                             </div>
