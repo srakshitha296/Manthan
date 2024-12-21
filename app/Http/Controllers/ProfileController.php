@@ -80,13 +80,13 @@ class ProfileController extends Controller
     $request->validate([
         'name' => 'required|string|max:255',
         'email' => 'required|email|max:255',
-        'phone' => 'required|string|max:15',
+        'phone' => 'required|string|max:10',
         'address' => 'nullable|string|max:255',
         'usn' => 'nullable|string|max:20',
         'college' => 'required|exists:colleges,id',
         'branch' => 'required|exists:departments,id',
         'semester' => 'nullable|integer|min:1|max:8',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate image file
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
     ]);
 
     $user = User::findOrFail(Auth::id());

@@ -25,11 +25,17 @@ class ActivityController extends Controller
                     dd('not student');
                 }
             } else {
-                dd('not student');
+                $activities = Activity::with('student', 'activityType', 'programExpectedOutcomes')
+                        ->whereHas('student', function ($query) {
+                            $query->where('college_id', Auth::user()->student->college_id)
+                                  ->where('department_id', Auth::user()->student->department_id);
+                        })->get();
             }
         } else {
             return redirect()->route('login');
         }
+
+        // dd(Auth::user()->faculty->is_cordinator);
         return view('dashboard.activity.index', compact('activities'));
     }
 
