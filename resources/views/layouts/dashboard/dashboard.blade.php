@@ -28,6 +28,8 @@
     <link href="{{ asset('dashboard/assets/css/user-rtl.min.css') }}" type="text/css" rel="stylesheet" id="user-style-rtl">
     <link href="{{ asset('dashboard/vendors/dropzone/dropzone.css') }}" type="text/css" rel="stylesheet" id="user-style-rtl">
     <link href="{{ asset('dashboard/assets/css/user.min.css') }}" type="text/css" rel="stylesheet" id="user-style-default">
+    <link href="{{ asset('dashboard/vendors/choices/choices.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('dashboard/vendors/prism/prism-okaidia.css') }}" rel="stylesheet">
     <script>
         var phoenixIsRTL = window.config.config.phoenixIsRTL;
         if (phoenixIsRTL) {
@@ -47,7 +49,6 @@
     <link href="{{ asset('dashboard/vendors/leaflet.markercluster/MarkerCluster.css') }}" rel="stylesheet">
     <link href="{{ asset('dashboard/vendors/leaflet.markercluster/MarkerCluster.Default.css') }}" rel="stylesheet">
 </head>
-
 <body>
     <main class="main" id="top">
 
@@ -56,7 +57,7 @@
         <div class="content">
 
             @yield('content')
-            
+
             @include('layouts.dashboard.includes.footer')
         </div>
     </main>
@@ -72,9 +73,12 @@
     <script src="{{ asset('dashboard/vendors/dayjs/dayjs.min.js') }}"></script>
     <script src="{{ asset('dashboard/vendors/leaflet/leaflet.js') }}"></script>
     <script src="{{ asset('dashboard/vendors/leaflet.markercluster/leaflet.markercluster.js') }}"></script>
-    <script src="{{ asset('dashboard/vendors/leaflet.tilelayer.colorfilter/leaflet-tilelayer-colorfilter.min.js') }}"></script>
+    <script src="{{ asset('dashboard/vendors/leaflet.tilelayer.colorfilter/leaflet-tilelayer-colorfilter.min.js') }}">
+    </script>
     <script src="{{ asset('dashboard/assets/js/phoenix.js') }}"></script>
     <script src="{{ asset('dashboard/vendors/echarts/echarts.min.js') }}"></script>
+    <script src="{{ asset('dashboard/vendors/choices/choices.min.js') }}"></script>
+    <script src="{{ asset('dashboard/vendors/prism/prism.js') }}"></script>
     <script src="{{ asset('dashboard/assets/js/ecommerce-dashboard.js') }}"></script>
     <script src="{{ asset('dashboard/assets/js/echarts-example.js') }}"></script>
     <script src="{{ asset('dashboard/vendors/dropzone/dropzone-min.js') }}"></script>
