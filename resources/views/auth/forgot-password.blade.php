@@ -39,7 +39,11 @@
             <p class="text-body-tertiary mb-5">Enter your email below and we will send <br class="d-sm-none" />you a reset link</p>
             <form class="d-flex align-items-center mb-5" method="POST" action="{{ route('password.email') }}">
                 @csrf
-                <input class="form-control flex-1" id="email" type="email" name="email" required autofocus placeholder="Email" />
+                <input class="form-control @error('email') is-invalid @enderror flex-1" id="email" type="email" name="email" required autofocus placeholder="Email" /> @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                 <button type="submit" class="btn btn-primary ms-2">
                     Send<span class="fas fa-chevron-right ms-2"></span>
                 </button>

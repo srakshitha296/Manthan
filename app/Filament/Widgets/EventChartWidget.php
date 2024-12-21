@@ -4,7 +4,7 @@ namespace App\Filament\Widgets;
 
 use Filament\Widgets\ChartWidget;
 
-class AdminChartWidget extends ChartWidget
+class EventChartWidget extends ChartWidget
 {
     protected static ?string $heading = 'Events';
 
