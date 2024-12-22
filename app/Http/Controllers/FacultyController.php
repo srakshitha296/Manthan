@@ -59,17 +59,19 @@ class FacultyController extends Controller
                     'status' => 'nullable|boolean',
                     'is_cordinator' => 'nullable|boolean'
                 ]);
-            
+
                 try {
                     DB::beginTransaction();
-            
-                    // Handle image upload if present
+
                     $imagePath = null;
                     if ($request->hasFile('image')) {
-                        $imagePath = $request->file('image')->store('profile-photos', 'public');
+                        $file = $request->file('image');
+                        $originalFileName = $file->getClientOriginalName();
+                        $fileName = time() . '-' . $originalFileName;
+
+                        $imagePath = $file->storeAs('users', $fileName, 'public');
                     }
-            
-                    // Create user
+
                     $user = User::create([
                         'name' => $validated['name'],
                         'email' => $validated['email'],
@@ -77,10 +79,9 @@ class FacultyController extends Controller
                         'phone' => $validated['phone'],
                         'address' => $validated['address'],
                         'image' => $imagePath,
-                        'role' => 'faculty', // Set the role as faculty
+                        'role' => 'faculty',
                     ]);
-            
-                    // Create faculty
+
                     $faculty = Faculty::create([
                         'user_id' => $user->id,
                         'college_id' => $validated['college'],
@@ -94,11 +95,10 @@ class FacultyController extends Controller
                         'status' => $request->has('status'),
                         'is_cordinator' => $request->has('is_cordinator'),
                     ]);
-            
+
                     DB::commit();
-            
-                    return redirect()
-                        ->route('user.faculty')->with('success', 'Faculty member created successfully');
+
+                    return redirect()->route('user.faculty')->with('success', 'Faculty member created successfully');
 
                 } catch (\Exception $e) {
                     DB::rollBack();

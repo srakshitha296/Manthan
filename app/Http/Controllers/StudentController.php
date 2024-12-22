@@ -60,9 +60,12 @@ class StudentController extends Controller
                         'role' => 'student',
                     ]);
             
-                    // Handle image upload
                     if ($request->hasFile('image')) {
-                        $imagePath = $request->file('image')->store('uploads/students', 'public');
+                        $file = $request->file('image');
+                        $originalFileName = $file->getClientOriginalName();
+                        $fileName = time() . '-' . $originalFileName;
+
+                        $imagePath = $file->storeAs('users', $fileName, 'public');
                         $user->update(['image' => $imagePath]);
                     }
             
