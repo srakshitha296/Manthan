@@ -60,6 +60,7 @@ Route::post('/user-dashboard/add-student',[StudentController::class,'store'])->n
 
 Route::get('/user-dashboard/faculty',[FacultyController::class,'index'])->name('user.faculty')->middleware('auth');
 Route::get('/user-dashboard/add-faculty',[FacultyController::class,'create'])->name('user.faculty.create')->middleware('auth');
+Route::post('/user-dashboard/add-faculty',[FacultyController::class,'store'])->name('user.faculty.store')->middleware('auth');
 
 Route::get('/user-dashboard/hod',[HoDController::class,'index'])->name('user.hod')->middleware('auth');
 Route::get('/user-dashboard/add-hod',[HoDController::class,'create'])->name('user.hod.create')->middleware('auth');
