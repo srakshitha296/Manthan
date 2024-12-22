@@ -781,8 +781,7 @@
             <li class="nav-item dropdown"><a class="nav-link lh-1 pe-0" id="navbarDropdownUser" href="#!" role="button"
                     data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
                     <div class="avatar avatar-l ">
-                        <img class="rounded-circle " src="{{ asset('dashboard/assets/img/team/40x40/57.webp') }}"
-                            alt="" />
+                        <img class="rounded-circle " src="{{ Storage::url(Auth::user()->image) }}" alt="{{ Auth::user()->name }}" />
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end navbar-dropdown-caret py-0 dropdown-profile shadow border"
