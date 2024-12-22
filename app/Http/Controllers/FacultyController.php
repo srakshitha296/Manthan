@@ -8,6 +8,8 @@ use App\Models\Faculty;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class FacultyController extends Controller
@@ -32,84 +34,84 @@ class FacultyController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
-
         if (Auth::check()) {
             if (Auth::user()->role == 'HoD' || Auth::user()->role == 'Principle') {
-                // dd("hod bahi");
-                $request->validate([
+                $request->merge([
+                    'status' => $request->has('status') ? true : false,
+                    'is_cordinator' => $request->has('is_cordinator') ? true : false,
+                ]);
+
+                $validated = $request->validate([
                     'name' => 'required|string|max:255',
-                    'email' => 'required|email|max:255|unique:users',
-                    'phone' => 'required|unique|digits:10',
+                    'email' => 'required|email|unique:users,email',
+                    'password' => 'required|string|min:8|confirmed',
+                    'phone' => 'required|string',
+                    'address' => 'required|string',
+                    'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
                     'college' => 'required|exists:colleges,id',
-                    'branch' => 'required|integer|exists:departments,id',
-                    'expierience' => 'required|integer|min:0',
-                    'join_date' => 'required|date|before_or_equal:today',
+                    'branch' => 'required|exists:departments,id',
+                    'designation' => 'required|string',
+                    'qualification' => 'required|array',
+                    'expierience' => 'required|string',
+                    'specialization' => 'required|array',
+                    'join_date' => 'required|date',
                     'leave_date' => 'nullable|date|after:join_date',
-                    'qualification' => 'required|array|min:1',
-                    'qualification.*' => 'string|max:255',
-                    'specialization' => 'required|array|min:1',
-                    'specialization.*' => 'string|max:255',
-                    'address' => 'required|string|max:2000',
-                    'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-                    'designation' => 'required|string|max:255',
+                    'status' => 'nullable|boolean',
+                    'is_cordinator' => 'nullable|boolean'
                 ]);
-
-                $faculty = new Faculty();
-
-                if(Faculty::find($request->name)){
-                    return redirect()->back()->with('error', 'Faculty already exists');
-                }
-
-                dd('not found');
-
-                $user = User::find($request->user_id);
-
-                dd($user);
-
-                if(!$user){
-                    $user = new User();
-                    $user->create([
-                        'id' => $request->user_id,
-                        'email' => $request->email,
-                        'phone' => $request->phone,
-                        'role' => 'faculty',
+            
+                try {
+                    DB::beginTransaction();
+            
+                    // Handle image upload if present
+                    $imagePath = null;
+                    if ($request->hasFile('image')) {
+                        $imagePath = $request->file('image')->store('profile-photos', 'public');
+                    }
+            
+                    // Create user
+                    $user = User::create([
+                        'name' => $validated['name'],
+                        'email' => $validated['email'],
+                        'password' => Hash::make($validated['password']),
+                        'phone' => $validated['phone'],
+                        'address' => $validated['address'],
+                        'image' => $imagePath,
+                        'role' => 'faculty', // Set the role as faculty
                     ]);
+            
+                    // Create faculty
+                    $faculty = Faculty::create([
+                        'user_id' => $user->id,
+                        'college_id' => $validated['college'],
+                        'department_id' => $validated['branch'],
+                        'designation' => $validated['designation'],
+                        'qualification' => $validated['qualification'],
+                        'experience' => $validated['expierience'],
+                        'specialization' => $validated['specialization'],
+                        'joining_date' => $validated['join_date'],
+                        'leaving_date' => $validated['leave_date'] ?? null,
+                        'status' => $request->has('status'),
+                        'is_cordinator' => $request->has('is_cordinator'),
+                    ]);
+            
+                    DB::commit();
+            
+                    return redirect()
+                        ->route('user.faculty')->with('success', 'Faculty member created successfully');
+
+                } catch (\Exception $e) {
+                    DB::rollBack();
+                    return redirect()
+                        ->back()
+                        ->with('error', 'Failed to create faculty member');
                 }
-
-                if($request->hasFile('image')){
-                    // dd("called");
-                    $file = $request->file('image');
-                    $originalFileName = $file->getClientOriginalName();
-                    $fileName = time() . '-' . $originalFileName;
-
-                    $path = $file->storeAs('users', $fileName, 'public');
-
-                    $user->image = $path;   
-                }
-
-                $faculty->create([
-                    'user_id' => $request->user_id,
-                    'college_id' => $request->college,
-                    'department_id' => $request->branch,
-                    'experience' => $request->expierience,
-                    'joining_date' => $request->join_date,
-                    'leaving_date' => $request->leave_date,
-                    'qualification' => $request->qualification,
-                    'specialization' => $request->specialization,
-                    'address' => $request->address,
-                    'designation' => $request->designation,
-                ]);
-
-                // dd("saved faculty");
-            }else{
+            } else {
                 return redirect()->route('user.faculty')->with('error', 'You are not authorized to add faculty');
             }
-        }else{
+        } else {
             return redirect()->route('login');
         }
-        // dd("saved student");
-
-        return redirect()->route('user.faculty')->with('status', 'Faculty added successfully');
     }
+
 }
