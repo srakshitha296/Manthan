@@ -26,7 +26,9 @@
                         <th class="sort align-middle ps-3" scope="col" data-sort="points" style="width:10%;"> Download Report </th>
                         <th class="sort align-middle ps-3" scope="col" data-sort="points" style="width:10%;"> Download Certificates </th>
                         <th class="sort align-middle ps-3" scope="col" data-sort="points" style="width:10%;"> Duration(hours) </th>
+                        @if (Auth::user()->role == 'faculty' && Auth::user()->faculty->is_cordinator)
                         <th class="sort align-middle text-end" scope="col" style="width:10%;"></th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody class="list" id="project-list-table-body">
@@ -71,6 +73,7 @@
                         <td class="align-middle white-space-nowrap points ps-3 py-4">
                             <p class="fw-bo text-body fs-9 mb-0">{{ $activity->hours }}</p>
                         </td>
+                        @if (Auth::user()->role == 'faculty' && Auth::user()->faculty->is_cordinator)
                         <td class="align-middle text-end white-space-nowrap pe-0 action">
                             <div class="btn-reveal-trigger position-static">
                                 <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true"
@@ -87,11 +90,11 @@
                                     </form>
                                     @endif
                                     @if (Auth::user()->role == 'faculty' && Auth::user()->faculty->is_cordinator)
-                                    <form action="{{ route('user.activity.destroy', $activity->id, 1) }}" method="POST">
+                                    <form action="{{ route('user.activity.status', [$activity->id, 1]) }}" method="POST">
                                         @csrf
                                         <button type="submit" class="dropdown-item text-success">Approve</a>
                                     </form>
-                                    <form action="{{ route('user.activity.destroy', $activity->id, 2) }}" method="POST">
+                                    <form action="{{ route('user.activity.status', [$activity->id, 2] ) }}" method="POST">
                                         @csrf
                                         <button type="submit" class="dropdown-item text-danger">Reject</a>
                                     </form>
@@ -99,6 +102,7 @@
                                 </div>
                             </div>
                         </td>
+                        @endif
                     </tr>
                     @endforeach
 

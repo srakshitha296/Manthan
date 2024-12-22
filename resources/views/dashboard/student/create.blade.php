@@ -70,9 +70,7 @@
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
                     <select class="form-select @error('college') is-invalid @enderror" id="floatingSelectInstitution" name="college">
-                        @foreach ($colleges as $college)
-                            <option value="{{ $college->id }}" {{ old('college') == $college->id ? 'selected' : '' }}>{{ $college->name }}</option>
-                        @endforeach
+                        <option value="{{ Auth::user()->student->college->id }}" selected >{{ Auth::user()->student->college->name }}</option>
                     </select>
                     <label for="floatingSelectInstitution">Institution</label>
                     @error('college')
@@ -83,9 +81,7 @@
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
                     <select class="form-select @error('department') is-invalid @enderror" id="floatingSelectBranch" name="department">
-                        @foreach ($branches as $branch)
-                            <option value="{{ $branch->id }}" {{ old('department') == $branch->id ? 'selected' : '' }}>{{ $branch->name }}</option>
-                        @endforeach
+                        <option value="{{ Auth::user()->student->department->id }}">{{ Auth::user()->student->department->name }}</option>
                     </select>
                     <label for="floatingSelectBranch">Branch</label>
                     @error('department')
