@@ -114,7 +114,25 @@
                 </div>
             </div>
             <div class="col-sm-6 col-md-4">
-                <div class="card shadow-none border mb-4" data-component-card="data-component-card">
+                <div class="form-floating">
+                    <input class="form-control @error('password') is-invalid @enderror" id="floatingSelectInstitution" value="{{ old('password') }}" type="password" name="password" placeholder="password" />
+                    <label for="floatingInputName">Password</label>
+                    @error('password')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="form-floating">
+                    <input class="form-control @error('password_confirmation') is-invalid @enderror" id="floatingSelectInstitution" value="{{ old('password_confirmation') }}" type="password" name="password_confirmation" placeholder="password_confirmation" />
+                    <label for="floatingInputName">Confirm Password</label>
+                    @error('password_confirmation')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="card shadow-none border" data-component-card="data-component-card">
                     <div class="card-body p-0">
                         <div class="form-floating form-floating-advance-select">
                             <label for="floaTingLabelFacultyQualification">QUALIFICATION</label>
@@ -192,7 +210,24 @@
                         </div>
                     </div>
                 </div>
-                
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <label for="floatingInputName">Faculty Status</label>
+                <div class="form-check form-switch">
+                    <input class="form-check-input @error('status') is-invalid @enderror" type="checkbox" id="facultyStatus" name="status" {{ old('status') ? 'checked' : '' }}>
+                </div>
+                @error('status')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <label for="floatingInputName">Is Coordinator</label>
+                <div class="form-check form-switch">
+                    <input class="form-check-input @error('is_cordinator') is-invalid @enderror" type="checkbox" id="facultyStatus" name="is_cordinator" {{ old('is_cordinator') ? 'checked' : '' }}>
+                </div>
+                @error('is_cordinator')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
 
             <h4 class="mt-4">Address Information</h4>
