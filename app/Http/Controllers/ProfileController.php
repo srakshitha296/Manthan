@@ -135,8 +135,8 @@ class ProfileController extends Controller
         
             return redirect()->route('user.view.profile')->with('status', 'Profile updated successfully');
         }
-        else if(Auth::user()->role == 'faculty'){
-            // dd($request->all());
+        else if(Auth::user()->role == 'faculty' || Auth::user()->role == 'HoD' || Auth::user()->role == 'Principle'){
+            dd($request->all());
             $request->validate([
                 'name' => 'required|string|max:255',
                 'email' => 'required|email|max:255',
@@ -152,6 +152,8 @@ class ProfileController extends Controller
                 'specialization' => 'required|array|min:1',
                 'specialization.*' => 'string|max:255',
                 'address' => 'required|string|max:2000',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'designation' => 'required|integer',
             ]);
 
             $user = User::findOrFail(Auth::id());
@@ -188,7 +190,7 @@ class ProfileController extends Controller
                     'leaving_date' => $request->leave_date,
                     'qualification' => $request->qualification,
                     'specialization' => $request->specialization,
-                    'search_terms' => $request->search_terms,
+                    'designation' => $request->de,
                 ]);
             }else{
                 $user->faculty()->create([
