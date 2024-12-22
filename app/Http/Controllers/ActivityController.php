@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Activity;
 use App\Models\ActivityType;
 use App\Models\ProgramExpectedOutcomes;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -26,10 +27,10 @@ class ActivityController extends Controller
                 }
             } else {
                 $activities = Activity::with('student', 'activityType', 'programExpectedOutcomes')
-                        ->whereHas('student', function ($query) {
-                            $query->where('college_id', Auth::user()->student->college_id)
-                                  ->where('department_id', Auth::user()->student->department_id);
-                        })->get();
+                    ->whereHas('student', function ($query) {
+                        $query->where('college_id', Auth::user()->student->college_id)
+                            ->where('department_id', Auth::user()->student->department_id);
+                    })->get();
             }
         } else {
             return redirect()->route('login');
@@ -130,12 +131,13 @@ class ActivityController extends Controller
         return redirect()->route('user.activity.index')->with('success', 'Activity updated successfully');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         // dd($request->all());
 
-        if(Auth::check()){
+        if (Auth::check()) {
             if (Auth::user()->role == 'student') {
-                if(Auth::user()->student){
+                if (Auth::user()->student) {
                     $request->validate([
                         'title' => 'required|string|max:255',
                         'activity_type' => 'required|integer|exists:activity_types,id',
@@ -154,20 +156,20 @@ class ActivityController extends Controller
                         if ($activity->file) {
                             Storage::disk('public')->delete($activity->file);
                         }
-            
+
                         $file = $request->file('report');
                         $originalFileName = $file->getClientOriginalName();
                         $fileName = time() . '-' . $originalFileName;
-            
+
                         $path = $file->storeAs('activities/report', $fileName, 'public');
                         $activity->file = $path;
                     }
-            
+
                     if ($request->hasFile('certificate')) {
                         if ($activity->certificate) {
                             Storage::disk('public')->delete($activity->certificate);
                         }
-            
+
                         $file = $request->file('certificate');
                         $fileName = time() . '-' . $file->getClientOriginalName();
                         $path = $file->storeAs('activities/certificate', $fileName, 'public');
@@ -188,11 +190,11 @@ class ActivityController extends Controller
                         'certificate' => $activity->certificate,
                     ]);
 
-                }else{
+                } else {
                     dd('no data found');
                 }
             }
-        }else{
+        } else {
             return redirect()->route('login');
         }
         return redirect()->route('user.activity.index')->with('success', 'Activity added successfully');
@@ -212,6 +214,44 @@ class ActivityController extends Controller
             return redirect()->route('user.activity.index')->with('success', 'Activity deleted successfully');
         } else {
             return redirect()->route('user.activity.index')->with('error', 'Activity not found');
+        }
+    }
+
+    public function status($id, $status)
+    {
+
+        $activity = Activity::find($id);
+
+        if (Auth::check()) {
+            if (Auth::user()->role == 'faculty' && Auth::user()->faculty->is_cordinator == 1) {
+                switch ($status) {
+                    case 1:
+                        $status = 'approved';
+                        break;
+                    case 2:
+                        $status = 'rejected';
+                        break;
+                    default:
+                        $status = 'pending';
+                        break;
+                }
+
+                // dd($status);
+
+                if ($activity) {
+                    $activity->update([
+                        'status' => $status,
+                    ]);
+
+                    return redirect()->route('user.activity.index')->with('status', 'Student status updated successfully');
+                } else {
+                    return redirect()->route('user.activity.index')->with('error', 'no Student activity found');
+                }
+            } else {
+                return redirect()->route('user.activity.index')->with('error', 'You are not authorized to perform this action');
+            }
+        } else {
+            return redirect()->route('login');
         }
     }
 }

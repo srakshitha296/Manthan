@@ -49,6 +49,7 @@ class ProfileController extends Controller
         $college = College::all();
         $departments = Department::all();
 
+        // dd($college);
         // dd($user->student->college->id);
         return view('dashboard.profile.edit', compact('user', 'college', 'departments'));
     }
@@ -77,60 +78,134 @@ class ProfileController extends Controller
 
     public function updateProfile(Request $request)
 {
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|max:255',
-        'phone' => 'required|string|max:10',
-        'address' => 'nullable|string|max:255',
-        'usn' => 'nullable|string|max:20',
-        'college' => 'required|exists:colleges,id',
-        'branch' => 'required|exists:departments,id',
-        'semester' => 'nullable|integer|min:1|max:8',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-    ]);
-
-    $user = User::findOrFail(Auth::id());
-
-    if ($request->hasFile('image')) {
-        // dd("called");
-       
-        if ($user->image) {
-            Storage::disk('public')->delete($user->image);
+    if (Auth::check()) {
+        if(Auth::user()->role == 'student'){
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|email|max:255',
+                'phone' => 'required|string|max:10',
+                'address' => 'nullable|string|max:255',
+                'usn' => 'nullable|string|max:20',
+                'college' => 'required|exists:colleges,id',
+                'branch' => 'required|exists:departments,id',
+                'semester' => 'nullable|integer|min:1|max:8',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
+        
+            $user = User::findOrFail(Auth::id());
+        
+            if ($request->hasFile('image')) {
+                // dd("called");
+               
+                if ($user->image) {
+                    Storage::disk('public')->delete($user->image);
+                }
+        
+                $file = $request->file('image');    
+                $originalFileName = $file->getClientOriginalName();
+                $fileName = time() . '-' . $originalFileName;
+        
+                $path = $file->storeAs('users', $fileName, 'public');
+        
+                $user->image = $path;
+            }
+        
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'address' => $request->address,
+            ]);
+        
+            if ($user->student) {
+                $user->student->update([
+                    'college_id' => $request->college,
+                    'department_id' => $request->branch,
+                    'usn' => $request->usn,
+                    'semester' => $request->semester,
+                ]);
+            } else {
+                $user->student()->create([
+                    'college_id' => $request->college,
+                    'department_id' => $request->branch,
+                    'usn' => $request->usn,
+                    'semester' => $request->semester,
+                ]);
+            }
+        
+            return redirect()->route('user.view.profile')->with('status', 'Profile updated successfully');
         }
+        else if(Auth::user()->role == 'faculty'){
+            // dd($request->all());
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|email|max:255',
+                'phone' => 'required|digits:10',
+                'college' => 'required|exists:colleges,id',
+                'branch' => 'required|integer|exists:departments,id',
+                'expierience' => 'required|integer|min:0',
+                'join_date' => 'required|date|before_or_equal:today',
+                'leave_date' => 'nullable|date|after:join_date',
+                'qualification' => 'required|array|min:1',
+                'qualification.*' => 'string|max:255',
+                'search_terms' => 'nullable|string|max:255',
+                'specialization' => 'required|array|min:1',
+                'specialization.*' => 'string|max:255',
+                'address' => 'required|string|max:2000',
+            ]);
 
-        $file = $request->file('image');    
-        $originalFileName = $file->getClientOriginalName();
-        $fileName = time() . '-' . $originalFileName;
+            $user = User::findOrFail(Auth::id());
+        
+            if ($request->hasFile('image')) {
+                // dd("called");
+               
+                if ($user->image) {
+                    Storage::disk('public')->delete($user->image);
+                }
+        
+                $file = $request->file('image');    
+                $originalFileName = $file->getClientOriginalName();
+                $fileName = time() . '-' . $originalFileName;
+        
+                $path = $file->storeAs('users', $fileName, 'public');
+        
+                $user->image = $path;
+            }
+        
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'address' => $request->address,
+            ]);
 
-        $path = $file->storeAs('users', $fileName, 'public');
-
-        $user->image = $path;
+            if($user->faculty){
+                $user->faculty->update([
+                    'college_id' => $request->college,
+                    'department_id' => $request->branch,
+                    'expierience' => $request->expierience,
+                    'joining_date' => $request->join_date,
+                    'leaving_date' => $request->leave_date,
+                    'qualification' => $request->qualification,
+                    'specialization' => $request->specialization,
+                    'search_terms' => $request->search_terms,
+                ]);
+            }else{
+                $user->faculty()->create([
+                    'college_id' => $request->college,
+                    'department_id' => $request->branch,
+                    'expierience' => $request->expierience,
+                    'joining_date' => $request->join_date,
+                    'leaving_date' => $request->leave_date,
+                    'qualification' => $request->qualification,
+                    'specialization' => $request->specialization,
+                    'search_terms' => $request->search_terms,
+                ]);
+            }
+            return redirect()->route('user.view.profile')->with('status', 'Profile updated successfully');
+        }
     }
-
-    $user->update([
-        'name' => $request->name,
-        'email' => $request->email,
-        'phone' => $request->phone,
-        'address' => $request->address,
-    ]);
-
-    if ($user->student) {
-        $user->student->update([
-            'college_id' => $request->college,
-            'department_id' => $request->branch,
-            'usn' => $request->usn,
-            'semester' => $request->semester,
-        ]);
-    } else {
-        $user->student()->create([
-            'college_id' => $request->college,
-            'department_id' => $request->branch,
-            'usn' => $request->usn,
-            'semester' => $request->semester,
-        ]);
-    }
-
-    return redirect()->route('user.view.profile')->with('status', 'Profile updated successfully');
+   
 }
 
 

@@ -45,7 +45,7 @@ Route::post('/user-dashboard/add-activity',[ActivityController::class,'store'])-
 Route::get('/user-dashboard/edit-activity/{id}',[ActivityController::class,'edit'])->name('user.activity.edit')->middleware('auth');
 Route::post('/user-dashboard/update-activity/{id}',[ActivityController::class,'update'])->name('user.activity.update')->middleware('auth');
 Route::post('/user-dashboard/delete-activity/{id}',[ActivityController::class,'destroy'])->name('user.activity.destroy')->middleware('auth');
-Route::post('/user-dashboard/approve-activity/{id}/{status}',[ActivityController::class,'approve'])->name('user.activity.approve')->middleware('auth');
+Route::post('/user-dashboard/approve-activity/{id}/{status}',[ActivityController::class,'status'])->name('user.activity.status')->middleware('auth');
 
 Route::get('/user-dashboard/my-testimonials',[TestimonialController::class,'index'])->name('user.testimonials')->middleware('auth');
 Route::get('/user-dashboard/add-testimonial',[TestimonialController::class,'create'])->name('user.testimonial.create')->middleware('auth');
