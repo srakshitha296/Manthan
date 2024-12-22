@@ -112,4 +112,40 @@ class FacultyController extends Controller
         }
     }
 
+    public function destroy($id){
+        if (Auth::check()) {
+            if (Auth::user()->role == 'HoD' || Auth::user()->role == 'Principle') {
+                $faculty = Faculty::find($id);
+                $user = $faculty->user;
+                // dd($faculty);
+                if ($faculty) {
+                    try {
+                        DB::beginTransaction();
+                        // dd("going to delete");
+                        $faculty->delete();
+                        // dd("deleted");
+
+                        // dd("deleting the user");
+                        $user->delete();
+
+                        // dd("deleted the user");
+
+                        DB::commit();
+
+                        return redirect()->route('user.faculty')->with('success', 'Faculty member deleted successfully');
+                    } catch (\Exception $e) {
+                        DB::rollBack();
+                        return redirect()->back()->with('error', 'Failed to delete faculty member');
+                    }
+                } else {
+                    return redirect()->route('user.faculty')->with('error', 'Faculty member not found');
+                }
+            } else {
+                return redirect()->route('user.faculty')->with('error', 'You are not authorized to delete faculty');
+            }
+        } else {
+            return redirect()->route('login');
+        }
+    }
+
 }

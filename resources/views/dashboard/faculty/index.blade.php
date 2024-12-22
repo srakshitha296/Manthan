@@ -3,6 +3,15 @@
 @section('content')
 <div class="pb-5">
     <div class="mb-9">
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
         <div id="dept-faculties">
             <!-- data-list='{"valueNames":["studentName","usn","start","end","points","projectprogress","status","action"],"page":6,"pagination":true}' -->
             <div class="row mb-4 gx-6 gy-3 align-items-center">
@@ -25,6 +34,7 @@
                             <th class="sort align-middle ps-3" scope="col" data-sort="experience" style="width:10%"> EXPERIENCE</th>
                             <th class="sort align-middle ps-3" scope="col" data-sort="doj" style="width:10%"> D.O.J </th>
                             <th class="sort align-middle ps-3" scope="col" data-sort="doj" style="width:10%"> Is Cordiantor </th>
+                            <th class="sort align-middle text-end" scope="col" style="width:10%;"></th>
                         </tr>
                     </thead>
                     <tbody class="list" id="project-list-table-body">
@@ -53,6 +63,22 @@
                             </td>
                             <td class="align-middle white-space-nowrap end ps-3 py-4">
                                 <p class="mb-0 fs-9 text-body">{{ $faculty->is_cordinator ? "yes" : 'no' }}</p>
+                            </td>
+                            <td class="align-middle text-end white-space-nowrap pe-0 action">
+                                <div class="btn-reveal-trigger position-static">
+                                    <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true"
+                                        aria-expanded="false" data-bs-reference="parent">
+                                        <span class="fas fa-ellipsis-h fs-10"></span>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end py-2">
+                                        <a class="dropdown-item" href="#">Edit</a>
+                                        <div class="dropdown-divider"></div>
+                                        <form action="{{ route('user.faculty.destroy', $faculty->id) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="dropdown-item text-danger">Remove</a>
+                                        </form>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                         @endforeach
