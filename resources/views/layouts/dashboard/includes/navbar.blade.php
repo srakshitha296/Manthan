@@ -791,7 +791,7 @@
                             <div class="text-center pt-4 pb-3">
                                 <div class="avatar avatar-xl ">
                                     <img class="rounded-circle "
-                                        src="{{ asset('dashboard/assets/img/team/72x72/57.webp') }}" alt="" />
+                                        src="{{ Storage::url(Auth::user()->image) }}" alt="" />
                                 </div>
                                 <h6 class="mt-2 text-body-emphasis">{{ Auth::user()->name }}</h6>
                             </div>

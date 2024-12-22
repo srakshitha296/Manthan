@@ -7,7 +7,7 @@
             <!-- data-list='{"valueNames":["studentName","usn","start","end","points","projectprogress","status","action"],"page":6,"pagination":true}' -->
             <div class="row mb-4 gx-6 gy-3 align-items-center">
                 <div class="col-auto">
-                    <h2 class="mb-0">HoD's<span class="fw-normal text-body-tertiary ms-3">(30)</span>
+                    <h2 class="mb-0">HoD's<span class="fw-normal text-body-tertiary ms-3">({{ $hods->count() }})</span>
                     </h2>
                 </div>
 
@@ -17,204 +17,58 @@
                 <table class="table fs-9 mb-0 border-top border-translucent">
                     <thead>
                         <tr>
-                            <th class="sort white-space-nowrap align-middle ps-0" scope="col"
-                                data-sort="hod name" style="width:30%">NAME</th>
-                            <th class="sort align-middle ps-3" scope="col" data-sort="email"
-                                style="width:30%">EMAIL</th>
-                            <th class="sort align-middle ps-3" scope="col" data-sort="phone"
-                                style="width:30%;">
-                                PHONE
-                            </th>
-                            <th class="sort align-middle ps-3" scope="col" data-sort="department" style="width:30%">
-                                DEPARTMENT
-                            </th>
-                            <th class="sort align-middle ps-3" scope="col" data-sort="designation"
-                                style="width:30%">
-                                DESIGNATION
-                            </th>
-                            <th class="sort align-middle ps-3" scope="col" data-sort="qualification"
-                                style="width:30%">
-                                QUALIFICATION
-                            </th>
-                            <th class="sort align-middle ps-3" scope="col" data-sort="specialization"
-                                style="width:30%">
-                                SPECIALIZATION
-                            </th>
-                            <th class="sort align-middle ps-3" scope="col" data-sort="experience"
-                                style="width:30%">
-                                EXPERIENCE
-                            </th>
-                            <th class="sort align-middle ps-3" scope="col" data-sort="doj"
-                                style="width:30%">
-                                D.O.J
-                            </th>
-                            <th class="sort align-middle ps-3" scope="col" data-sort="dol"
-                                style="width:30%">
-                                D.O.L
-                            </th>
+                            <th class="sort white-space-nowrap align-middle ps-0" scope="col" data-sort="hod name" style="width:20%">NAME</th>
+                            <th class="sort align-middle ps-3" scope="col" data-sort="email" style="width:10%">EMAIL</th>
+                            <th class="sort align-middle ps-3" scope="col" data-sort="department" style="width:10%"> DEPARTMENT </th>
+                            <th class="sort align-middle ps-3" scope="col" data-sort="qualification" style="width:10%">QUALIFICATION </th>
+                            <th class="sort align-middle ps-3" scope="col" data-sort="specialization" style="width:10%"> SPECIALIZATION</th>
+                            <th class="sort align-middle ps-3" scope="col" data-sort="experience" style="width:5%"> EXPERIENCE</th>
+                            <th class="sort align-middle ps-3" scope="col" data-sort="doj" style="width:5%"> D.O.J</th>
+                            <th class="sort align-middle text-end" scope="col" style="width:10%;"></th>
                         </tr>
                     </thead>
                     <tbody class="list" id="project-list-table-body">
+                        @foreach ($hods as $hod)
                         <tr class="position-static">
                             <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a
-                                    class="fw-bold fs-8" href="#">Dr. Antony P J</a>
+                                    class="fw-bold fs-8" href="#">{{ $hod->user->name }}</a>
                             </td>
                             <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">antonypjohn@gmail.com</p>
+                                <p class="mb-0 fs-9 text-body">{{ $hod->user->email }}</p>
                             </td>
                             <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
+                                <p class="fw-bo text-body fs-9 mb-0">{{ $hod->department->name }}</p>
                             </td>
                             <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">CSE</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Vice principal & HoD</p>
+                                <p class="fw-bo text-body fs-9 mb-0">{{ implode(', ', $hod->qualification) }}</p>
                             </td>
                             <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
+                                <p class="mb-0 fs-9 text-body">{{ implode(', ', $hod->specialization) }}</p>
                             </td>
                             <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ML</p>
+                                <p class="mb-0 fs-9 text-body">{{ $hod->experience }}</p>
                             </td>
                             <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">7</p>
+                                <p class="mb-0 fs-9 text-body">{{ \Carbon\Carbon::parse($hod->joining_date)->format('M d, Y') }}</p>
                             </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2023</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2025</p>
+                            <td class="align-middle text-end white-space-nowrap pe-0 action">
+                                <div class="btn-reveal-trigger position-static">
+                                    <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true"
+                                        aria-expanded="false" data-bs-reference="parent">
+                                        <span class="fas fa-ellipsis-h fs-10"></span>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end py-2">
+                                        <a class="dropdown-item" href="#">Edit</a>
+                                        <div class="dropdown-divider"></div>
+                                        <form action="#" method="POST">
+                                            @csrf
+                                            <button type="submit" class="dropdown-item text-danger">Remove</a>
+                                        </form>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
-                        <tr class="position-static">
-                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a
-                                    class="fw-bold fs-8" href="#">Dr. Antony P J</a>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">antonypjohn@gmail.com</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">CSE</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Vice principal & HoD</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ML</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">7</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2023</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2025</p>
-                            </td>
-                        </tr>
-                        <tr class="position-static">
-                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Dr. Antony P
-                                    J</a>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">antonypjohn@gmail.com</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">CSE</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Vice principal & HoD</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ML</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">7</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2023</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2025</p>
-                            </td>
-                        </tr>
-                        <tr class="position-static">
-                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Dr. Antony P
-                                    J</a>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">antonypjohn@gmail.com</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">CSE</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Vice principal & HoD</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ML</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">7</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2023</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2025</p>
-                            </td>
-                        </tr>
-                        <tr class="position-static">
-                            <td class="align-middle time white-space-nowrap ps-0 facultyName py-4"><a class="fw-bold fs-8" href="#">Dr. Antony P
-                                    J</a>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">antonypjohn@gmail.com</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">9743838214</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">CSE</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap points ps-3 py-4">
-                                <p class="fw-bo text-body fs-9 mb-0">Vice principal & HoD</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">B.Tech, M.Tech. PhD</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">ML</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">7</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2023</p>
-                            </td>
-                            <td class="align-middle white-space-nowrap end ps-3 py-4">
-                                <p class="mb-0 fs-9 text-body">16-04-2025</p>
-                            </td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

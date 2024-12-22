@@ -22,7 +22,12 @@ class StudentController extends Controller
         }
         if(Auth::user()->role == 'Principle'){
             $client_college_id = Auth::user()->principle->college_id;
-            $client_department_id = Auth::user()->principle->department_id;
+
+            $students = Student::where('college_id', $client_college_id)
+            ->get();
+
+        // dd($students);
+        return view('dashboard.student.index' , compact('students'));
         }
         $students = Student::where('college_id', $client_college_id)
             ->where('department_id', $client_department_id)
