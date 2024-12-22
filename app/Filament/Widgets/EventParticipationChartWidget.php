@@ -4,10 +4,9 @@ namespace App\Filament\Widgets;
 
 use Filament\Widgets\ChartWidget;
 
-class EventChartWidget extends ChartWidget
+class EventParticipationChartWidget extends ChartWidget
 {
-
-    protected static ?string $heading = 'Events';
+    protected static ?string $heading = 'Event participants';
 
     // protected int | string | array $columnSpan = 1;
 
@@ -18,8 +17,8 @@ class EventChartWidget extends ChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Number of Events been conducted',
-                    'data' => [10, 6, 3, 5, 7, 10, 7, 4, 6, 3],
+                    'label' => 'Participants of the events',
+                    'data' => [100, 150, 200, 300, 250, 150, 100, 350, 250, 300],
                     'backgroundColor' => [  'rgb(8, 28, 21)',
                                             'rgb(27, 67, 50)',
                                             'rgb(45, 106, 79)',

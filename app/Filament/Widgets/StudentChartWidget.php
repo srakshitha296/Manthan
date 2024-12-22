@@ -4,22 +4,21 @@ namespace App\Filament\Widgets;
 
 use Filament\Widgets\ChartWidget;
 
-class EventChartWidget extends ChartWidget
+class StudentChartWidget extends ChartWidget
 {
-
-    protected static ?string $heading = 'Events';
+    protected static ?string $heading = 'Students';
 
     // protected int | string | array $columnSpan = 1;
 
-    protected static ?string $maxHeight = '300px';
+     protected static ?string $maxHeight = '300px';
 
     protected function getData(): array
     {
         return [
             'datasets' => [
                 [
-                    'label' => 'Number of Events been conducted',
-                    'data' => [10, 6, 3, 5, 7, 10, 7, 4, 6, 3],
+                    'label' => 'Students per Department',
+                    'data' => [1000, 6000, 3000, 5000, 7000, 1000, 7000, 4000, 6000, 3000],
                     'backgroundColor' => [  'rgb(8, 28, 21)',
                                             'rgb(27, 67, 50)',
                                             'rgb(45, 106, 79)',
@@ -29,12 +28,10 @@ class EventChartWidget extends ChartWidget
                                             'rgb(149, 213, 178)',
                                             'rgb(183, 228, 199)',
                                             'rgb(216, 243, 220)',
-                                            'rgb(216, 243, 220)',
-                                             ],
+                                            'rgb(216, 243, 220)',],
                 ],
             ],
-            'labels' => ['FDP', 'SDP', 'STTP', 'Workshop', 'Seminar', 'Conference', 'Webinar', 'Hackathon', 'Bootcamp', 'Other'],
-            
+            'labels' => ['CSE', 'ISE', 'ECE', 'AIDS', 'AIML', 'ICB', 'MECH', 'CIVIL'],
         ];
     }
 

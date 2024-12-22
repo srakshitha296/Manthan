@@ -25,7 +25,7 @@
 </x-guest-layout> --}}
 
 
-@extends('layouts.guest')
+@extends('layouts.guest') 
 
 @section('content')
 <div class="container">
