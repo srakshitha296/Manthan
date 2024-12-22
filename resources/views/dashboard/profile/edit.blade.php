@@ -48,7 +48,7 @@
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <input class="form-control @error('email') is-invalid @enderror" id="floatingInputEmail" type="text" placeholder="email" value="{{ old('email', $user->email) }}" name="email" />
+                    <input class="form-control @error('email') is-invalid @enderror" id="floatingInputEmail" type="email" placeholder="email" value="{{ old('email', $user->email) }}" name="email" />
                     <label for="floatingInputEmail">Email</label>
                     @error('email')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -167,31 +167,44 @@
         <h4 class="mb-3">Details</h4>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <input class="form-control" id="floatingInputName" type="text" placeholder="Name" value="{{ $user->name }}" name="name" />
+                    <input class="form-control @error('name') is-invalid @enderror" id="floatingInputName" type="text" placeholder="Name" value="{{ old('name', $user->name) }}" name="name" />
                     <label for="floatingInputName">Name</label>
+                    @error('name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <input class="form-control" id="floatingInputEmail" type="email" value="{{ $user->email }}" name="email" />
+                    <input class="form-control @error('email') is-invalid @enderror" id="floatingInputEmail" type="email" value="{{ old('email', $user->email) }}" name="email" />
                     <label for="floatingInputEmail">Email</label>
+                    @error('email')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <input class="form-control" id="floatingInputPhone" type="tel" placeholder="phone" name="phone" value="{{ $user->phone }}" />
+                    <input class="form-control @error('phone') is-invalid @enderror" id="floatingInputPhone" type="tel" placeholder="phone" name="phone" value="{{ old('phone', $user->phone) }}" />
                     <label for="floatingInputPhone">Phone</label>
+                    @error('phone')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <select class="form-select" id="floatingSelectInstitution" name="college">
+                    <select class="form-select @error('college') is-invalid @enderror" id="floatingSelectInstitution" name="college">
                         @foreach ($college as $item)
                         <option value="{{ $item->id }}" {{ old('college', $user->faculty->college->id) == $item->id ? 'selected' : '' }}>
                             {{ $item->name }}
                         </option>
                     @endforeach
-                    </select><label for="floatingSelectInstitution">Institution</label></div>
+                    </select><label for="floatingSelectInstitution">Institution</label>
+                    @error('college')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
@@ -203,28 +216,37 @@
                         @endforeach
                     </select>
                     <label for="floatingSelectBranch">Branch</label>
+                    @error('branch')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <select class="form-select" id="floatingSelectDesignation">
+                    <select class="form-select @error('designation') is-invalid @enderror" id="floatingSelectDesignation">
                         <option selected="selected">Principal</option>
                         <option value="1">Assistant Professor</option>
                         <option value="2">Associate Professor</option>
                         <option value="3">HoD</option>
                     </select>
                     <label for="floatingSelectDesignationt">Designation</label>
+                    @error('designation')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <input class="form-control" id="floatingInputExperience" type="text" placeholder="Experience" value="{{ $user->faculty->experience }}" name="expierience" />
+                    <input class="form-control @error('designation') is-invalid @enderror" id="floatingInputExperience" type="text" placeholder="Experience" value="{{ $user->faculty->experience }}" name="expierience" />
                     <label for="floatingInputExperience">Experience</label>
+                    @error('experience')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <input class="form-control" id="date-o-f-joining" type="date" name="join_date" value="{{ $user->faculty->joining_date ? \Carbon\Carbon::parse($user->faculty->joining_date)->format('Y-m-d') : '' }}" />
+                    <input class="form-control @error('join_date') is-invalid @enderror" id="date-o-f-joining" type="date" name="join_date" value="{{ $user->faculty->joining_date ? \Carbon\Carbon::parse($user->faculty->joining_date)->format('Y-m-d') : '' }}" />
                     <label class="form-label" for="date-o-f-joining">Date of Joining</label>
                 </div>
             </div>
