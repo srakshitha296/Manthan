@@ -102,9 +102,7 @@ class FacultyController extends Controller
 
                 } catch (\Exception $e) {
                     DB::rollBack();
-                    return redirect()
-                        ->back()
-                        ->with('error', 'Failed to create faculty member');
+                    return redirect()->back()->with('error', 'Failed to create faculty member');
                 }
             } else {
                 return redirect()->route('user.faculty')->with('error', 'You are not authorized to add faculty');
