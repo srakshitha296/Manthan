@@ -207,11 +207,11 @@
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <select class="form-select" id="floatingSelectDesignation">
-                        <option selected="selected">Principal</option>
-                        <option value="1">Assistant Professor</option>
-                        <option value="2">Associate Professor</option>
-                        <option value="3">HoD</option>
+                    <select class="form-select" id="floatingSelectDesignation" name="designation">
+                        <option value="Proffesor" {{ Auth::user()->faculty->designation == 'Proffesor' ? 'selected' : '' }} >Proffesor</option>
+                        <option value="Associate Proffesor" {{ Auth::user()->faculty->designation == 'Associate Proffesor' ? 'selected' : '' }} >Associate Proffesor</option>
+                        <option value="Assistant Proffesor" {{ Auth::user()->faculty->designation == 'Assistant Proffesor' ? 'selected' : '' }} >Assistant Proffesor</option>
+                        <option value="Guest Proffesor" {{ Auth::user()->faculty->designation == 'Guest Proffesor' ? 'selected' : '' }} >Guest Proffesor</option>
                     </select>
                     <label for="floatingSelectDesignationt">Designation</label>
                 </div>
@@ -395,7 +395,7 @@
                 <div class="form-floating">
                     <select class="form-select" id="floatingSelectInstitution" name="college">
                         @foreach ($college as $item)
-                        <option value="{{ $item->id }}" {{ old('college', $user->faculty->college->id) == $item->id ? 'selected' : '' }}>
+                        <option value="{{ $item->id }}" {{ old('college', $user->hod->college->id) == $item->id ? 'selected' : '' }}>
                             {{ $item->name }}
                         </option>
                     @endforeach
@@ -405,7 +405,7 @@
                 <div class="form-floating">
                     <select class="form-select @error('branch') is-invalid @enderror" id="floatingSelectBranch" name="branch">
                         @foreach ($departments as $item)
-                            <option value="{{ $item->id }}" {{ old('branch', $user->faculty->department->id) == $item->id ? 'selected' : '' }}>
+                            <option value="{{ $item->id }}" {{ old('branch', $user->hod->department->id) == $item->id ? 'selected' : '' }}>
                                 {{ $item->name }}
                             </option>
                         @endforeach
@@ -413,7 +413,7 @@
                     <label for="floatingSelectBranch">Branch</label>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4">
+            {{-- <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
                     <select class="form-select" id="floatingSelectDesignation" name="designation">
                         <option value="Principal" selected="selected">Principal</option>
@@ -423,22 +423,22 @@
                     </select>
                     <label for="floatingSelectDesignationt">Designation</label>
                 </div>
-            </div>
+            </div> --}}
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <input class="form-control" id="floatingInputExperience" type="text" placeholder="Experience" value="{{ $user->faculty->experience }}" name="expierience" />
+                    <input class="form-control" id="floatingInputExperience" type="text" placeholder="Experience" value="{{ $user->hod->experience }}" name="expierience" />
                     <label for="floatingInputExperience">Experience</label>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <input class="form-control" id="date-o-f-joining" type="date" name="join_date" value="{{ $user->faculty->joining_date ? \Carbon\Carbon::parse($user->faculty->joining_date)->format('Y-m-d') : '' }}" />
+                    <input class="form-control" id="date-o-f-joining" type="date" name="join_date" value="{{ $user->hod->joining_date ? \Carbon\Carbon::parse($user->hod->joining_date)->format('Y-m-d') : '' }}" />
                     <label class="form-label" for="date-o-f-joining">Date of Joining</label>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <input class="form-control" id="date-o-f-leaving" type="date" name="leave_date" value="{{ $user->faculty->leaving_date ? \Carbon\Carbon::parse($user->faculty->leaving_date)->format('Y-m-d') : '' }}" />
+                    <input class="form-control" id="date-o-f-leaving" type="date" name="leave_date" value="{{ $user->hod->leaving_date ? \Carbon\Carbon::parse($user->hod->leaving_date)->format('Y-m-d') : '' }}" />
                     <label class="form-label"
                         for="date-o-f-leaving">Date of Leaving</label>
                 </div>
@@ -463,7 +463,7 @@
                                 @foreach ($qualifications as $qualification)
                                     <option 
                                         value="{{ $qualification }}" 
-                                        {{ in_array($qualification, old('qualification', $user->faculty->qualification ?? [])) ? 'selected' : '' }}>
+                                        {{ in_array($qualification, old('qualification', $user->hod->qualification ?? [])) ? 'selected' : '' }}>
                                         {{ $qualification }}
                                     </option>
                                 @endforeach
@@ -514,7 +514,7 @@
                                 @foreach ($specializations as $specialization)
                                     <option 
                                         value="{{ $specialization }}" 
-                                        {{ in_array($specialization, old('specialization', $user->faculty->specialization ?? [])) ? 'selected' : '' }}>
+                                        {{ in_array($specialization, old('specialization', $user->hod->specialization ?? [])) ? 'selected' : '' }}>
                                         {{ $specialization }}
                                     </option>
                                 @endforeach

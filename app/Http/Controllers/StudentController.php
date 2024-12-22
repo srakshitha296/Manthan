@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Auth;
 class StudentController extends Controller
 {
     public function index(){
-        $students = Student::where('college_id', Auth::user()->student->college_id)
-            ->where('department_id', Auth::user()->student->department_id)
+        $students = Student::where('college_id', Auth::user()->faculty->college_id)
+            ->where('department_id', Auth::user()->faculty->department_id)
             ->get();
 
         // dd($students);
