@@ -70,6 +70,10 @@ class StudentResource extends Resource
                             '2' => '2 nd',
                             '3' => '3 rd',
                             '4' => '4 th',
+                            '5' => '5 th',
+                            '6' => '6 th',
+                            '7' => '7 th',
+                            '8' => '8 th',
                         ]),
                     ])->columns(2),
                 ])->columnSpan(1),
@@ -94,6 +98,10 @@ class StudentResource extends Resource
                     '2' => '2 nd',
                     '3' => '3 rd',
                     '4' => '4 th',
+                    '5' => '5 th',
+                    '6' => '6 th',
+                    '7' => '7 th',
+                    '8' => '8 th',
                 ]),
             ])
             ->actions([
@@ -107,10 +115,10 @@ class StudentResource extends Resource
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                     BulkAction::make('export students')->label('Export Students')
-                    ->icon('heroicon-o-document-arrow-down')
-                    ->action(function (Collection $records){
-                        return Excel::download(new StudentsExport($records, 1), 'students.xlsx');  
-                    })
+                        ->icon('heroicon-o-document-arrow-down')
+                        ->action(function (Collection $records) {
+                            return Excel::download(new StudentsExport($records, 1), 'students.xlsx');
+                        })
                 ]),
             ]);
     }

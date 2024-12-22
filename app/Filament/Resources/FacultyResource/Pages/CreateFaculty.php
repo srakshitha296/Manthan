@@ -20,7 +20,7 @@ class CreateFaculty extends CreateRecord
 
         // Notify the user if found
         if ($faculty->user) {
-            // $faculty->user->notify(new FacultyNotification($faculty, 'created'));
+            $faculty->user->notify(new FacultyNotification($faculty, 'created'));
         } else {
             dd('No associated user found for this student.');
         }

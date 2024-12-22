@@ -29,11 +29,7 @@
             <h4 class="mb-3">Details</h4>
             <div class="col-sm-6 col-md-4">
                 <div class="form-floating">
-                    <select class="form-select @error('name') is-invalid @enderror" id="floatingSelectInstitution" name="name">
-                        @foreach ($users as $user)
-                            <option value="{{ $user->id }}" {{ old('name') == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
-                        @endforeach
-                    </select>
+                    <input class="form-control @error('name') is-invalid @enderror" id="floatingSelectInstitution" value="{{ old('name') }}" name="name" placeholder="Name" />
                     <label for="floatingInputName">Name</label>
                     @error('name')
                         <span class="text-danger">{{ $message }}</span>
@@ -98,6 +94,24 @@
                     </select>
                     <label for="floatingSelectSemester">Semester</label>
                     @error('semester')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="form-floating">
+                    <input class="form-control @error('password') is-invalid @enderror" id="floatingSelectInstitution" value="{{ old('password') }}" type="password" name="password" placeholder="password" />
+                    <label for="floatingInputName">Password</label>
+                    @error('password')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="form-floating">
+                    <input class="form-control @error('password_confirmation') is-invalid @enderror" id="floatingSelectInstitution" value="{{ old('password_confirmation') }}" type="password" name="password_confirmation" placeholder="password_confirmation" />
+                    <label for="floatingInputName">Confirm Password</label>
+                    @error('password_confirmation')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>

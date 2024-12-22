@@ -36,48 +36,50 @@ class StudentController extends Controller
 
         if(Auth::check()){
             if(Auth::user()->role == 'faculty' || Auth::user()->role == 'HoD' || Auth::user()->role == 'Principle'){
-                $request->validate([
-                    'name' => 'required|exists:users,id',
-                    'email' => 'required|email|max:255',
-                    'phone' => 'required|string|max:10',
-                    'address' => 'nullable|string|max:255',
-                    'usn' => 'nullable|string|max:20',
+                $validatedData = $request->validate([
+                    'name' => 'required|string|max:255',
+                    'email' => 'required|email|unique:users,email',
+                    'phone' => 'required|string|max:15',
+                    'usn' => 'required|string|max:20|unique:students,usn',
                     'college' => 'required|exists:colleges,id',
                     'department' => 'required|exists:departments,id',
-                    'semester' => 'nullable|integer|min:1|max:8',
-                    'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate image file
+                    'semester' => 'required|integer|between:1,8',
+                    'password' => 'required|string|min:8|confirmed',
+                    'address' => 'required|string|max:500',
+                    'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
                 ]);
         
-                $student = new Student();
-        
-                if(Student::find($request->name)){
-                    return redirect()->back()->with('error', 'Student already exists');
+                try {
+                    // dd('inside try');
+                    $user = User::create([
+                        'name' => $validatedData['name'],
+                        'email' => $validatedData['email'],
+                        'phone' => $validatedData['phone'],
+                        'password' => bcrypt($validatedData['password']),
+                        'address' => $validatedData['address'],
+                        'role' => 'student',
+                    ]);
+            
+                    // Handle image upload
+                    if ($request->hasFile('image')) {
+                        $imagePath = $request->file('image')->store('uploads/students', 'public');
+                        $user->update(['image' => $imagePath]);
+                    }
+            
+                    Student::create([
+                        'user_id' => $user->id,
+                        'college_id' => $validatedData['college'],
+                        'department_id' => $validatedData['department'],
+                        'usn' => $validatedData['usn'],
+                        'semester' => $request->semester,
+                    ]);
+
+                    // dd("created student");
+            
+                    return redirect()->route('user.students')->with('success', 'Student created successfully.');
+                } catch (\Exception $e) {
+                    return redirect()->back()->withErrors(['error' => 'An error occurred while creating the student: ' . $e->getMessage()]);
                 }
-        
-                if ($request->hasFile('image')) {
-                    // dd("called");
-            
-                    $file = $request->file('image');    
-                    $originalFileName = $file->getClientOriginalName();
-                    $fileName = time() . '-' . $originalFileName;
-            
-                    $path = $file->storeAs('users', $fileName, 'public');
-            
-                    $student->image = $path;
-                }
-        
-                $student->create([
-                    'user_id' => $request->name,
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'phone' => $request->phone,
-                    'college_id' => $request->college,
-                    'department_id' => $request->department,
-                    'semester' => $request->semester,
-                    'usn' => $request->usn,
-                    'address' => $request->address,
-                    'image' => $student->image,
-                ]);
             }else{
                 return redirect()->back()->with('error', 'You are not authorized to add student');
             }
