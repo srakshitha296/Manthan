@@ -238,7 +238,7 @@
                                 </div>
                                 <div>
                                     <h6>SPECIALIZATION</h6>
-                                    <p class="fs-9 text-body-secondary mb-0">{{ implode(', ', $user->faculty->specialization) }}</p>
+                                    <p class="fs-9 text-body-secondary mb-0">{{ implode(', ', $user->hod->specialization) }}</p>
                                 </div>
 
                             </div>
@@ -326,7 +326,7 @@
                                 </div>
                                 <div>
                                     <h6>SPECIALIZATION</h6>
-                                    <p class="fs-9 text-body-secondary mb-0">{{ implode(', ', $user->faculty->specialization) }}</p>
+                                    <p class="fs-9 text-body-secondary mb-0">{{ implode(', ', $user->hod->specialization) }}</p>
                                 </div>
 
                             </div>
