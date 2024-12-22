@@ -6,7 +6,7 @@
 
         <div class="row mb-4 gx-6 gy-3 align-items-center">
             <div class="col-auto">
-                <h2 class="mb-0">Activities<span class="fw-normal text-body-tertiary ms-3">(32)</span>
+                <h2 class="mb-0">Activities<span class="fw-normal text-body-tertiary ms-3">({{ $activities->count() }})</span>
                 </h2>
             </div>
 

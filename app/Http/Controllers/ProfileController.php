@@ -30,7 +30,6 @@ class ProfileController extends Controller
             default => User::find(Auth::id()),
         };
 
-
         return view('dashboard.profile.index', compact('user'));
     }
 
@@ -206,7 +205,8 @@ class ProfileController extends Controller
                 ]);
             }
             return redirect()->route('user.view.profile')->with('status', 'Profile updated successfully');
-        } else if(Auth::user()->role == 'HoD'){
+        } 
+        else if(Auth::user()->role == 'HoD'){
             // dd($request->expierience);
             $request->validate([
                 'name' => 'required|string|max:255',
@@ -277,8 +277,80 @@ class ProfileController extends Controller
             }
             return redirect()->route('user.view.profile')->with('status', 'Profile updated successfully');
         }
+        else if(Auth::user()->role == 'Principle'){
+            // dd($request->all());
+            $validated = $request->validate([
+                'name' => 'required|string|max:255|min:3',
+                'email' => 'required|email|max:255',
+                'phone' => 'required|string|max:10|min:10',
+                'college' => 'required|integer|exists:colleges,id',
+                'expierience' => 'required|integer|min:0',
+                'join_date' => 'required|date|before_or_equal:today',
+                'qualification' => 'required|array',
+                'qualification.*' => 'string|max:255',
+                'specialization' => 'required|array',
+                'specialization.*' => 'string|max:255',
+                'address' => 'required|string|max:500|min:5',
+                'image' => 'nullable|image|max:2048', 
+            ]);
+            $user = User::findOrFail(Auth::id());
+
+            // dd("found user");
+        
+            if ($request->hasFile('image')) {
+                // dd("called");
+               
+                if ($user->image) {
+                    Storage::disk('public')->delete($user->image);
+                }
+        
+                $file = $request->file('image');    
+                $originalFileName = $file->getClientOriginalName();
+                $fileName = time() . '-' . $originalFileName;
+        
+                $path = $file->storeAs('users', $fileName, 'public');
+        
+                $user->image = $path;
+            }
+            // dd("image updated");
+        
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'address' => $request->address,
+            ]);
+
+            
+
+            if($user->principle){
+                $user->principle->update([
+                    'college_id' => $request->college,
+                    'experience' => $request->expierience,
+                    'joining_date' => $request->join_date,
+                    'qualification' => $request->qualification,
+                    'specialization' => $request->specialization,
+                ]);
+                // dd("principle updated");
+            }else{
+                $user->principle()->create([
+                    'user_id' => Auth::user()->id,
+                    'college_id' => $request->college,
+                    'experience' => $request->expierience,
+                    'joining_date' => $request->join_date,
+                    'qualification' => $request->qualification,
+                    'specialization' => $request->specialization,
+                ]);
+                // dd("principle created");
+            }
+
+            return redirect()->route('user.view.profile')->with('status', 'Profile updated successfully');
+        }else{
+            return redirect()->route('login');
+        }
+    }else{
+        return redirect()->route('login');
     }
-   
 }
 
 

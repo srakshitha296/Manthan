@@ -65,5 +65,6 @@ Route::post('/user-dashboard/delete-faculty/{id}',[FacultyController::class,'des
 
 Route::get('/user-dashboard/hod',[HoDController::class,'index'])->name('user.hod')->middleware('auth');
 Route::get('/user-dashboard/add-hod',[HoDController::class,'create'])->name('user.hod.create')->middleware('auth');
+Route::post('/user-dashboard/add-hod',[HoDController::class,'store'])->name('user.hod.store')->middleware('auth');
 
 require __DIR__.'/auth.php';
