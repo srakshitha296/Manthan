@@ -23,9 +23,7 @@
         <div class="mt-4">
             <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required autocomplete="new-password" />
+            <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
@@ -43,9 +41,9 @@
 @section('content')
 <div class="container">
     <div class="row flex-center min-vh-100 py-5">
-      <div class="col-sm-10 col-md-8 col-lg-5 col-xl-5 col-xxl-3"><a class="d-flex flex-center text-decoration-none mb-4" href="../../../index-2.html">
+      <div class="col-sm-10 col-md-8 col-lg-5 col-xl-5 col-xxl-3"><a class="d-flex flex-center text-decoration-none mb-4" href="{{ route('home') }}">
           <div class="d-flex align-items-center fw-bolder fs-3 d-inline-block">
-            <img src="../../../assets/img/icons/logo.png" alt="phoenix" width="58" /></div>
+            <img src="{{ asset('ui/assets/img/favicon.png') }}" alt="phoenix" width="58" /></div>
         </a>
         <div class="text-center mb-6">
             @if ($errors->any())
@@ -61,8 +59,38 @@
           <p class="text-body-tertiary">Type your new password</p>
           <form class="mt-5" method="POST" action="{{ route('password.store') }}">
             @csrf
-            <div class="position-relative mb-2" data-password="data-password"><input class="form-control form-icon-input pe-6" id="password" type="password" placeholder="Type new password" data-password-input="data-password-input" /><button class="btn px-3 py-0 h-100 position-absolute top-0 end-0 fs-7 text-body-tertiary" data-password-toggle="data-password-toggle"><span class="uil uil-eye show"></span><span class="uil uil-eye-slash hide"></span></button></div>
-            <div class="position-relative mb-4" data-password="data-password"><input class="form-control form-icon-input pe-6" id="confirmPassword" type="password" placeholder="Cofirm new password" data-password-input="data-password-input" /><button class="btn px-3 py-0 h-100 position-absolute top-0 end-0 fs-7 text-body-tertiary" data-password-toggle="data-password-toggle"><span class="uil uil-eye show"></span><span class="uil uil-eye-slash hide"></span></button></div><button class="btn btn-primary w-100" type="submit">Set Password</button>
+            <input type="hidden" name="token" value="{{ $request->route('token') }}">
+            <div class="position-relative mb-2" data-password="data-password">
+                <input class="form-control form-icon-input pe-6 @error('email') is-invalid @enderror " id="password" type="email" name="email" value="{{ old('email', $request->email) }}" required autofocus autocomplete="username" />
+                @error('email')
+                <span class="invalid-feedback ms-0" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+            <div class="position-relative mb-2" data-password="data-password">
+                <input class="form-control form-icon-input @error('password') is-invalid @enderror pe-6" id="password" type="password" name="password" required autocomplete="new-password" autofocus placeholder="Type new password" data-password-input="data-password-input" />
+                <button class="btn px-3 py-0 h-100 position-absolute top-0 end-0 fs-7 text-body-tertiary" data-password-toggle="data-password-toggle">
+                    <span class="uil uil-eye show"></span><span class="uil uil-eye-slash hide"></span>
+                </button>
+                @error('email')
+                <span class="invalid-feedback ms-0" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+            <div class="position-relative mb-4" data-password="data-password">
+                <input class="form-control form-icon-input pe-6 @error('password_confirmation') is-invalid @enderror" id="confirmPassword" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="Cofirm new password" data-password-input="data-password-input" />
+                <button class="btn px-3 py-0 h-100 position-absolute top-0 end-0 fs-7 text-body-tertiary" data-password-toggle="data-password-toggle">
+                    <span class="uil uil-eye show"></span><span class="uil uil-eye-slash hide"></span>
+                </button>
+                @error('email')
+                <span class="invalid-feedback ms-0" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+            <button class="btn btn-primary w-100" type="submit">Set Password</button>
           </form>
         </div>
       </div>
