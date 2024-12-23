@@ -25,7 +25,9 @@
                             <th class="sort align-middle ps-3" scope="col" data-sort="usn" style="width:10%;"> Department</th>
                             <th class="sort align-middle ps-3" scope="col" data-sort="institution" style="width:10%;"> INSTITUTION</th>
                             <th class="sort align-middle ps-3" scope="col" data-sort="activity-count" style="width:5%;">ACTIVITY COUNT</th>
+                            @if (Auth::user()->role == 'faculty' && Auth::user()->role == 'HoD')
                             <th class="sort align-middle text-end" scope="col" style="width:10%;"></th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody class="list" id="project-list-table-body">
@@ -65,6 +67,7 @@
                                 </p>
                             </td>
 
+                            @if (Auth::user()->role == 'faculty' && Auth::user()->role == 'HoD')
                             <td class="align-middle text-end white-space-nowrap pe-0 action">
                                 <div class="btn-reveal-trigger position-static">
                                     <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true"
@@ -81,6 +84,7 @@
                                     </div>
                                 </div>
                             </td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>

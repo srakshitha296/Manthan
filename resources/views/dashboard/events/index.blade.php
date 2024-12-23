@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <div class="row justify-content-between align-items-end mb-9 me-0 g-4">
+    <div class="row justify-content-between d-flex align-items-end mb-9 me-0 g-4">
         @foreach ($events as $event)
         <a href="{{ route('events.show', $event->id) }}" style="text-decoration: none" target="_blank" >
             <div class="card" style="max-width:20rem;">

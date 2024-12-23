@@ -303,8 +303,8 @@
                                 <div class="col-12 col-sm-auto flex-1">
                                     <h3>{{ $user->name }}</h3>
                                     <p class="text-body-secondary">
-                                        {{ $user->hod->department->name }} <br/>
-                                        {{ $user->hod->college->name }}
+                                        {{-- {{ $user->principle->department->name }} <br/> --}}
+                                        {{ $user->principle->college->name }}
                                     </p>
                                     <div>
                                         <a class="me-2" href="#!">
@@ -322,11 +322,11 @@
                             <div class="d-flex flex-between-center border-top border-dashed pt-4">
                                 <div>
                                     <h6>QUALIFICATION</h6>
-                                    <p class="fs-9 text-body-secondary mb-0">{{ implode(', ' , $user->hod->qualification) }}</p>
+                                    <p class="fs-9 text-body-secondary mb-0">{{ implode(', ' , $user->principle->qualification) }}</p>
                                 </div>
                                 <div>
                                     <h6>SPECIALIZATION</h6>
-                                    <p class="fs-9 text-body-secondary mb-0">{{ implode(', ', $user->hod->specialization) }}</p>
+                                    <p class="fs-9 text-body-secondary mb-0">{{ implode(', ', $user->principle->specialization) }}</p>
                                 </div>
 
                             </div>

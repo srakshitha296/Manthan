@@ -15,37 +15,43 @@ class ActivityController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            if(Auth::user()->role == 'student'){
+            if (Auth::user()->role == 'student') {
                 $client_college_id = Auth::user()->student->college_id;
                 $client_department_id = Auth::user()->student->department_id;
             }
 
-            if(Auth::user()->role == 'faculty'){
+            if (Auth::user()->role == 'faculty') {
                 $client_college_id = Auth::user()->faculty->college_id;
                 $client_department_id = Auth::user()->faculty->department_id;
             }
 
-            if(Auth::user()->role == 'HoD'){
+            if (Auth::user()->role == 'HoD') {
                 $client_college_id = Auth::user()->hod->college_id;
                 $client_department_id = Auth::user()->hod->department_id;
             }
 
-            if(Auth::user()->role == 'Principle'){
-                $client_college_id = Auth::user()->principle->college_id;
-                $client_department_id = Auth::user()->principle->department_id;
-            }
             
-            $activities = Activity::with('student', 'activityType', 'programExpectedOutcomes')
-                    ->whereHas('student', function ($query) use ($client_college_id, $client_department_id) {
-                        $query->where('college_id', $client_college_id)
-                            ->where('department_id', $client_department_id);
-                    })->get();
+            if (Auth::user()->role == 'Principle') {
+                $client_college_id = Auth::user()->principle->college_id;
+                
+                $activities = Activity::with('student', 'activityType', 'programExpectedOutcomes')
+                ->whereHas('student', function ($query) use ($client_college_id) {
+                    $query->where('college_id', $client_college_id);
+                })->get();
+
+                // dd($activities);
+                return view('dashboard.activity.index', compact('activities'));
             }
-         else {
+            $activities = Activity::with('student', 'activityType', 'programExpectedOutcomes')
+                ->whereHas('student', function ($query) use ($client_college_id, $client_department_id) {
+                    $query->where('college_id', $client_college_id)
+                        ->where('department_id', $client_department_id);
+                })->get();
+        } else {
             return redirect()->route('login');
         }
 
-        // dd(Auth::user()->faculty->is_cordinator);
+        // dd($activities);
         return view('dashboard.activity.index', compact('activities'));
     }
 

@@ -34,7 +34,9 @@
                             <th class="sort align-middle ps-3" scope="col" data-sort="experience" style="width:10%"> EXPERIENCE</th>
                             <th class="sort align-middle ps-3" scope="col" data-sort="doj" style="width:10%"> D.O.J </th>
                             <th class="sort align-middle ps-3" scope="col" data-sort="doj" style="width:10%"> Is Cordiantor </th>
+                            @if (Auth::user()->role == 'faculty' && Auth::user()->role == 'HoD')
                             <th class="sort align-middle text-end" scope="col" style="width:10%;"></th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody class="list" id="project-list-table-body">
@@ -64,6 +66,8 @@
                             <td class="align-middle white-space-nowrap end ps-3 py-4">
                                 <p class="mb-0 fs-9 text-body">{{ $faculty->is_cordinator ? "yes" : 'no' }}</p>
                             </td>
+                            
+                            @if (Auth::user()->role == 'faculty' && Auth::user()->role == 'HoD')
                             <td class="align-middle text-end white-space-nowrap pe-0 action">
                                 <div class="btn-reveal-trigger position-static">
                                     <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true"
@@ -80,6 +84,7 @@
                                     </div>
                                 </div>
                             </td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>

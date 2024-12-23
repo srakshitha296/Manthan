@@ -16,9 +16,20 @@ class FacultyController extends Controller
 {
     public function index()
     {
-        $faculties = Faculty::where('college_id', Auth::user()->hod->college_id)
-            ->where('department_id', Auth::user()->hod->department_id)
-            ->get();
+        if (Auth::user()->role == 'HoD') {
+            $client_college_id = Auth::user()->faculty->college_id;
+            $client_department_id = Auth::user()->faculty->department_id;
+
+            $faculties = Faculty::where('college_id', $client_college_id)
+                ->where('department_id', $client_department_id)
+                ->get();
+        }
+
+        if (Auth::user()->role == 'Principle') {
+            $client_college_id = Auth::user()->principle->college_id;
+            $faculties = Faculty::where('college_id', $client_college_id)
+                ->get();
+        }
 
         // dd($faculties);
         return view('dashboard.faculty.index', compact('faculties'));
@@ -112,7 +123,8 @@ class FacultyController extends Controller
         }
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         if (Auth::check()) {
             if (Auth::user()->role == 'HoD' || Auth::user()->role == 'Principle') {
                 $faculty = Faculty::find($id);
