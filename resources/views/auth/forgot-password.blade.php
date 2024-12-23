@@ -42,19 +42,23 @@
                     <h4 class="text-body-highlight">Forgot your password?</h4>
                     <p class="text-body-tertiary mb-5">Enter your email below and we will send <br
                             class="d-sm-none" />you a reset link</p>
-                    <x-auth-session-status class="mb-4" :status="session('status')" />
+                    @if (session('status'))
+                    <p class="alert alert-success">
+                        {{ session('status') }}
+                    </p>
+                    @endif
                     @if ($errors->any())
                     <div class="alert alert-danger">
-                            @foreach ($errors->all() as $error)
-                            <span>{{ $error }}</span>
-                            @endforeach
+                        @foreach ($errors->all() as $error)
+                        <span>{{ $error }}</span>
+                        @endforeach
                     </div>
                     @endif
                     <form method="POST" action="{{ route('password.email') }}">
                         @csrf
                         <div class="d-flex align-items-center mb-5">
-                            <input class="form-control @error('email') is-invalid @enderror flex-1" id="email" type="email"
-                            name="email" required autofocus placeholder="Email" />
+                            <input class="form-control @error('email') is-invalid @enderror flex-1" id="email"
+                                type="email" name="email" required autofocus placeholder="Email" />
                             <button type="submit" class="btn btn-primary ms-2">
                                 Send<span class="fas fa-chevron-right ms-2"></span>
                             </button>
