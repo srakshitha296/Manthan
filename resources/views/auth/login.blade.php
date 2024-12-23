@@ -2,18 +2,6 @@
 
 @section('content')
 <div class="container">
-    @if (session()->has('error'))
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{ session('error')}}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    @endif
-    @if (session()->has('success'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ session('success')}}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    @endif
     <form method="POST" action="{{ route('login') }}">
         @csrf
         <div class="row flex-center min-vh-100 py-5">
@@ -28,6 +16,25 @@
                     <p class="text-body-tertiary">Get access to your account</p>
                 </div>
 
+                @if (session()->has('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('error')}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
+                @if (session()->has('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success')}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
+            
+                @if (session('status'))
+                <p class="alert alert-success alert-dismissible fade show">
+                    {{ session('status') }}
+                </p>
+                @endif
+
                 <div class="mb-3 text-start">
                     <label class="form-label" for="email">Email address</label>
                     <div class="form-icon-container">
@@ -36,9 +43,9 @@
                             placeholder="name@example.com" />
                         <span class="fas fa-user text-body fs-9 form-icon"></span>
                         @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
                     </div>
                 </div>
@@ -56,9 +63,9 @@
                             <span class="uil uil-eye-slash hide"></span></button>
 
                         @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
 
                     </div>
@@ -74,12 +81,14 @@
                             <label class="form-check-label mb-0" for="basic-checkbox">Remember me</label>
                         </div>
                     </div>
-                    <div class="col-auto"><a class="fs-9 fw-semibold" href="{{ route('password.request') }}">Forgot Password?</a>
+                    <div class="col-auto"><a class="fs-9 fw-semibold" href="{{ route('password.request') }}">Forgot
+                            Password?</a>
                     </div>
                 </div>
 
                 <button type="submit" class="btn btn-primary w-100 mb-3">Sign In</button>
-                <div class="text-center"><a class="fs-9 fw-bold" href="{{ route('register') }}">Create an account</a></div>
+                <div class="text-center"><a class="fs-9 fw-bold" href="{{ route('register') }}">Create an account</a>
+                </div>
             </div>
         </div>
     </form>
