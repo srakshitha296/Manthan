@@ -16,6 +16,7 @@ class DashboardController extends Controller
         }
         $eventCompletions = RegisteredEvents::select('programs.type', DB::raw('count(*) as count'))
         ->join('programs', 'registered_events.program_id', '=', 'programs.id')
+        ->where('registered_events.user_id', Auth::id())
         ->groupBy('programs.type')
         ->get()
         ->mapWithKeys(function ($item) {
