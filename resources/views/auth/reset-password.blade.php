@@ -1,4 +1,4 @@
-<x-guest-layout>
+{{-- <x-guest-layout>
     <form method="POST" action="{{ route('password.store') }}">
         @csrf
 
@@ -36,4 +36,36 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+</x-guest-layout> --}}
+
+@extends('layouts.guest') 
+
+@section('content')
+<div class="container">
+    <div class="row flex-center min-vh-100 py-5">
+      <div class="col-sm-10 col-md-8 col-lg-5 col-xl-5 col-xxl-3"><a class="d-flex flex-center text-decoration-none mb-4" href="../../../index-2.html">
+          <div class="d-flex align-items-center fw-bolder fs-3 d-inline-block">
+            <img src="../../../assets/img/icons/logo.png" alt="phoenix" width="58" /></div>
+        </a>
+        <div class="text-center mb-6">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+          <h4 class="text-body-highlight">Reset new password</h4>
+          <p class="text-body-tertiary">Type your new password</p>
+          <form class="mt-5" method="POST" action="{{ route('password.store') }}">
+            @csrf
+            <div class="position-relative mb-2" data-password="data-password"><input class="form-control form-icon-input pe-6" id="password" type="password" placeholder="Type new password" data-password-input="data-password-input" /><button class="btn px-3 py-0 h-100 position-absolute top-0 end-0 fs-7 text-body-tertiary" data-password-toggle="data-password-toggle"><span class="uil uil-eye show"></span><span class="uil uil-eye-slash hide"></span></button></div>
+            <div class="position-relative mb-4" data-password="data-password"><input class="form-control form-icon-input pe-6" id="confirmPassword" type="password" placeholder="Cofirm new password" data-password-input="data-password-input" /><button class="btn px-3 py-0 h-100 position-absolute top-0 end-0 fs-7 text-body-tertiary" data-password-toggle="data-password-toggle"><span class="uil uil-eye show"></span><span class="uil uil-eye-slash hide"></span></button></div><button class="btn btn-primary w-100" type="submit">Set Password</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection
