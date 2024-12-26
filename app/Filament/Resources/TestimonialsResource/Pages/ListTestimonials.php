@@ -5,6 +5,8 @@ namespace App\Filament\Resources\TestimonialsResource\Pages;
 use App\Filament\Resources\TestimonialsResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
+use App\Filament\Widgets\TestimonialChartWidget;
+
 
 class ListTestimonials extends ListRecords
 {
@@ -14,6 +16,13 @@ class ListTestimonials extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+        ];
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            TestimonialChartWidget::Class,
         ];
     }
 }

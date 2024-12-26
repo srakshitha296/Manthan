@@ -7,6 +7,7 @@ use App\Filament\Resources\StudentResource;
 use Filament\Actions\CreateAction;
 use Filament\Actions\Action;
 use Filament\Resources\Pages\ListRecords;
+use App\Filament\Widgets\StudentChartWidget;
 use Illuminate\Database\Eloquent\Collection;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -23,5 +24,13 @@ class ListStudents extends ListRecords
                 return Excel::download(new StudentsExport($records, 0), 'students.xlsx');  
             })
         ];
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+            return [
+                StudentChartWidget::Class,
+            ];
+       
     }
 }

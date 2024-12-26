@@ -4,6 +4,7 @@ namespace App\Filament\Resources\ProgramResource\Pages;
 
 use App\Exports\ProgramsExport;
 use App\Filament\Resources\ProgramResource;
+use App\Filament\Widgets\EventChartWidget;
 use App\Models\Program;
 use Filament\Actions\CreateAction;
 use Filament\Actions\Action;
@@ -30,5 +31,12 @@ class ListPrograms extends ListRecords
                 CreateAction::make(),
             ];
         }
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+            return[
+                EventChartWidget::Class,
+            ];
     }
 }

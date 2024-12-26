@@ -4,6 +4,7 @@ namespace App\Filament\Widgets;
 
 use Filament\Widgets\ChartWidget;
 use App\Models\User;
+use Filament\Widgets\Concerns\InteractsWithPageFilters;
 
 class UserChartWidget extends ChartWidget
 {
@@ -15,19 +16,38 @@ class UserChartWidget extends ChartWidget
 
     protected function getData(): array
     {
-        // Dynamically fetch data for each user type
+        // Fetch the selected college name from the filter
+        $collegeName = $this->filters['college'] ?? null;
+
+        // Filter user counts by role and college name
         $userCounts = [
-            'Principals' => User::where('role', 'Principle')->count(),
-            'Department Heads' => User::where('role', 'HoD')->count(),
-            'Faculties' => User::where('role', 'faculty')->count(),
-            'Students' => User::where('role', 'student')->count(),
+            'Principals' => User::where('role', 'Principle')
+                ->when($collegeName, function ($query) use ($collegeName) {
+                    $query->where('college', $collegeName);
+                })
+                ->count(),
+            'Department Heads' => User::where('role', 'HoD')
+                ->when($collegeName, function ($query) use ($collegeName) {
+                    $query->where('college', $collegeName);
+                })
+                ->count(),
+            'Faculties' => User::where('role', 'faculty')
+                ->when($collegeName, function ($query) use ($collegeName) {
+                    $query->where('college', $collegeName);
+                })
+                ->count(),
+            'Students' => User::where('role', 'student')
+                ->when($collegeName, function ($query) use ($collegeName) {
+                    $query->where('college', $collegeName);
+                })
+                ->count(),
         ];
 
         return [
             'datasets' => [
                 [
-                    'label' => 'User type',
-                    'data' => array_values($userCounts), 
+                    'label' => 'User Type',
+                    'data' => array_values($userCounts),
                     'backgroundColor' => [
                         'rgb(27, 67, 50)',
                         'rgb(45, 106, 79)',
@@ -36,7 +56,7 @@ class UserChartWidget extends ChartWidget
                     ],
                 ],
             ],
-            'labels' => array_keys($userCounts), 
+            'labels' => array_keys($userCounts),
         ];
     }
 

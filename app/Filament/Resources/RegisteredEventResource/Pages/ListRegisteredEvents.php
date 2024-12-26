@@ -4,6 +4,8 @@ namespace App\Filament\Resources\RegisteredEventResource\Pages;
 
 use App\Exports\Registeration;
 use App\Filament\Resources\RegisteredEventResource;
+use App\Filament\Widgets\EventParticipationChartWidget;
+use App\Filament\Widgets\MonthlyEventRegistrationChartWidget;
 use App\Models\RegisteredEvents;
 use Filament\Actions\CreateAction;
 use Filament\Actions\Action;
@@ -30,5 +32,14 @@ class ListRegisteredEvents extends ListRecords
                 CreateAction::make(),
             ];
         }
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+            return [
+                EventParticipationChartWidget::Class,
+                MonthlyEventRegistrationChartWidget::Class,
+            ];
+       
     }
 }
